@@ -1,52 +1,172 @@
 import Link from 'next/link';
 import ScreenLayout from '@/components/ScreenLayout';
+import meanings from '@/data/hex_meanings.json';
 
-const sections = [
-  {
-    title: 'Pattern',
-    body: 'The pattern suggests a steady core with soft edges. Focus on what remains true.',
-  },
-  {
-    title: 'Movement',
-    body: 'Change gathers in the third line. Release what no longer supports the question.',
-  },
-  {
-    title: 'Relating',
-    body: 'The relating hexagram invites a quieter pace and deeper listening.',
-  },
-  {
-    title: 'Mirror',
-    body: 'Notice the reflection: the more you soften your grip, the more clarity arrives.',
-  },
-  {
-    title: 'Cold sentence',
-    body: 'Let the answer be slow. Let the next step be kind.',
-  },
-  {
-    title: 'Opening question',
-    body: 'What would feel like enough support for you right now?',
-  },
+type HexTraditional = {
+  name_en?: string;
+  pinyin?: string;
+  han_viet?: string;
+};
+
+type HexMeaning = {
+  id: number;
+  layman_title: string;
+  traditional: HexTraditional;
+  present_state: string[];
+  keywords?: string[];
+  domains_hint?: string[];
+};
+
+type MeaningsStore = {
+  version: string;
+  hexagrams: Record<string, HexMeaning>;
+  line_position_overlay: Record<string, string[]>;
+  fallback: { hexagram: { layman_title: string; present_state: string[] } };
+};
+
+const store = meanings as MeaningsStore;
+
+const fallbackMovement = [
+  'Movement is present, but may be hard to name clearly.',
+  'More than one interpretation may fit this moment.',
 ];
 
+const primaryId = 1;
+const relatingId: number | null = 2;
+const changingLines = [2, 5];
+
+const getHex = (id: number): HexMeaning => {
+  const found = store.hexagrams[String(id)];
+  if (found) {
+    return found;
+  }
+
+  return {
+    id: 0,
+    layman_title: store.fallback.hexagram.layman_title,
+    traditional: {},
+    present_state: store.fallback.hexagram.present_state,
+    keywords: [],
+    domains_hint: [],
+  };
+};
+
+const getMovement = (line: number): string[] => {
+  const items = store.line_position_overlay[String(line)];
+  if (items && items.length >= 2) {
+    return items.slice(0, 2);
+  }
+  return fallbackMovement;
+};
+
+const formatTraditional = (traditional: HexTraditional) => {
+  const parts: string[] = [];
+  if (traditional.han_viet) {
+    parts.push(traditional.han_viet);
+  }
+  if (traditional.pinyin) {
+    parts.push(`(${traditional.pinyin})`);
+  }
+  if (traditional.name_en) {
+    parts.push(`— ${traditional.name_en}`);
+  }
+  return parts.join(' ');
+};
+
 export default function ResultPage() {
+  const primary = getHex(primaryId);
+  const relating = typeof relatingId === 'number' ? getHex(relatingId) : null;
+
   return (
     <ScreenLayout
       eyebrow="Moment"
       title="Result"
-      description="A calm readout of the pattern, movement, and reflection."
+      description="Primary, movement, and relating — drawn from the meaning store."
     >
       <div className="space-y-4">
-        {sections.map((section) => (
-          <div
-            key={section.title}
-            className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600"
-          >
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-              {section.title}
+        <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+          Meanings v{store.version}
+        </p>
+        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Primary</p>
+          <p className="mt-2 text-sm text-slate-700">
+            {primary.layman_title}
+          </p>
+          {formatTraditional(primary.traditional) ? (
+            <p className="mt-1 text-xs text-slate-400">{formatTraditional(primary.traditional)}</p>
+          ) : null}
+          <ul className="mt-3 space-y-2 text-sm text-slate-600">
+            {primary.present_state.map((item, index) => (
+              <li key={`primary-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Movement</p>
+          {changingLines.length === 0 ? (
+            <p className="mt-3 text-sm text-slate-600">
+              No changing lines appeared in this cast.
             </p>
-            <p className="mt-2 text-sm text-slate-700">{section.body}</p>
-          </div>
-        ))}
+          ) : (
+            <div className="mt-3 space-y-3">
+              {changingLines.map((line) => (
+                <div key={`line-${line}`} className="space-y-2">
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                    Line {line}
+                  </p>
+                  <ul className="space-y-2 text-sm text-slate-600">
+                    {getMovement(line).map((item, index) => (
+                      <li
+                        key={`line-${line}-${index}`}
+                        className="rounded-xl bg-slate-50 px-3 py-2"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {relating ? (
+          <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Relating</p>
+            <p className="mt-2 text-sm text-slate-700">{relating.layman_title}</p>
+            {formatTraditional(relating.traditional) ? (
+              <p className="mt-1 text-xs text-slate-400">
+                {formatTraditional(relating.traditional)}
+              </p>
+            ) : null}
+            <ul className="mt-3 space-y-2 text-sm text-slate-600">
+              {relating.present_state.map((item, index) => (
+                <li key={`relating-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Mirror</p>
+          <p className="mt-2 text-sm text-slate-700">
+            This section reflects what you wrote, in plain language.
+          </p>
+        </section>
+        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Cold sentence</p>
+          <p className="mt-2 text-sm text-slate-700">You are holding two truths at once.</p>
+        </section>
+        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Opening question</p>
+          <p className="mt-2 text-sm text-slate-700">
+            What part of this feels most alive right now?
+          </p>
+        </section>
         <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/moment/cast" className="hover:text-slate-700">
             Back

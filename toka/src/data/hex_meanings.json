@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "hexagrams": {
+    "1": {
+      "id": 1,
+      "layman_title": "Pure Drive",
+      "traditional": {
+        "name_en": "The Creative",
+        "pinyin": "Qian",
+        "han_viet": "Càn"
+      },
+      "present_state": [
+        "Forward-moving energy is strong.",
+        "There may be pressure to self-direct.",
+        "Momentum may feel more available than certainty."
+      ],
+      "keywords": ["initiative", "self-direction", "momentum"],
+      "domains_hint": ["work", "project", "inner"]
+    },
+    "2": {
+      "id": 2,
+      "layman_title": "Holding Space",
+      "traditional": {
+        "name_en": "The Receptive",
+        "pinyin": "Kun",
+        "han_viet": "Khôn"
+      },
+      "present_state": [
+        "Supportive and stabilizing energy is present.",
+        "Progress may happen through allowing rather than pushing.",
+        "Structure may be forming through consistency and patience."
+      ],
+      "keywords": ["receptivity", "support", "stability", "containment"],
+      "domains_hint": ["relationship", "health", "inner"]
+    },
+    "3": {
+      "id": 3,
+      "layman_title": "Gather",
+      "traditional": {
+        "name_en": "Difficulty at the Beginning",
+        "pinyin": "",
+        "han_viet": ""
+      },
+      "present_state": [
+        "A beginning may be present. small and Protection may be relevant. your energy.",
+        "Attention may be drawn to guidance when the path feels tangled.",
+        "Separation may be present the essential from the noise."
+      ],
+      "keywords": [],
+      "domains_hint": []
+    }
+  },
+  "line_position_overlay": {
+    "1": [
+      "Early-stage energy; stability may still be forming.",
+      "Small signals may matter more than big moves."
+    ],
+    "2": [
+      "Positioning and support dynamics are active.",
+      "Alignment with others may shape outcomes."
+    ],
+    "3": [
+      "Friction or overextension risk may be present.",
+      "Timing may matter more than force."
+    ],
+    "4": [
+      "Crossing into visibility or responsibility territory.",
+      "External response may matter more now."
+    ],
+    "5": [
+      "Central responsibility or expectation weight is present.",
+      "Influence may be higher than usual."
+    ],
+    "6": [
+      "Completion or overextension energy is present.",
+      "Release may be present or transition may be near."
+    ]
+  },
+  "fallback": {
+    "hexagram": {
+      "layman_title": "Unclear Pattern",
+      "present_state": [
+        "The pattern may still be forming.",
+        "Multiple interpretations may be possible.",
+        "Clarity may emerge through observation."
+      ]
+    }
+  }
+}
