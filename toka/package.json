@@ -28,6 +28,7 @@
     "prettier": "latest",
     "tailwindcss": "^3.4.17",
     "vitest": "latest",
+    "zod": "latest",
     "typescript": "latest"
   }
 }
