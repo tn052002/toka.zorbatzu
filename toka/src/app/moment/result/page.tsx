@@ -1,6 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import ScreenLayout from '@/components/ScreenLayout';
 import meanings from '@/data/hex_meanings.json';
+import { useEffect } from 'react';
+import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 
 type HexTraditional = {
   name_en?: string;
@@ -30,10 +34,6 @@ const fallbackMovement = [
   'Movement is present, but may be hard to name clearly.',
   'More than one interpretation may fit this moment.',
 ];
-
-const primaryId = 1;
-const relatingId: number | null = 2;
-const changingLines = [2, 5];
 
 const getHex = (id: number): HexMeaning => {
   const found = store.hexagrams[String(id)];
@@ -68,14 +68,31 @@ const formatTraditional = (traditional: HexTraditional) => {
     parts.push(`(${traditional.pinyin})`);
   }
   if (traditional.name_en) {
-    parts.push(`— ${traditional.name_en}`);
+    parts.push(parts.length > 0 ? `— ${traditional.name_en}` : traditional.name_en);
   }
   return parts.join(' ');
 };
 
 export default function ResultPage() {
-  const primary = getHex(primaryId);
+  const { draft, initDraft } = useDraftMoment();
+
+  useEffect(() => {
+    if (!draft) {
+      initDraft();
+    }
+  }, [draft, initDraft]);
+
+  if (!draft) {
+    return null;
+  }
+
+  const primaryId = draft.primary_hex_id;
+  const relatingId = draft.relating_hex_id ?? null;
+  const changingLines = draft.changing_lines ?? [];
+
+  const primary = typeof primaryId === 'number' ? getHex(primaryId) : getHex(0);
   const relating = typeof relatingId === 'number' ? getHex(relatingId) : null;
+  const hasCast = typeof primaryId === 'number';
 
   return (
     <ScreenLayout
@@ -87,69 +104,89 @@ export default function ResultPage() {
         <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
           Meanings v{store.version}
         </p>
-        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Primary</p>
-          <p className="mt-2 text-sm text-slate-700">
-            {primary.layman_title}
-          </p>
-          {formatTraditional(primary.traditional) ? (
-            <p className="mt-1 text-xs text-slate-400">{formatTraditional(primary.traditional)}</p>
-          ) : null}
-          <ul className="mt-3 space-y-2 text-sm text-slate-600">
-            {primary.present_state.map((item, index) => (
-              <li key={`primary-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Movement</p>
-          {changingLines.length === 0 ? (
-            <p className="mt-3 text-sm text-slate-600">
-              No changing lines appeared in this cast.
-            </p>
-          ) : (
-            <div className="mt-3 space-y-3">
-              {changingLines.map((line) => (
-                <div key={`line-${line}`} className="space-y-2">
-                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-                    Line {line}
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    {getMovement(line).map((item, index) => (
-                      <li
-                        key={`line-${line}-${index}`}
-                        className="rounded-xl bg-slate-50 px-3 py-2"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {relating ? (
+        {!hasCast ? (
           <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Relating</p>
-            <p className="mt-2 text-sm text-slate-700">{relating.layman_title}</p>
-            {formatTraditional(relating.traditional) ? (
-              <p className="mt-1 text-xs text-slate-400">
-                {formatTraditional(relating.traditional)}
-              </p>
-            ) : null}
-            <ul className="mt-3 space-y-2 text-sm text-slate-600">
-              {relating.present_state.map((item, index) => (
-                <li key={`relating-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Cast missing</p>
+            <p className="mt-2 text-sm text-slate-700">
+              This moment does not have cast data yet.
+            </p>
+            <Link
+              href="/moment/cast"
+              className="mt-3 inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-600"
+            >
+              Return to cast
+            </Link>
           </section>
+        ) : null}
+        {hasCast ? (
+          <>
+            <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Primary</p>
+              <p className="mt-2 text-sm text-slate-700">
+                {primary.layman_title}
+              </p>
+              {formatTraditional(primary.traditional) ? (
+                <p className="mt-1 text-xs text-slate-400">
+                  {formatTraditional(primary.traditional)}
+                </p>
+              ) : null}
+              <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                {primary.present_state.map((item, index) => (
+                  <li key={`primary-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Movement</p>
+              {changingLines.length === 0 ? (
+                <p className="mt-3 text-sm text-slate-600">
+                  No changing lines appeared in this cast.
+                </p>
+              ) : (
+                <div className="mt-3 space-y-3">
+                  {changingLines.map((line) => (
+                    <div key={`line-${line}`} className="space-y-2">
+                      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                        Line {line}
+                      </p>
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        {getMovement(line).map((item, index) => (
+                          <li
+                            key={`line-${line}-${index}`}
+                            className="rounded-xl bg-slate-50 px-3 py-2"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+
+            {relating ? (
+              <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Relating</p>
+                <p className="mt-2 text-sm text-slate-700">{relating.layman_title}</p>
+                {formatTraditional(relating.traditional) ? (
+                  <p className="mt-1 text-xs text-slate-400">
+                    {formatTraditional(relating.traditional)}
+                  </p>
+                ) : null}
+                <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                  {relating.present_state.map((item, index) => (
+                    <li key={`relating-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+          </>
         ) : null}
         <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
           <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Mirror</p>

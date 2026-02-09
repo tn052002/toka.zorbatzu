@@ -79,11 +79,18 @@
   "fallback": {
     "hexagram": {
       "layman_title": "Unclear Pattern",
+      "traditional": {
+        "name_en": "name_en",
+        "pinyin": "pinyin",
+        "han_viet": "han_viet"
+      },
       "present_state": [
         "The pattern may still be forming.",
         "Multiple interpretations may be possible.",
         "Clarity may emerge through observation."
-      ]
+      ],
+      "keywords": [],
+      "domains_hint": []
     }
   }
 }

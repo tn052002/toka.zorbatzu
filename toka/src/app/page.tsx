@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import ScreenLayout from '@/components/ScreenLayout';
+import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 
 export default function Home() {
+  const { resetDraft } = useDraftMoment();
+
   return (
     <ScreenLayout
       title="Start a moment"
@@ -15,6 +20,13 @@ export default function Home() {
           <span>Begin the reflection</span>
           <span className="text-xs uppercase tracking-[0.3em] text-slate-400">Go</span>
         </Link>
+        <button
+          type="button"
+          onClick={resetDraft}
+          className="w-full rounded-2xl border border-slate-200/70 bg-white px-4 py-3 text-xs text-slate-500"
+        >
+          New moment (clear draft)
+        </button>
         <div className="rounded-2xl border border-slate-200/60 bg-slate-50 px-4 py-4 text-xs text-slate-500">
           No login. Just a quiet place to gather and respond.
         </div>

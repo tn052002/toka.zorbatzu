@@ -1,0 +1,163 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { clearDraft, loadDraft, saveDraft } from './storage';
+import type { DraftMoment, Domain } from './types';
+
+type DraftActions = {
+  initDraft: () => DraftMoment;
+  setDomain: (domain: Domain, otherText?: string) => DraftMoment;
+  setQuestion: (text: string) => DraftMoment;
+  setCastMode: (mode: DraftMoment['cast_mode']) => DraftMoment;
+  setCastResult: (result: {
+    lines: number[];
+    changing_lines: number[];
+    primary_hex_id: number;
+    relating_hex_id: number | null;
+  }) => DraftMoment;
+  setLines: (lines: number[]) => DraftMoment;
+  clearCastResult: () => DraftMoment;
+  resetDraft: () => void;
+};
+
+type DraftStore = {
+  draft: DraftMoment | null;
+} & DraftActions;
+
+let currentDraft: DraftMoment | null = null;
+const listeners = new Set<() => void>();
+
+const notify = () => {
+  listeners.forEach((listener) => listener());
+};
+
+const generateId = () => {
+  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
+    return crypto.randomUUID();
+  }
+  return `draft-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+};
+
+const ensureDraft = (): DraftMoment => {
+  if (!currentDraft) {
+    const loaded = loadDraft();
+    currentDraft =
+      loaded ??
+      ({
+        id: generateId(),
+        created_at: new Date().toISOString(),
+        domain: null,
+        question_text: '',
+        cast_mode: null,
+      } satisfies DraftMoment);
+  }
+  return currentDraft;
+};
+
+const updateDraft = (next: DraftMoment) => {
+  currentDraft = next;
+  saveDraft(next);
+  notify();
+};
+
+export const useDraftMoment = (): DraftStore => {
+  const [draft, setDraft] = useState<DraftMoment | null>(() => {
+    return typeof window === 'undefined' ? null : loadDraft();
+  });
+
+  useEffect(() => {
+    const handle = () => setDraft(currentDraft);
+    listeners.add(handle);
+    if (!currentDraft) {
+      currentDraft = loadDraft();
+      setDraft(currentDraft);
+    }
+    return () => {
+      listeners.delete(handle);
+    };
+  }, []);
+
+  const initDraft = () => {
+    const draftValue = ensureDraft();
+    updateDraft(draftValue);
+    return draftValue;
+  };
+
+  const setDomain = (domain: Domain, otherText?: string) => {
+    const base = ensureDraft();
+    const next: DraftMoment = {
+      ...base,
+      domain,
+      domain_other_text: otherText,
+    };
+    updateDraft(next);
+    return next;
+  };
+
+  const setQuestion = (text: string) => {
+    const base = ensureDraft();
+    const next: DraftMoment = { ...base, question_text: text };
+    updateDraft(next);
+    return next;
+  };
+
+  const setCastMode = (mode: DraftMoment['cast_mode']) => {
+    const base = ensureDraft();
+    const next: DraftMoment = { ...base, cast_mode: mode };
+    updateDraft(next);
+    return next;
+  };
+
+  const setCastResult = (result: {
+    lines: number[];
+    changing_lines: number[];
+    primary_hex_id: number;
+    relating_hex_id: number | null;
+  }) => {
+    const base = ensureDraft();
+    const next: DraftMoment = {
+      ...base,
+      ...result,
+    };
+    updateDraft(next);
+    return next;
+  };
+
+  const setLines = (lines: number[]) => {
+    const base = ensureDraft();
+    const next: DraftMoment = { ...base, lines };
+    updateDraft(next);
+    return next;
+  };
+
+  const clearCastResult = () => {
+    const base = ensureDraft();
+    const next: DraftMoment = {
+      ...base,
+      lines: undefined,
+      changing_lines: undefined,
+      primary_hex_id: undefined,
+      relating_hex_id: undefined,
+    };
+    updateDraft(next);
+    return next;
+  };
+
+  const resetDraft = () => {
+    currentDraft = null;
+    clearDraft();
+    notify();
+  };
+
+  return {
+    draft,
+    initDraft,
+    setDomain,
+    setQuestion,
+    setCastMode,
+    setCastResult,
+    setLines,
+    clearCastResult,
+    resetDraft,
+  };
+};
