@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import ScreenLayout from '@/components/ScreenLayout';
 import meanings from '@/data/hex_meanings.json';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
+import { buildInterpretInput, requestInterpretation } from '@/lib/interpret/client';
 
 type HexTraditional = {
   name_en?: string;
@@ -74,7 +75,8 @@ const formatTraditional = (traditional: HexTraditional) => {
 };
 
 export default function ResultPage() {
-  const { draft, initDraft } = useDraftMoment();
+  const { draft, initDraft, setAiOutput, setAiStatus } = useDraftMoment();
+  const [retrying, setRetrying] = useState(false);
 
   useEffect(() => {
     if (!draft) {
@@ -93,6 +95,47 @@ export default function ResultPage() {
   const primary = typeof primaryId === 'number' ? getHex(primaryId) : getHex(0);
   const relating = typeof relatingId === 'number' ? getHex(relatingId) : null;
   const hasCast = typeof primaryId === 'number';
+  const mirror = draft.ai_output?.mirror_map;
+
+  const fallbackMirror = {
+    you_described: [
+      'The question describes a present tension.',
+      'A central theme appears in the way it is phrased.',
+      'The situation reads as active and still forming.',
+    ],
+    two_pulls: ['Two directions appear at once.', 'Both pulls feel present.'],
+    cost_to_lose: ['Letting go changes the current balance.', 'Holding on keeps a known rhythm.'],
+    unknowns: ['Some parts of the picture remain open.', 'The timing is still unclear.'],
+  };
+
+  const coldSentence =
+    draft.ai_output?.cold_mirror_sentence ?? 'You are holding two truths at once.';
+  const openingQuestion =
+    draft.ai_output?.opening_question ?? 'What part of this feels most alive right now?';
+
+  const handleRetry = async () => {
+    if (!draft || retrying) {
+      return;
+    }
+    const input = buildInterpretInput(draft);
+    if (!input) {
+      return;
+    }
+    setRetrying(true);
+    setAiStatus('loading');
+    try {
+      const output = await requestInterpretation(input);
+      if (output) {
+        setAiOutput(output);
+      } else {
+        setAiStatus('error');
+      }
+    } catch {
+      setAiStatus('error');
+    } finally {
+      setRetrying(false);
+    }
+  };
 
   return (
     <ScreenLayout
@@ -190,19 +233,70 @@ export default function ResultPage() {
         ) : null}
         <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
           <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Mirror</p>
-          <p className="mt-2 text-sm text-slate-700">
-            This section reflects what you wrote, in plain language.
-          </p>
+          <div className="mt-3 space-y-3 text-sm text-slate-600">
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                You described
+              </p>
+              <ul className="mt-2 space-y-2">
+                {(mirror?.you_described ?? fallbackMirror.you_described).map((item, index) => (
+                  <li key={`mirror-you-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">Two pulls</p>
+              <ul className="mt-2 space-y-2">
+                {(mirror?.two_pulls ?? fallbackMirror.two_pulls).map((item, index) => (
+                  <li key={`mirror-pulls-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                Cost to lose
+              </p>
+              <ul className="mt-2 space-y-2">
+                {(mirror?.cost_to_lose ?? fallbackMirror.cost_to_lose).map((item, index) => (
+                  <li key={`mirror-cost-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">Unknowns</p>
+              <ul className="mt-2 space-y-2">
+                {(mirror?.unknowns ?? fallbackMirror.unknowns).map((item, index) => (
+                  <li key={`mirror-unknown-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {!draft.ai_output ? (
+              <button
+                type="button"
+                onClick={handleRetry}
+                disabled={retrying}
+                className="w-full rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 disabled:text-slate-400"
+              >
+                {retrying ? 'Reflecting...' : 'Retry mirror'}
+              </button>
+            ) : null}
+          </div>
         </section>
         <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
           <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Cold sentence</p>
-          <p className="mt-2 text-sm text-slate-700">You are holding two truths at once.</p>
+          <p className="mt-2 text-sm text-slate-700">{coldSentence}</p>
         </section>
         <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
           <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Opening question</p>
-          <p className="mt-2 text-sm text-slate-700">
-            What part of this feels most alive right now?
-          </p>
+          <p className="mt-2 text-sm text-slate-700">{openingQuestion}</p>
         </section>
         <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/moment/cast" className="hover:text-slate-700">

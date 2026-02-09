@@ -6,6 +6,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { castLineValue, castQuickValues, computeCastResult } from '@/lib/iching/cast';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import type { LineValue } from '@/lib/iching';
+import LoadingModal from '@/components/LoadingModal';
+import { buildInterpretInput, requestInterpretation } from '@/lib/interpret/client';
 
 type Mode = 'quick' | 'ritual';
 
@@ -20,10 +22,18 @@ const describeLine = (value: LineValue) => {
 
 export default function CastRitual() {
   const router = useRouter();
-  const { initDraft, setCastMode, setCastResult, setLines, clearCastResult } =
-    useDraftMoment();
+  const {
+    initDraft,
+    setCastMode,
+    setCastResult,
+    setLines,
+    clearCastResult,
+    setAiOutput,
+    setAiStatus,
+  } = useDraftMoment();
   const [mode, setMode] = useState<Mode>('quick');
   const [ritualLines, setRitualLines] = useState<LineValue[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const seeded = initDraft();
@@ -38,11 +48,32 @@ export default function CastRitual() {
   const nextIndex = ritualLines.length;
   const ritualComplete = ritualLines.length === 6;
 
-  const handleQuickCast = () => {
+  const handleQuickCast = async () => {
+    if (loading) {
+      return;
+    }
+    setLoading(true);
     const lines = castQuickValues();
     const result = computeCastResult(lines);
     setCastMode('quick');
-    setCastResult(result);
+    const nextDraft = setCastResult(result);
+    const input = buildInterpretInput(nextDraft);
+    if (input) {
+      setAiStatus('loading');
+      try {
+        const output = await requestInterpretation(input);
+        if (output) {
+          setAiOutput(output);
+        } else {
+          setAiStatus('error');
+        }
+      } catch {
+        setAiStatus('error');
+      }
+    } else {
+      setAiStatus('error');
+    }
+    setLoading(false);
     router.push('/moment/result');
   };
 
@@ -72,17 +103,39 @@ export default function CastRitual() {
     return computeCastResult(ritualLines);
   }, [ritualComplete, ritualLines]);
 
-  const handleRitualComplete = () => {
+  const handleRitualComplete = async () => {
     if (!ritualResult) {
       return;
     }
+    if (loading) {
+      return;
+    }
+    setLoading(true);
     setCastMode('ritual');
-    setCastResult(ritualResult);
+    const nextDraft = setCastResult(ritualResult);
+    const input = buildInterpretInput(nextDraft);
+    if (input) {
+      setAiStatus('loading');
+      try {
+        const output = await requestInterpretation(input);
+        if (output) {
+          setAiOutput(output);
+        } else {
+          setAiStatus('error');
+        }
+      } catch {
+        setAiStatus('error');
+      }
+    } else {
+      setAiStatus('error');
+    }
+    setLoading(false);
     router.push('/moment/result');
   };
 
   return (
     <div className="space-y-5">
+      <LoadingModal open={loading} text="Reflecting..." />
       <div className="flex rounded-full border border-slate-200 bg-white p-1 text-xs text-slate-500">
         {(['quick', 'ritual'] as const).map((option) => (
           <button
@@ -92,6 +145,7 @@ export default function CastRitual() {
               setMode(option);
               setCastMode(option);
             }}
+            disabled={loading}
             className={`flex-1 rounded-full px-3 py-2 capitalize transition ${
               mode === option ? 'bg-slate-900 text-white' : 'text-slate-500'
             }`}
@@ -107,7 +161,8 @@ export default function CastRitual() {
           <button
             type="button"
             onClick={handleQuickCast}
-            className="mt-4 w-full rounded-full bg-slate-900 px-4 py-2 text-sm text-white"
+            disabled={loading}
+            className="mt-4 w-full rounded-full bg-slate-900 px-4 py-2 text-sm text-white disabled:bg-slate-400"
           >
             Quick cast
           </button>
@@ -124,6 +179,7 @@ export default function CastRitual() {
                   key={`line-${index}`}
                   type="button"
                   onClick={() => handleFlip(index)}
+                  disabled={loading}
                   className={`flex min-h-[90px] flex-col items-center justify-center rounded-2xl border px-3 py-3 text-xs ${
                     isActive
                       ? 'border-slate-900 bg-slate-900 text-white'
@@ -150,6 +206,7 @@ export default function CastRitual() {
             <button
               type="button"
               onClick={handleRitualReset}
+              disabled={loading}
               className="flex-1 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600"
             >
               Reset ritual
@@ -157,9 +214,11 @@ export default function CastRitual() {
             <button
               type="button"
               onClick={handleRitualComplete}
-              disabled={!ritualComplete}
+              disabled={!ritualComplete || loading}
               className={`flex-1 rounded-full px-3 py-2 text-xs ${
-                ritualComplete ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-400'
+                ritualComplete && !loading
+                  ? 'bg-slate-900 text-white'
+                  : 'bg-slate-100 text-slate-400'
               }`}
             >
               Reveal result
@@ -172,15 +231,24 @@ export default function CastRitual() {
       )}
 
       <div className="flex items-center justify-between text-xs text-slate-500">
-        <Link href="/moment/question" className="hover:text-slate-700">
+        <Link
+          href="/moment/question"
+          className={`hover:text-slate-700 ${loading ? 'pointer-events-none opacity-50' : ''}`}
+        >
           Back
         </Link>
-        <Link
-          href="/moment/result"
-          className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700"
+        <button
+          type="button"
+          onClick={() => router.push('/moment/result')}
+          disabled={loading}
+          className={`rounded-full border px-3 py-1 ${
+            loading
+              ? 'border-slate-100 bg-slate-50 text-slate-400'
+              : 'border-slate-200 bg-white text-slate-700'
+          }`}
         >
           Result
-        </Link>
+        </button>
       </div>
     </div>
   );

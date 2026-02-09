@@ -16,6 +16,8 @@ type DraftActions = {
     relating_hex_id: number | null;
   }) => DraftMoment;
   setLines: (lines: number[]) => DraftMoment;
+  setAiStatus: (status: DraftMoment['ai_status']) => DraftMoment;
+  setAiOutput: (output: DraftMoment['ai_output']) => DraftMoment;
   clearCastResult: () => DraftMoment;
   resetDraft: () => void;
 };
@@ -118,6 +120,8 @@ export const useDraftMoment = (): DraftStore => {
     const next: DraftMoment = {
       ...base,
       ...result,
+      ai_output: undefined,
+      ai_status: 'idle',
     };
     updateDraft(next);
     return next;
@@ -126,6 +130,20 @@ export const useDraftMoment = (): DraftStore => {
   const setLines = (lines: number[]) => {
     const base = ensureDraft();
     const next: DraftMoment = { ...base, lines };
+    updateDraft(next);
+    return next;
+  };
+
+  const setAiStatus = (status: DraftMoment['ai_status']) => {
+    const base = ensureDraft();
+    const next: DraftMoment = { ...base, ai_status: status };
+    updateDraft(next);
+    return next;
+  };
+
+  const setAiOutput = (output: DraftMoment['ai_output']) => {
+    const base = ensureDraft();
+    const next: DraftMoment = { ...base, ai_output: output, ai_status: 'ready' };
     updateDraft(next);
     return next;
   };
@@ -157,6 +175,8 @@ export const useDraftMoment = (): DraftStore => {
     setCastMode,
     setCastResult,
     setLines,
+    setAiStatus,
+    setAiOutput,
     clearCastResult,
     resetDraft,
   };
