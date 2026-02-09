@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --check .",
-    "format:write": "prettier --write ."
+    "format:write": "prettier --write .",
+    "test": "vitest run"
   },
   "dependencies": {
     "next": "latest",
@@ -26,6 +27,7 @@
     "postcss": "latest",
     "prettier": "latest",
     "tailwindcss": "^3.4.17",
+    "vitest": "latest",
     "typescript": "latest"
   }
 }
