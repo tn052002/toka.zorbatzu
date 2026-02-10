@@ -6,20 +6,22 @@ import { useEffect, useState } from 'react';
 import ScreenLayout from '@/components/ScreenLayout';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import type { Domain } from '@/lib/moment/types';
-
-const domains: Array<{ label: string; value: Domain }> = [
-  { label: 'Work', value: 'work' },
-  { label: 'Money', value: 'money' },
-  { label: 'Relationship', value: 'relationship' },
-  { label: 'Health', value: 'health' },
-  { label: 'Project', value: 'project' },
-  { label: 'Inner life', value: 'inner' },
-];
+import { useI18n } from '@/lib/i18n/useI18n';
 
 export default function DomainPage() {
   const router = useRouter();
   const { draft, initDraft, setDomain } = useDraftMoment();
   const [otherText, setOtherText] = useState('');
+  const { t } = useI18n();
+
+  const domains: Array<{ label: string; value: Domain }> = [
+    { label: t('domain_work'), value: 'work' },
+    { label: t('domain_money'), value: 'money' },
+    { label: t('domain_relationship'), value: 'relationship' },
+    { label: t('domain_health'), value: 'health' },
+    { label: t('domain_project'), value: 'project' },
+    { label: t('domain_inner'), value: 'inner' },
+  ];
 
   useEffect(() => {
     const seeded = initDraft();
@@ -48,9 +50,9 @@ export default function DomainPage() {
 
   return (
     <ScreenLayout
-      eyebrow="Moment"
-      title="Name the domain"
-      description="Pick the space that holds your attention."
+      eyebrow={t('eyebrow_moment')}
+      title={t('domain_title')}
+      description={t('domain_desc')}
     >
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-3 text-sm">
@@ -77,7 +79,7 @@ export default function DomainPage() {
                 : 'border-dashed border-slate-300 bg-slate-50 text-slate-500'
             }`}
           >
-            Other domain...
+            {t('domain_other')}
           </button>
         </div>
 
@@ -85,14 +87,14 @@ export default function DomainPage() {
           <input
             value={otherText}
             onChange={handleOtherChange}
-            placeholder="Describe the domain in your own words."
+            placeholder={t('domain_other_placeholder')}
             className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
           />
         ) : null}
 
         <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/" className="hover:text-slate-700">
-            Back home
+            {t('domain_back')}
           </Link>
           <button
             type="button"
@@ -104,7 +106,7 @@ export default function DomainPage() {
                 : 'border-slate-100 bg-slate-50 text-slate-400'
             }`}
           >
-            Question
+            {t('domain_next')}
           </button>
         </div>
       </div>

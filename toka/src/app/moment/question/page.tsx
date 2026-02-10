@@ -5,11 +5,13 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ScreenLayout from '@/components/ScreenLayout';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
+import { useI18n } from '@/lib/i18n/useI18n';
 
 export default function QuestionPage() {
   const router = useRouter();
   const { initDraft, setQuestion } = useDraftMoment();
   const [value, setValue] = useState('');
+  const { t } = useI18n();
 
   useEffect(() => {
     const seeded = initDraft();
@@ -26,23 +28,23 @@ export default function QuestionPage() {
 
   return (
     <ScreenLayout
-      eyebrow="Moment"
-      title="Ask the core question"
-      description="Write a single question you can carry gently."
+      eyebrow={t('eyebrow_moment')}
+      title={t('question_title')}
+      description={t('question_desc')}
     >
       <div className="space-y-4">
         <label className="text-xs uppercase tracking-[0.3em] text-slate-500">
-          Question
+          {t('question_label')}
         </label>
         <textarea
           value={value}
           onChange={handleChange}
           className="min-h-[140px] w-full resize-none rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-inner"
-          placeholder="What would make this choice feel aligned three weeks from now?"
+          placeholder={t('question_placeholder')}
         />
         <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/moment/domain" className="hover:text-slate-700">
-            Back
+            {t('question_back')}
           </Link>
           <button
             type="button"
@@ -54,7 +56,7 @@ export default function QuestionPage() {
                 : 'border-slate-100 bg-slate-50 text-slate-400'
             }`}
           >
-            Cast
+            {t('question_next')}
           </button>
         </div>
       </div>

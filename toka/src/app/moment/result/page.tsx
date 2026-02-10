@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import ScreenLayout from '@/components/ScreenLayout';
-import meanings from '@/data/hex_meanings.json';
+import meaningsEn from '@/data/hex_meanings_en.json';
+import meaningsVi from '@/data/hex_meanings_vi.json';
 import { useEffect, useState } from 'react';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import { buildInterpretInput, requestInterpretation } from '@/lib/interpret/client';
+import { useI18n } from '@/lib/i18n/useI18n';
 
 type HexTraditional = {
   name_en?: string;
@@ -29,14 +31,10 @@ type MeaningsStore = {
   fallback: { hexagram: { layman_title: string; present_state: string[] } };
 };
 
-const store = meanings as MeaningsStore;
+const storeForLang = (lang: 'en' | 'vi') =>
+  (lang === 'vi' ? meaningsVi : meaningsEn) as MeaningsStore;
 
-const fallbackMovement = [
-  'Movement is present, but may be hard to name clearly.',
-  'More than one interpretation may fit this moment.',
-];
-
-const getHex = (id: number): HexMeaning => {
+const getHex = (id: number, store: MeaningsStore): HexMeaning => {
   const found = store.hexagrams[String(id)];
   if (found) {
     return found;
@@ -52,12 +50,16 @@ const getHex = (id: number): HexMeaning => {
   };
 };
 
-const getMovement = (line: number): string[] => {
+const getMovement = (
+  line: number,
+  store: MeaningsStore,
+  fallback: string[],
+): string[] => {
   const items = store.line_position_overlay[String(line)];
   if (items && items.length >= 2) {
     return items.slice(0, 2);
   }
-  return fallbackMovement;
+  return fallback;
 };
 
 const formatTraditional = (traditional: HexTraditional) => {
@@ -77,6 +79,7 @@ const formatTraditional = (traditional: HexTraditional) => {
 export default function ResultPage() {
   const { draft, initDraft, setAiOutput, setAiStatus } = useDraftMoment();
   const [retrying, setRetrying] = useState(false);
+  const { lang, t } = useI18n();
 
   useEffect(() => {
     if (!draft) {
@@ -88,36 +91,38 @@ export default function ResultPage() {
     return null;
   }
 
+  const store = storeForLang(lang);
   const primaryId = draft.primary_hex_id;
   const relatingId = draft.relating_hex_id ?? null;
   const changingLines = draft.changing_lines ?? [];
 
-  const primary = typeof primaryId === 'number' ? getHex(primaryId) : getHex(0);
-  const relating = typeof relatingId === 'number' ? getHex(relatingId) : null;
+  const primary =
+    typeof primaryId === 'number' ? getHex(primaryId, store) : getHex(0, store);
+  const relating =
+    typeof relatingId === 'number' ? getHex(relatingId, store) : null;
   const hasCast = typeof primaryId === 'number';
   const mirror = draft.ai_output?.mirror_map;
 
   const fallbackMirror = {
     you_described: [
-      'The question describes a present tension.',
-      'A central theme appears in the way it is phrased.',
-      'The situation reads as active and still forming.',
+      t('mirror_placeholder_1'),
+      t('mirror_placeholder_2'),
+      t('mirror_placeholder_3'),
     ],
-    two_pulls: ['Two directions appear at once.', 'Both pulls feel present.'],
-    cost_to_lose: ['Letting go changes the current balance.', 'Holding on keeps a known rhythm.'],
-    unknowns: ['Some parts of the picture remain open.', 'The timing is still unclear.'],
+    two_pulls: [t('mirror_placeholder_pull_1'), t('mirror_placeholder_pull_2')],
+    cost_to_lose: [t('mirror_placeholder_cost_1'), t('mirror_placeholder_cost_2')],
+    unknowns: [t('mirror_placeholder_unknown_1'), t('mirror_placeholder_unknown_2')],
   };
 
-  const coldSentence =
-    draft.ai_output?.cold_mirror_sentence ?? 'You are holding two truths at once.';
-  const openingQuestion =
-    draft.ai_output?.opening_question ?? 'What part of this feels most alive right now?';
+  const coldSentence = draft.ai_output?.cold_mirror_sentence ?? t('cold_placeholder');
+  const openingQuestion = draft.ai_output?.opening_question ?? t('opening_placeholder');
+  const fallbackMovement = [t('movement_fallback_1'), t('movement_fallback_2')];
 
   const handleRetry = async () => {
     if (!draft || retrying) {
       return;
     }
-    const input = buildInterpretInput(draft);
+    const input = buildInterpretInput(draft, lang);
     if (!input) {
       return;
     }
@@ -139,32 +144,36 @@ export default function ResultPage() {
 
   return (
     <ScreenLayout
-      eyebrow="Moment"
-      title="Result"
-      description="Primary, movement, and relating — drawn from the meaning store."
+      eyebrow={t('eyebrow_moment')}
+      title={t('result_title')}
+      description={t('result_desc')}
     >
       <div className="space-y-4">
         <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-          Meanings v{store.version}
+          {t('meanings_version', { version: store.version })}
         </p>
         {!hasCast ? (
           <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Cast missing</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+              {t('cast_missing_title')}
+            </p>
             <p className="mt-2 text-sm text-slate-700">
-              This moment does not have cast data yet.
+              {t('cast_missing_body')}
             </p>
             <Link
               href="/moment/cast"
               className="mt-3 inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-600"
             >
-              Return to cast
+              {t('cast_missing_cta')}
             </Link>
           </section>
         ) : null}
         {hasCast ? (
           <>
             <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Primary</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                {t('primary_label')}
+              </p>
               <p className="mt-2 text-sm text-slate-700">
                 {primary.layman_title}
               </p>
@@ -183,20 +192,22 @@ export default function ResultPage() {
             </section>
 
             <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Movement</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                {t('movement_label')}
+              </p>
               {changingLines.length === 0 ? (
                 <p className="mt-3 text-sm text-slate-600">
-                  No changing lines appeared in this cast.
+                  {t('movement_none')}
                 </p>
               ) : (
                 <div className="mt-3 space-y-3">
                   {changingLines.map((line) => (
                     <div key={`line-${line}`} className="space-y-2">
                       <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-                        Line {line}
+                        {t('cast_line')} {line}
                       </p>
                       <ul className="space-y-2 text-sm text-slate-600">
-                        {getMovement(line).map((item, index) => (
+                        {getMovement(line, store, fallbackMovement).map((item, index) => (
                           <li
                             key={`line-${line}-${index}`}
                             className="rounded-xl bg-slate-50 px-3 py-2"
@@ -213,7 +224,9 @@ export default function ResultPage() {
 
             {relating ? (
               <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Relating</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                  {t('relating_label')}
+                </p>
                 <p className="mt-2 text-sm text-slate-700">{relating.layman_title}</p>
                 {formatTraditional(relating.traditional) ? (
                   <p className="mt-1 text-xs text-slate-400">
@@ -232,11 +245,13 @@ export default function ResultPage() {
           </>
         ) : null}
         <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Mirror</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+            {t('mirror_label')}
+          </p>
           <div className="mt-3 space-y-3 text-sm text-slate-600">
             <div>
               <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-                You described
+                {t('mirror_you_described')}
               </p>
               <ul className="mt-2 space-y-2">
                 {(mirror?.you_described ?? fallbackMirror.you_described).map((item, index) => (
@@ -247,7 +262,9 @@ export default function ResultPage() {
               </ul>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">Two pulls</p>
+              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                {t('mirror_two_pulls')}
+              </p>
               <ul className="mt-2 space-y-2">
                 {(mirror?.two_pulls ?? fallbackMirror.two_pulls).map((item, index) => (
                   <li key={`mirror-pulls-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
@@ -258,7 +275,7 @@ export default function ResultPage() {
             </div>
             <div>
               <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-                Cost to lose
+                {t('mirror_cost')}
               </p>
               <ul className="mt-2 space-y-2">
                 {(mirror?.cost_to_lose ?? fallbackMirror.cost_to_lose).map((item, index) => (
@@ -269,7 +286,9 @@ export default function ResultPage() {
               </ul>
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">Unknowns</p>
+              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                {t('mirror_unknowns')}
+              </p>
               <ul className="mt-2 space-y-2">
                 {(mirror?.unknowns ?? fallbackMirror.unknowns).map((item, index) => (
                   <li key={`mirror-unknown-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
@@ -285,28 +304,32 @@ export default function ResultPage() {
                 disabled={retrying}
                 className="w-full rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 disabled:text-slate-400"
               >
-                {retrying ? 'Reflecting...' : 'Retry mirror'}
+                {retrying ? t('mirror_retrying') : t('mirror_retry')}
               </button>
             ) : null}
           </div>
         </section>
         <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Cold sentence</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+            {t('cold_label')}
+          </p>
           <p className="mt-2 text-sm text-slate-700">{coldSentence}</p>
         </section>
         <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Opening question</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+            {t('opening_label')}
+          </p>
           <p className="mt-2 text-sm text-slate-700">{openingQuestion}</p>
         </section>
         <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/moment/cast" className="hover:text-slate-700">
-            Back
+            {t('result_back')}
           </Link>
           <Link
             href="/"
             className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700"
           >
-            Home
+            {t('result_home')}
           </Link>
         </div>
       </div>

@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useI18n } from '@/lib/i18n/useI18n';
 
 type MomentShellProps = {
   eyebrow: string;
@@ -17,6 +20,8 @@ export default function MomentShell({
   nextHref,
   nextLabel,
 }: MomentShellProps) {
+  const { t } = useI18n();
+
   return (
     <main className="flex flex-1 flex-col gap-6">
       <section className="rounded-3xl border border-slate-200/70 bg-white/80 p-6 shadow-[0_18px_45px_-35px_rgba(15,23,42,0.35)]">
@@ -31,14 +36,14 @@ export default function MomentShell({
       </section>
       <section className="flex items-center justify-between text-xs text-slate-500">
         <Link href="/" className="hover:text-slate-700">
-          Back home
+          {t('nav_back_home')}
         </Link>
         {nextHref ? (
           <Link
             href={nextHref}
             className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700"
           >
-            {nextLabel ?? 'Next'}
+            {nextLabel ?? t('nav_next')}
           </Link>
         ) : null}
       </section>

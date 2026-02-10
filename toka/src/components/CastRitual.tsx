@@ -8,17 +8,9 @@ import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import type { LineValue } from '@/lib/iching';
 import LoadingModal from '@/components/LoadingModal';
 import { buildInterpretInput, requestInterpretation } from '@/lib/interpret/client';
+import { useI18n } from '@/lib/i18n/useI18n';
 
 type Mode = 'quick' | 'ritual';
-
-const describeLine = (value: LineValue) => {
-  const isYang = value === 7 || value === 9;
-  const changing = value === 6 || value === 9;
-  return {
-    label: isYang ? 'Yang — unbroken' : 'Yin — broken',
-    changing,
-  };
-};
 
 export default function CastRitual() {
   const router = useRouter();
@@ -34,6 +26,16 @@ export default function CastRitual() {
   const [mode, setMode] = useState<Mode>('quick');
   const [ritualLines, setRitualLines] = useState<LineValue[]>([]);
   const [loading, setLoading] = useState(false);
+  const { lang, t } = useI18n();
+
+  const describeLine = (value: LineValue) => {
+    const isYang = value === 7 || value === 9;
+    const changing = value === 6 || value === 9;
+    return {
+      label: isYang ? t('cast_yang') : t('cast_yin'),
+      changing,
+    };
+  };
 
   useEffect(() => {
     const seeded = initDraft();
@@ -57,7 +59,7 @@ export default function CastRitual() {
     const result = computeCastResult(lines);
     setCastMode('quick');
     const nextDraft = setCastResult(result);
-    const input = buildInterpretInput(nextDraft);
+    const input = buildInterpretInput(nextDraft, lang);
     if (input) {
       setAiStatus('loading');
       try {
@@ -113,7 +115,7 @@ export default function CastRitual() {
     setLoading(true);
     setCastMode('ritual');
     const nextDraft = setCastResult(ritualResult);
-    const input = buildInterpretInput(nextDraft);
+    const input = buildInterpretInput(nextDraft, lang);
     if (input) {
       setAiStatus('loading');
       try {
@@ -135,7 +137,7 @@ export default function CastRitual() {
 
   return (
     <div className="space-y-5">
-      <LoadingModal open={loading} text="Reflecting..." />
+      <LoadingModal open={loading} text={t('loading_reflecting')} />
       <div className="flex rounded-full border border-slate-200 bg-white p-1 text-xs text-slate-500">
         {(['quick', 'ritual'] as const).map((option) => (
           <button
@@ -146,25 +148,25 @@ export default function CastRitual() {
               setCastMode(option);
             }}
             disabled={loading}
-            className={`flex-1 rounded-full px-3 py-2 capitalize transition ${
+            className={`flex-1 rounded-full px-3 py-2 transition ${
               mode === option ? 'bg-slate-900 text-white' : 'text-slate-500'
             }`}
           >
-            {option}
+            {option === 'quick' ? t('cast_quick') : t('cast_ritual')}
           </button>
         ))}
       </div>
 
       {mode === 'quick' ? (
         <div className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          Tap to cast all six lines at once. The hexagram will appear instantly.
+          {t('cast_quick_text')}
           <button
             type="button"
             onClick={handleQuickCast}
             disabled={loading}
             className="mt-4 w-full rounded-full bg-slate-900 px-4 py-2 text-sm text-white disabled:bg-slate-400"
           >
-            Quick cast
+            {t('cast_quick_button')}
           </button>
         </div>
       ) : (
@@ -187,15 +189,15 @@ export default function CastRitual() {
                   }`}
                 >
                   <span className="text-[10px] uppercase tracking-[0.3em] text-slate-400">
-                    Line {index + 1}
+                    {t('cast_line')} {index + 1}
                   </span>
                   <span className="mt-2 inline-flex h-2 w-10 rounded-full bg-slate-200" />
                   <span className="mt-2 text-xs">
-                    {status ? status.label : isActive ? 'Tap to cast' : 'Awaiting'}
+                    {status ? status.label : isActive ? t('cast_tap') : t('cast_waiting')}
                   </span>
                   {status?.changing ? (
                     <span className="mt-1 text-[10px] uppercase tracking-[0.3em] text-slate-300">
-                      Changing
+                      {t('cast_changing')}
                     </span>
                   ) : null}
                 </button>
@@ -209,7 +211,7 @@ export default function CastRitual() {
               disabled={loading}
               className="flex-1 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600"
             >
-              Reset ritual
+              {t('cast_reset')}
             </button>
             <button
               type="button"
@@ -221,11 +223,11 @@ export default function CastRitual() {
                   : 'bg-slate-100 text-slate-400'
               }`}
             >
-              Reveal result
+              {t('cast_reveal')}
             </button>
           </div>
           <p className="text-xs text-slate-500">
-            Tap each line from the bottom. Each tap reveals the next line.
+            {t('cast_hint')}
           </p>
         </div>
       )}
@@ -235,7 +237,7 @@ export default function CastRitual() {
           href="/moment/question"
           className={`hover:text-slate-700 ${loading ? 'pointer-events-none opacity-50' : ''}`}
         >
-          Back
+          {t('cast_back')}
         </Link>
         <button
           type="button"
@@ -247,7 +249,7 @@ export default function CastRitual() {
               : 'border-slate-200 bg-white text-slate-700'
           }`}
         >
-          Result
+          {t('cast_result')}
         </button>
       </div>
     </div>

@@ -6,11 +6,13 @@ import { useEffect, useState } from 'react';
 import ScreenLayout from '@/components/ScreenLayout';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import { loadDraft } from '@/lib/moment/storage';
+import { useI18n } from '@/lib/i18n/useI18n';
 
 export default function Home() {
   const { resetDraft } = useDraftMoment();
   const router = useRouter();
   const [hasDraft, setHasDraft] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     setHasDraft(Boolean(loadDraft()));
@@ -18,8 +20,8 @@ export default function Home() {
 
   return (
     <ScreenLayout
-      title="Start a moment"
-      description="Move through a short flow designed for calm clarity."
+      title={t('home_title')}
+      description={t('home_desc')}
     >
       <div className="space-y-4">
         <Link
@@ -27,8 +29,10 @@ export default function Home() {
           onClick={() => resetDraft()}
           className="flex items-center justify-between rounded-2xl border border-slate-200/70 bg-white px-4 py-4 text-sm text-slate-700"
         >
-          <span>Start a new Moment</span>
-          <span className="text-xs uppercase tracking-[0.3em] text-slate-400">Go</span>
+          <span>{t('home_start')}</span>
+          <span className="text-xs uppercase tracking-[0.3em] text-slate-400">
+            {t('home_go')}
+          </span>
         </Link>
         <button
           type="button"
@@ -40,10 +44,10 @@ export default function Home() {
               : 'border-slate-100 bg-slate-50 text-slate-400'
           }`}
         >
-          Revisit last Moment
+          {t('home_revisit')}
         </button>
         <div className="rounded-2xl border border-slate-200/60 bg-slate-50 px-4 py-4 text-xs text-slate-500">
-          No login. Just a quiet place to gather and respond.
+          {t('home_no_login')}
         </div>
       </div>
     </ScreenLayout>

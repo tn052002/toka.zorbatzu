@@ -1,12 +1,17 @@
+'use client';
+
 import CastRitual from '@/components/CastRitual';
 import ScreenLayout from '@/components/ScreenLayout';
+import { useI18n } from '@/lib/i18n/useI18n';
 
 export default function CastPage() {
+  const { t } = useI18n();
+
   return (
     <ScreenLayout
-      eyebrow="Moment"
-      title="Cast the moment"
-      description="Choose a quick cast or slow down into a ritual."
+      eyebrow={t('eyebrow_moment')}
+      title={t('cast_title')}
+      description={t('cast_desc')}
     >
       <CastRitual />
     </ScreenLayout>
