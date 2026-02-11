@@ -14,8 +14,16 @@
         "There may be pressure to self-direct.",
         "Momentum may feel more available than certainty."
       ],
-      "keywords": ["initiative", "self-direction", "momentum"],
-      "domains_hint": ["work", "project", "inner"]
+      "keywords": [
+        "initiative",
+        "self-direction",
+        "momentum"
+      ],
+      "domains_hint": [
+        "work",
+        "project",
+        "inner"
+      ]
     },
     "2": {
       "id": 2,
@@ -30,50 +38,1531 @@
         "Progress may happen through allowing rather than pushing.",
         "Structure may be forming through consistency and patience."
       ],
-      "keywords": ["receptivity", "support", "stability", "containment"],
-      "domains_hint": ["relationship", "health", "inner"]
+      "keywords": [
+        "receptivity",
+        "support",
+        "stability",
+        "containment"
+      ],
+      "domains_hint": [
+        "relationship",
+        "health",
+        "inner"
+      ]
     },
     "3": {
       "id": 3,
-      "layman_title": "Gather",
+      "layman_title": "Messy Beginning",
       "traditional": {
         "name_en": "Difficulty at the Beginning",
-        "pinyin": "",
-        "han_viet": ""
+        "pinyin": "Zhun",
+        "han_viet": "Truân"
       },
       "present_state": [
-        "A beginning may be present. small and Protection may be relevant. your energy.",
-        "Attention may be drawn to guidance when the path feels tangled.",
-        "Separation may be present the essential from the noise."
+        "Early-stage chaos or uncertainty may be present.",
+        "Signals may exist but not yet form a clear direction.",
+        "Structure may be emerging through friction."
       ],
-      "keywords": [],
-      "domains_hint": []
+      "keywords": [
+        "beginning",
+        "uncertainty",
+        "formation"
+      ],
+      "domains_hint": [
+        "project",
+        "work",
+        "inner"
+      ]
+    },
+    "4": {
+      "id": 4,
+      "layman_title": "Learning Through Not Knowing",
+      "traditional": {
+        "name_en": "Youthful Folly",
+        "pinyin": "Meng",
+        "han_viet": "Mông"
+      },
+      "present_state": [
+        "Understanding may still be developing.",
+        "Questions may matter more than conclusions.",
+        "Experience may be shaping clarity over time."
+      ],
+      "keywords": [
+        "learning",
+        "inexperience",
+        "curiosity"
+      ],
+      "domains_hint": [
+        "inner",
+        "education",
+        "project"
+      ]
+    },
+    "5": {
+      "id": 5,
+      "layman_title": "Charged Waiting",
+      "traditional": {
+        "name_en": "Waiting",
+        "pinyin": "Xu",
+        "han_viet": "Nhu"
+      },
+      "present_state": [
+        "Energy may be building beneath the surface.",
+        "Timing may matter more than speed.",
+        "Movement may depend on external conditions."
+      ],
+      "keywords": [
+        "timing",
+        "patience",
+        "preparation"
+      ],
+      "domains_hint": [
+        "work",
+        "relationship",
+        "project"
+      ]
+    },
+    "6": {
+      "id": 6,
+      "layman_title": "Truth Friction",
+      "traditional": {
+        "name_en": "Conflict",
+        "pinyin": "Song",
+        "han_viet": "Tụng"
+      },
+      "present_state": [
+        "Misalignment or tension may be visible.",
+        "Different truths may be present at the same time.",
+        "Energy may be pulled into opposing directions."
+      ],
+      "keywords": [
+        "conflict",
+        "tension",
+        "misalignment"
+      ],
+      "domains_hint": [
+        "relationship",
+        "work",
+        "project"
+      ]
+    },
+    "7": {
+      "id": 7,
+      "layman_title": "Structured Effort",
+      "traditional": {
+        "name_en": "The Army",
+        "pinyin": "Shi",
+        "han_viet": "Sư"
+      },
+      "present_state": [
+        "Discipline or coordinated effort may be required.",
+        "Individual impulses may be secondary to shared structure.",
+        "Direction may come through organized movement."
+      ],
+      "keywords": [
+        "discipline",
+        "structure",
+        "coordination"
+      ],
+      "domains_hint": [
+        "work",
+        "project",
+        "team"
+      ]
+    },
+    "8": {
+      "id": 8,
+      "layman_title": "Finding Alignment",
+      "traditional": {
+        "name_en": "Holding Together",
+        "pinyin": "Bi",
+        "han_viet": "Tỷ"
+      },
+      "present_state": [
+        "Belonging and alignment may be central themes.",
+        "Trust may matter more than speed.",
+        "Shared direction may form through connection."
+      ],
+      "keywords": [
+        "alignment",
+        "belonging",
+        "trust"
+      ],
+      "domains_hint": [
+        "relationship",
+        "team",
+        "community"
+      ]
+    },
+    "9": {
+      "id": 9,
+      "layman_title": "Small Shaping Forces",
+      "traditional": {
+        "name_en": "Small Taming",
+        "pinyin": "Xiao Chu",
+        "han_viet": "Tiểu Súc"
+      },
+      "present_state": [
+        "Small influences may be shaping larger outcomes.",
+        "Progress may happen through steady accumulation.",
+        "Change may feel gradual rather than dramatic."
+      ],
+      "keywords": [
+        "small progress",
+        "refinement",
+        "influence"
+      ],
+      "domains_hint": [
+        "work",
+        "habit",
+        "health"
+      ]
+    },
+    "10": {
+      "id": 10,
+      "layman_title": "Careful Steps Near Power",
+      "traditional": {
+        "name_en": "Treading",
+        "pinyin": "Lu",
+        "han_viet": "Lý"
+      },
+      "present_state": [
+        "Movement may be happening near sensitive boundaries.",
+        "Precision may matter more than speed.",
+        "Balance may depend on awareness of surrounding forces."
+      ],
+      "keywords": [
+        "caution",
+        "awareness",
+        "balance"
+      ],
+      "domains_hint": [
+        "work",
+        "relationship",
+        "authority"
+      ]
+    },
+    "11": {
+      "id": 11,
+      "layman_title": "Flowing Harmony",
+      "traditional": {
+        "name_en": "Peace",
+        "pinyin": "Tai",
+        "han_viet": "Thái"
+      },
+      "present_state": [
+        "Different forces may be moving in mutual support.",
+        "Progress may feel smoother than expected.",
+        "Stability may be forming through natural balance."
+      ],
+      "keywords": [
+        "harmony",
+        "flow",
+        "balance"
+      ],
+      "domains_hint": [
+        "relationship",
+        "team",
+        "project"
+      ]
+    },
+    "12": {
+      "id": 12,
+      "layman_title": "Stalled Connection",
+      "traditional": {
+        "name_en": "Standstill",
+        "pinyin": "Pi",
+        "han_viet": "Bĩ"
+      },
+      "present_state": [
+        "Communication or movement may feel blocked.",
+        "Effort may not be translating into visible progress.",
+        "Misalignment between forces may be present."
+      ],
+      "keywords": [
+        "blockage",
+        "disconnect",
+        "stagnation"
+      ],
+      "domains_hint": [
+        "work",
+        "relationship",
+        "inner"
+      ]
+    },
+    "13": {
+      "id": 13,
+      "layman_title": "Shared Direction",
+      "traditional": {
+        "name_en": "Fellowship",
+        "pinyin": "Tong Ren",
+        "han_viet": "Đồng Nhân"
+      },
+      "present_state": [
+        "Shared purpose may be more visible than individual differences.",
+        "Connection may be forming through common direction.",
+        "Collective movement may feel stronger than solo effort."
+      ],
+      "keywords": [
+        "community",
+        "shared purpose",
+        "unity"
+      ],
+      "domains_hint": [
+        "team",
+        "community",
+        "relationship"
+      ]
+    },
+    "14": {
+      "id": 14,
+      "layman_title": "Holding Great Weight",
+      "traditional": {
+        "name_en": "Great Possession",
+        "pinyin": "Da You",
+        "han_viet": "Đại Hữu"
+      },
+      "present_state": [
+        "Resources, responsibility, or influence may be concentrated.",
+        "Visibility or expectation may feel higher than usual.",
+        "Stewardship of something valuable may be central."
+      ],
+      "keywords": [
+        "responsibility",
+        "abundance",
+        "stewardship"
+      ],
+      "domains_hint": [
+        "work",
+        "leadership",
+        "project"
+      ]
+    },
+    "15": {
+      "id": 15,
+      "layman_title": "Grounded Balance",
+      "traditional": {
+        "name_en": "Modesty",
+        "pinyin": "Qian",
+        "han_viet": "Khiêm"
+      },
+      "present_state": [
+        "Stability may be forming through grounded positioning.",
+        "Balance may come from staying close to what is real and present.",
+        "Influence may be quieter but steady."
+      ],
+      "keywords": [
+        "grounded",
+        "balance",
+        "humility"
+      ],
+      "domains_hint": [
+        "inner",
+        "relationship",
+        "work"
+      ]
+    },
+    "16": {
+      "id": 16,
+      "layman_title": "Rising Momentum",
+      "traditional": {
+        "name_en": "Enthusiasm",
+        "pinyin": "Yu",
+        "han_viet": "Dự"
+      },
+      "present_state": [
+        "Energy may be building through shared excitement or anticipation.",
+        "Movement may feel easier when supported by emotional momentum.",
+        "Direction may be shaped by collective feeling."
+      ],
+      "keywords": [
+        "momentum",
+        "anticipation",
+        "energy"
+      ],
+      "domains_hint": [
+        "project",
+        "team",
+        "creative"
+      ]
+    },
+    "17": {
+      "id": 17,
+      "layman_title": "Following the Current",
+      "traditional": {
+        "name_en": "Following",
+        "pinyin": "Sui",
+        "han_viet": "Tùy"
+      },
+      "present_state": [
+        "Direction may be influenced by larger forces or timing.",
+        "Movement may come through adapting rather than leading.",
+        "Alignment with the moment may matter more than control."
+      ],
+      "keywords": [
+        "adaptation",
+        "flow",
+        "alignment"
+      ],
+      "domains_hint": [
+        "relationship",
+        "work",
+        "inner"
+      ]
+    },
+    "18": {
+      "id": 18,
+      "layman_title": "Repairing What Was Broken",
+      "traditional": {
+        "name_en": "Work on the Decayed",
+        "pinyin": "Gu",
+        "han_viet": "Cổ"
+      },
+      "present_state": [
+        "Past patterns or unresolved issues may be surfacing.",
+        "Correction or restoration energy may be present.",
+        "The past may still be shaping the current moment."
+      ],
+      "keywords": [
+        "repair",
+        "restoration",
+        "past patterns"
+      ],
+      "domains_hint": [
+        "relationship",
+        "family",
+        "inner"
+      ]
+    },
+    "19": {
+      "id": 19,
+      "layman_title": "Approaching Threshold",
+      "traditional": {
+        "name_en": "Approach",
+        "pinyin": "Lin",
+        "han_viet": "Lâm"
+      },
+      "present_state": [
+        "Something may be moving closer or becoming more visible.",
+        "Influence or connection may be increasing.",
+        "Timing may be opening a new phase."
+      ],
+      "keywords": [
+        "approach",
+        "opportunity",
+        "nearness"
+      ],
+      "domains_hint": [
+        "work",
+        "relationship",
+        "project"
+      ]
+    },
+    "20": {
+      "id": 20,
+      "layman_title": "Seeing From Distance",
+      "traditional": {
+        "name_en": "Contemplation",
+        "pinyin": "Guan",
+        "han_viet": "Quán"
+      },
+      "present_state": [
+        "Observation or perspective may be more important than action.",
+        "Distance may reveal patterns not visible up close.",
+        "Clarity may form through quiet watching."
+      ],
+      "keywords": [
+        "observation",
+        "perspective",
+        "clarity"
+      ],
+      "domains_hint": [
+        "inner",
+        "leadership",
+        "strategy"
+      ]
+    },
+    "21": {
+      "id": 21,
+      "layman_title": "Clearing Through Obstruction",
+      "traditional": {
+        "name_en": "Biting Through",
+        "pinyin": "Shi He",
+        "han_viet": "Phệ Hạp"
+      },
+      "present_state": [
+        "An obstacle or unresolved tension may be blocking movement.",
+        "Clarity may require direct contact with what feels difficult.",
+        "Progress may depend on separating signal from distortion."
+      ],
+      "keywords": [
+        "obstacle",
+        "clarity",
+        "resolution"
+      ],
+      "domains_hint": [
+        "work",
+        "relationship",
+        "decision"
+      ]
+    },
+    "22": {
+      "id": 22,
+      "layman_title": "Surface Expression",
+      "traditional": {
+        "name_en": "Grace",
+        "pinyin": "Bi",
+        "han_viet": "Bí"
+      },
+      "present_state": [
+        "Presentation or outward expression may be shaping perception.",
+        "Surface harmony may carry meaning beyond appearance.",
+        "Subtle details may influence how the whole is understood."
+      ],
+      "keywords": [
+        "appearance",
+        "expression",
+        "refinement"
+      ],
+      "domains_hint": [
+        "relationship",
+        "creative",
+        "social"
+      ]
+    },
+    "23": {
+      "id": 23,
+      "layman_title": "Slow Dissolving",
+      "traditional": {
+        "name_en": "Splitting Apart",
+        "pinyin": "Bo",
+        "han_viet": "Bác"
+      },
+      "present_state": [
+        "Something may be gradually losing structure or support.",
+        "Outer stability may feel thinner than before.",
+        "Release or reduction may be part of the pattern."
+      ],
+      "keywords": [
+        "erosion",
+        "release",
+        "reduction"
+      ],
+      "domains_hint": [
+        "relationship",
+        "work",
+        "inner"
+      ]
+    },
+    "24": {
+      "id": 24,
+      "layman_title": "Returning Pulse",
+      "traditional": {
+        "name_en": "Return",
+        "pinyin": "Fu",
+        "han_viet": "Phục"
+      },
+      "present_state": [
+        "A cycle may be restarting or coming back into view.",
+        "Movement may begin from something small but alive.",
+        "Renewal may be forming beneath the surface."
+      ],
+      "keywords": [
+        "return",
+        "cycle",
+        "renewal"
+      ],
+      "domains_hint": [
+        "inner",
+        "health",
+        "project"
+      ]
+    },
+    "25": {
+      "id": 25,
+      "layman_title": "Unfiltered Reality",
+      "traditional": {
+        "name_en": "Innocence",
+        "pinyin": "Wu Wang",
+        "han_viet": "Vô Vọng"
+      },
+      "present_state": [
+        "The moment may be asking for contact with what is simply true.",
+        "Assumptions or extra layers may be less stable than they appear.",
+        "Direct reality may be stronger than constructed meaning."
+      ],
+      "keywords": [
+        "truth",
+        "authenticity",
+        "directness"
+      ],
+      "domains_hint": [
+        "inner",
+        "relationship",
+        "decision"
+      ]
+    },
+    "26": {
+      "id": 26,
+      "layman_title": "Stored Strength",
+      "traditional": {
+        "name_en": "Great Taming",
+        "pinyin": "Da Chu",
+        "han_viet": "Đại Súc"
+      },
+      "present_state": [
+        "Energy or capacity may be gathering rather than releasing.",
+        "Containment may be building future movement.",
+        "Strength may be present in restraint."
+      ],
+      "keywords": [
+        "containment",
+        "strength",
+        "accumulation"
+      ],
+      "domains_hint": [
+        "work",
+        "project",
+        "inner"
+      ]
+    },
+    "27": {
+      "id": 27,
+      "layman_title": "What Is Being Fed",
+      "traditional": {
+        "name_en": "Nourishment",
+        "pinyin": "Yi",
+        "han_viet": "Di"
+      },
+      "present_state": [
+        "Attention may be flowing toward something that grows through focus.",
+        "Input and intake may shape future outcomes.",
+        "Sustainability may depend on what is consistently supported."
+      ],
+      "keywords": [
+        "nourishment",
+        "support",
+        "sustain"
+      ],
+      "domains_hint": [
+        "health",
+        "relationship",
+        "habit"
+      ]
+    },
+    "28": {
+      "id": 28,
+      "layman_title": "Weight Beyond Structure",
+      "traditional": {
+        "name_en": "Great Exceeding",
+        "pinyin": "Da Guo",
+        "han_viet": "Đại Quá"
+      },
+      "present_state": [
+        "Pressure may be exceeding normal structural limits.",
+        "Something may be carrying more than it was built for.",
+        "Adjustment or reinforcement may be part of the pattern."
+      ],
+      "keywords": [
+        "pressure",
+        "overload",
+        "strain"
+      ],
+      "domains_hint": [
+        "work",
+        "responsibility",
+        "relationship"
+      ]
+    },
+    "29": {
+      "id": 29,
+      "layman_title": "Repeated Depth",
+      "traditional": {
+        "name_en": "The Abysmal",
+        "pinyin": "Kan",
+        "han_viet": "Khảm"
+      },
+      "present_state": [
+        "Uncertainty or emotional depth may be repeating.",
+        "Movement may require navigating complexity rather than avoiding it.",
+        "Experience may be building through repeated contact with depth."
+      ],
+      "keywords": [
+        "depth",
+        "risk",
+        "uncertainty"
+      ],
+      "domains_hint": [
+        "inner",
+        "relationship",
+        "life path"
+      ]
+    },
+    "30": {
+      "id": 30,
+      "layman_title": "Clarity Through Illumination",
+      "traditional": {
+        "name_en": "The Clinging, Fire",
+        "pinyin": "Li",
+        "han_viet": "Ly"
+      },
+      "present_state": [
+        "Understanding may be forming through increased visibility.",
+        "Clarity may depend on what is illuminated rather than hidden.",
+        "Awareness may spread through connection and reflection."
+      ],
+      "keywords": [
+        "clarity",
+        "illumination",
+        "awareness"
+      ],
+      "domains_hint": [
+        "inner",
+        "creative",
+        "leadership"
+      ]
+    },
+    "31": {
+      "id": 31,
+      "layman_title": "Mutual Influence",
+      "traditional": {
+        "name_en": "Influence (Wooing)",
+        "pinyin": "Xian",
+        "han_viet": "Hàm"
+      },
+      "present_state": [
+        "Subtle emotional or energetic influence may be present.",
+        "Response may arise through sensitivity rather than force.",
+        "Connection may be forming through mutual awareness."
+      ],
+      "keywords": [
+        "influence",
+        "attraction",
+        "sensitivity"
+      ],
+      "domains_hint": [
+        "relationship",
+        "social",
+        "inner"
+      ]
+    },
+    "32": {
+      "id": 32,
+      "layman_title": "Enduring Pattern",
+      "traditional": {
+        "name_en": "Duration",
+        "pinyin": "Heng",
+        "han_viet": "Hằng"
+      },
+      "present_state": [
+        "Stability may be forming through repeated cycles.",
+        "Consistency may matter more than intensity.",
+        "Longer rhythms may be shaping current movement."
+      ],
+      "keywords": [
+        "continuity",
+        "consistency",
+        "rhythm"
+      ],
+      "domains_hint": [
+        "relationship",
+        "habit",
+        "work"
+      ]
+    },
+    "33": {
+      "id": 33,
+      "layman_title": "Strategic Distance",
+      "traditional": {
+        "name_en": "Retreat",
+        "pinyin": "Dun",
+        "han_viet": "Độn"
+      },
+      "present_state": [
+        "Distance or withdrawal energy may be present.",
+        "Space may allow clearer perspective.",
+        "Movement may be shifting away from direct confrontation."
+      ],
+      "keywords": [
+        "distance",
+        "withdrawal",
+        "perspective"
+      ],
+      "domains_hint": [
+        "relationship",
+        "work",
+        "inner"
+      ]
+    },
+    "34": {
+      "id": 34,
+      "layman_title": "Stored Power",
+      "traditional": {
+        "name_en": "Great Power",
+        "pinyin": "Da Zhuang",
+        "han_viet": "Đại Tráng"
+      },
+      "present_state": [
+        "Strong force or momentum may be available.",
+        "Capacity may feel higher than usual.",
+        "Direction may determine how power is expressed."
+      ],
+      "keywords": [
+        "strength",
+        "power",
+        "momentum"
+      ],
+      "domains_hint": [
+        "work",
+        "leadership",
+        "project"
+      ]
+    },
+    "35": {
+      "id": 35,
+      "layman_title": "Emerging Visibility",
+      "traditional": {
+        "name_en": "Progress",
+        "pinyin": "Jin",
+        "han_viet": "Tấn"
+      },
+      "present_state": [
+        "Recognition or visibility may be increasing.",
+        "Movement may be heading toward exposure or openness.",
+        "Progress may be shaped by external perception."
+      ],
+      "keywords": [
+        "progress",
+        "visibility",
+        "recognition"
+      ],
+      "domains_hint": [
+        "work",
+        "social",
+        "project"
+      ]
+    },
+    "36": {
+      "id": 36,
+      "layman_title": "Hidden Light",
+      "traditional": {
+        "name_en": "Darkening of the Light",
+        "pinyin": "Ming Yi",
+        "han_viet": "Minh Di"
+      },
+      "present_state": [
+        "Inner clarity may exist beneath outer difficulty.",
+        "Visibility may feel reduced or constrained.",
+        "Strength may be present in what remains unseen."
+      ],
+      "keywords": [
+        "protection",
+        "inner clarity",
+        "concealment"
+      ],
+      "domains_hint": [
+        "inner",
+        "relationship",
+        "work"
+      ]
+    },
+    "37": {
+      "id": 37,
+      "layman_title": "Inner Structure",
+      "traditional": {
+        "name_en": "The Family",
+        "pinyin": "Jia Ren",
+        "han_viet": "Gia Nhân"
+      },
+      "present_state": [
+        "Roles, responsibilities, or internal structure may be central.",
+        "Order may be forming through relationship patterns.",
+        "Stability may be connected to shared expectations."
+      ],
+      "keywords": [
+        "structure",
+        "roles",
+        "responsibility"
+      ],
+      "domains_hint": [
+        "family",
+        "relationship",
+        "team"
+      ]
+    },
+    "38": {
+      "id": 38,
+      "layman_title": "Parallel Differences",
+      "traditional": {
+        "name_en": "Opposition",
+        "pinyin": "Kui",
+        "han_viet": "Khuê"
+      },
+      "present_state": [
+        "Differences in perspective may be clearly visible.",
+        "Parallel truths may exist without merging.",
+        "Separation may coexist with connection."
+      ],
+      "keywords": [
+        "difference",
+        "polarity",
+        "divergence"
+      ],
+      "domains_hint": [
+        "relationship",
+        "team",
+        "decision"
+      ]
+    },
+    "39": {
+      "id": 39,
+      "layman_title": "Slow Forward Through Difficulty",
+      "traditional": {
+        "name_en": "Obstruction",
+        "pinyin": "Jian",
+        "han_viet": "Kiển"
+      },
+      "present_state": [
+        "Progress may be slowed by obstacles or resistance.",
+        "Movement may require adjustment rather than force.",
+        "Difficulty may be shaping direction."
+      ],
+      "keywords": [
+        "obstacle",
+        "difficulty",
+        "adjustment"
+      ],
+      "domains_hint": [
+        "work",
+        "project",
+        "life path"
+      ]
+    },
+    "40": {
+      "id": 40,
+      "layman_title": "Release After Tension",
+      "traditional": {
+        "name_en": "Deliverance",
+        "pinyin": "Jie",
+        "han_viet": "Giải"
+      },
+      "present_state": [
+        "Pressure or tension may be easing.",
+        "Release or resolution energy may be present.",
+        "Movement may feel lighter than before."
+      ],
+      "keywords": [
+        "release",
+        "resolution",
+        "relief"
+      ],
+      "domains_hint": [
+        "relationship",
+        "work",
+        "inner"
+      ]
+    },
+    "41": {
+      "id": 41,
+      "layman_title": "Intentional Reduction",
+      "traditional": {
+        "name_en": "Decrease",
+        "pinyin": "Sun",
+        "han_viet": "Tổn"
+      },
+      "present_state": [
+        "Energy may be moving toward simplification or reduction.",
+        "Letting go of excess may be part of restoring balance.",
+        "Focus may be shifting toward what is essential."
+      ],
+      "keywords": [
+        "simplify",
+        "reduction",
+        "focus"
+      ],
+      "domains_hint": [
+        "inner",
+        "work",
+        "life balance"
+      ]
+    },
+    "42": {
+      "id": 42,
+      "layman_title": "Supportive Increase",
+      "traditional": {
+        "name_en": "Increase",
+        "pinyin": "Yi",
+        "han_viet": "Ích"
+      },
+      "present_state": [
+        "Growth or expansion energy may be present.",
+        "Support may be flowing toward what is ready to expand.",
+        "Momentum may build through reinforcement rather than force."
+      ],
+      "keywords": [
+        "growth",
+        "expansion",
+        "support"
+      ],
+      "domains_hint": [
+        "work",
+        "project",
+        "relationship"
+      ]
+    },
+    "43": {
+      "id": 43,
+      "layman_title": "Clear Breakthrough Pressure",
+      "traditional": {
+        "name_en": "Breakthrough",
+        "pinyin": "Guai",
+        "han_viet": "Quải"
+      },
+      "present_state": [
+        "Tension may be building toward a clear release or decision point.",
+        "Hidden pressure may be moving toward visibility.",
+        "Clarity may be forming through direct confrontation with truth."
+      ],
+      "keywords": [
+        "breakthrough",
+        "release",
+        "truth"
+      ],
+      "domains_hint": [
+        "decision",
+        "work",
+        "relationship"
+      ]
+    },
+    "44": {
+      "id": 44,
+      "layman_title": "Unexpected Encounter",
+      "traditional": {
+        "name_en": "Coming to Meet",
+        "pinyin": "Gou",
+        "han_viet": "Cấu"
+      },
+      "present_state": [
+        "An unexpected influence or presence may be entering the field.",
+        "Initial contact may carry disproportionate impact.",
+        "Small beginnings may hold larger potential consequences."
+      ],
+      "keywords": [
+        "encounter",
+        "unexpected",
+        "influence"
+      ],
+      "domains_hint": [
+        "relationship",
+        "work",
+        "social"
+      ]
+    },
+    "45": {
+      "id": 45,
+      "layman_title": "Converging Forces",
+      "traditional": {
+        "name_en": "Gathering Together",
+        "pinyin": "Cui",
+        "han_viet": "Tụy"
+      },
+      "present_state": [
+        "People, energy, or attention may be gathering toward a center.",
+        "Shared focus may be forming collective direction.",
+        "Momentum may build through concentration rather than expansion."
+      ],
+      "keywords": [
+        "gathering",
+        "focus",
+        "collective"
+      ],
+      "domains_hint": [
+        "team",
+        "community",
+        "relationship"
+      ]
+    },
+    "46": {
+      "id": 46,
+      "layman_title": "Steady Ascent",
+      "traditional": {
+        "name_en": "Pushing Upward",
+        "pinyin": "Sheng",
+        "han_viet": "Thăng"
+      },
+      "present_state": [
+        "Progress may be occurring gradually but consistently.",
+        "Movement may build through sustained effort over time.",
+        "Growth may feel stable rather than sudden."
+      ],
+      "keywords": [
+        "growth",
+        "gradual progress",
+        "development"
+      ],
+      "domains_hint": [
+        "work",
+        "career",
+        "project"
+      ]
+    },
+    "47": {
+      "id": 47,
+      "layman_title": "Compressed Energy",
+      "traditional": {
+        "name_en": "Oppression",
+        "pinyin": "Kun",
+        "han_viet": "Khốn"
+      },
+      "present_state": [
+        "Energy or movement may feel restricted or compressed.",
+        "Resources or options may feel temporarily limited.",
+        "Pressure may be shaping inner resilience."
+      ],
+      "keywords": [
+        "constraint",
+        "pressure",
+        "limitation"
+      ],
+      "domains_hint": [
+        "inner",
+        "work",
+        "life challenge"
+      ]
+    },
+    "48": {
+      "id": 48,
+      "layman_title": "Deep Source",
+      "traditional": {
+        "name_en": "The Well",
+        "pinyin": "Jing",
+        "han_viet": "Tỉnh"
+      },
+      "present_state": [
+        "A stable inner or shared resource may be present.",
+        "Access to depth may depend on how it is approached.",
+        "Sustainability may be tied to maintaining the source."
+      ],
+      "keywords": [
+        "resource",
+        "depth",
+        "sustainability"
+      ],
+      "domains_hint": [
+        "community",
+        "inner",
+        "knowledge"
+      ]
+    },
+    "49": {
+      "id": 49,
+      "layman_title": "Transforming Pattern",
+      "traditional": {
+        "name_en": "Revolution",
+        "pinyin": "Ge",
+        "han_viet": "Cách"
+      },
+      "present_state": [
+        "Change may be reaching a visible turning point.",
+        "Old patterns may be losing stability.",
+        "Transformation may be reshaping identity or structure."
+      ],
+      "keywords": [
+        "change",
+        "transformation",
+        "shift"
+      ],
+      "domains_hint": [
+        "life transition",
+        "career",
+        "relationship"
+      ]
+    },
+    "50": {
+      "id": 50,
+      "layman_title": "Refining Into Meaning",
+      "traditional": {
+        "name_en": "The Cauldron",
+        "pinyin": "Ding",
+        "han_viet": "Đỉnh"
+      },
+      "present_state": [
+        "Raw experience may be moving toward refinement or integration.",
+        "Value may be forming through transformation.",
+        "Meaning may emerge through sustained process."
+      ],
+      "keywords": [
+        "refinement",
+        "transformation",
+        "integration"
+      ],
+      "domains_hint": [
+        "inner",
+        "creative",
+        "leadership"
+      ]
+    },
+    "51": {
+      "id": 51,
+      "layman_title": "Sudden Activation",
+      "traditional": {
+        "name_en": "The Arousing (Thunder)",
+        "pinyin": "Zhen",
+        "han_viet": "Chấn"
+      },
+      "present_state": [
+        "A sudden shift or activation may be present.",
+        "Surprise or disruption may be opening new awareness.",
+        "Movement may begin through shock rather than planning."
+      ],
+      "keywords": [
+        "shock",
+        "activation",
+        "sudden change"
+      ],
+      "domains_hint": [
+        "life event",
+        "inner",
+        "transition"
+      ]
+    },
+    "52": {
+      "id": 52,
+      "layman_title": "Still Point",
+      "traditional": {
+        "name_en": "Keeping Still (Mountain)",
+        "pinyin": "Gen",
+        "han_viet": "Cấn"
+      },
+      "present_state": [
+        "Stillness or pause energy may be present.",
+        "Movement may slow to allow clarity to form.",
+        "Boundaries may be stabilizing the moment."
+      ],
+      "keywords": [
+        "stillness",
+        "pause",
+        "boundary"
+      ],
+      "domains_hint": [
+        "inner",
+        "health",
+        "decision"
+      ]
+    },
+    "53": {
+      "id": 53,
+      "layman_title": "Gradual Integration",
+      "traditional": {
+        "name_en": "Development (Gradual Progress)",
+        "pinyin": "Jian",
+        "han_viet": "Tiệm"
+      },
+      "present_state": [
+        "Change may be unfolding through slow and steady development.",
+        "Progress may feel natural rather than forced.",
+        "Structure may be forming through accumulated steps."
+      ],
+      "keywords": [
+        "gradual",
+        "development",
+        "integration"
+      ],
+      "domains_hint": [
+        "relationship",
+        "career",
+        "life path"
+      ]
+    },
+    "54": {
+      "id": 54,
+      "layman_title": "Entering Another Structure",
+      "traditional": {
+        "name_en": "The Marrying Maiden",
+        "pinyin": "Gui Mei",
+        "han_viet": "Quy Muội"
+      },
+      "present_state": [
+        "The moment may involve entering an existing structure or system.",
+        "Positioning may feel less self-defined than usual.",
+        "Adaptation to existing dynamics may be present."
+      ],
+      "keywords": [
+        "adaptation",
+        "position",
+        "structure entry"
+      ],
+      "domains_hint": [
+        "relationship",
+        "work",
+        "social"
+      ]
+    },
+    "55": {
+      "id": 55,
+      "layman_title": "Peak Intensity",
+      "traditional": {
+        "name_en": "Abundance",
+        "pinyin": "Feng",
+        "han_viet": "Phong"
+      },
+      "present_state": [
+        "Intensity or fullness may be at a peak.",
+        "Many signals or demands may be present at once.",
+        "Clarity may depend on where attention is placed."
+      ],
+      "keywords": [
+        "peak",
+        "intensity",
+        "abundance"
+      ],
+      "domains_hint": [
+        "work",
+        "creative",
+        "life phase"
+      ]
+    },
+    "56": {
+      "id": 56,
+      "layman_title": "Temporary Passage",
+      "traditional": {
+        "name_en": "The Wanderer",
+        "pinyin": "Lu",
+        "han_viet": "Lữ"
+      },
+      "present_state": [
+        "The moment may feel transitional or temporary.",
+        "Belonging or stability may feel less fixed.",
+        "Awareness may be shaped by changing environments."
+      ],
+      "keywords": [
+        "transition",
+        "temporary",
+        "movement"
+      ],
+      "domains_hint": [
+        "travel",
+        "life change",
+        "career"
+      ]
+    },
+    "57": {
+      "id": 57,
+      "layman_title": "Gentle Penetration",
+      "traditional": {
+        "name_en": "The Gentle (Wind)",
+        "pinyin": "Xun",
+        "han_viet": "Tốn"
+      },
+      "present_state": [
+        "Influence may be spreading gradually rather than directly.",
+        "Subtle repetition may shape outcomes.",
+        "Change may happen through persistence rather than force."
+      ],
+      "keywords": [
+        "subtle influence",
+        "penetration",
+        "persistence"
+      ],
+      "domains_hint": [
+        "relationship",
+        "work",
+        "communication"
+      ]
+    },
+    "58": {
+      "id": 58,
+      "layman_title": "Open Exchange",
+      "traditional": {
+        "name_en": "The Joyous (Lake)",
+        "pinyin": "Dui",
+        "han_viet": "Đoài"
+      },
+      "present_state": [
+        "Open communication or emotional exchange may be present.",
+        "Connection may form through shared expression.",
+        "Movement may be supported through openness."
+      ],
+      "keywords": [
+        "communication",
+        "joy",
+        "exchange"
+      ],
+      "domains_hint": [
+        "relationship",
+        "team",
+        "social"
+      ]
+    },
+    "59": {
+      "id": 59,
+      "layman_title": "Dissolving Barriers",
+      "traditional": {
+        "name_en": "Dispersion",
+        "pinyin": "Huan",
+        "han_viet": "Hoán"
+      },
+      "present_state": [
+        "Rigid boundaries or fixed patterns may be loosening.",
+        "Separation may be giving way to flow or connection.",
+        "Movement may occur through softening rather than force."
+      ],
+      "keywords": [
+        "dissolve",
+        "release",
+        "flow"
+      ],
+      "domains_hint": [
+        "relationship",
+        "inner",
+        "community"
+      ]
+    },
+    "60": {
+      "id": 60,
+      "layman_title": "Defined Boundaries",
+      "traditional": {
+        "name_en": "Limitation",
+        "pinyin": "Jie",
+        "han_viet": "Tiết"
+      },
+      "present_state": [
+        "Limits or structure may be shaping movement.",
+        "Clarity may form through defined boundaries.",
+        "Sustainability may depend on contained flow."
+      ],
+      "keywords": [
+        "limits",
+        "structure",
+        "containment"
+      ],
+      "domains_hint": [
+        "work",
+        "health",
+        "inner"
+      ]
+    },
+    "61": {
+      "id": 61,
+      "layman_title": "Inner Alignment",
+      "traditional": {
+        "name_en": "Inner Truth",
+        "pinyin": "Zhong Fu",
+        "han_viet": "Trung Phu"
+      },
+      "present_state": [
+        "Inner and outer signals may be seeking alignment.",
+        "Trust or authenticity may be central themes.",
+        "Clarity may form through internal resonance."
+      ],
+      "keywords": [
+        "truth",
+        "trust",
+        "authenticity"
+      ],
+      "domains_hint": [
+        "relationship",
+        "inner",
+        "leadership"
+      ]
+    },
+    "62": {
+      "id": 62,
+      "layman_title": "Small Careful Steps",
+      "traditional": {
+        "name_en": "Small Exceeding",
+        "pinyin": "Xiao Guo",
+        "han_viet": "Tiểu Quá"
+      },
+      "present_state": [
+        "Small adjustments may carry more impact than large moves.",
+        "Attention to detail may shape outcomes.",
+        "Progress may depend on careful navigation."
+      ],
+      "keywords": [
+        "detail",
+        "precision",
+        "small movement"
+      ],
+      "domains_hint": [
+        "work",
+        "project",
+        "health"
+      ]
+    },
+    "63": {
+      "id": 63,
+      "layman_title": "After Completion",
+      "traditional": {
+        "name_en": "After Completion",
+        "pinyin": "Ji Ji",
+        "han_viet": "Ký Tế"
+      },
+      "present_state": [
+        "A cycle may have reached structural completion.",
+        "Stability may exist but require continued attention.",
+        "Maintenance may be part of sustaining balance."
+      ],
+      "keywords": [
+        "completion",
+        "stability",
+        "maintenance"
+      ],
+      "domains_hint": [
+        "project",
+        "relationship",
+        "work"
+      ]
+    },
+    "64": {
+      "id": 64,
+      "layman_title": "Before Completion",
+      "traditional": {
+        "name_en": "Before Completion",
+        "pinyin": "Wei Ji",
+        "han_viet": "Vị Tế"
+      },
+      "present_state": [
+        "The moment may be close to transition but not yet complete.",
+        "Movement may still be shaping final form.",
+        "Potential may be present but not yet settled."
+      ],
+      "keywords": [
+        "transition",
+        "unfinished",
+        "potential"
+      ],
+      "domains_hint": [
+        "life phase",
+        "project",
+        "inner"
+      ]
     }
   },
   "line_position_overlay": {
     "1": [
       "Early-stage energy; stability may still be forming.",
-      "Small signals may matter more than big moves."
+      "Small signals may matter more than large moves."
     ],
     "2": [
-      "Positioning and support dynamics are active.",
-      "Alignment with others may shape outcomes."
+      "Support and positioning dynamics may be active.",
+      "Alignment with others may influence direction."
     ],
     "3": [
-      "Friction or overextension risk may be present.",
+      "Friction or overextension pressure may be present.",
       "Timing may matter more than force."
     ],
     "4": [
-      "Crossing into visibility or responsibility territory.",
-      "External response may matter more now."
+      "Movement toward visibility or responsibility may be emerging.",
+      "External response may begin to shape outcomes."
     ],
     "5": [
-      "Central responsibility or expectation weight is present.",
+      "Expectation or central responsibility weight may be present.",
       "Influence may be higher than usual."
     ],
     "6": [
-      "Completion or overextension energy is present.",
-      "Release may be present or transition may be near."
+      "Completion or overextension energy may be near.",
+      "Release or transition may be part of the pattern."
     ]
   },
   "fallback": {

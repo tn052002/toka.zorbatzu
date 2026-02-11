@@ -77,7 +77,7 @@ const formatTraditional = (traditional: HexTraditional) => {
 };
 
 export default function ResultPage() {
-  const { draft, initDraft, setAiOutput, setAiStatus } = useDraftMoment();
+  const { draft, initDraft, setAiOutput, setAiStatus, resetDraft } = useDraftMoment();
   const [retrying, setRetrying] = useState(false);
   const { lang, t } = useI18n();
 
@@ -161,7 +161,8 @@ export default function ResultPage() {
               {t('cast_missing_body')}
             </p>
             <Link
-              href="/moment/cast"
+              href="/moment/domain"
+              onClick={() => resetDraft()}
               className="mt-3 inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-600"
             >
               {t('cast_missing_cta')}
@@ -179,7 +180,7 @@ export default function ResultPage() {
               </p>
               {formatTraditional(primary.traditional) ? (
                 <p className="mt-1 text-xs text-slate-400">
-                  {formatTraditional(primary.traditional)}
+                  #{primary.id} {formatTraditional(primary.traditional)}
                 </p>
               ) : null}
               <ul className="mt-3 space-y-2 text-sm text-slate-600">
@@ -190,8 +191,8 @@ export default function ResultPage() {
                 ))}
               </ul>
             </section>
-
-            <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+            
+            {/* <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 {t('movement_label')}
               </p>
@@ -220,7 +221,7 @@ export default function ResultPage() {
                   ))}
                 </div>
               )}
-            </section>
+            </section> */}
 
             {relating ? (
               <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
@@ -230,7 +231,7 @@ export default function ResultPage() {
                 <p className="mt-2 text-sm text-slate-700">{relating.layman_title}</p>
                 {formatTraditional(relating.traditional) ? (
                   <p className="mt-1 text-xs text-slate-400">
-                    {formatTraditional(relating.traditional)}
+                    #{relating.id} {formatTraditional(relating.traditional)}
                   </p>
                 ) : null}
                 <ul className="mt-3 space-y-2 text-sm text-slate-600">
@@ -244,83 +245,89 @@ export default function ResultPage() {
             ) : null}
           </>
         ) : null}
-        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-            {t('mirror_label')}
-          </p>
-          <div className="mt-3 space-y-3 text-sm text-slate-600">
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-                {t('mirror_you_described')}
-              </p>
-              <ul className="mt-2 space-y-2">
-                {(mirror?.you_described ?? fallbackMirror.you_described).map((item, index) => (
-                  <li key={`mirror-you-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        {hasCast ? (
+          <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+              {t('mirror_label')}
+            </p>
+            <div className="mt-3 space-y-3 text-sm text-slate-600">
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                  {t('mirror_you_described')}
+                </p>
+                <ul className="mt-2 space-y-2">
+                  {(mirror?.you_described ?? fallbackMirror.you_described).map((item, index) => (
+                    <li key={`mirror-you-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                  {t('mirror_two_pulls')}
+                </p>
+                <ul className="mt-2 space-y-2">
+                  {(mirror?.two_pulls ?? fallbackMirror.two_pulls).map((item, index) => (
+                    <li key={`mirror-pulls-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                  {t('mirror_cost')}
+                </p>
+                <ul className="mt-2 space-y-2">
+                  {(mirror?.cost_to_lose ?? fallbackMirror.cost_to_lose).map((item, index) => (
+                    <li key={`mirror-cost-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                  {t('mirror_unknowns')}
+                </p>
+                <ul className="mt-2 space-y-2">
+                  {(mirror?.unknowns ?? fallbackMirror.unknowns).map((item, index) => (
+                    <li key={`mirror-unknown-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {!draft.ai_output ? (
+                <button
+                  type="button"
+                  onClick={handleRetry}
+                  disabled={retrying}
+                  className="w-full rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 disabled:text-slate-400"
+                >
+                  {retrying ? t('mirror_retrying') : t('mirror_retry')}
+                </button>
+              ) : null}
             </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-                {t('mirror_two_pulls')}
-              </p>
-              <ul className="mt-2 space-y-2">
-                {(mirror?.two_pulls ?? fallbackMirror.two_pulls).map((item, index) => (
-                  <li key={`mirror-pulls-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-                {t('mirror_cost')}
-              </p>
-              <ul className="mt-2 space-y-2">
-                {(mirror?.cost_to_lose ?? fallbackMirror.cost_to_lose).map((item, index) => (
-                  <li key={`mirror-cost-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-                {t('mirror_unknowns')}
-              </p>
-              <ul className="mt-2 space-y-2">
-                {(mirror?.unknowns ?? fallbackMirror.unknowns).map((item, index) => (
-                  <li key={`mirror-unknown-${index}`} className="rounded-xl bg-slate-50 px-3 py-2">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {!draft.ai_output ? (
-              <button
-                type="button"
-                onClick={handleRetry}
-                disabled={retrying}
-                className="w-full rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 disabled:text-slate-400"
-              >
-                {retrying ? t('mirror_retrying') : t('mirror_retry')}
-              </button>
-            ) : null}
-          </div>
-        </section>
-        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-            {t('cold_label')}
-          </p>
-          <p className="mt-2 text-sm text-slate-700">{coldSentence}</p>
-        </section>
-        <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-            {t('opening_label')}
-          </p>
-          <p className="mt-2 text-sm text-slate-700">{openingQuestion}</p>
-        </section>
+          </section>
+        ) : null}
+        {hasCast ? (
+          <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+              {t('cold_label')}
+            </p>
+            <p className="mt-2 text-sm text-slate-700">{coldSentence}</p>
+          </section>
+        ) : null}
+        {hasCast ? (
+          <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+              {t('opening_label')}
+            </p>
+            <p className="mt-2 text-sm text-slate-700">{openingQuestion}</p>
+          </section>
+        ) : null}
         <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/moment/cast" className="hover:text-slate-700">
             {t('result_back')}
