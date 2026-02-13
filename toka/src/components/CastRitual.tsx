@@ -148,8 +148,8 @@ export default function CastRitual() {
               setCastMode(option);
             }}
             disabled={loading}
-            className={`flex-1 rounded-full px-3 py-2 transition ${
-              mode === option ? 'bg-slate-900 text-white' : 'text-slate-500'
+            className={`flex-1 rounded-full px-3 py-2 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
+              mode === option ? 'bg-slate-900 text-white' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             {option === 'quick' ? t('cast_quick') : t('cast_ritual')}
@@ -157,35 +157,26 @@ export default function CastRitual() {
         ))}
       </div>
 
-      {mode === 'quick' ? (
-        <div className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
-          {t('cast_quick_text')}
-          <button
-            type="button"
-            onClick={handleQuickCast}
-            disabled={loading}
-            className="mt-4 w-full rounded-full bg-slate-900 px-4 py-2 text-sm text-white disabled:bg-slate-400"
-          >
-            {t('cast_quick_button')}
-          </button>
-        </div>
-      ) : (
+      <div className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+        {mode === 'quick' ? t('cast_quick_helper') : t('cast_ritual_helper')}
+      </div>
+
+      {mode === 'ritual' ? (
         <div className="space-y-4">
-          <p className="text-s text-slate-500">
-            {t('cast_hint')}
-          </p>
           <div className="grid grid-cols-3 gap-3">
             {Array.from({ length: 6 }, (_, index) => {
               const value = ritualLines[index];
               const status = value ? describeLine(value) : null;
               const isActive = index === nextIndex && !ritualComplete;
+              const isYang = value === 7 || value === 9;
+              const isChanging = value === 6 || value === 9;
               return (
                 <button
                   key={`line-${index}`}
                   type="button"
                   onClick={() => handleFlip(index)}
                   disabled={loading}
-                  className={`flex min-h-[90px] flex-col items-center justify-center rounded-2xl border px-3 py-3 text-xs ${
+                  className={`flex min-h-[96px] flex-col items-center justify-center rounded-2xl border px-3 py-3 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
                     isActive
                       ? 'border-slate-900 bg-slate-900 text-white'
                       : 'border-slate-200 bg-white text-slate-600'
@@ -194,7 +185,38 @@ export default function CastRitual() {
                   <span className="text-[10px] uppercase tracking-[0.3em] text-slate-400">
                     {t('cast_line')} {index + 1}
                   </span>
-                  <span className="mt-2 inline-flex h-2 w-10 rounded-full bg-slate-200" />
+                  <span className="mt-2 flex flex-col gap-1">
+                    {value ? (
+                      isYang ? (
+                        <span
+                          className={`h-1 w-10 rounded-full ${
+                            isChanging
+                              ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
+                              : 'bg-slate-700'
+                          }`}
+                        />
+                      ) : (
+                        <span className="flex items-center justify-center gap-2">
+                          <span
+                            className={`h-1 w-4 rounded-full ${
+                              isChanging
+                                ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
+                                : 'bg-slate-700'
+                            }`}
+                          />
+                          <span
+                            className={`h-1 w-4 rounded-full ${
+                              isChanging
+                                ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
+                                : 'bg-slate-700'
+                            }`}
+                          />
+                        </span>
+                      )
+                    ) : (
+                      <span className="h-1 w-10 rounded-full bg-slate-200" />
+                    )}
+                  </span>
                   <span className="mt-2 text-xs">
                     {status ? status.label : isActive ? t('cast_tap') : t('cast_waiting')}
                   </span>
@@ -212,7 +234,7 @@ export default function CastRitual() {
               type="button"
               onClick={handleRitualReset}
               disabled={loading}
-              className="flex-1 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600"
+              className="flex-1 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60"
             >
               {t('cast_reset')}
             </button>
@@ -220,7 +242,7 @@ export default function CastRitual() {
               type="button"
               onClick={handleRitualComplete}
               disabled={!ritualComplete || loading}
-              className={`flex-1 rounded-full px-3 py-2 text-xs ${
+              className={`flex-1 rounded-full px-3 py-2 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
                 ritualComplete && !loading
                   ? 'bg-slate-900 text-white'
                   : 'bg-slate-100 text-slate-400'
@@ -229,35 +251,28 @@ export default function CastRitual() {
               {t('cast_reveal')}
             </button>
           </div>
+          {/* <p className="text-xs text-slate-500">{t('cast_hint')}</p> */}
         </div>
-      )}
+      ) : null}
 
-      {/* <div className="mt-6 border-t border-slate-200/60 pt-4">
+      {mode === 'quick' ? (
+        <button
+          type="button"
+          onClick={handleQuickCast}
+          disabled={loading}
+          className="w-full rounded-full bg-slate-900 px-4 py-3 text-sm text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 disabled:bg-slate-400"
+        >
+          {t('cast_quick_button')}
+        </button>
+      ) : null}
+
+      {/* <div className="flex items-center justify-between text-xs text-slate-500">
         <Link
           href="/moment/question"
           className={`hover:text-slate-700 ${loading ? 'pointer-events-none opacity-50' : ''}`}
         >
           {t('cast_back')}
         </Link>
-        
-        <div className="flex items-center justify-between text-xs text-slate-500">
-          <Link href="/moment/domain" className="hover:text-slate-700">
-            {t('cast_back')}
-          </Link>
-          
-        </div>
-        <button
-          type="button"
-          onClick={() => router.push('/moment/result')}
-          disabled={loading}
-          className={`rounded-full border px-3 py-1 ${
-            loading
-              ? 'border-slate-100 bg-slate-50 text-slate-400'
-              : 'border-slate-200 bg-white text-slate-700'
-          }`}
-        >
-          {t('cast_result')}
-        </button>
       </div> */}
     </div>
   );

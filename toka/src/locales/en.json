@@ -31,6 +31,8 @@
   "cast_quick": "Quick",
   "cast_ritual": "Ritual",
   "cast_quick_text": "Tap to cast all six lines at once. The hexagram will appear instantly.",
+  "cast_quick_helper": "One tap — the hexagram appears at once.",
+  "cast_ritual_helper": "Cast in sequence — one line at a time.",
   "cast_quick_button": "Quick cast",
   "cast_reset": "Reset ritual",
   "cast_reveal": "Reveal result",

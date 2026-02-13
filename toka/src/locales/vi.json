@@ -31,6 +31,8 @@
   "cast_quick": "Nhanh",
   "cast_ritual": "Nghi thức",
   "cast_quick_text": "Một lần chạm — quẻ hiện ngay.",
+  "cast_quick_helper": "Một lần chạm — quẻ hiện ngay.",
+  "cast_ritual_helper": "Gieo lần lượt — từng hào một.",
   "cast_quick_button": "Gieo nhanh",
   "cast_reset": "Làm lại",
   "cast_reveal": "Hiện kết quả",
