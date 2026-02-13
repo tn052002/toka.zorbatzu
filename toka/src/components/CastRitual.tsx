@@ -207,7 +207,7 @@ export default function CastRitual() {
                   {value ? (
                     isYang ? (
                       <span
-                        className={`h-1 w-12 rounded-full ${
+                        className={`h-1 w-16 rounded-full ${
                           isChanging
                             ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
                             : 'bg-slate-700'
@@ -216,14 +216,14 @@ export default function CastRitual() {
                     ) : (
                       <span className="flex items-center gap-2">
                         <span
-                          className={`h-1 w-5 rounded-full ${
+                          className={`h-1 w-7 rounded-full ${
                             isChanging
                               ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
                               : 'bg-slate-700'
                           }`}
                         />
                         <span
-                          className={`h-1 w-5 rounded-full ${
+                          className={`h-1 w-7 rounded-full ${
                             isChanging
                               ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
                               : 'bg-slate-700'
@@ -232,7 +232,7 @@ export default function CastRitual() {
                       </span>
                     )
                   ) : (
-                    <span className="h-1 w-12 rounded-full bg-slate-200" />
+                    <span className="h-1 w-16 rounded-full bg-slate-200" />
                   )}
                   <span className="w-[110px] text-left text-xs text-slate-600">
                     {value ? describeLine(value) : t('cast_waiting')}
