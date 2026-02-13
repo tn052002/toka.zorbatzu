@@ -31,8 +31,9 @@ export default function CastRitual() {
   const describeLine = (value: LineValue) => {
     const isYang = value === 7 || value === 9;
     const changing = value === 6 || value === 9;
+    const baseLabel = isYang ? t('cast_yang') : t('cast_yin');
     return {
-      label: isYang ? t('cast_yang') : t('cast_yin'),
+      label: changing ? `${baseLabel} - ${t('cast_changing')}` : baseLabel,
       changing,
     };
   };
@@ -220,24 +221,19 @@ export default function CastRitual() {
                   <span className="mt-2 text-xs">
                     {status ? status.label : isActive ? t('cast_tap') : t('cast_waiting')}
                   </span>
-                  {status?.changing ? (
-                    <span className="mt-1 text-[10px] uppercase tracking-[0.3em] text-slate-300">
-                      {t('cast_changing')}
-                    </span>
-                  ) : null}
                 </button>
               );
             })}
           </div>
           <div className="flex gap-2">
-            <button
+            {/* <button
               type="button"
               onClick={handleRitualReset}
               disabled={loading}
               className="flex-1 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60"
             >
               {t('cast_reset')}
-            </button>
+            </button> */}
             <button
               type="button"
               onClick={handleRitualComplete}
