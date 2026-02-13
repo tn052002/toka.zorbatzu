@@ -171,6 +171,9 @@ export default function CastRitual() {
         </div>
       ) : (
         <div className="space-y-4">
+          <p className="text-s text-slate-500">
+            {t('cast_hint')}
+          </p>
           <div className="grid grid-cols-3 gap-3">
             {Array.from({ length: 6 }, (_, index) => {
               const value = ritualLines[index];
@@ -226,19 +229,23 @@ export default function CastRitual() {
               {t('cast_reveal')}
             </button>
           </div>
-          <p className="text-xs text-slate-500">
-            {t('cast_hint')}
-          </p>
         </div>
       )}
 
-      <div className="flex items-center justify-between text-xs text-slate-500">
+      {/* <div className="mt-6 border-t border-slate-200/60 pt-4">
         <Link
           href="/moment/question"
           className={`hover:text-slate-700 ${loading ? 'pointer-events-none opacity-50' : ''}`}
         >
           {t('cast_back')}
         </Link>
+        
+        <div className="flex items-center justify-between text-xs text-slate-500">
+          <Link href="/moment/domain" className="hover:text-slate-700">
+            {t('cast_back')}
+          </Link>
+          
+        </div>
         <button
           type="button"
           onClick={() => router.push('/moment/result')}
@@ -251,7 +258,7 @@ export default function CastRitual() {
         >
           {t('cast_result')}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

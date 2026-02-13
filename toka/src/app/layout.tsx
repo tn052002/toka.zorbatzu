@@ -37,9 +37,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fraunces.variable} ${sourceSans.variable} min-h-screen bg-[radial-gradient(1400px_circle_at_top,_#ffffff,_#f1f5f9_55%,_#e2e8f0_100%)] font-[var(--font-source-sans)] text-slate-900`}
+        className={`${fraunces.variable} ${sourceSans.variable} min-h-[100dvh] bg-[radial-gradient(1400px_circle_at_top,_#ffffff,_#f1f5f9_55%,_#edf2f7)] font-[var(--font-source-sans)] text-slate-900`}
       >
-        <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-5 pb-16 pt-10">
+        <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-5 pb-12 pt-8">
           <HeaderBar />
           {children}
         </div>

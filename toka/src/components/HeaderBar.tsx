@@ -6,21 +6,35 @@ export default function HeaderBar() {
   const { lang, t, toggleLanguage } = useI18n();
 
   return (
-    <header className="mb-8 flex items-start justify-between gap-3">
-      <div>
-        <p className="text-xs uppercase tracking-[0.4em] text-slate-500">{t('app_title')}</p>
-        <h1 className="mt-3 font-[var(--font-fraunces)] text-3xl text-slate-900">
-          {t('app_tagline')}
-        </h1>
+    <header className="mb-6 flex items-center justify-between">
+      <div className="min-w-0">
+        <p className="text-xs uppercase tracking-[0.4em] text-slate-500">
+          {t('app_title')}
+        </p>
+        {/* Optional: keep this small, or remove entirely */}
+        <p className="mt-1 text-sm text-slate-600">{t('app_tagline')}</p>
       </div>
-      <div className="flex flex-col items-end gap-2 text-[11px] uppercase tracking-[0.3em] text-slate-400">
-        {/* <span>{t('header_lang')}</span> */}
+
+      <div className="flex items-center rounded-full border border-slate-200 bg-white p-1 text-xs">
         <button
           type="button"
           onClick={toggleLanguage}
-          className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-600"
+          className={`rounded-full px-3 py-1 ${
+            lang === 'en' ? 'bg-slate-900 text-white' : 'text-slate-600'
+          }`}
+          aria-pressed={lang === 'en'}
         >
-          {lang === 'en' ? t('header_lang_en') : t('header_lang_vi')}
+          {t('header_lang_en')}
+        </button>
+        <button
+          type="button"
+          onClick={toggleLanguage}
+          className={`rounded-full px-3 py-1 ${
+            lang === 'vi' ? 'bg-slate-900 text-white' : 'text-slate-600'
+          }`}
+          aria-pressed={lang === 'vi'}
+        >
+          {t('header_lang_vi')}
         </button>
       </div>
     </header>
