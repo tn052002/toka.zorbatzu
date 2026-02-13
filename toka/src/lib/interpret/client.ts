@@ -14,7 +14,10 @@ const fallbackMovementByLang: Record<'en' | 'vi', string[]> = {
 };
 
 const getHex = (id: number, store: MeaningsStore, fallbackMovement: string[]) => {
-  const found = store.hexagrams?.[String(id)];
+  const hexagrams = store.hexagrams as
+    | Record<string, (typeof store.hexagrams)[keyof typeof store.hexagrams]>
+    | undefined;
+  const found = hexagrams?.[String(id)];
   if (found) {
     return found;
   }
@@ -30,7 +33,10 @@ const getHex = (id: number, store: MeaningsStore, fallbackMovement: string[]) =>
 };
 
 const getOverlay = (line: number, store: MeaningsStore, fallback: string[]) => {
-  const items = store.line_position_overlay?.[String(line)];
+  const linePositionOverlay = store.line_position_overlay as
+    | Record<string, (typeof store.line_position_overlay)[keyof typeof store.line_position_overlay]>
+    | undefined;
+  const items = linePositionOverlay?.[String(line)];
   if (items && items.length >= 2) {
     return items.slice(0, 2);
   }
