@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import ScreenLayout from '@/components/ScreenLayout';
 import RevealRow from '@/components/Result/RevealRow';
 import meaningsEn from '@/data/hex_meanings_en.json';
@@ -78,6 +79,7 @@ const formatTraditional = (traditional: HexTraditional) => {
 };
 
 export default function ResultPage() {
+  const router = useRouter();
   const { draft, initDraft, setAiOutput, setAiStatus, resetDraft } = useDraftMoment();
   const [retrying, setRetrying] = useState(false);
   const [showSecondary, setShowSecondary] = useState(false);
@@ -150,11 +152,22 @@ export default function ResultPage() {
       eyebrow={t('eyebrow_moment')}
       title={t('result_title')}
       description={t('result_desc')}
+      footer={
+        <div className="flex items-center justify-between text-xs text-slate-500">
+          <Link href="/moment/cast" className="hover:text-slate-700">
+            {t('result_back')}
+          </Link>
+          <button
+            type="button"
+            onClick={() => router.push('/')}
+            className="rounded-full border px-4 py-2 text-sm transition border-slate-200 bg-white text-slate-500 hover:bg-slate-50"
+          >
+            {t('result_home')}
+          </button>
+        </div>
+      }
     >
       <div className="space-y-6">
-        {/* <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-          {t('meanings_version', { version: store.version })}
-        </p> */}
         {!hasCast ? (
           <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
             <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
@@ -335,17 +348,6 @@ export default function ResultPage() {
             )}
           </div>
         ) : null}
-        <div className="flex items-center justify-between text-xs text-slate-500">
-          <Link href="/moment/cast" className="hover:text-slate-700">
-            {t('result_back')}
-          </Link>
-          <Link
-            href="/"
-            className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700"
-          >
-            {t('result_home')}
-          </Link>
-        </div>
       </div>
     </ScreenLayout>
   );
