@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import ScreenLayout from '@/components/ScreenLayout';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import { loadDraft } from '@/lib/moment/storage';
 import { useI18n } from '@/lib/i18n/useI18n';
@@ -15,46 +14,42 @@ export default function Home() {
   const { t } = useI18n();
 
   useEffect(() => {
-    setHasDraft(Boolean(loadDraft()));
+    const draft = loadDraft();
+    const resumable = Boolean(
+      draft &&
+        (draft.domain ||
+          (draft.question_text && draft.question_text.trim().length > 0) ||
+          typeof draft.primary_hex_id === 'number'),
+    );
+    setHasDraft(resumable);
   }, []);
 
   return (
-  <ScreenLayout
-    title={t('home_title')}
-    description={t('home_desc')}
-    variant="default"
-    tone="glass"
-  >
-    <div className="space-y-4">
-
-      {/* PRIMARY CTA */}
+    <main className="flex min-h-[60vh] flex-1 flex-col pt-16">
+      <div className="space-y-3">
       <Link
         href="/moment/domain"
         onClick={() => resetDraft()}
-        className="flex items-center justify-between rounded-2xl bg-slate-900 px-5 py-4 text-sm text-white shadow-sm transition hover:bg-slate-800"
+        className="block rounded-2xl bg-slate-900 px-5 py-4 text-sm text-white shadow-sm transition hover:bg-slate-800"
       >
-        <span>{t('home_start')}</span>
-        <span className="text-lg">→</span>
+        {t('home_start')}
       </Link>
 
-      {/* SECONDARY */}
       {hasDraft && (
         <button
           type="button"
           onClick={() => router.push('/moment/result')}
-          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600 hover:bg-slate-50"
+          className="text-sm text-slate-500 underline decoration-slate-300 underline-offset-4 transition hover:text-slate-700 px-5"
         >
           {t('home_revisit')}
         </button>
       )}
+      </div>
 
-      {/* WHISPER NOTE */}
-      <p className="pt-2 text-center text-xs text-slate-500">
+      <p className="mt-8 text-[11px] text-slate-400 text-center">
         {t('home_no_login')}
       </p>
-
-    </div>
-  </ScreenLayout>
-);
+    </main>
+  );
 
 }

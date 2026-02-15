@@ -6,13 +6,13 @@ export default function HeaderBar() {
   const { lang, t, toggleLanguage } = useI18n();
 
   return (
-    <header className="mb-6 flex items-center justify-between">
+    <header className="mb-8 flex items-center justify-between">
       <div className="min-w-0">
         <p className="text-xs uppercase tracking-[0.4em] text-slate-500">
           {t('app_title')}
         </p>
         {/* Optional: keep this small, or remove entirely */}
-        <p className="mt-1 text-sm text-slate-600">{t('app_tagline')}</p>
+        <p className="mt-1 text-base font-medium text-slate-700">{t('app_tagline')}</p>
       </div>
 
       <div className="flex items-center rounded-full border border-slate-200 bg-white p-1 text-xs">
