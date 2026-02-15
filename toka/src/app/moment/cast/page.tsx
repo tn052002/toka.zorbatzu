@@ -22,7 +22,9 @@ export default function CastPage() {
         </div>
       }
     >
-      <CastRitual />
+      <div className="mt-2">
+        <CastRitual />
+      </div>
     </ScreenLayout>
   );
 }

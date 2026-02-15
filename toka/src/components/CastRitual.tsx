@@ -24,7 +24,7 @@ export default function CastRitual() {
   } = useDraftMoment();
   const [mode, setMode] = useState<Mode>('quick');
   const [displayLines, setDisplayLines] = useState<LineValue[]>([]);
-  const [quickCasting, setQuickCasting] = useState(false);
+  const [isComputingLine, setIsComputingLine] = useState(false);
   const [loading, setLoading] = useState(false);
   const quickTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const initializedRef = useRef(false);
@@ -44,6 +44,14 @@ export default function CastRitual() {
   };
 
   useEffect(() => {
+    return () => {
+      if (quickTimerRef.current) {
+        clearInterval(quickTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     if (initializedRef.current) {
       return;
     }
@@ -57,34 +65,22 @@ export default function CastRitual() {
     }
   }, [initDraft]);
 
-  useEffect(() => {
-    return () => {
-      if (quickTimerRef.current) {
-        clearInterval(quickTimerRef.current);
-      }
-    };
-  }, []);
-
   const ritualComplete = displayLines.length === 6;
+  const hasStarted = displayLines.length > 0;
 
   const startQuickReveal = () => {
-    if (loading || quickCasting) {
+    if (loading || isComputingLine || hasStarted) {
       return;
     }
     if (quickTimerRef.current) {
       clearInterval(quickTimerRef.current);
       quickTimerRef.current = null;
     }
-
-    const quickValues = castQuickValues();
-    let pointer = 0;
-
     setCastMode('quick');
     clearCastResult();
-    setDisplayLines([]);
-    setLines([]);
-    setQuickCasting(true);
-
+    setIsComputingLine(true);
+    const quickValues = castQuickValues();
+    let pointer = 0;
     quickTimerRef.current = setInterval(() => {
       pointer += 1;
       const next = quickValues.slice(0, pointer);
@@ -96,28 +92,26 @@ export default function CastRitual() {
           clearInterval(quickTimerRef.current);
           quickTimerRef.current = null;
         }
-        setQuickCasting(false);
+        setIsComputingLine(false);
       }
     }, 1000);
   };
 
   const handleRitualFlip = () => {
-    if (loading || mode !== 'ritual') {
-      return;
-    }
-    if (ritualComplete) {
-      setDisplayLines([]);
-      setLines([]);
-      clearCastResult();
+    if (loading || mode !== 'ritual' || isComputingLine || ritualComplete) {
       return;
     }
     setCastMode('ritual');
-    const nextValue = castLineValue();
-    setDisplayLines((current) => {
-      const next = [...current, nextValue];
-      setLines(next);
-      return next;
-    });
+    setIsComputingLine(true);
+    setTimeout(() => {
+      const nextValue = castLineValue();
+      setDisplayLines((current) => {
+        const next = [...current, nextValue];
+        setLines(next);
+        return next;
+      });
+      setIsComputingLine(false);
+    }, 120);
   };
 
   const castResult = useMemo(() => {
@@ -128,7 +122,7 @@ export default function CastRitual() {
   }, [displayLines, ritualComplete]);
 
   const handleReveal = async () => {
-    if (!castResult || loading || quickCasting) {
+    if (!castResult || loading || isComputingLine) {
       return;
     }
     setLoading(true);
@@ -150,14 +144,28 @@ export default function CastRitual() {
     } else {
       setAiStatus('error');
     }
+    await new Promise((resolve) => setTimeout(resolve, 600));
     setLoading(false);
     router.push('/moment/result');
   };
 
+  const handlePrimaryAction = () => {
+    if (ritualComplete) {
+      void handleReveal();
+      return;
+    }
+    if (mode === 'quick') {
+      startQuickReveal();
+      return;
+    }
+    handleRitualFlip();
+  };
+
   return (
-    <div className="space-y-5">
+    <div className="space-y-7 pt-2">
       <LoadingModal open={loading} text={t('loading_reflecting')} />
-      <div className="flex rounded-full border border-slate-200 bg-white p-1 text-xs text-slate-500">
+      <div>
+      <div className="inline-flex rounded-full border border-slate-200/70 bg-white p-0.5 text-[11px] text-slate-500">
         {(['quick', 'ritual'] as const).map((option) => (
           <button
             key={option}
@@ -168,20 +176,21 @@ export default function CastRitual() {
               setDisplayLines([]);
               setLines([]);
               clearCastResult();
-              setQuickCasting(false);
               if (quickTimerRef.current) {
                 clearInterval(quickTimerRef.current);
                 quickTimerRef.current = null;
               }
+              setIsComputingLine(false);
             }}
-            disabled={loading}
-            className={`flex-1 rounded-full px-3 py-2 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
+            disabled={loading || isComputingLine}
+            className={`rounded-full px-2.5 py-1 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 ${
               mode === option ? 'bg-slate-900 text-white' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             {option === 'quick' ? t('cast_quick') : t('cast_ritual')}
           </button>
         ))}
+      </div>
       </div>
 
       {/* <div className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
@@ -198,7 +207,11 @@ export default function CastRitual() {
             return (
               <div
                 key={`line-${index}`}
-                className="flex min-h-[44px] items-center justify-between rounded-xl bg-white px-3 py-2"
+                className={`flex min-h-[44px] items-center justify-between rounded-xl bg-white px-3 py-2 ${
+                  mode === 'ritual'
+                    ? `transition-opacity duration-500 ${value ? 'opacity-100' : 'opacity-70'}`
+                    : ''
+                }`}
               >
                 <span className="text-xs text-slate-500">
                   {index + 1}
@@ -208,25 +221,19 @@ export default function CastRitual() {
                     isYang ? (
                       <span
                         className={`h-1 w-16 rounded-full ${
-                          isChanging
-                            ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
-                            : 'bg-slate-700'
+                          isChanging ? 'bg-slate-900' : 'bg-slate-700'
                         }`}
                       />
                     ) : (
                       <span className="flex items-center gap-2">
                         <span
                           className={`h-1 w-7 rounded-full ${
-                            isChanging
-                              ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
-                              : 'bg-slate-700'
+                            isChanging ? 'bg-slate-900' : 'bg-slate-700'
                           }`}
                         />
                         <span
                           className={`h-1 w-7 rounded-full ${
-                            isChanging
-                              ? 'bg-slate-900 shadow-[0_0_12px_rgba(15,23,42,0.45)]'
-                              : 'bg-slate-700'
+                            isChanging ? 'bg-slate-900' : 'bg-slate-700'
                           }`}
                         />
                       </span>
@@ -242,51 +249,20 @@ export default function CastRitual() {
             );
           })}
         </div>
-
-        <div className="flex gap-2">
-          {mode === 'quick' ? (
-            <button
-              type="button"
-              onClick={startQuickReveal}
-              disabled={loading || quickCasting}
-              className={`flex-1 rounded-full border px-3 py-2 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 disabled:text-slate-400 ${
-                !ritualComplete
-                  ? 'border-slate-900 bg-slate-900 text-white'
-                  : 'border-slate-200 bg-white text-slate-600'
-              }`}
-            >
-              {t('cast_quick_button')}
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={handleRitualFlip}
-              disabled={loading}
-              className={`flex-1 rounded-full border px-3 py-2 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 disabled:text-slate-400 ${
-                !ritualComplete
-                  ? 'border-slate-900 bg-slate-900 text-white'
-                  : 'border-slate-200 bg-white text-slate-600'
-              }`}
-            >
-              {ritualComplete
-                ? t('cast_reset')
-                : t('cast_ritual_counter', { counter: displayLines.length + 1 })}
-            </button>
-          )}
-
-          <button
-            type="button"
-            onClick={handleReveal}
-            disabled={!ritualComplete || loading || quickCasting}
-            className={`flex-1 rounded-full px-3 py-2 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
-              ritualComplete && !loading && !quickCasting
-                ? 'bg-slate-900 text-white'
-                : 'bg-slate-100 text-slate-400'
-            }`}
-          >
-            {t('cast_reveal')}
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={handlePrimaryAction}
+          disabled={loading || isComputingLine}
+          className={`w-full rounded-full px-4 py-2.5 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 disabled:bg-slate-200 disabled:text-slate-400 ${
+            ritualComplete || hasStarted ? 'bg-slate-900 text-white' : 'bg-slate-900 text-white'
+          }`}
+        >
+          {ritualComplete
+            ? t('cast_view_reading')
+            : mode === 'quick'
+              ? t('cast.confirm')
+              : t('cast_draw_next_line')}
+        </button>
       </div>
     </div>
   );
