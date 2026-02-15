@@ -23,7 +23,7 @@
   "question_placeholder": "Quit my job now. Stay another 6 months. Raise the price. End it.",
   "question_back": "Back",
   "question_next": "Cast",
-  "cast_title": "Commit to the cast.",
+  "cast_title": "Begin the draw.",
   "cast_desc": "Choose a quick cast or slow down into a ritual.",
   "cast_quick": "Instant",
   "cast_ritual": "Sequential",
@@ -41,7 +41,7 @@
   "cast_back": "Back",
   "loading_reflecting": "Reflecting...",
   "result_title": "Energy field",
-  "result_desc": "Current and emerging direction.",
+  "result_desc": "Pattern and movement.",
   "meanings_version": "Meanings v{version}",
   "cast_missing_title": "Cast missing",
   "cast_missing_body": "This moment does not have cast data yet.",
@@ -82,10 +82,10 @@
   "tension.options.fomo": "Fear of missing out",
   "tension.options.approval": "Seeking approval",
   "result.primaryLabel": "Primary pattern",
-  "result.secondaryLabel": "Secondary pattern",
-  "result.revealSecondary": "Reveal Secondary",
+  "result.secondaryLabel": "Emerging movement",
+  "result.revealSecondary": "Reveal",
   "result.mirrorLabel": "Mirror",
   "result.mirrorEyebrow": "MIRROR",
   "result.applyToDecision": "Apply to this decision",
-  "result.noSecondary": "No biến in this cast."
+  "result.noSecondary": "No changed pattern formed."
 }

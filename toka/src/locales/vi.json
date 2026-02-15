@@ -23,7 +23,7 @@
   "question_placeholder": "Nghỉ việc ngay. Ở lại thêm 6 tháng. Tăng giá. Kết thúc.",
   "question_back": "Quay lại",
   "question_next": "Gieo",
-  "cast_title": "Chốt lần gieo.",
+  "cast_title": "Bắt đầu gieo quẻ.",
   "cast_desc": "Chọn gieo nhanh hoặc chậm lại với nghi thức.",
   "cast_quick": "Tức thì",
   "cast_ritual": "Từng bước",
@@ -81,11 +81,11 @@
   "tension.options.perception": "Giữ thể diện",
   "tension.options.fomo": "Sợ bỏ lỡ",
   "tension.options.approval": "Cần được công nhận",
-  "result.primaryLabel": "Chính",
-  "result.secondaryLabel": "Biến",
-  "result.revealSecondary": "Mở Biến",
+  "result.primaryLabel": "Quẻ chính",
+  "result.secondaryLabel": "Hướng chuyển hoá (biến)",
+  "result.revealSecondary": "Mở",
   "result.mirrorLabel": "Gương",
   "result.mirrorEyebrow": "GƯƠNG",
   "result.applyToDecision": "Áp vào quyết định này",
-  "result.noSecondary": "Không có biến."
+  "result.noSecondary": "Quẻ không có biến."
 }
