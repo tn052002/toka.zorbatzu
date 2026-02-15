@@ -12,7 +12,7 @@ export default function CastPage() {
     <ScreenLayout
       // eyebrow={t('eyebrow_moment')}
       title={t('cast_title')}
-      description={t('cast_desc')}
+      // description={t('cast_desc')}
       footer= {
       <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/moment/domain" className="hover:text-slate-700">

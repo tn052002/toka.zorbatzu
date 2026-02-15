@@ -149,9 +149,9 @@ export default function ResultPage() {
       description={t('result_desc')}
     >
       <div className="space-y-4">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+        {/* <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
           {t('meanings_version', { version: store.version })}
-        </p>
+        </p> */}
         {!hasCast ? (
           <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
             <p className="text-xs uppercase tracking-[0.3em] text-slate-400">

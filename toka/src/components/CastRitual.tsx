@@ -184,9 +184,9 @@ export default function CastRitual() {
         ))}
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+      {/* <div className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
         {mode === 'quick' ? t('cast_quick_helper') : t('cast_ritual_helper')}
-      </div>
+      </div> */}
 
       <div className="space-y-4">
         <div className="flex flex-col-reverse gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
@@ -201,7 +201,7 @@ export default function CastRitual() {
                 className="flex min-h-[44px] items-center justify-between rounded-xl bg-white px-3 py-2"
               >
                 <span className="text-xs text-slate-500">
-                  {t('cast_line')} {index + 1}
+                  {index + 1}
                 </span>
                 <div className="flex items-center gap-3">
                   {value ? (
