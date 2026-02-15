@@ -32,12 +32,21 @@ export const buildInterpretPrompt = (input: InterpretInput) => {
         .join(' ')}`
     : 'Relating: null';
 
+  const tensions = Array.isArray(input.tensions) ? input.tensions.filter(Boolean) : [];
+  const tensionsBlock =
+    tensions.length > 0
+      ? `\nDeclared tensions (optional): ${tensions.join(', ')}
+Use these as a psychological distortion vector to sharpen diagnosis and questioning.
+Do NOT treat them as facts. Do NOT moralize. Still no advice/prediction.\n`
+      : '';
+
   return `You are a mirror-only reflection engine for TOKA. Provide neutral, present-tense observations only.
 Never give advice, instructions, or predictions.
 Do not use banned phrases: ${bannedList.join(', ')}.
 
 Domain: ${input.domain}
 Question: ${input.question_text}
+${tensionsBlock}
 
 Primary (${input.primary.layman_title}): ${input.primary.present_state
     .map((item) => `- ${item}`)

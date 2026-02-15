@@ -13,6 +13,7 @@ export const domainSchema = z.enum([
 export const interpretInputSchema = z.object({
   domain: domainSchema,
   question_text: z.string().min(1),
+  tensions: z.array(z.string()).optional().default([]),
   primary: z.object({
     layman_title: z.string(),
     present_state: z.array(z.string()).length(3),

@@ -61,6 +61,7 @@ export const buildInterpretInput = (
     : null;
 
   const changingLines = draft.changing_lines ?? [];
+  const tensions = Array.isArray(draft.tensions) ? draft.tensions.filter(Boolean) : [];
   const overlays: Record<string, string[]> = {};
   changingLines.forEach((line) => {
     overlays[String(line)] = getOverlay(line, store, fallbackMovement);
@@ -69,6 +70,7 @@ export const buildInterpretInput = (
   return {
     domain: draft.domain,
     question_text: draft.question_text,
+    tensions,
     primary: {
       layman_title: primary.layman_title,
       present_state: primary.present_state,
