@@ -109,7 +109,10 @@
   "tension.options.validation": "Cần được công nhận",
   "result.primaryLabel": "Chính",
   "result.secondaryLabel": "Biến",
-  "result.revealSecondary": "Mở biến",
+  "result.revealSecondary": "Mở Biến",
+  "result.mirrorLabel": "Gương",
+  "result.mirrorEyebrow": "GƯƠNG",
+  "result.revealInterpretation": "Áp vào quyết định này",
   "result.applyToDecision": "Áp vào quyết định này",
   "result.noSecondary": "Không có biến.",
   "result.questionLabel": "Câu hỏi"

@@ -108,7 +108,10 @@
   "tension.options.validation": "Validation",
   "result.primaryLabel": "Primary pattern",
   "result.secondaryLabel": "Secondary pattern",
-  "result.revealSecondary": "Reveal biến",
+  "result.revealSecondary": "Reveal Secondary",
+  "result.mirrorLabel": "Mirror",
+  "result.mirrorEyebrow": "MIRROR",
+  "result.revealInterpretation": "Apply to this decision",
   "result.applyToDecision": "Apply to this decision",
   "result.noSecondary": "No biến in this cast.",
   "result.questionLabel": "Question"
