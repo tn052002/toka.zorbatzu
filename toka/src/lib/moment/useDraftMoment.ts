@@ -8,6 +8,8 @@ type DraftActions = {
   initDraft: () => DraftMoment;
   setDomain: (domain: Domain, otherText?: string) => DraftMoment;
   setQuestion: (text: string) => DraftMoment;
+  toggleTension: (key: string) => void;
+  clearTensions: () => void;
   setCastMode: (mode: DraftMoment['cast_mode']) => DraftMoment;
   setCastResult: (result: {
     lines: number[];
@@ -50,8 +52,12 @@ const ensureDraft = (): DraftMoment => {
         created_at: new Date().toISOString(),
         domain: null,
         question_text: '',
+        tensions: [],
         cast_mode: null,
       } satisfies DraftMoment);
+  }
+  if (!Array.isArray(currentDraft.tensions)) {
+    currentDraft = { ...currentDraft, tensions: [] };
   }
   return currentDraft;
 };
@@ -101,6 +107,21 @@ export const useDraftMoment = (): DraftStore => {
     const next: DraftMoment = { ...base, question_text: text };
     updateDraft(next);
     return next;
+  };
+
+  const toggleTension = (key: string) => {
+    const base = ensureDraft();
+    const current = Array.isArray(base.tensions) ? base.tensions : [];
+    const hasKey = current.includes(key);
+    const tensions = hasKey ? current.filter((item) => item !== key) : [...current, key];
+    const next: DraftMoment = { ...base, tensions };
+    updateDraft(next);
+  };
+
+  const clearTensions = () => {
+    const base = ensureDraft();
+    const next: DraftMoment = { ...base, tensions: [] };
+    updateDraft(next);
   };
 
   const setCastMode = (mode: DraftMoment['cast_mode']) => {
@@ -172,6 +193,8 @@ export const useDraftMoment = (): DraftStore => {
     initDraft,
     setDomain,
     setQuestion,
+    toggleTension,
+    clearTensions,
     setCastMode,
     setCastResult,
     setLines,

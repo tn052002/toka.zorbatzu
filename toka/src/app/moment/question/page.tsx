@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ScreenLayout from '@/components/ScreenLayout';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import { useI18n } from '@/lib/i18n/useI18n';
 
 export default function QuestionPage() {
   const router = useRouter();
-  const { initDraft, setQuestion } = useDraftMoment();
+  const { draft, initDraft, setQuestion, toggleTension, clearTensions } = useDraftMoment();
   const [value, setValue] = useState('');
   const { t } = useI18n();
 
@@ -25,6 +25,20 @@ export default function QuestionPage() {
   };
 
   const canContinue = value.trim().length >= 5;
+  const selectedTensions = draft?.tensions ?? [];
+  const tensionOptions = useMemo(
+    () => [
+      { key: 'loss', label: t('tension.options.loss') },
+      { key: 'wrong', label: t('tension.options.wrong') },
+      { key: 'time', label: t('tension.options.time') },
+      { key: 'identity', label: t('tension.options.identity') },
+      { key: 'perception', label: t('tension.options.perception') },
+      { key: 'control', label: t('tension.options.control') },
+      { key: 'fomo', label: t('tension.options.fomo') },
+      { key: 'approval', label: t('tension.options.approval') },
+    ],
+    [t],
+  );
 
   return (
     <ScreenLayout
@@ -61,6 +75,42 @@ export default function QuestionPage() {
           className="min-h-[140px] w-full resize-none rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-inner"
           placeholder={t('question_placeholder')}
         />
+        <section className="space-y-3 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-slate-700">{t('tension.title')}</p>
+            <span className="rounded-full border border-slate-200 px-2 py-0.5 text-[10px] text-slate-500">
+              {t('tension.optional')}
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            {tensionOptions.map((option) => {
+              const selected = selectedTensions.includes(option.key);
+              return (
+                <button
+                  key={option.key}
+                  type="button"
+                  onClick={() => toggleTension(option.key)}
+                  className={`rounded-xl border px-3 py-2 text-left text-xs transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/40 ${
+                    selected
+                      ? 'border-slate-900 bg-slate-900 text-white'
+                      : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
+                  }`}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+          {selectedTensions.length > 0 ? (
+            <button
+              type="button"
+              onClick={clearTensions}
+              className="text-xs text-slate-500 underline decoration-slate-300 underline-offset-4 hover:text-slate-700"
+            >
+              {t('tension.clear')}
+            </button>
+          ) : null}
+        </section>
         {/* <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/moment/domain" className="hover:text-slate-700">
             {t('question_back')}

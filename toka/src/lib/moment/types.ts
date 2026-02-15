@@ -6,6 +6,7 @@ export type DraftMoment = {
   domain: Domain | null;
   domain_other_text?: string;
   question_text: string;
+  tensions?: string[];
   cast_mode: 'quick' | 'ritual' | null;
   lines?: number[];
   changing_lines?: number[];

@@ -13,7 +13,11 @@ export const loadDraft = (): DraftMoment | null => {
   }
 
   try {
-    return JSON.parse(raw) as DraftMoment;
+    const parsed = JSON.parse(raw) as DraftMoment;
+    return {
+      ...parsed,
+      tensions: Array.isArray(parsed.tensions) ? parsed.tensions : [],
+    };
   } catch {
     return null;
   }
