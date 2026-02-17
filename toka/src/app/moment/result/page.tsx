@@ -74,6 +74,7 @@ export default function ResultPage() {
   const primary = normalizeHexMeaning(primaryHexRaw ?? {});
   const relating = relatingHexRaw ? normalizeHexMeaning(relatingHexRaw ?? {}) : null;
   const hasCast = typeof primaryId === 'number';
+  const aiStatus = draft.ai_status ?? 'idle';
 
   const getDoctrineRows = (hex: HexMeaningNormalized) => {
     const image = (lang === 'vi' ? hex.core_image?.vi : hex.core_image?.en) ?? '';
@@ -103,17 +104,11 @@ export default function ResultPage() {
     return traditional;
   };
 
-  const fallbackNarrative = {
-    whatIsUnfolding: t('mirror_placeholder_1'),
-    whereYouStand: t('mirror_placeholder_2'),
-    tensionToNotice: t('mirror_placeholder_3'),
-    closingQuestion: t('opening_placeholder'),
-  };
   const narrative = draft.ai_output?.narrative;
-  const whatIsUnfolding = narrative?.what_is_unfolding ?? fallbackNarrative.whatIsUnfolding;
-  const whereYouStand = narrative?.where_you_stand ?? fallbackNarrative.whereYouStand;
-  const tensionToNotice = narrative?.tension_to_notice ?? fallbackNarrative.tensionToNotice;
-  const closingQuestion = draft.ai_output?.closing_question ?? fallbackNarrative.closingQuestion;
+  const whatIsUnfolding = narrative?.what_is_unfolding ?? '';
+  const whereYouStand = narrative?.where_you_stand ?? '';
+  const tensionToNotice = narrative?.tension_to_notice ?? '';
+  const closingQuestion = draft.ai_output?.closing_question ?? '';
 
   const handleRetry = async () => {
     if (!draft || retrying) {
@@ -126,6 +121,7 @@ export default function ResultPage() {
     setRetrying(true);
     setAiStatus('loading');
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const output = await requestInterpretation(input);
       if (output) {
         setAiOutput(output);
@@ -206,8 +202,8 @@ export default function ResultPage() {
                   </>
                 ) : (
                   <div className="space-y-3">
-                    <p className="text-sm text-slate-500">{t('common.analyzing')}</p>
-                    {draft.ai_status === 'error' || (!retrying && draft.ai_status !== 'loading') ? (
+                    {retrying ? <p className="text-sm text-slate-500">{t('common.analyzing')}</p> : null}
+                    {aiStatus === 'error' && !retrying ? (
                       <button
                         type="button"
                         onClick={handleRetry}

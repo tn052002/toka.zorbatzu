@@ -11,30 +11,7 @@ import { hasBannedLanguage } from '@/lib/interpret/postcheck';
 
 const OPENAI_URL = 'https://api.openai.com/v1/responses';
 const MODEL = process.env.OPENAI_MODEL ?? 'gpt-4.1-mini';
-const MAX_ATTEMPTS = 2;
-
-const buildFallback = (input: InterpretInput): InterpretOutput => {
-  const base = input.question_text.trim() || 'This moment is still forming.';
-  const fragments = base.split(/[.!?]/).map((s) => s.trim()).filter(Boolean);
-  const first = fragments[0] ?? base;
-  const second = fragments[1] ?? first;
-  const third = fragments[2] ?? first;
-
-  const paraphrase = (text: string) => {
-    if (!text) return 'The question describes a present tension.';
-    if (text.length < 8) return `The question centers on ${text.toLowerCase()}.`;
-    return `The question centers on ${text.charAt(0).toLowerCase()}${text.slice(1)}.`;
-  };
-
-  return {
-    narrative: {
-      what_is_unfolding: paraphrase(first),
-      where_you_stand: paraphrase(second),
-      tension_to_notice: paraphrase(third),
-    },
-    closing_question: 'What part of this feels most alive right now?',
-  };
-};
+const MAX_ATTEMPTS = 1;
 
 const extractJson = (text: string) => {
   const start = text.indexOf('{');
@@ -117,7 +94,10 @@ export async function POST(request: Request) {
   }
 
   if (!output) {
-    output = buildFallback(parsedInput);
+    return NextResponse.json(
+      { error: 'Interpretation unavailable' },
+      { status: 502 },
+    );
   }
 
   return NextResponse.json(output);
