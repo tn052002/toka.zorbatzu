@@ -200,10 +200,7 @@ export default function ResultPage() {
                         <p className="rounded-md bg-slate-100/35 px-2 py-2">{tensionToNotice}</p>
                       </div>
                     </div>
-                    <div className="px-2 space-y-1 text-sm text-slate-700">
-                      <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
-                        {t('result.narrative.closingQuestion')}
-                      </p>
+                    <div className="px-2 pt-1 text-sm text-slate-500">
                       <p>{closingQuestion}</p>
                     </div>
                   </>
