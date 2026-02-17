@@ -11,6 +11,7 @@ import { hasBannedLanguage } from '@/lib/interpret/postcheck';
 
 const OPENAI_URL = 'https://api.openai.com/v1/responses';
 const MODEL = process.env.OPENAI_MODEL ?? 'gpt-4.1-mini';
+const MAX_ATTEMPTS = 2;
 
 const buildFallback = (input: InterpretInput): InterpretOutput => {
   const base = input.question_text.trim() || 'This moment is still forming.';
@@ -96,28 +97,22 @@ export async function POST(request: Request) {
     parsedInput = interpretInputSchema.parse(body);
   } catch (error) {
     return NextResponse.json(
-      { error: 'Invalid input', details: error instanceof z.ZodError ? error.flatten() : undefined },
+      { error: 'Invalid v2 interpret input', details: error instanceof z.ZodError ? error.flatten() : undefined },
       { status: 400 },
     );
   }
 
   let output: InterpretOutput | null = null;
 
-  const firstAttempt = await requestOpenAI(parsedInput, false);
-  if (firstAttempt) {
-    const result = interpretOutputSchema.safeParse(firstAttempt);
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
+    const candidate = await requestOpenAI(parsedInput, attempt > 1);
+    if (!candidate) {
+      continue;
+    }
+    const result = interpretOutputSchema.safeParse(candidate);
     if (result.success && !hasBannedLanguage(result.data)) {
       output = result.data;
-    }
-  }
-
-  if (!output) {
-    const secondAttempt = await requestOpenAI(parsedInput, true);
-    if (secondAttempt) {
-      const result = interpretOutputSchema.safeParse(secondAttempt);
-      if (result.success && !hasBannedLanguage(result.data)) {
-        output = result.data;
-      }
+      break;
     }
   }
 
