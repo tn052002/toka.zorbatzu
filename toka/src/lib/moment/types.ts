@@ -13,14 +13,12 @@ export type DraftMoment = {
   primary_hex_id?: number;
   relating_hex_id?: number | null;
   ai_output?: {
-    mirror_map: {
-      you_described: string[];
-      two_pulls: string[];
-      cost_to_lose: string[];
-      unknowns: string[];
+    narrative: {
+      what_is_unfolding: string;
+      where_you_stand: string;
+      tension_to_notice: string;
     };
-    cold_mirror_sentence: string;
-    opening_question: string;
+    closing_question: string;
   };
   ai_status?: 'idle' | 'loading' | 'ready' | 'error';
 };

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import { buildInterpretInput, requestInterpretation } from '@/lib/interpret/client';
 import { useI18n } from '@/lib/i18n/useI18n';
+import { interpretOutputSchema } from '@/lib/interpret/schema';
 
 type HexTraditional = {
   name_en?: string;
@@ -15,40 +16,29 @@ type HexTraditional = {
   han_viet?: string;
 };
 
-type HexMeaning = {
-  id: number;
-  layman_title: string;
-  traditional: HexTraditional;
-  present_state: string[];
-  keywords?: string[];
-  domains_hint?: string[];
-};
-
 type MeaningsStore = {
   version: string;
-  hexagrams: Record<string, HexMeaning>;
+  hexagrams: Record<string, HexMeaningV2>;
   line_position_overlay: Record<string, string[]>;
-  fallback: { hexagram: { layman_title: string; present_state: string[] } };
+  fallback?: HexMeaningV2;
+};
+
+type HexMeaningV2 = {
+  id: number;
+  laymantitle: string;
+  traditional?: HexTraditional;
+  core_image: { vi?: string; en?: string };
+  structure: {
+    core_structure: string[];
+    structural_nature: string[];
+    inherent_tension: string;
+  };
+  keywords: string[];
+  domains_hint: string[];
 };
 
 const storeForLang = (lang: 'en' | 'vi') =>
   (lang === 'vi' ? meaningsVi : meaningsEn) as MeaningsStore;
-
-const getHex = (id: number, store: MeaningsStore): HexMeaning => {
-  const found = store.hexagrams[String(id)];
-  if (found) {
-    return found;
-  }
-
-  return {
-    id: 0,
-    layman_title: store.fallback.hexagram.layman_title,
-    traditional: {},
-    present_state: store.fallback.hexagram.present_state,
-    keywords: [],
-    domains_hint: [],
-  };
-};
 
 const formatTraditional = (traditional: HexTraditional) => {
   const parts: string[] = [];
@@ -59,7 +49,7 @@ const formatTraditional = (traditional: HexTraditional) => {
     parts.push(`(${traditional.pinyin})`);
   }
   if (traditional.name_en) {
-    parts.push(parts.length > 0 ? `— ${traditional.name_en}` : traditional.name_en);
+    parts.push(parts.length > 0 ? `- ${traditional.name_en}` : traditional.name_en);
   }
   return parts.join(' ');
 };
@@ -67,8 +57,7 @@ const formatTraditional = (traditional: HexTraditional) => {
 export default function ResultPage() {
   const { draft, initDraft, setAiOutput, setAiStatus, resetDraft } = useDraftMoment();
   const [retrying, setRetrying] = useState(false);
-  const [showSecondary, setShowSecondary] = useState(false);
-  const [showInterpretation, setShowInterpretation] = useState(false);
+  const [showDoctrine, setShowDoctrine] = useState(false);
   const { lang, t } = useI18n();
 
   useEffect(() => {
@@ -86,27 +75,55 @@ export default function ResultPage() {
   const relatingId = draft.relating_hex_id ?? null;
   const hasSecondary =
     typeof primaryId === 'number' && typeof relatingId === 'number' && relatingId !== primaryId;
-  const canShowMirror = !hasSecondary || showSecondary;
   const interpretationReady = Boolean(draft.ai_output);
-
-  const primary = typeof primaryId === 'number' ? getHex(primaryId, store) : getHex(0, store);
-  const relating = hasSecondary && typeof relatingId === 'number' ? getHex(relatingId, store) : null;
+  const fallbackId = '0';
+  const fallbackHex = store.hexagrams[fallbackId] ?? store.fallback;
+  if (!fallbackHex) {
+    throw new Error('Missing V2 fallback hex meaning in store.');
+  }
+  const primary: HexMeaningV2 =
+    typeof primaryId === 'number' ? store.hexagrams[String(primaryId)] ?? fallbackHex : fallbackHex;
+  const relating: HexMeaningV2 | null =
+    hasSecondary && typeof relatingId === 'number'
+      ? store.hexagrams[String(relatingId)] ?? fallbackHex
+      : null;
   const hasCast = typeof primaryId === 'number';
-  const mirror = draft.ai_output?.mirror_map;
+  const aiStatus = draft.ai_status ?? 'idle';
 
-  const fallbackMirror = {
-    you_described: [
-      t('mirror_placeholder_1'),
-      t('mirror_placeholder_2'),
-      t('mirror_placeholder_3'),
-    ],
-    two_pulls: [t('mirror_placeholder_pull_1'), t('mirror_placeholder_pull_2')],
-    cost_to_lose: [t('mirror_placeholder_cost_1'), t('mirror_placeholder_cost_2')],
-    unknowns: [t('mirror_placeholder_unknown_1'), t('mirror_placeholder_unknown_2')],
+  const getDoctrineRows = (hex: HexMeaningV2) => {
+    const image = lang === 'vi' ? hex.core_image.vi ?? '' : hex.core_image.en ?? '';
+    return [
+      { label: t('result.doctrine.coreImage'), values: image ? [image] : [] },
+      { label: t('result.doctrine.coreStructure'), values: hex.structure.core_structure },
+      { label: t('result.doctrine.structuralNature'), values: hex.structure.structural_nature },
+      {
+        label: t('result.doctrine.inherentTension'),
+        values: hex.structure.inherent_tension ? [hex.structure.inherent_tension] : [],
+      },
+    ];
   };
 
-  const coldSentence = draft.ai_output?.cold_mirror_sentence ?? t('cold_placeholder');
-  const openingQuestion = draft.ai_output?.opening_question ?? t('opening_placeholder');
+  const getHexSubtitle = (
+    hex: HexMeaningV2,
+    idOverride?: number | null,
+  ) => {
+    const id = hex.id ?? idOverride ?? undefined;
+    const traditional = formatTraditional((hex.traditional ?? {}) as HexTraditional);
+    if (id && traditional) {
+      return `#${id} ${traditional}`;
+    }
+    if (id) {
+      return `#${id}`;
+    }
+    return traditional;
+  };
+
+  const parsedOutput = interpretOutputSchema.safeParse(draft.ai_output);
+  const narrative = parsedOutput.success ? parsedOutput.data.narrative : null;
+  const whatIsUnfolding = narrative?.what_is_unfolding ?? '';
+  const whereYouStand = narrative?.where_you_stand ?? '';
+  const tensionToNotice = narrative?.tension_to_notice ?? '';
+  const closingQuestion = parsedOutput.success ? parsedOutput.data.closing_question : '';
 
   const handleRetry = async () => {
     if (!draft || retrying) {
@@ -119,6 +136,7 @@ export default function ResultPage() {
     setRetrying(true);
     setAiStatus('loading');
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const output = await requestInterpretation(input);
       if (output) {
         setAiOutput(output);
@@ -164,135 +182,136 @@ export default function ResultPage() {
         ) : null}
 
         {hasCast ? (
-          <section className="rounded-2xl border border-slate-200/70 bg-slate-50/55 px-4 py-5">
-            <div className="space-y-6">
-              <div className="text-sm text-slate-600">
-                <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
-                  {t('result.primaryLabel')}
-                </p>
-                
-                <p className="mt-3 text-base font-medium text-slate-700 px-2">{primary.layman_title}</p>
-                {formatTraditional(primary.traditional) ? (
-                  <p className=" text-xs text-slate-400 px-2">
-                    #{primary.id} {formatTraditional(primary.traditional)}
-                  </p>
-                ) : null}
-                
-                <ul className="mt-2 text-sm text-slate-600">
-                  {primary.present_state.map((item, index) => (
-                    <li key={`primary-${index}`} className="rounded-md bg-slate-100/45 px-2 py-2">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {hasSecondary && !showSecondary ? (
-                <div className="flex items-center justify-between gap-3 text-sm">
-                  <span className="text-slate-600">{t('result.secondaryLabel')}</span>
-                  <button
-                    type="button"
-                    onClick={() => setShowSecondary(true)}
-                    className="rounded-md border border-slate-300/70 px-2.5 py-1 text-xs text-slate-700 transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/40"
-                  >
-                    {t('common.reveal')}
-                  </button>
-                </div>
-              ) : null}
-
-              {relating && showSecondary ? (
-                <div className="text-sm text-slate-600">
-                  <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
-                    {t('result.secondaryLabel')}
-                  </p>
-                  
-                  <p className="mt-3 text-base font-medium text-slate-700 px-2">{relating.layman_title}</p>
-
-                  {formatTraditional(relating.traditional) ? (
-                    <p className="text-xs text-slate-400 px-2">
-                      #{relating.id} {formatTraditional(relating.traditional)}
-                    </p>
-                  ) : null}
-                  
-                  <ul className="mt-2 text-sm text-slate-600">
-                    {relating.present_state.map((item, index) => (
-                      <li key={`relating-${index}`} className="rounded-md bg-slate-100/40 px-2 py-2">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-
-              {!hasSecondary ? <p className="text-xs text-slate-500">{t('result.noSecondary')}</p> : null}
-
-              {canShowMirror ? (
-                !showInterpretation ? (
-                  <div className="flex items-center justify-between gap-3 pt-1 text-sm">
-                    <span className="text-slate-600">{t('result.mirrorLabel')}</span>
-                    <button
-                      type="button"
-                      onClick={() => setShowInterpretation(true)}
-                      disabled={!interpretationReady}
-                      className="rounded-md border border-slate-300/70 px-2.5 py-1 text-xs text-slate-700 transition hover:bg-white/70 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/40"
-                    >
-                      {interpretationReady ? t('common.reveal') : t('common.analyzing')}
-                    </button>
-                  </div>
-                ) : (
-                  <div className="space-y-4 pt-2">
-                    <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
-                      {t('result.mirrorEyebrow')}
-                    </p>
+          <>
+            <div className="space-y-2">
+              <p className="px-1 text-[11px] uppercase tracking-[0.32em] text-slate-400">
+                {t('result.mirrorEyebrow')}
+              </p>
+              <section className="rounded-2xl border border-slate-200/70 bg-slate-50/55 px-4 py-5">
+                <div className="space-y-4 pt-1">
+                {interpretationReady ? (
+                  <>
                     <div className="space-y-3 text-sm text-slate-700">
-                      <ul className="space-y-2">
-                        {(mirror?.you_described ?? fallbackMirror.you_described).map((item, index) => (
-                          <li key={`mirror-you-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul className="space-y-2">
-                        {(mirror?.two_pulls ?? fallbackMirror.two_pulls).map((item, index) => (
-                          <li key={`mirror-pulls-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul className="space-y-2">
-                        {(mirror?.cost_to_lose ?? fallbackMirror.cost_to_lose).map((item, index) => (
-                          <li key={`mirror-cost-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul className="space-y-2">
-                        {(mirror?.unknowns ?? fallbackMirror.unknowns).map((item, index) => (
-                          <li key={`mirror-unknown-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      {!draft.ai_output ? (
-                        <button
-                          type="button"
-                          onClick={handleRetry}
-                          disabled={retrying}
-                          className="w-full rounded-full border border-slate-200 bg-white px-2 py-2 text-xs text-slate-600 disabled:text-slate-400"
-                        >
-                          {retrying ? t('mirror_retrying') : t('mirror_retry')}
-                        </button>
-                      ) : null}
+                      <div className="space-y-1">
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                          {t('result.narrative.whatIsUnfolding')}
+                        </p>
+                        <p className="rounded-md bg-slate-100/35 px-2 py-2">{whatIsUnfolding}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                          {t('result.narrative.whereYouStand')}
+                        </p>
+                        <p className="rounded-md bg-slate-100/35 px-2 py-2">{whereYouStand}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                          {t('result.narrative.tensionToNotice')}
+                        </p>
+                        <p className="rounded-md bg-slate-100/35 px-2 py-2">{tensionToNotice}</p>
+                      </div>
                     </div>
-                    <div className="px-2 space-y-3 text-sm text-slate-700">
-                      <p>{coldSentence}</p>
-                      <p>{openingQuestion}</p>
+                    <div className="px-2 pt-1 text-sm text-slate-500">
+                      <p>{closingQuestion}</p>
                     </div>
+                  </>
+                ) : (
+                  <div className="space-y-3">
+                    {retrying ? <p className="text-sm text-slate-500">{t('common.analyzing')}</p> : null}
+                    {aiStatus === 'error' && !retrying ? (
+                      <button
+                        type="button"
+                        onClick={handleRetry}
+                        disabled={retrying}
+                        className="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs text-slate-600 disabled:text-slate-400"
+                      >
+                        {retrying ? t('mirror_retrying') : t('mirror_retry')}
+                      </button>
+                    ) : null}
                   </div>
-                )
+                )}
+                </div>
+              </section>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-3">
+                <p className="px-1 text-[11px] uppercase tracking-[0.32em] text-slate-400">
+                  {t('result.underlyingStructure')}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setShowDoctrine((current) => !current)}
+                  className="rounded-md border border-slate-300/70 px-2.5 py-1 text-xs text-slate-700 transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/40"
+                >
+                  {showDoctrine ? t('common.collapse') : t('common.reveal')}
+                </button>
+              </div>
+              {showDoctrine ? (
+                <div className="space-y-4 px-2 text-sm text-slate-600">
+                  <div className="rounded-xl border border-slate-200/70 bg-white/55 p-4 space-y-3">
+                    <div className="space-y-2 border-b border-slate-200/70 pb-3">
+                      <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                        {t('result.primaryLabel')}
+                      </p>
+                      <div className="space-y-1">
+                        <p className="text-base font-medium text-slate-800">
+                          {primary.laymantitle}
+                        </p>
+                        <p className="text-xs text-slate-500">{getHexSubtitle(primary, primaryId)}</p>
+                      </div>
+                    </div>
+                    {getDoctrineRows(primary).map((row) => {
+                      if (row.values.length === 0) {
+                        return null;
+                      }
+                      return (
+                        <div key={`primary-${row.label}`} className="space-y-1">
+                          <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">{row.label}</p>
+                          {row.values.map((value, index) => (
+                            <p key={`primary-${row.label}-${index}`} className="text-sm text-slate-700">
+                              {value}
+                            </p>
+                          ))}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {relating && hasSecondary ? (
+                    <div className="rounded-xl border border-slate-200/70 bg-white/55 p-4 space-y-3">
+                      <div className="space-y-2 border-b border-slate-200/70 pb-3">
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                          {t('result.secondaryLabel')}
+                        </p>
+                        <div className="space-y-1">
+                          <p className="text-base font-medium text-slate-800">
+                            {relating.laymantitle}
+                          </p>
+                          <p className="text-xs text-slate-500">{getHexSubtitle(relating, relatingId)}</p>
+                        </div>
+                      </div>
+                      {getDoctrineRows(relating).map((row) => {
+                        if (row.values.length === 0) {
+                          return null;
+                        }
+                        return (
+                          <div key={`relating-${row.label}`} className="space-y-1">
+                            <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">{row.label}</p>
+                            {row.values.map((value, index) => (
+                              <p key={`relating-${row.label}-${index}`} className="text-sm text-slate-700">
+                                {value}
+                              </p>
+                            ))}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : null}
+                </div>
               ) : null}
             </div>
-          </section>
+          </>
         ) : null}
       </div>
     </ScreenLayout>
