@@ -15,6 +15,28 @@ const bannedList = [
 ];
 
 export const buildInterpretPrompt = (input: InterpretInput) => {
+  const formatMeaning = (meaning: NonNullable<InterpretInput['relating']> | InterpretInput['primary']) => {
+    const coreImageParts = [
+      meaning.core_image?.vi,
+      meaning.core_image?.en,
+    ].filter(Boolean) as string[];
+    const coreStructure = meaning.structure?.core_structure ?? [];
+    const structuralNature = meaning.structure?.structural_nature ?? [];
+    const inherentTension = meaning.structure?.inherent_tension ?? '';
+
+    const v2Lines = [
+      ...coreImageParts,
+      ...coreStructure,
+      ...structuralNature,
+      inherentTension,
+    ].filter(Boolean);
+
+    // TODO: remove legacy present_state fallback after migration complete.
+    const legacyLines = Array.isArray(meaning.present_state) ? meaning.present_state : [];
+    const lines = v2Lines.length > 0 ? v2Lines : legacyLines;
+    return lines.map((item) => `- ${item}`).join(' ');
+  };
+
   const movementAnchors = input.movement.changing_lines
     .map((line) => ({
       line,
@@ -27,9 +49,7 @@ export const buildInterpretPrompt = (input: InterpretInput) => {
     .join('\n');
 
   const relatingAnchors = input.relating
-    ? `Relating (${input.relating.layman_title}): ${input.relating.present_state
-        .map((item) => `- ${item}`)
-        .join(' ')}`
+    ? `Relating (${input.relating.layman_title}): ${formatMeaning(input.relating) || '- None'}`
     : 'Relating: null';
 
   const tensions = Array.isArray(input.tensions) ? input.tensions.filter(Boolean) : [];
@@ -48,9 +68,7 @@ Domain: ${input.domain}
 Question: ${input.question_text}
 ${tensionsBlock}
 
-Primary (${input.primary.layman_title}): ${input.primary.present_state
-    .map((item) => `- ${item}`)
-    .join(' ')}
+Primary (${input.primary.layman_title}): ${formatMeaning(input.primary) || '- None'}
 
 Movement overlays:
 ${movementAnchors || 'None'}

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import { buildInterpretInput, requestInterpretation } from '@/lib/interpret/client';
 import { useI18n } from '@/lib/i18n/useI18n';
+import { normalizeHexMeaning, type HexMeaningNormalized } from '@/lib/hex/normalize';
 
 type HexTraditional = {
   name_en?: string;
@@ -15,40 +16,15 @@ type HexTraditional = {
   han_viet?: string;
 };
 
-type HexMeaning = {
-  id: number;
-  layman_title: string;
-  traditional: HexTraditional;
-  present_state: string[];
-  keywords?: string[];
-  domains_hint?: string[];
-};
-
 type MeaningsStore = {
   version: string;
-  hexagrams: Record<string, HexMeaning>;
+  hexagrams: Record<string, unknown>;
   line_position_overlay: Record<string, string[]>;
-  fallback: { hexagram: { layman_title: string; present_state: string[] } };
+  fallback?: unknown;
 };
 
 const storeForLang = (lang: 'en' | 'vi') =>
   (lang === 'vi' ? meaningsVi : meaningsEn) as MeaningsStore;
-
-const getHex = (id: number, store: MeaningsStore): HexMeaning => {
-  const found = store.hexagrams[String(id)];
-  if (found) {
-    return found;
-  }
-
-  return {
-    id: 0,
-    layman_title: store.fallback.hexagram.layman_title,
-    traditional: {},
-    present_state: store.fallback.hexagram.present_state,
-    keywords: [],
-    domains_hint: [],
-  };
-};
 
 const formatTraditional = (traditional: HexTraditional) => {
   const parts: string[] = [];
@@ -62,6 +38,20 @@ const formatTraditional = (traditional: HexTraditional) => {
     parts.push(parts.length > 0 ? `— ${traditional.name_en}` : traditional.name_en);
   }
   return parts.join(' ');
+};
+
+const getMeaningLines = (hex: HexMeaningNormalized): string[] => {
+  const v2Lines = [
+    hex.core_image?.vi,
+    hex.core_image?.en,
+    ...(hex.structure?.core_structure ?? []),
+    ...(hex.structure?.structural_nature ?? []),
+    hex.structure?.inherent_tension,
+  ].filter(Boolean) as string[];
+
+  // TODO: remove legacy present_state fallback after migration complete.
+  const legacyLines = Array.isArray(hex.present_state) ? hex.present_state : [];
+  return v2Lines.length > 0 ? v2Lines : legacyLines;
 };
 
 export default function ResultPage() {
@@ -85,9 +75,19 @@ export default function ResultPage() {
   const hasSecondary =
     typeof primaryId === 'number' && typeof relatingId === 'number' && relatingId !== primaryId;
   const interpretationReady = Boolean(draft.ai_output);
-
-  const primary = typeof primaryId === 'number' ? getHex(primaryId, store) : getHex(0, store);
-  const relating = hasSecondary && typeof relatingId === 'number' ? getHex(relatingId, store) : null;
+  const fallbackId = '0';
+  const fallbackHex = store.hexagrams?.[fallbackId] ?? store.fallback ?? {};
+  const normalizedFallback = normalizeHexMeaning(fallbackHex ?? {});
+  const primaryHexRaw =
+    typeof primaryId === 'number' ? store.hexagrams?.[String(primaryId)] ?? fallbackHex : fallbackHex;
+  const relatingHexRaw =
+    hasSecondary && typeof relatingId === 'number'
+      ? store.hexagrams?.[String(relatingId)] ?? fallbackHex
+      : null;
+  const primary = normalizeHexMeaning(primaryHexRaw ?? {});
+  const relating = relatingHexRaw ? normalizeHexMeaning(relatingHexRaw ?? {}) : null;
+  const primaryLines = getMeaningLines(primary);
+  const relatingLines = relating ? getMeaningLines(relating) : [];
   const hasCast = typeof primaryId === 'number';
   const mirror = draft.ai_output?.mirror_map;
 
@@ -225,16 +225,18 @@ export default function ResultPage() {
                 <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
                   {t('result.primaryLabel')}
                 </p>
-                
-                <p className="mt-3 text-base font-medium text-slate-700 px-2">{primary.layman_title}</p>
-                {formatTraditional(primary.traditional) ? (
+
+                <p className="mt-3 text-base font-medium text-slate-700 px-2">
+                  {primary.laymantitle || normalizedFallback.laymantitle}
+                </p>
+                {formatTraditional(primary.traditional ?? {}) ? (
                   <p className=" text-xs text-slate-400 px-2">
-                    #{primary.id} {formatTraditional(primary.traditional)}
+                    #{primary.id ?? normalizedFallback.id ?? 0} {formatTraditional(primary.traditional ?? {})}
                   </p>
                 ) : null}
                 
                 <ul className="mt-2 text-sm text-slate-600">
-                  {primary.present_state.map((item, index) => (
+                  {primaryLines.map((item, index) => (
                     <li key={`primary-${index}`} className="rounded-md bg-slate-100/45 px-2 py-2">
                       {item}
                     </li>
@@ -248,16 +250,18 @@ export default function ResultPage() {
                     {t('result.secondaryLabel')}
                   </p>
                   
-                  <p className="mt-3 text-base font-medium text-slate-700 px-2">{relating.layman_title}</p>
+                  <p className="mt-3 text-base font-medium text-slate-700 px-2">
+                    {relating.laymantitle || normalizedFallback.laymantitle}
+                  </p>
 
-                  {formatTraditional(relating.traditional) ? (
+                  {formatTraditional(relating.traditional ?? {}) ? (
                     <p className="text-xs text-slate-400 px-2">
-                      #{relating.id} {formatTraditional(relating.traditional)}
+                      #{relating.id ?? normalizedFallback.id ?? 0} {formatTraditional(relating.traditional ?? {})}
                     </p>
                   ) : null}
                   
                   <ul className="mt-2 text-sm text-slate-600">
-                    {relating.present_state.map((item, index) => (
+                    {relatingLines.map((item, index) => (
                       <li key={`relating-${index}`} className="rounded-md bg-slate-100/40 px-2 py-2">
                         {item}
                       </li>

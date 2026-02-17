@@ -2,8 +2,14 @@ import meaningsEn from '@/data/hex_meanings_en.json';
 import meaningsVi from '@/data/hex_meanings_vi.json';
 import type { InterpretInput, InterpretOutput } from './schema';
 import type { DraftMoment } from '@/lib/moment/types';
+import { normalizeHexMeaning } from '@/lib/hex/normalize';
 
-type MeaningsStore = typeof meaningsEn;
+type MeaningsStore = {
+  version: string;
+  hexagrams: Record<string, unknown>;
+  line_position_overlay?: Record<string, string[]>;
+  fallback?: unknown;
+};
 
 const fallbackMovementByLang: Record<'en' | 'vi', string[]> = {
   en: [
@@ -14,28 +20,27 @@ const fallbackMovementByLang: Record<'en' | 'vi', string[]> = {
 };
 
 const getHex = (id: number, store: MeaningsStore, fallbackMovement: string[]) => {
-  const hexagrams = store.hexagrams as
-    | Record<string, (typeof store.hexagrams)[keyof typeof store.hexagrams]>
-    | undefined;
+  const hexagrams = store.hexagrams as Record<string, unknown> | undefined;
   const found = hexagrams?.[String(id)];
   if (found) {
-    return found;
+    return normalizeHexMeaning(found);
   }
-  const fallback = store.fallback?.hexagram;
+
+  const fallbackRaw = (store as any).fallback?.hexagram ?? (store as any).fallback ?? {};
+  const fallback = normalizeHexMeaning(fallbackRaw);
+  // TODO: remove legacy present_state fallback after migration complete.
   return {
-    id: 0,
-    layman_title: fallback?.layman_title ?? 'Unclear Pattern',
-    traditional: {},
-    present_state: fallback?.present_state ?? fallbackMovement,
-    keywords: [],
-    domains_hint: [],
+    ...fallback,
+    laymantitle: fallback.laymantitle || 'Unclear Pattern',
+    present_state:
+      fallback.present_state && fallback.present_state.length > 0
+        ? fallback.present_state
+        : fallbackMovement,
   };
 };
 
 const getOverlay = (line: number, store: MeaningsStore, fallback: string[]) => {
-  const linePositionOverlay = store.line_position_overlay as
-    | Record<string, (typeof store.line_position_overlay)[keyof typeof store.line_position_overlay]>
-    | undefined;
+  const linePositionOverlay = store.line_position_overlay as Record<string, string[]> | undefined;
   const items = linePositionOverlay?.[String(line)];
   if (items && items.length >= 2) {
     return items.slice(0, 2);
@@ -43,7 +48,8 @@ const getOverlay = (line: number, store: MeaningsStore, fallback: string[]) => {
   return fallback;
 };
 
-const getMeaningsForLang = (lang: 'en' | 'vi') => (lang === 'vi' ? meaningsVi : meaningsEn);
+const getMeaningsForLang = (lang: 'en' | 'vi'): MeaningsStore =>
+  (lang === 'vi' ? (meaningsVi as MeaningsStore) : (meaningsEn as MeaningsStore));
 
 export const buildInterpretInput = (
   draft: DraftMoment,
@@ -72,8 +78,11 @@ export const buildInterpretInput = (
     question_text: draft.question_text,
     tensions,
     primary: {
-      layman_title: primary.layman_title,
-      present_state: primary.present_state,
+      layman_title: primary.laymantitle,
+      core_image: primary.core_image ?? null,
+      structure: primary.structure ?? null,
+      // TODO: remove legacy present_state fallback after migration complete.
+      present_state: primary.present_state ?? undefined,
     },
     movement: {
       changing_lines: changingLines,
@@ -81,8 +90,11 @@ export const buildInterpretInput = (
     },
     relating: relating
       ? {
-          layman_title: relating.layman_title,
-          present_state: relating.present_state,
+          layman_title: relating.laymantitle,
+          core_image: relating.core_image ?? null,
+          structure: relating.structure ?? null,
+          // TODO: remove legacy present_state fallback after migration complete.
+          present_state: relating.present_state ?? undefined,
         }
       : null,
   };
