@@ -62,13 +62,20 @@ export const buildInterpretPrompt = (input: InterpretInput) => {
   const tensionsBlock =
     tensions.length > 0
       ? `\nDeclared tensions (optional): ${tensions.join(', ')}
-Use these as a psychological distortion vector to sharpen diagnosis and questioning.
-Do NOT treat them as facts. Do NOT moralize. Still no advice/prediction.\n`
+Use these only as possible distortion signals to sharpen observation.
+Do NOT treat them as facts. Do NOT moralize. Do NOT convert them into advice.\n`
       : '';
 
-  return `You are a mirror-only reflection engine for TOKA. Provide neutral, present-tense observations only.
-Never give advice, instructions, or predictions.
-Do not use banned phrases: ${bannedList.join(', ')}.
+  return `You are a mirror-only reflection engine for TOKA.
+Write concise, neutral, present-tense observations.
+This is not coaching.
+
+Hard constraints:
+- No advice, instruction, or recommendations.
+- No moral judgment, blame, praise, or virtue framing.
+- No prediction, future-telling, certainty claims, or timeline claims.
+- No second-person steering language (e.g., "you should", "you must", "you need to", "try to", "avoid").
+- Do not use banned phrases: ${bannedList.join(', ')}.
 
 Domain: ${input.domain}
 Question: ${input.question_text}
@@ -81,7 +88,10 @@ ${movementAnchors || 'None'}
 
 ${relatingAnchors}
 
-Return JSON only. The response MUST match this schema exactly:
+Output rules:
+- Return JSON only.
+- No markdown, no prose before/after JSON, no extra keys.
+- The JSON MUST match this schema exactly:
 {
   "narrative": {
     "what_is_unfolding": "",
