@@ -26,23 +26,12 @@ const buildFallback = (input: InterpretInput): InterpretOutput => {
   };
 
   return {
-    mirror_map: {
-      you_described: [paraphrase(first), paraphrase(second), paraphrase(third)],
-      two_pulls: [
-        'One pull points toward clarity; another points toward uncertainty.',
-        'A steady desire and a shifting concern appear together.',
-      ],
-      cost_to_lose: [
-        'Letting go may change the sense of stability.',
-        'Holding on may keep the current pattern intact.',
-      ],
-      unknowns: [
-        'Some parts of the situation remain undefined.',
-        'The timing of change stays open.',
-      ],
+    narrative: {
+      what_is_unfolding: paraphrase(first),
+      where_you_stand: paraphrase(second),
+      tension_to_notice: paraphrase(third),
     },
-    cold_mirror_sentence: 'You are holding two truths at once.',
-    opening_question: 'What part of this feels most alive right now?',
+    closing_question: 'What part of this feels most alive right now?',
   };
 };
 

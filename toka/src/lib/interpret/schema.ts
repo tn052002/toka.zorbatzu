@@ -44,14 +44,12 @@ export const interpretInputSchema = z.object({
 });
 
 export const interpretOutputSchema = z.object({
-  mirror_map: z.object({
-    you_described: z.array(z.string()).length(3),
-    two_pulls: z.array(z.string()).length(2),
-    cost_to_lose: z.array(z.string()).length(2),
-    unknowns: z.array(z.string()).length(2),
+  narrative: z.object({
+    what_is_unfolding: z.string(),
+    where_you_stand: z.string(),
+    tension_to_notice: z.string(),
   }),
-  cold_mirror_sentence: z.string(),
-  opening_question: z.string(),
+  closing_question: z.string(),
 });
 
 export type InterpretInput = z.infer<typeof interpretInputSchema>;

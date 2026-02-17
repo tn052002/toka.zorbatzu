@@ -77,13 +77,11 @@ ${relatingAnchors}
 
 Return JSON only. The response MUST match this schema exactly:
 {
-  "mirror_map": {
-    "you_described": ["", "", ""],
-    "two_pulls": ["", ""],
-    "cost_to_lose": ["", ""],
-    "unknowns": ["", ""]
+  "narrative": {
+    "what_is_unfolding": "",
+    "where_you_stand": "",
+    "tension_to_notice": ""
   },
-  "cold_mirror_sentence": "",
-  "opening_question": ""
+  "closing_question": ""
 }`;
 };

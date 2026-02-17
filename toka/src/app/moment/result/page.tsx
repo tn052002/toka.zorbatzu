@@ -74,7 +74,6 @@ export default function ResultPage() {
   const primary = normalizeHexMeaning(primaryHexRaw ?? {});
   const relating = relatingHexRaw ? normalizeHexMeaning(relatingHexRaw ?? {}) : null;
   const hasCast = typeof primaryId === 'number';
-  const mirror = draft.ai_output?.mirror_map;
 
   const getDoctrineRows = (hex: HexMeaningNormalized) => {
     const image = (lang === 'vi' ? hex.core_image?.vi : hex.core_image?.en) ?? '';
@@ -104,19 +103,17 @@ export default function ResultPage() {
     return traditional;
   };
 
-  const fallbackMirror = {
-    you_described: [
-      t('mirror_placeholder_1'),
-      t('mirror_placeholder_2'),
-      t('mirror_placeholder_3'),
-    ],
-    two_pulls: [t('mirror_placeholder_pull_1'), t('mirror_placeholder_pull_2')],
-    cost_to_lose: [t('mirror_placeholder_cost_1'), t('mirror_placeholder_cost_2')],
-    unknowns: [t('mirror_placeholder_unknown_1'), t('mirror_placeholder_unknown_2')],
+  const fallbackNarrative = {
+    whatIsUnfolding: t('mirror_placeholder_1'),
+    whereYouStand: t('mirror_placeholder_2'),
+    tensionToNotice: t('mirror_placeholder_3'),
+    closingQuestion: t('opening_placeholder'),
   };
-
-  const coldSentence = draft.ai_output?.cold_mirror_sentence ?? t('cold_placeholder');
-  const openingQuestion = draft.ai_output?.opening_question ?? t('opening_placeholder');
+  const narrative = draft.ai_output?.narrative;
+  const whatIsUnfolding = narrative?.what_is_unfolding ?? fallbackNarrative.whatIsUnfolding;
+  const whereYouStand = narrative?.where_you_stand ?? fallbackNarrative.whereYouStand;
+  const tensionToNotice = narrative?.tension_to_notice ?? fallbackNarrative.tensionToNotice;
+  const closingQuestion = draft.ai_output?.closing_question ?? fallbackNarrative.closingQuestion;
 
   const handleRetry = async () => {
     if (!draft || retrying) {
@@ -184,38 +181,12 @@ export default function ResultPage() {
                 {interpretationReady ? (
                   <>
                     <div className="space-y-3 text-sm text-slate-700">
-                      <ul className="space-y-2">
-                        {(mirror?.you_described ?? fallbackMirror.you_described).map((item, index) => (
-                          <li key={`mirror-you-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul className="space-y-2">
-                        {(mirror?.two_pulls ?? fallbackMirror.two_pulls).map((item, index) => (
-                          <li key={`mirror-pulls-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul className="space-y-2">
-                        {(mirror?.cost_to_lose ?? fallbackMirror.cost_to_lose).map((item, index) => (
-                          <li key={`mirror-cost-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul className="space-y-2">
-                        {(mirror?.unknowns ?? fallbackMirror.unknowns).map((item, index) => (
-                          <li key={`mirror-unknown-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                      <p className="rounded-md bg-slate-100/35 px-2 py-2">{whatIsUnfolding}</p>
+                      <p className="rounded-md bg-slate-100/35 px-2 py-2">{whereYouStand}</p>
+                      <p className="rounded-md bg-slate-100/35 px-2 py-2">{tensionToNotice}</p>
                     </div>
                     <div className="px-2 space-y-3 text-sm text-slate-700">
-                      <p>{coldSentence}</p>
-                      <p>{openingQuestion}</p>
+                      <p>{closingQuestion}</p>
                     </div>
                   </>
                 ) : (
