@@ -133,10 +133,24 @@ export default function ResultPage() {
   };
 
   return (
-    <ScreenLayout title={t('result_title')} description={t('result_desc')}>
+    <ScreenLayout 
+      title={t('result_title')} 
+      description={t('result_desc')}
+      footer= {<div className="flex items-center justify-between text-xs text-slate-500">
+          <Link href="/moment/cast" className="hover:text-slate-700">
+            {t('result_back')}
+          </Link>
+          <Link
+            href="/"
+            className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700"
+          >
+            {t('result_home')}
+          </Link>
+        </div> }
+      >  
       <div className="space-y-6">
         {!hasCast ? (
-          <section className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
+          <section className="rounded-full border border-slate-200/70 bg-white px-4 py-4 text-sm text-slate-600">
             <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{t('cast_missing_title')}</p>
             <p className="mt-2 text-sm text-slate-700">{t('cast_missing_body')}</p>
             <Link
@@ -150,21 +164,23 @@ export default function ResultPage() {
         ) : null}
 
         {hasCast ? (
-          <section className="rounded-2xl bg-slate-50/55 px-4 py-5">
+          <section className="rounded-2xl border border-slate-200/70 bg-slate-50/55 px-4 py-5">
             <div className="space-y-6">
-              <div className="space-y-2 text-sm text-slate-600">
+              <div className="text-sm text-slate-600">
                 <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
                   {t('result.primaryLabel')}
                 </p>
-                <p className="text-lg font-medium text-slate-800">{primary.layman_title}</p>
+                
+                <p className="mt-3 text-base font-medium text-slate-700 px-2">{primary.layman_title}</p>
                 {formatTraditional(primary.traditional) ? (
-                  <p className="text-xs text-slate-400">
+                  <p className=" text-xs text-slate-400 px-2">
                     #{primary.id} {formatTraditional(primary.traditional)}
                   </p>
                 ) : null}
-                <ul className="space-y-2 text-sm text-slate-600">
+                
+                <ul className="mt-2 text-sm text-slate-600">
                   {primary.present_state.map((item, index) => (
-                    <li key={`primary-${index}`} className="rounded-md bg-slate-100/45 px-3 py-2">
+                    <li key={`primary-${index}`} className="rounded-md bg-slate-100/45 px-2 py-2">
                       {item}
                     </li>
                   ))}
@@ -185,19 +201,22 @@ export default function ResultPage() {
               ) : null}
 
               {relating && showSecondary ? (
-                <div className="border-l border-slate-200/90 pl-4 text-sm text-slate-600">
-                  <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
+                <div className="text-sm text-slate-600">
+                  <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
                     {t('result.secondaryLabel')}
                   </p>
-                  <p className="mt-2 text-sm font-medium text-slate-700">{relating.layman_title}</p>
+                  
+                  <p className="mt-3 text-base font-medium text-slate-700 px-2">{relating.layman_title}</p>
+
                   {formatTraditional(relating.traditional) ? (
-                    <p className="mt-1 text-xs text-slate-400">
+                    <p className="text-xs text-slate-400 px-2">
                       #{relating.id} {formatTraditional(relating.traditional)}
                     </p>
                   ) : null}
-                  <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                  
+                  <ul className="mt-2 text-sm text-slate-600">
                     {relating.present_state.map((item, index) => (
-                      <li key={`relating-${index}`} className="rounded-md bg-slate-100/40 px-3 py-2">
+                      <li key={`relating-${index}`} className="rounded-md bg-slate-100/40 px-2 py-2">
                         {item}
                       </li>
                     ))}
@@ -228,28 +247,28 @@ export default function ResultPage() {
                     <div className="space-y-3 text-sm text-slate-700">
                       <ul className="space-y-2">
                         {(mirror?.you_described ?? fallbackMirror.you_described).map((item, index) => (
-                          <li key={`mirror-you-${index}`} className="rounded-md bg-slate-100/35 px-3 py-2">
+                          <li key={`mirror-you-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
                             {item}
                           </li>
                         ))}
                       </ul>
                       <ul className="space-y-2">
                         {(mirror?.two_pulls ?? fallbackMirror.two_pulls).map((item, index) => (
-                          <li key={`mirror-pulls-${index}`} className="rounded-md bg-slate-100/35 px-3 py-2">
+                          <li key={`mirror-pulls-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
                             {item}
                           </li>
                         ))}
                       </ul>
                       <ul className="space-y-2">
                         {(mirror?.cost_to_lose ?? fallbackMirror.cost_to_lose).map((item, index) => (
-                          <li key={`mirror-cost-${index}`} className="rounded-md bg-slate-100/35 px-3 py-2">
+                          <li key={`mirror-cost-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
                             {item}
                           </li>
                         ))}
                       </ul>
                       <ul className="space-y-2">
                         {(mirror?.unknowns ?? fallbackMirror.unknowns).map((item, index) => (
-                          <li key={`mirror-unknown-${index}`} className="rounded-md bg-slate-100/35 px-3 py-2">
+                          <li key={`mirror-unknown-${index}`} className="rounded-md bg-slate-100/35 px-2 py-2">
                             {item}
                           </li>
                         ))}
@@ -259,13 +278,13 @@ export default function ResultPage() {
                           type="button"
                           onClick={handleRetry}
                           disabled={retrying}
-                          className="w-full rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 disabled:text-slate-400"
+                          className="w-full rounded-full border border-slate-200 bg-white px-2 py-2 text-xs text-slate-600 disabled:text-slate-400"
                         >
                           {retrying ? t('mirror_retrying') : t('mirror_retry')}
                         </button>
                       ) : null}
                     </div>
-                    <div className="space-y-3 text-sm text-slate-700">
+                    <div className="px-2 space-y-3 text-sm text-slate-700">
                       <p>{coldSentence}</p>
                       <p>{openingQuestion}</p>
                     </div>
@@ -275,18 +294,6 @@ export default function ResultPage() {
             </div>
           </section>
         ) : null}
-
-        <div className="flex items-center justify-between text-xs text-slate-500">
-          <Link href="/moment/cast" className="hover:text-slate-700">
-            {t('result_back')}
-          </Link>
-          <Link
-            href="/"
-            className="rounded-full border border-slate-200 bg-white px-3 py-1 text-slate-700"
-          >
-            {t('result_home')}
-          </Link>
-        </div>
       </div>
     </ScreenLayout>
   );
