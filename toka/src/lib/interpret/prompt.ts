@@ -15,7 +15,12 @@ const bannedList = [
 ];
 
 export const buildInterpretPrompt = (input: InterpretInput) => {
+  const getMeaningTitle = (
+    meaning: NonNullable<InterpretInput['relating']> | InterpretInput['primary'],
+  ) => meaning.layman_title || meaning.laymantitle || 'Unnamed Pattern';
+
   const formatMeaning = (meaning: NonNullable<InterpretInput['relating']> | InterpretInput['primary']) => {
+    const idLine = typeof meaning.id === 'number' ? [`id: ${meaning.id}`] : [];
     const coreImageParts = [
       meaning.core_image?.vi,
       meaning.core_image?.en,
@@ -23,17 +28,18 @@ export const buildInterpretPrompt = (input: InterpretInput) => {
     const coreStructure = meaning.structure?.core_structure ?? [];
     const structuralNature = meaning.structure?.structural_nature ?? [];
     const inherentTension = meaning.structure?.inherent_tension ?? '';
+    const keywords = meaning.keywords ?? [];
+    const domainsHint = meaning.domains_hint ?? [];
 
-    const v2Lines = [
+    const lines = [
+      ...idLine,
       ...coreImageParts,
       ...coreStructure,
       ...structuralNature,
       inherentTension,
+      ...keywords.map((item) => `keyword: ${item}`),
+      ...domainsHint.map((item) => `domain_hint: ${item}`),
     ].filter(Boolean);
-
-    // TODO: remove legacy present_state fallback after migration complete.
-    const legacyLines = Array.isArray(meaning.present_state) ? meaning.present_state : [];
-    const lines = v2Lines.length > 0 ? v2Lines : legacyLines;
     return lines.map((item) => `- ${item}`).join(' ');
   };
 
@@ -49,7 +55,7 @@ export const buildInterpretPrompt = (input: InterpretInput) => {
     .join('\n');
 
   const relatingAnchors = input.relating
-    ? `Relating (${input.relating.layman_title}): ${formatMeaning(input.relating) || '- None'}`
+    ? `Relating (${getMeaningTitle(input.relating)}): ${formatMeaning(input.relating) || '- None'}`
     : 'Relating: null';
 
   const tensions = Array.isArray(input.tensions) ? input.tensions.filter(Boolean) : [];
@@ -68,7 +74,7 @@ Domain: ${input.domain}
 Question: ${input.question_text}
 ${tensionsBlock}
 
-Primary (${input.primary.layman_title}): ${formatMeaning(input.primary) || '- None'}
+Primary (${getMeaningTitle(input.primary)}): ${formatMeaning(input.primary) || '- None'}
 
 Movement overlays:
 ${movementAnchors || 'None'}

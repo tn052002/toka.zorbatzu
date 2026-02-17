@@ -19,7 +19,7 @@ const fallbackMovementByLang: Record<'en' | 'vi', string[]> = {
   vi: ['Có chuyển động, nhưng khó gọi tên rõ.', 'Nhiều cách hiểu có thể cùng phù hợp.'],
 };
 
-const getHex = (id: number, store: MeaningsStore, fallbackMovement: string[]) => {
+const getHex = (id: number, store: MeaningsStore) => {
   const hexagrams = store.hexagrams as Record<string, unknown> | undefined;
   const found = hexagrams?.[String(id)];
   if (found) {
@@ -28,14 +28,12 @@ const getHex = (id: number, store: MeaningsStore, fallbackMovement: string[]) =>
 
   const fallbackRaw = (store as any).fallback?.hexagram ?? (store as any).fallback ?? {};
   const fallback = normalizeHexMeaning(fallbackRaw);
-  // TODO: remove legacy present_state fallback after migration complete.
   return {
     ...fallback,
+    id,
     laymantitle: fallback.laymantitle || 'Unclear Pattern',
-    present_state:
-      fallback.present_state && fallback.present_state.length > 0
-        ? fallback.present_state
-        : fallbackMovement,
+    keywords: fallback.keywords ?? [],
+    domains_hint: fallback.domains_hint ?? [],
   };
 };
 
@@ -61,9 +59,9 @@ export const buildInterpretInput = (
 
   const store = getMeaningsForLang(lang);
   const fallbackMovement = fallbackMovementByLang[lang] ?? fallbackMovementByLang.en;
-  const primary = getHex(draft.primary_hex_id, store, fallbackMovement);
+  const primary = getHex(draft.primary_hex_id, store);
   const relating = typeof draft.relating_hex_id === 'number'
-    ? getHex(draft.relating_hex_id, store, fallbackMovement)
+    ? getHex(draft.relating_hex_id, store)
     : null;
 
   const changingLines = draft.changing_lines ?? [];
@@ -78,11 +76,13 @@ export const buildInterpretInput = (
     question_text: draft.question_text,
     tensions,
     primary: {
+      id: primary.id,
       layman_title: primary.laymantitle,
+      laymantitle: primary.laymantitle,
       core_image: primary.core_image ?? null,
       structure: primary.structure ?? null,
-      // TODO: remove legacy present_state fallback after migration complete.
-      present_state: primary.present_state ?? undefined,
+      keywords: primary.keywords ?? [],
+      domains_hint: primary.domains_hint ?? [],
     },
     movement: {
       changing_lines: changingLines,
@@ -90,11 +90,13 @@ export const buildInterpretInput = (
     },
     relating: relating
       ? {
+          id: relating.id,
           layman_title: relating.laymantitle,
+          laymantitle: relating.laymantitle,
           core_image: relating.core_image ?? null,
           structure: relating.structure ?? null,
-          // TODO: remove legacy present_state fallback after migration complete.
-          present_state: relating.present_state ?? undefined,
+          keywords: relating.keywords ?? [],
+          domains_hint: relating.domains_hint ?? [],
         }
       : null,
   };

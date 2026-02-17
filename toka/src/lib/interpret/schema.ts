@@ -11,7 +11,9 @@ export const domainSchema = z.enum([
 ]);
 
 const meaningInputSchema = z.object({
-  layman_title: z.string(),
+  id: z.number().int().positive().optional(),
+  layman_title: z.string().optional(),
+  laymantitle: z.string().optional(),
   core_image: z
     .object({
       vi: z.string().optional(),
@@ -27,8 +29,8 @@ const meaningInputSchema = z.object({
     })
     .nullable()
     .optional(),
-  // TODO: remove legacy present_state after migration complete.
-  present_state: z.array(z.string()).optional(),
+  keywords: z.array(z.string()).optional(),
+  domains_hint: z.array(z.string()).optional(),
 });
 
 export const interpretInputSchema = z.object({

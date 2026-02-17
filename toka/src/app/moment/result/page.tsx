@@ -181,11 +181,29 @@ export default function ResultPage() {
                 {interpretationReady ? (
                   <>
                     <div className="space-y-3 text-sm text-slate-700">
-                      <p className="rounded-md bg-slate-100/35 px-2 py-2">{whatIsUnfolding}</p>
-                      <p className="rounded-md bg-slate-100/35 px-2 py-2">{whereYouStand}</p>
-                      <p className="rounded-md bg-slate-100/35 px-2 py-2">{tensionToNotice}</p>
+                      <div className="space-y-1">
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                          {t('result.narrative.whatIsUnfolding')}
+                        </p>
+                        <p className="rounded-md bg-slate-100/35 px-2 py-2">{whatIsUnfolding}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                          {t('result.narrative.whereYouStand')}
+                        </p>
+                        <p className="rounded-md bg-slate-100/35 px-2 py-2">{whereYouStand}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                          {t('result.narrative.tensionToNotice')}
+                        </p>
+                        <p className="rounded-md bg-slate-100/35 px-2 py-2">{tensionToNotice}</p>
+                      </div>
                     </div>
-                    <div className="px-2 space-y-3 text-sm text-slate-700">
+                    <div className="px-2 space-y-1 text-sm text-slate-700">
+                      <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                        {t('result.narrative.closingQuestion')}
+                      </p>
                       <p>{closingQuestion}</p>
                     </div>
                   </>
