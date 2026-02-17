@@ -77,7 +77,10 @@
           "Tín hiệu có thể xuất hiện nhưng chưa tạo thành hướng rõ.",
           "Cấu trúc có thể đang hình thành qua ma sát."
         ],
-        "structural_nature": [],
+        "structural_nature": [
+          "Hình thành dưới áp lực",
+          "Rõ dần qua lặp lại"
+        ],
         "inherent_tension": "Tín hiệu có thể xuất hiện nhưng chưa tạo thành hướng rõ."
       },
       "keywords": [
@@ -737,7 +740,10 @@
           "Giả định hoặc lớp nghĩa thêm có thể không bền.",
           "Thực tại trực tiếp có thể rõ hơn suy diễn."
         ],
-        "structural_nature": [],
+        "structural_nature": [
+          "Thực tại hơn suy chiếu",
+          "Trực diện hơn diễn giải"
+        ],
         "inherent_tension": "Giả định hoặc lớp nghĩa thêm có thể không bền."
       },
       "keywords": [

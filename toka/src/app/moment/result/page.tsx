@@ -35,28 +35,15 @@ const formatTraditional = (traditional: HexTraditional) => {
     parts.push(`(${traditional.pinyin})`);
   }
   if (traditional.name_en) {
-    parts.push(parts.length > 0 ? `— ${traditional.name_en}` : traditional.name_en);
+    parts.push(parts.length > 0 ? `- ${traditional.name_en}` : traditional.name_en);
   }
   return parts.join(' ');
-};
-
-const getMeaningLines = (hex: HexMeaningNormalized): string[] => {
-  const v2Lines = [
-    hex.core_image?.vi,
-    hex.core_image?.en,
-    ...(hex.structure?.core_structure ?? []),
-    ...(hex.structure?.structural_nature ?? []),
-    hex.structure?.inherent_tension,
-  ].filter(Boolean) as string[];
-
-  // TODO: remove legacy present_state fallback after migration complete.
-  const legacyLines = Array.isArray(hex.present_state) ? hex.present_state : [];
-  return v2Lines.length > 0 ? v2Lines : legacyLines;
 };
 
 export default function ResultPage() {
   const { draft, initDraft, setAiOutput, setAiStatus, resetDraft } = useDraftMoment();
   const [retrying, setRetrying] = useState(false);
+  const [showDoctrine, setShowDoctrine] = useState(false);
   const { lang, t } = useI18n();
 
   useEffect(() => {
@@ -86,10 +73,36 @@ export default function ResultPage() {
       : null;
   const primary = normalizeHexMeaning(primaryHexRaw ?? {});
   const relating = relatingHexRaw ? normalizeHexMeaning(relatingHexRaw ?? {}) : null;
-  const primaryLines = getMeaningLines(primary);
-  const relatingLines = relating ? getMeaningLines(relating) : [];
   const hasCast = typeof primaryId === 'number';
   const mirror = draft.ai_output?.mirror_map;
+
+  const getDoctrineRows = (hex: HexMeaningNormalized) => {
+    const image = (lang === 'vi' ? hex.core_image?.vi : hex.core_image?.en) ?? '';
+    return [
+      { label: t('result.doctrine.coreImage'), values: image ? [image] : [] },
+      { label: t('result.doctrine.coreStructure'), values: hex.structure?.core_structure ?? [] },
+      { label: t('result.doctrine.structuralNature'), values: hex.structure?.structural_nature ?? [] },
+      {
+        label: t('result.doctrine.inherentTension'),
+        values: hex.structure?.inherent_tension ? [hex.structure.inherent_tension] : [],
+      },
+    ];
+  };
+
+  const getHexSubtitle = (
+    hex: HexMeaningNormalized,
+    idOverride?: number | null,
+  ) => {
+    const id = hex.id ?? idOverride ?? undefined;
+    const traditional = formatTraditional((hex.traditional ?? {}) as HexTraditional);
+    if (id && traditional) {
+      return `#${id} ${traditional}`;
+    }
+    if (id) {
+      return `#${id}`;
+    }
+    return traditional;
+  };
 
   const fallbackMirror = {
     you_described: [
@@ -161,12 +174,13 @@ export default function ResultPage() {
         ) : null}
 
         {hasCast ? (
-          <section className="rounded-2xl border border-slate-200/70 bg-slate-50/55 px-4 py-5">
-            <div className="space-y-6">
-              <div className="space-y-4 pt-1">
-                <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
-                  {t('result.mirrorEyebrow')}
-                </p>
+          <>
+            <div className="space-y-2">
+              <p className="px-1 text-[11px] uppercase tracking-[0.32em] text-slate-400">
+                {t('result.mirrorEyebrow')}
+              </p>
+              <section className="rounded-2xl border border-slate-200/70 bg-slate-50/55 px-4 py-5">
+                <div className="space-y-4 pt-1">
                 {interpretationReady ? (
                   <>
                     <div className="space-y-3 text-sm text-slate-700">
@@ -219,60 +233,88 @@ export default function ResultPage() {
                     ) : null}
                   </div>
                 )}
-              </div>
+                </div>
+              </section>
+            </div>
 
-              <div className="text-sm text-slate-600">
-                <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
-                  {t('result.primaryLabel')}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-3">
+                <p className="px-1 text-[11px] uppercase tracking-[0.32em] text-slate-400">
+                  {t('result.underlyingStructure')}
                 </p>
-
-                <p className="mt-3 text-base font-medium text-slate-700 px-2">
-                  {primary.laymantitle || normalizedFallback.laymantitle}
-                </p>
-                {formatTraditional(primary.traditional ?? {}) ? (
-                  <p className=" text-xs text-slate-400 px-2">
-                    #{primary.id ?? normalizedFallback.id ?? 0} {formatTraditional(primary.traditional ?? {})}
-                  </p>
-                ) : null}
-                
-                <ul className="mt-2 text-sm text-slate-600">
-                  {primaryLines.map((item, index) => (
-                    <li key={`primary-${index}`} className="rounded-md bg-slate-100/45 px-2 py-2">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <button
+                  type="button"
+                  onClick={() => setShowDoctrine((current) => !current)}
+                  className="rounded-md border border-slate-300/70 px-2.5 py-1 text-xs text-slate-700 transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/40"
+                >
+                  {showDoctrine ? t('common.collapse') : t('common.reveal')}
+                </button>
               </div>
-              
-              {relating && hasSecondary ? (
-                <div className="text-sm text-slate-600">
-                  <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
-                    {t('result.secondaryLabel')}
-                  </p>
-                  
-                  <p className="mt-3 text-base font-medium text-slate-700 px-2">
-                    {relating.laymantitle || normalizedFallback.laymantitle}
-                  </p>
+              {showDoctrine ? (
+                <div className="space-y-4 px-2 text-sm text-slate-600">
+                  <div className="rounded-xl border border-slate-200/70 bg-white/55 p-4 space-y-3">
+                    <div className="space-y-2 border-b border-slate-200/70 pb-3">
+                      <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                        {t('result.primaryLabel')}
+                      </p>
+                      <div className="space-y-1">
+                        <p className="text-base font-medium text-slate-800">
+                          {primary.laymantitle || normalizedFallback.laymantitle}
+                        </p>
+                        <p className="text-xs text-slate-500">{getHexSubtitle(primary, primaryId)}</p>
+                      </div>
+                    </div>
+                    {getDoctrineRows(primary).map((row) => {
+                      if (row.values.length === 0) {
+                        return null;
+                      }
+                      return (
+                        <div key={`primary-${row.label}`} className="space-y-1">
+                          <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">{row.label}</p>
+                          {row.values.map((value, index) => (
+                            <p key={`primary-${row.label}-${index}`} className="text-sm text-slate-700">
+                              {value}
+                            </p>
+                          ))}
+                        </div>
+                      );
+                    })}
+                  </div>
 
-                  {formatTraditional(relating.traditional ?? {}) ? (
-                    <p className="text-xs text-slate-400 px-2">
-                      #{relating.id ?? normalizedFallback.id ?? 0} {formatTraditional(relating.traditional ?? {})}
-                    </p>
+                  {relating && hasSecondary ? (
+                    <div className="rounded-xl border border-slate-200/70 bg-white/55 p-4 space-y-3">
+                      <div className="space-y-2 border-b border-slate-200/70 pb-3">
+                        <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                          {t('result.secondaryLabel')}
+                        </p>
+                        <div className="space-y-1">
+                          <p className="text-base font-medium text-slate-800">
+                            {relating.laymantitle || normalizedFallback.laymantitle}
+                          </p>
+                          <p className="text-xs text-slate-500">{getHexSubtitle(relating, relatingId)}</p>
+                        </div>
+                      </div>
+                      {getDoctrineRows(relating).map((row) => {
+                        if (row.values.length === 0) {
+                          return null;
+                        }
+                        return (
+                          <div key={`relating-${row.label}`} className="space-y-1">
+                            <p className="text-[11px] uppercase tracking-[0.28em] text-slate-400">{row.label}</p>
+                            {row.values.map((value, index) => (
+                              <p key={`relating-${row.label}-${index}`} className="text-sm text-slate-700">
+                                {value}
+                              </p>
+                            ))}
+                          </div>
+                        );
+                      })}
+                    </div>
                   ) : null}
-                  
-                  <ul className="mt-2 text-sm text-slate-600">
-                    {relatingLines.map((item, index) => (
-                      <li key={`relating-${index}`} className="rounded-md bg-slate-100/40 px-2 py-2">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               ) : null}
-
-              {!hasSecondary ? <p className="text-xs text-slate-500">{t('result.noSecondary')}</p> : null}
             </div>
-          </section>
+          </>
         ) : null}
       </div>
     </ScreenLayout>
