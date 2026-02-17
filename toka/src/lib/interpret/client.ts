@@ -2,13 +2,25 @@ import meaningsEn from '@/data/hex_meanings_en.json';
 import meaningsVi from '@/data/hex_meanings_vi.json';
 import type { InterpretInput, InterpretOutput } from './schema';
 import type { DraftMoment } from '@/lib/moment/types';
-import { normalizeHexMeaning } from '@/lib/hex/normalize';
 
 type MeaningsStore = {
   version: string;
-  hexagrams: Record<string, unknown>;
+  hexagrams: Record<string, HexMeaningV2>;
   line_position_overlay?: Record<string, string[]>;
-  fallback?: unknown;
+  fallback?: HexMeaningV2;
+};
+
+type HexMeaningV2 = {
+  id: number;
+  laymantitle: string;
+  core_image: { vi?: string; en?: string };
+  structure: {
+    core_structure: string[];
+    structural_nature: string[];
+    inherent_tension: string;
+  };
+  keywords: string[];
+  domains_hint: string[];
 };
 
 const fallbackMovementByLang: Record<'en' | 'vi', string[]> = {
@@ -19,22 +31,17 @@ const fallbackMovementByLang: Record<'en' | 'vi', string[]> = {
   vi: ['Có chuyển động, nhưng khó gọi tên rõ.', 'Nhiều cách hiểu có thể cùng phù hợp.'],
 };
 
-const getHex = (id: number, store: MeaningsStore) => {
-  const hexagrams = store.hexagrams as Record<string, unknown> | undefined;
-  const found = hexagrams?.[String(id)];
+const getHex = (id: number, store: MeaningsStore): HexMeaningV2 => {
+  const found = store.hexagrams[String(id)];
   if (found) {
-    return normalizeHexMeaning(found);
+    return found;
   }
 
-  const fallbackRaw = (store as any).fallback?.hexagram ?? (store as any).fallback ?? {};
-  const fallback = normalizeHexMeaning(fallbackRaw);
-  return {
-    ...fallback,
-    id,
-    laymantitle: fallback.laymantitle || 'Unclear Pattern',
-    keywords: fallback.keywords ?? [],
-    domains_hint: fallback.domains_hint ?? [],
-  };
+  const fallback = store.fallback;
+  if (!fallback) {
+    throw new Error(`Missing fallback hex meaning for id ${id}.`);
+  }
+  return { ...fallback, id };
 };
 
 const getOverlay = (line: number, store: MeaningsStore, fallback: string[]) => {
@@ -77,12 +84,11 @@ export const buildInterpretInput = (
     tensions,
     primary: {
       id: primary.id,
-      layman_title: primary.laymantitle,
       laymantitle: primary.laymantitle,
-      core_image: primary.core_image ?? null,
-      structure: primary.structure ?? null,
-      keywords: primary.keywords ?? [],
-      domains_hint: primary.domains_hint ?? [],
+      core_image: primary.core_image,
+      structure: primary.structure,
+      keywords: primary.keywords,
+      domains_hint: primary.domains_hint,
     },
     movement: {
       changing_lines: changingLines,
@@ -91,12 +97,11 @@ export const buildInterpretInput = (
     relating: relating
       ? {
           id: relating.id,
-          layman_title: relating.laymantitle,
           laymantitle: relating.laymantitle,
-          core_image: relating.core_image ?? null,
-          structure: relating.structure ?? null,
-          keywords: relating.keywords ?? [],
-          domains_hint: relating.domains_hint ?? [],
+          core_image: relating.core_image,
+          structure: relating.structure,
+          keywords: relating.keywords,
+          domains_hint: relating.domains_hint,
         }
       : null,
   };

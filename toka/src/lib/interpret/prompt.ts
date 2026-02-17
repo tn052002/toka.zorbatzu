@@ -17,7 +17,7 @@ const bannedList = [
 export const buildInterpretPrompt = (input: InterpretInput) => {
   const getMeaningTitle = (
     meaning: NonNullable<InterpretInput['relating']> | InterpretInput['primary'],
-  ) => meaning.layman_title || meaning.laymantitle || 'Unnamed Pattern';
+  ) => meaning.laymantitle;
 
   const formatMeaning = (meaning: NonNullable<InterpretInput['relating']> | InterpretInput['primary']) => {
     const idLine = typeof meaning.id === 'number' ? [`id: ${meaning.id}`] : [];

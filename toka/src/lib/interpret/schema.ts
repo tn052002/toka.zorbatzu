@@ -11,26 +11,19 @@ export const domainSchema = z.enum([
 ]);
 
 const meaningInputSchema = z.object({
-  id: z.number().int().positive().optional(),
-  layman_title: z.string().optional(),
-  laymantitle: z.string().optional(),
-  core_image: z
-    .object({
-      vi: z.string().optional(),
-      en: z.string().optional(),
-    })
-    .nullable()
-    .optional(),
-  structure: z
-    .object({
-      core_structure: z.array(z.string()).optional(),
-      structural_nature: z.array(z.string()).optional(),
-      inherent_tension: z.string().optional(),
-    })
-    .nullable()
-    .optional(),
-  keywords: z.array(z.string()).optional(),
-  domains_hint: z.array(z.string()).optional(),
+  id: z.number().int().nonnegative(),
+  laymantitle: z.string().min(1),
+  core_image: z.object({
+    vi: z.string().optional(),
+    en: z.string().optional(),
+  }),
+  structure: z.object({
+    core_structure: z.array(z.string()),
+    structural_nature: z.array(z.string()),
+    inherent_tension: z.string(),
+  }),
+  keywords: z.array(z.string()),
+  domains_hint: z.array(z.string()),
 });
 
 export const interpretInputSchema = z.object({

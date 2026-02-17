@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { useDraftMoment } from '@/lib/moment/useDraftMoment';
 import { buildInterpretInput, requestInterpretation } from '@/lib/interpret/client';
 import { useI18n } from '@/lib/i18n/useI18n';
-import { normalizeHexMeaning, type HexMeaningNormalized } from '@/lib/hex/normalize';
+import { interpretOutputSchema } from '@/lib/interpret/schema';
 
 type HexTraditional = {
   name_en?: string;
@@ -18,9 +18,23 @@ type HexTraditional = {
 
 type MeaningsStore = {
   version: string;
-  hexagrams: Record<string, unknown>;
+  hexagrams: Record<string, HexMeaningV2>;
   line_position_overlay: Record<string, string[]>;
-  fallback?: unknown;
+  fallback?: HexMeaningV2;
+};
+
+type HexMeaningV2 = {
+  id: number;
+  laymantitle: string;
+  traditional?: HexTraditional;
+  core_image: { vi?: string; en?: string };
+  structure: {
+    core_structure: string[];
+    structural_nature: string[];
+    inherent_tension: string;
+  };
+  keywords: string[];
+  domains_hint: string[];
 };
 
 const storeForLang = (lang: 'en' | 'vi') =>
@@ -63,34 +77,34 @@ export default function ResultPage() {
     typeof primaryId === 'number' && typeof relatingId === 'number' && relatingId !== primaryId;
   const interpretationReady = Boolean(draft.ai_output);
   const fallbackId = '0';
-  const fallbackHex = store.hexagrams?.[fallbackId] ?? store.fallback ?? {};
-  const normalizedFallback = normalizeHexMeaning(fallbackHex ?? {});
-  const primaryHexRaw =
-    typeof primaryId === 'number' ? store.hexagrams?.[String(primaryId)] ?? fallbackHex : fallbackHex;
-  const relatingHexRaw =
+  const fallbackHex = store.hexagrams[fallbackId] ?? store.fallback;
+  if (!fallbackHex) {
+    throw new Error('Missing V2 fallback hex meaning in store.');
+  }
+  const primary: HexMeaningV2 =
+    typeof primaryId === 'number' ? store.hexagrams[String(primaryId)] ?? fallbackHex : fallbackHex;
+  const relating: HexMeaningV2 | null =
     hasSecondary && typeof relatingId === 'number'
-      ? store.hexagrams?.[String(relatingId)] ?? fallbackHex
+      ? store.hexagrams[String(relatingId)] ?? fallbackHex
       : null;
-  const primary = normalizeHexMeaning(primaryHexRaw ?? {});
-  const relating = relatingHexRaw ? normalizeHexMeaning(relatingHexRaw ?? {}) : null;
   const hasCast = typeof primaryId === 'number';
   const aiStatus = draft.ai_status ?? 'idle';
 
-  const getDoctrineRows = (hex: HexMeaningNormalized) => {
-    const image = (lang === 'vi' ? hex.core_image?.vi : hex.core_image?.en) ?? '';
+  const getDoctrineRows = (hex: HexMeaningV2) => {
+    const image = lang === 'vi' ? hex.core_image.vi ?? '' : hex.core_image.en ?? '';
     return [
       { label: t('result.doctrine.coreImage'), values: image ? [image] : [] },
-      { label: t('result.doctrine.coreStructure'), values: hex.structure?.core_structure ?? [] },
-      { label: t('result.doctrine.structuralNature'), values: hex.structure?.structural_nature ?? [] },
+      { label: t('result.doctrine.coreStructure'), values: hex.structure.core_structure },
+      { label: t('result.doctrine.structuralNature'), values: hex.structure.structural_nature },
       {
         label: t('result.doctrine.inherentTension'),
-        values: hex.structure?.inherent_tension ? [hex.structure.inherent_tension] : [],
+        values: hex.structure.inherent_tension ? [hex.structure.inherent_tension] : [],
       },
     ];
   };
 
   const getHexSubtitle = (
-    hex: HexMeaningNormalized,
+    hex: HexMeaningV2,
     idOverride?: number | null,
   ) => {
     const id = hex.id ?? idOverride ?? undefined;
@@ -104,11 +118,12 @@ export default function ResultPage() {
     return traditional;
   };
 
-  const narrative = draft.ai_output?.narrative;
+  const parsedOutput = interpretOutputSchema.safeParse(draft.ai_output);
+  const narrative = parsedOutput.success ? parsedOutput.data.narrative : null;
   const whatIsUnfolding = narrative?.what_is_unfolding ?? '';
   const whereYouStand = narrative?.where_you_stand ?? '';
   const tensionToNotice = narrative?.tension_to_notice ?? '';
-  const closingQuestion = draft.ai_output?.closing_question ?? '';
+  const closingQuestion = parsedOutput.success ? parsedOutput.data.closing_question : '';
 
   const handleRetry = async () => {
     if (!draft || retrying) {
@@ -241,7 +256,7 @@ export default function ResultPage() {
                       </p>
                       <div className="space-y-1">
                         <p className="text-base font-medium text-slate-800">
-                          {primary.laymantitle || normalizedFallback.laymantitle}
+                          {primary.laymantitle}
                         </p>
                         <p className="text-xs text-slate-500">{getHexSubtitle(primary, primaryId)}</p>
                       </div>
@@ -271,7 +286,7 @@ export default function ResultPage() {
                         </p>
                         <div className="space-y-1">
                           <p className="text-base font-medium text-slate-800">
-                            {relating.laymantitle || normalizedFallback.laymantitle}
+                            {relating.laymantitle}
                           </p>
                           <p className="text-xs text-slate-500">{getHexSubtitle(relating, relatingId)}</p>
                         </div>
