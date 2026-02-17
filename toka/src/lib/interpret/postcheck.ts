@@ -1,6 +1,7 @@
 import type { InterpretOutput } from './schema';
 
 const bannedPattern = /(should|must|need to|recommend|try to|avoid|will happen|you will|going to|soon|next week)/i;
+const placeholderPattern = /^(placeholder|tbd|n\/a|none|null|\.\.\.)$/i;
 
 export const hasBannedLanguage = (output: InterpretOutput): boolean => {
   const texts: string[] = [
@@ -10,5 +11,17 @@ export const hasBannedLanguage = (output: InterpretOutput): boolean => {
     output.closing_question,
   ];
 
-  return texts.some((text) => bannedPattern.test(text));
+  const hasUnsafeWording = texts.some((text) => bannedPattern.test(text));
+  const hasInvalidNarrative = texts.some((text) => {
+    const normalized = text.trim();
+    if (!normalized) {
+      return true;
+    }
+    if (normalized.length < 6) {
+      return true;
+    }
+    return placeholderPattern.test(normalized);
+  });
+
+  return hasUnsafeWording || hasInvalidNarrative;
 };
