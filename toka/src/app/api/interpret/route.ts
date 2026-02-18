@@ -12,6 +12,24 @@ import { hasBannedLanguage } from '@/lib/interpret/postcheck';
 const OPENAI_URL = 'https://api.openai.com/v1/responses';
 const MODEL = process.env.OPENAI_MODEL ?? 'gpt-4.1-mini';
 const MAX_ATTEMPTS = 1;
+const OUTPUT_JSON_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['narrative', 'closing_question'],
+  properties: {
+    narrative: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['what_is_unfolding', 'where_you_stand', 'tension_to_notice'],
+      properties: {
+        what_is_unfolding: { type: 'string' },
+        where_you_stand: { type: 'string' },
+        tension_to_notice: { type: 'string' },
+      },
+    },
+    closing_question: { type: 'string' },
+  },
+} as const;
 
 const extractJson = (text: string) => {
   const start = text.indexOf('{');
@@ -20,6 +38,24 @@ const extractJson = (text: string) => {
     throw new Error('No JSON object found in response.');
   }
   return text.slice(start, end + 1);
+};
+
+const extractOutputText = (data: unknown): string => {
+  if (!data || typeof data !== 'object') {
+    return '';
+  }
+  const root = data as {
+    output_text?: unknown;
+    output?: Array<{ content?: Array<{ text?: unknown }> }>;
+  };
+  if (typeof root.output_text === 'string' && root.output_text.trim()) {
+    return root.output_text;
+  }
+  const chunks = (root.output ?? [])
+    .flatMap((item) => item.content ?? [])
+    .map((content) => (typeof content.text === 'string' ? content.text : ''))
+    .filter(Boolean);
+  return chunks.join('\n').trim();
 };
 
 const requestOpenAI = async (input: InterpretInput, strict = false) => {
@@ -40,6 +76,14 @@ const requestOpenAI = async (input: InterpretInput, strict = false) => {
     },
     body: JSON.stringify({
       model: MODEL,
+      text: {
+        format: {
+          type: 'json_schema',
+          name: 'toka_interpret_output',
+          schema: OUTPUT_JSON_SCHEMA,
+          strict: true,
+        },
+      },
       input: [
         {
           role: 'system',
@@ -58,7 +102,11 @@ const requestOpenAI = async (input: InterpretInput, strict = false) => {
   }
 
   const data = await response.json();
-  const text = (data.output_text as string) ?? '';
+  const parsed = (data as { output_parsed?: unknown }).output_parsed;
+  if (parsed && typeof parsed === 'object') {
+    return parsed;
+  }
+  const text = extractOutputText(data);
   if (!text) {
     return null;
   }

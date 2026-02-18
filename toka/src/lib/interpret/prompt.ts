@@ -15,6 +15,7 @@ const bannedList = [
 ];
 
 export const buildInterpretPrompt = (input: InterpretInput) => {
+  const responseLanguage = input.locale === 'vi' ? 'Vietnamese' : 'English';
   const getMeaningTitle = (
     meaning: NonNullable<InterpretInput['relating']> | InterpretInput['primary'],
   ) => meaning.laymantitle;
@@ -73,6 +74,8 @@ Hard constraints:
 - No prediction, future-telling, certainty claims, or timeline claims.
 - No second-person steering language (e.g., "you should", "you must", "you need to", "try to", "avoid").
 - Do not use banned phrases: ${bannedList.join(', ')}.
+- Output language must be exactly: ${responseLanguage}.
+- All narrative fields and closing_question must be written only in ${responseLanguage}.
 
 Domain: ${input.domain}
 Question: ${input.question_text}

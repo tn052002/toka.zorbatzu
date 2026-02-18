@@ -79,6 +79,7 @@ export const buildInterpretInput = (
   });
 
   return {
+    locale: lang,
     domain: draft.domain,
     question_text: draft.question_text,
     tensions,

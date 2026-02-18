@@ -24,6 +24,7 @@ const meaningInputSchema = z.object({
 });
 
 export const interpretInputSchema = z.object({
+  locale: z.enum(['en', 'vi']),
   domain: domainSchema,
   question_text: z.string().min(1),
   tensions: z.array(z.string()).optional().default([]),
