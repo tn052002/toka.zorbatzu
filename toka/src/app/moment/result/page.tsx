@@ -27,7 +27,7 @@ type HexMeaningV2 = {
   id: number;
   laymantitle: string;
   traditional?: HexTraditional;
-  core_image: { vi?: string; en?: string };
+  core_image: string;
   structure: {
     core_structure: string[];
     structural_nature: string[];
@@ -91,9 +91,8 @@ export default function ResultPage() {
   const aiStatus = draft.ai_status ?? 'idle';
 
   const getDoctrineRows = (hex: HexMeaningV2) => {
-    const image = lang === 'vi' ? hex.core_image.vi ?? '' : hex.core_image.en ?? '';
     return [
-      { label: t('result.doctrine.coreImage'), values: image ? [image] : [] },
+      { label: t('result.doctrine.coreImage'), values: hex.core_image ? [hex.core_image] : [] },
       { label: t('result.doctrine.coreStructure'), values: hex.structure.core_structure },
       { label: t('result.doctrine.structuralNature'), values: hex.structure.structural_nature },
       {

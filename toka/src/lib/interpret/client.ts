@@ -13,7 +13,7 @@ type MeaningsStore = {
 type HexMeaningV2 = {
   id: number;
   laymantitle: string;
-  core_image: { vi?: string; en?: string };
+  core_image: string;
   structure: {
     core_structure: string[];
     structural_nature: string[];

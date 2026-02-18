@@ -13,10 +13,7 @@ export const domainSchema = z.enum([
 const meaningInputSchema = z.object({
   id: z.number().int().nonnegative(),
   laymantitle: z.string().min(1),
-  core_image: z.object({
-    vi: z.string().optional(),
-    en: z.string().optional(),
-  }),
+  core_image: z.string(),
   structure: z.object({
     core_structure: z.array(z.string()),
     structural_nature: z.array(z.string()),

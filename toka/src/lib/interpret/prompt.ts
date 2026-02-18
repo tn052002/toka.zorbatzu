@@ -21,10 +21,7 @@ export const buildInterpretPrompt = (input: InterpretInput) => {
 
   const formatMeaning = (meaning: NonNullable<InterpretInput['relating']> | InterpretInput['primary']) => {
     const idLine = typeof meaning.id === 'number' ? [`id: ${meaning.id}`] : [];
-    const coreImageParts = [
-      meaning.core_image?.vi,
-      meaning.core_image?.en,
-    ].filter(Boolean) as string[];
+    const coreImageParts = [meaning.core_image].filter(Boolean) as string[];
     const coreStructure = meaning.structure?.core_structure ?? [];
     const structuralNature = meaning.structure?.structural_nature ?? [];
     const inherentTension = meaning.structure?.inherent_tension ?? '';
