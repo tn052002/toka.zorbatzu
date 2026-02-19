@@ -427,6 +427,253 @@ body {
   cursor: pointer;
 }
 
+.cast-root {
+  min-height: 100dvh;
+  padding: 76px 0 58px;
+  overflow: hidden;
+}
+
+.cast-stage-shell {
+  width: min(100%, 460px);
+  height: calc(100dvh - 134px);
+  margin: 0 auto;
+  padding: 20px 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cast-question-row {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.cast-question-text {
+  margin: 0;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 560;
+  color: rgba(234, 242, 255, 0.88);
+}
+
+.cast-controls {
+  flex-shrink: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cast-mode-selector {
+  width: clamp(220px, 55vw, 300px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(234, 242, 255, 0.12);
+  background: rgba(234, 242, 255, 0.04);
+  backdrop-filter: blur(6px);
+}
+
+.cast-mode-tab {
+  flex: 1 1 50%;
+  min-height: 38px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(234, 242, 255, 0.58);
+  font-size: 14px;
+  font-weight: 540;
+  letter-spacing: 0.03em;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.cast-mode-tab.active {
+  color: rgba(234, 242, 255, 0.98);
+  background: rgba(234, 242, 255, 0.1);
+  border-color: rgba(234, 242, 255, 0.12);
+}
+
+.cast-mode-tab:focus-visible {
+  outline: 2px solid rgba(157, 212, 255, 0.9);
+  outline-offset: 2px;
+}
+
+.cast-orb-control {
+  margin-top: 12px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.cast-orb {
+  --orb-size: min(30vmin, 128px);
+}
+
+.cast-orb .orb-halo {
+  inset: -13%;
+  filter: blur(20px);
+  transition: opacity 170ms ease;
+}
+
+.cast-orb:hover .orb-halo {
+  opacity: 1;
+}
+
+.cast-control-slot {
+  margin-top: 10px;
+  min-height: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.cast-orb-disabled {
+  opacity: 0.78;
+}
+
+.cast-control-hint,
+.cast-control-progress,
+.cast-control-empty {
+  margin: 0;
+  min-height: 24px;
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.cast-control-hint {
+  color: rgba(234, 242, 255, 0.66);
+}
+
+.cast-control-progress {
+  color: rgba(234, 242, 255, 0.78);
+}
+
+.cast-control-empty {
+  color: transparent;
+}
+
+.cast-hexagram-panel {
+  margin-top: 12px;
+  flex: 1;
+  min-height: 0;
+  max-height: 292px;
+  border-radius: 16px;
+  border: 1px solid rgba(234, 242, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%),
+    rgba(11, 17, 27, 0.34);
+  padding: 12px 14px;
+  display: grid;
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.cast-line-row {
+  min-height: 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 122px;
+  align-items: center;
+  gap: 12px;
+}
+
+.cast-line-glyph {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr);
+  align-items: center;
+}
+
+.cast-line-segment {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(234, 242, 255, 0.9);
+  transform-origin: center;
+  transition: opacity 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+
+.cast-line-segment.full {
+  grid-column: 1 / 4;
+}
+
+.cast-line-gap {
+  width: 100%;
+}
+
+.cast-line-glyph.placeholder .cast-line-segment {
+  opacity: 0.08;
+}
+
+.cast-line-glyph.revealed .cast-line-segment {
+  animation: cast-line-draw 240ms ease;
+}
+
+.cast-line-glyph.moving .cast-line-segment {
+  background: #ffd770;
+  box-shadow: 0 0 7px rgba(255, 215, 112, 0.35);
+}
+
+.cast-line-glyph.moving.revealed .cast-line-segment {
+  animation: cast-line-draw 240ms ease, cast-line-pulse 540ms ease-out 1;
+}
+
+.cast-line-label {
+  margin: 0;
+  font-size: 11px;
+  color: rgba(234, 242, 255, 0.58);
+  line-height: 1.2;
+  text-align: left;
+}
+
+.cast-line-label.moving {
+  color: rgba(255, 224, 154, 0.74);
+}
+
+.cast-actions {
+  margin-top: 18px;
+  margin-bottom: 6px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cast-result-bottom-btn {
+  width: min(100%, 300px);
+}
+
+.cast-result-bottom-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@keyframes cast-line-draw {
+  from {
+    transform: scaleX(0.12);
+    opacity: 0.28;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes cast-line-pulse {
+  0% {
+    box-shadow: 0 0 4px rgba(255, 215, 112, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(255, 215, 112, 0.52);
+  }
+  100% {
+    box-shadow: 0 0 7px rgba(255, 215, 112, 0.35);
+  }
+}
+
 @media (max-width: 480px) {
   .hint {
     top: calc(50% + clamp(140px, 44vw, 190px));
@@ -472,6 +719,86 @@ body {
 
   .moment-actions {
     margin-bottom: 20px;
+  }
+
+  .cast-root {
+    padding: 76px 0 56px;
+  }
+
+  .cast-stage-shell {
+    height: calc(100dvh - 132px);
+    padding: 16px 24px 0;
+  }
+
+  .cast-question-text {
+    font-size: 14px;
+  }
+
+  .cast-controls {
+    margin-top: 18px;
+  }
+
+  .cast-mode-tab {
+    font-size: 13px;
+    min-height: 36px;
+  }
+
+  .cast-orb {
+    --orb-size: min(31vmin, 120px);
+  }
+
+  .cast-control-slot {
+    margin-top: 9px;
+    min-height: 38px;
+  }
+
+  .cast-hexagram-panel {
+    margin-top: 10px;
+    max-height: 276px;
+    padding: 12px 13px;
+    gap: 4px;
+  }
+
+  .cast-line-row {
+    min-height: 32px;
+    grid-template-columns: minmax(0, 1fr) 108px;
+    gap: 10px;
+  }
+
+  .cast-line-glyph {
+    grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr);
+  }
+
+  .cast-line-segment {
+    height: 7px;
+  }
+
+  .cast-line-label {
+    font-size: 10px;
+  }
+
+  .cast-actions {
+    margin-top: 14px;
+    margin-bottom: 2px;
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cast-orb .orb-halo,
+  .cast-line-segment,
+  .cast-mode-tab {
+    transition: none;
+  }
+
+  .cast-line-glyph.revealed .cast-line-segment,
+  .cast-line-glyph.moving.revealed .cast-line-segment {
+    animation: none;
+  }
+
+  .cast-orb .orb-halo,
+  .cast-orb .orb-core {
+    animation: none;
   }
 }
 
