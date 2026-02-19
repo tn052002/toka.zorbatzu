@@ -19,6 +19,8 @@ type Dict = {
   momentSaveQuestion: string;
   momentDomainTitle: string;
   momentDomainOptional: string;
+  momentDomainShowOptions: string;
+  momentDomainHideOptions: string;
   momentBack: string;
   momentConfirm: string;
   domainCareer: string;
@@ -32,6 +34,20 @@ type Dict = {
   breathBody: string;
   breathSkip: string;
   breathSeconds: string;
+  castModeQuick: string;
+  castModeRitual: string;
+  castHintQuick: string;
+  castHintRitualNext: string;
+  castViewResult: string;
+  castHome: string;
+  castLabelYin: string;
+  castLabelYang: string;
+  castLabelYinMoving: string;
+  castLabelYangMoving: string;
+  castProgressFormat: string;
+  castNoQuestion: string;
+  castModeAria: string;
+  castOrbAria: string;
   langEn: string;
   langVi: string;
 };
@@ -52,6 +68,8 @@ const messages: Record<Locale, Dict> = {
     momentSaveQuestion: 'Save question',
     momentDomainTitle: 'Question domain',
     momentDomainOptional: 'Optional',
+    momentDomainShowOptions: 'Show options',
+    momentDomainHideOptions: 'Hide options',
     momentBack: 'Back',
     momentConfirm: 'Continue to cast',
     domainCareer: 'Career',
@@ -65,6 +83,20 @@ const messages: Record<Locale, Dict> = {
     breathBody: 'Take one slow breath before entering the moment.',
     breathSkip: 'Skip',
     breathSeconds: 's',
+    castModeQuick: 'quick',
+    castModeRitual: 'ritual',
+    castHintQuick: 'Tap to cast',
+    castHintRitualNext: 'Tap to cast next line',
+    castViewResult: 'View result',
+    castHome: 'Back',
+    castLabelYin: 'Yin',
+    castLabelYang: 'Yang',
+    castLabelYinMoving: 'Moving yin',
+    castLabelYangMoving: 'Moving yang',
+    castProgressFormat: '{n}/6',
+    castNoQuestion: 'No question found.',
+    castModeAria: 'Casting mode',
+    castOrbAria: 'Cast lines',
     langEn: 'EN',
     langVi: 'VI',
   },
@@ -83,6 +115,8 @@ const messages: Record<Locale, Dict> = {
     momentSaveQuestion: 'Lưu câu hỏi',
     momentDomainTitle: 'Lĩnh vực câu hỏi',
     momentDomainOptional: 'Tuỳ chọn',
+    momentDomainShowOptions: 'Hiện lựa chọn',
+    momentDomainHideOptions: 'Ẩn lựa chọn',
     momentBack: 'Quay lại',
     momentConfirm: 'Tiếp tục gieo quẻ',
     domainCareer: 'Sự Nghiệp',
@@ -96,6 +130,20 @@ const messages: Record<Locale, Dict> = {
     breathBody: 'Hít một nhịp chậm trước khi vào khoảnh khắc.',
     breathSkip: 'Bỏ qua',
     breathSeconds: 'giây',
+    castModeQuick: 'nhanh',
+    castModeRitual: 'từng hào',
+    castHintQuick: 'Chạm để gieo',
+    castHintRitualNext: 'Chạm để gieo hào tiếp theo',
+    castViewResult: 'Xem kết quả',
+    castHome: 'Trang chủ',
+    castLabelYin: 'Âm',
+    castLabelYang: 'Dương',
+    castLabelYinMoving: 'Âm (biến)',
+    castLabelYangMoving: 'Dương (biến)',
+    castProgressFormat: '{n}/6',
+    castNoQuestion: 'Không có câu hỏi.',
+    castModeAria: 'Chế độ gieo',
+    castOrbAria: 'Gieo hào',
     langEn: 'EN',
     langVi: 'VI',
   },

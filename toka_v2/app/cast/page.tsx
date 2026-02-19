@@ -15,52 +15,6 @@ type Line = {
   moving: boolean;
 };
 
-type CastCopy = {
-  modeQuick: string;
-  modeRitual: string;
-  hintQuick: string;
-  hintRitual: string;
-  viewResult: string;
-  home: string;
-  labelYin: string;
-  labelYang: string;
-  labelYinMoving: string;
-  labelYangMoving: string;
-  progress: (n: number) => string;
-  noQuestion: string;
-};
-
-const copyByLang: Record<'en' | 'vi', CastCopy> = {
-  en: {
-    modeQuick: 'quick',
-    modeRitual: 'ritual',
-    hintQuick: 'Tap to cast',
-    hintRitual: 'Tap to cast next line',
-    viewResult: 'View result',
-    home: 'Home',
-    labelYin: 'Yin',
-    labelYang: 'Yang',
-    labelYinMoving: 'Moving yin',
-    labelYangMoving: 'Moving yang',
-    progress: (n) => `${n}/6`,
-    noQuestion: 'No question found.',
-  },
-  vi: {
-    modeQuick: 'nhanh',
-    modeRitual: 'từng hào',
-    hintQuick: 'Chạm để gieo',
-    hintRitual: 'Chạm để gieo hào tiếp theo',
-    viewResult: 'Xem kết quả',
-    home: 'Trang chủ',
-    labelYin: 'Âm',
-    labelYang: 'Dương',
-    labelYinMoving: 'Âm (biến)',
-    labelYangMoving: 'Dương (biến)',
-    progress: (n) => `${n}/6`,
-    noQuestion: 'Không có câu hỏi.',
-  },
-};
-
 function createRandomLine(): Line {
   const roll = Math.floor(Math.random() * 4);
   if (roll === 0) {
@@ -80,9 +34,8 @@ function createHexagram(): Line[] {
 }
 
 export default function CastPlaceholderPage() {
-  const { lang } = useI18n();
+  const { t } = useI18n();
   const router = useRouter();
-  const copy = copyByLang[lang];
   const [payload, setPayload] = useState<{ question?: string; domain?: string | null } | null>(null);
   const [mode, setMode] = useState<Mode>('quick');
   const [step, setStep] = useState(0);
@@ -166,15 +119,15 @@ export default function CastPlaceholderPage() {
       return '';
     }
     if (line.polarity === 'yin' && line.moving) {
-      return copy.labelYinMoving;
+      return t('castLabelYinMoving');
     }
     if (line.polarity === 'yang' && line.moving) {
-      return copy.labelYangMoving;
+      return t('castLabelYangMoving');
     }
     if (line.polarity === 'yin') {
-      return copy.labelYin;
+      return t('castLabelYin');
     }
-    return copy.labelYang;
+    return t('castLabelYang');
   };
 
   const handleViewResult = () => {
@@ -195,18 +148,18 @@ export default function CastPlaceholderPage() {
   const controlContent = useMemo(() => {
     if (mode === 'ritual') {
       if (step === 0) {
-        return <p className="cast-control-hint">{copy.hintRitual}</p>;
+        return <p className="cast-control-hint">{t('castHintRitualNext')}</p>;
       }
-      return <p className="cast-control-progress">{copy.progress(step)}</p>;
+      return <p className="cast-control-progress">{t('castProgressFormat').replace('{n}', String(step))}</p>;
     }
     if (step === 0) {
-      return <p className="cast-control-hint">{copy.hintQuick}</p>;
+      return <p className="cast-control-hint">{t('castHintQuick')}</p>;
     }
     if (isAutoCasting && step < 6) {
       return <p className="cast-control-empty" aria-hidden="true">&nbsp;</p>;
     }
     return <p className="cast-control-empty" aria-hidden="true">&nbsp;</p>;
-  }, [copy, isAutoCasting, mode, step]);
+  }, [isAutoCasting, mode, step, t]);
 
   const lineRows = useMemo(() => {
     return [5, 4, 3, 2, 1, 0].map((lineIndex) => {
@@ -225,11 +178,11 @@ export default function CastPlaceholderPage() {
     <main className="cast-root">
       <div className="cast-stage-shell">
         <section className="cast-question-row">
-          <p className="cast-question-text">{payload?.question || copy.noQuestion}</p>
+          <p className="cast-question-text">{payload?.question || t('castNoQuestion')}</p>
         </section>
 
         <section className="cast-controls">
-          <div className="cast-mode-selector" role="tablist" aria-label="Casting mode">
+          <div className="cast-mode-selector" role="tablist" aria-label={t('castModeAria')}>
             <button
               type="button"
               role="tab"
@@ -237,7 +190,7 @@ export default function CastPlaceholderPage() {
               className={mode === 'quick' ? 'cast-mode-tab active' : 'cast-mode-tab'}
               onClick={() => resetForMode('quick')}
             >
-              {copy.modeQuick}
+              {t('castModeQuick')}
             </button>
             <button
               type="button"
@@ -246,7 +199,7 @@ export default function CastPlaceholderPage() {
               className={mode === 'ritual' ? 'cast-mode-tab active' : 'cast-mode-tab'}
               onClick={() => resetForMode('ritual')}
             >
-              {copy.modeRitual}
+              {t('castModeRitual')}
             </button>
           </div>
 
@@ -254,7 +207,7 @@ export default function CastPlaceholderPage() {
             <BreathingOrb
               className={mode === 'quick' && isAutoCasting && step < 6 ? 'cast-orb cast-orb-disabled' : 'cast-orb'}
               onClick={onOrbTap}
-              ariaLabel="Cast lines"
+              ariaLabel={t('castOrbAria')}
               disabled={mode === 'quick' && isAutoCasting && step < 6}
             />
           </div>
@@ -302,10 +255,10 @@ export default function CastPlaceholderPage() {
             disabled={!isComplete}
             aria-disabled={!isComplete}
           >
-            {copy.viewResult}
+            {t('castViewResult')}
           </button>
-          <button type="button" className="moment-back-link" onClick={() => router.push('/')}>
-            {copy.home}
+          <button type="button" className="moment-back-link" onClick={() => router.push('/moment')}>
+            {t('castHome')}
           </button>
         </div>
       </div>

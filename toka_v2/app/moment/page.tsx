@@ -120,7 +120,7 @@ export default function MomentPage() {
                 <button
                   type="button"
                   className={showDomains ? 'domain-toggle open' : 'domain-toggle'}
-                  aria-label={showDomains ? 'Hide options' : 'Show options'}
+                  aria-label={showDomains ? t('momentDomainHideOptions') : t('momentDomainShowOptions')}
                   aria-expanded={showDomains}
                   onClick={() => setShowDomains((current) => !current)}
                 >
