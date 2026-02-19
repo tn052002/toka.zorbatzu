@@ -10,6 +10,24 @@ type Dict = {
   touchToEnter: string;
   enterAria: string;
   momentEntry: string;
+  momentQuestionLabel: string;
+  momentDefaultQuestion: string;
+  momentCustomQuestion: string;
+  momentQuestionModalTitle: string;
+  momentQuestionPlaceholder: string;
+  momentCancel: string;
+  momentSaveQuestion: string;
+  momentDomainTitle: string;
+  momentDomainOptional: string;
+  momentBack: string;
+  momentConfirm: string;
+  domainCareer: string;
+  domainMoney: string;
+  domainRelationship: string;
+  domainHealth: string;
+  domainProject: string;
+  domainSelf: string;
+  domainOther: string;
   breathTitle: string;
   breathBody: string;
   breathSkip: string;
@@ -25,6 +43,24 @@ const messages: Record<Locale, Dict> = {
     touchToEnter: 'touch to enter',
     enterAria: 'Enter TOKA',
     momentEntry: 'Moment Entry',
+    momentQuestionLabel: 'You asked:',
+    momentDefaultQuestion: 'Where am I in this flow of life?',
+    momentCustomQuestion: 'Set custom question',
+    momentQuestionModalTitle: 'Write your question',
+    momentQuestionPlaceholder: 'Type one clear sentence...',
+    momentCancel: 'Cancel',
+    momentSaveQuestion: 'Save question',
+    momentDomainTitle: 'Question domain',
+    momentDomainOptional: 'Optional',
+    momentBack: 'Back',
+    momentConfirm: 'Continue to cast',
+    domainCareer: 'Career',
+    domainMoney: 'Money',
+    domainRelationship: 'Relationship',
+    domainHealth: 'Health',
+    domainProject: 'Project',
+    domainSelf: 'Self',
+    domainOther: 'Other',
     breathTitle: 'Pause and breathe',
     breathBody: 'Take one slow breath before entering the moment.',
     breathSkip: 'Skip',
@@ -38,6 +74,24 @@ const messages: Record<Locale, Dict> = {
     touchToEnter: 'chạm để vào',
     enterAria: 'Vào TOKA',
     momentEntry: 'Vào Khoảnh Khắc',
+    momentQuestionLabel: 'Bạn hỏi:',
+    momentDefaultQuestion: 'Tôi đang ở đâu trong dòng sống này?',
+    momentCustomQuestion: 'Đặt câu hỏi riêng',
+    momentQuestionModalTitle: 'Nhập câu hỏi',
+    momentQuestionPlaceholder: 'Viết một câu rõ ràng...',
+    momentCancel: 'Huỷ',
+    momentSaveQuestion: 'Lưu câu hỏi',
+    momentDomainTitle: 'Lĩnh vực câu hỏi',
+    momentDomainOptional: 'Tuỳ chọn',
+    momentBack: 'Quay lại',
+    momentConfirm: 'Tiếp tục gieo quẻ',
+    domainCareer: 'Sự Nghiệp',
+    domainMoney: 'Tài Chính',
+    domainRelationship: 'Quan Hệ',
+    domainHealth: 'Sức Khoẻ',
+    domainProject: 'Dự Án',
+    domainSelf: 'Bản Thân',
+    domainOther: 'Other',
     breathTitle: 'Dừng lại và thở',
     breathBody: 'Hít một nhịp chậm trước khi vào khoảnh khắc.',
     breathSkip: 'Bỏ qua',

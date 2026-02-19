@@ -78,18 +78,18 @@ body {
 
 .lang-switch {
   display: inline-flex;
-  border: 1px solid rgba(143, 210, 255, 0.32);
+  border: 1px solid rgba(143, 210, 255, 0.24);
   border-radius: 999px;
-  background: rgba(8, 12, 18, 0.68);
+  background: rgba(8, 12, 18, 0.56);
   overflow: hidden;
 }
 
 .lang-btn {
   border: 0;
   background: transparent;
-  color: rgba(234, 242, 255, 0.7);
-  padding: 6px 10px;
-  font-size: 11px;
+  color: rgba(234, 242, 255, 0.66);
+  padding: 5px 9px;
+  font-size: 10px;
   letter-spacing: 0.06em;
   cursor: pointer;
 }
@@ -135,10 +135,10 @@ body {
   animation: quote-cycle 5.8s linear;
 }
 
-.orb-button {
+.breathing-orb {
   --size: min(58vmin, 420px);
-  width: var(--size);
-  height: var(--size);
+  width: var(--orb-size, var(--size));
+  height: var(--orb-size, var(--size));
   border: 0;
   background: transparent;
   position: relative;
@@ -151,7 +151,7 @@ body {
   padding: 0;
 }
 
-.orb-button:focus-visible {
+.breathing-orb:focus-visible {
   outline: 2px solid rgba(157, 212, 255, 0.9);
   outline-offset: 10px;
 }
@@ -197,12 +197,378 @@ body {
 }
 
 .moment-root {
+  --section-gap-lg: 64px;
+  --section-gap-md: 40px;
+  --block-gap: 24px;
+  --micro-gap: 12px;
   min-height: 100dvh;
   display: grid;
+  place-items: start center;
+  padding: 88px 16px 96px;
+}
+
+.moment-shell {
+  width: min(92vw, 780px);
+  display: grid;
+  gap: 0;
+}
+
+.moment-orb-wrap {
+  display: grid;
   place-items: center;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  margin: 0 0 var(--section-gap-lg);
+}
+
+.moment-orb {
+  --orb-size: min(25vmin, 170px);
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+.moment-orb .orb-halo {
+  inset: -12%;
+  filter: blur(22px);
+  opacity: 0.82;
+}
+
+.moment-orb .orb-core {
+  box-shadow:
+    0 0 92px 14px rgba(143, 210, 255, 0.28) inset,
+    0 0 78px 6px rgba(143, 210, 255, 0.24);
+}
+
+.moment-section {
+  border: 1px solid rgba(143, 210, 255, 0.2);
+  border-radius: 14px;
+  background: rgba(10, 18, 30, 0.62);
+  padding: 18px 16px;
+}
+
+.moment-section-primary {
+  margin-top: -12px;
+  margin-bottom: var(--section-gap-md);
+  border-color: rgba(143, 210, 255, 0.42);
+  background:
+    radial-gradient(120% 140% at 10% 0%, rgba(143, 210, 255, 0.1) 0%, rgba(10, 18, 30, 0.84) 48%),
+    rgba(10, 18, 30, 0.84);
+  box-shadow:
+    0 0 22px rgba(86, 183, 255, 0.12),
+    inset 0 0 18px rgba(143, 210, 255, 0.06);
+  padding: 22px 20px;
+}
+
+.moment-section:not(.moment-section-primary) {
+  margin-bottom: var(--section-gap-md);
+  border-color: rgba(143, 210, 255, 0.16);
+  background: rgba(10, 16, 28, 0.5);
+  box-shadow: inset 0 0 12px rgba(143, 210, 255, 0.03);
+}
+
+.moment-entered-at {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(234, 242, 255, 0.62);
+}
+
+.moment-label {
+  margin: 0;
   font-size: 12px;
+  letter-spacing: 0.02em;
+  font-weight: 520;
+  text-transform: none;
+  color: rgba(234, 242, 255, 0.7);
+}
+
+.moment-question {
+  margin: 0;
+  font-size: clamp(14px, 1.55vw, 16px);
+  line-height: 1.55;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #f4f9ff;
+}
+
+.moment-link-btn {
+  margin-top: 0;
+  border: 1px solid rgba(143, 210, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(143, 210, 255, 0.08);
+  color: rgba(234, 242, 255, 0.9);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 7px 12px;
+  cursor: pointer;
+  min-height: 38px;
+}
+
+.moment-section-primary .moment-label {
+  margin-top: var(--micro-gap);
+}
+
+.moment-section-primary .moment-question {
+  margin-top: var(--block-gap);
+}
+
+.moment-section-primary .moment-link-btn {
+  margin-top: 32px;
+}
+
+.moment-domain-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--micro-gap);
+}
+
+.moment-optional {
+  font-size: 11px;
+  color: rgba(234, 242, 255, 0.46);
+}
+
+.moment-domain-grid {
+  margin-top: var(--micro-gap);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.domain-chip {
+  border: 1px solid rgba(143, 210, 255, 0.18);
+  border-radius: 10px;
+  background: rgba(8, 14, 24, 0.58);
+  color: rgba(234, 242, 255, 0.86);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  min-height: 44px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: opacity 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.domain-chip.active {
+  border-color: rgba(143, 210, 255, 0.58);
+  background: rgba(86, 183, 255, 0.18);
+  color: #f3f9ff;
+  box-shadow: 0 0 10px rgba(86, 183, 255, 0.18);
+}
+
+.domain-chip.muted {
+  opacity: 0.7;
+}
+
+.moment-actions {
+  margin-bottom: 24px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.moment-back-link {
+  border: 0;
+  background: transparent;
+  color: rgba(234, 242, 255, 0.76);
+  min-height: 24px;
+  font-size: 12px;
+  font-weight: 520;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  justify-self: start;
+  padding: 0 2px;
+}
+
+.moment-confirm-btn {
+  border: 0;
+  border-radius: 999px;
+  background: rgba(143, 210, 255, 0.9);
+  color: #052037;
+  min-height: 44px;
+  width: min(100%, 360px);
+  font-size: 13px;
+  font-weight: 620;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .moment-root {
+    --section-gap-lg: 48px;
+    --section-gap-md: 32px;
+    --block-gap: 20px;
+    --micro-gap: 8px;
+    padding: 82px 14px 84px;
+  }
+
+  .moment-shell {
+    width: min(94vw, 720px);
+  }
+
+  .moment-orb {
+    --orb-size: min(34vmin, 136px);
+  }
+
+  .moment-orb-wrap {
+    margin-bottom: var(--section-gap-lg);
+  }
+
+  .moment-section {
+    padding: 16px 14px;
+  }
+
+  .moment-section-primary {
+    margin-top: -6px;
+    padding: 18px 16px;
+  }
+
+  .moment-section-primary .moment-link-btn {
+    margin-top: 24px;
+  }
+
+  .moment-domain-grid {
+    gap: 8px;
+  }
+
+  .moment-actions {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .moment-root {
+    --section-gap-lg: 40px;
+    --section-gap-md: 30px;
+    --block-gap: 24px;
+    --micro-gap: 12px;
+    padding: 74px 20px 54px;
+  }
+
+  .moment-shell {
+    width: min(90vw, 920px);
+  }
+
+  .moment-orb {
+    --orb-size: min(16vmin, 130px);
+  }
+
+  .moment-section-primary {
+    margin-top: -10px;
+    padding: 32px;
+  }
+
+  .moment-section:not(.moment-section-primary) {
+    padding: 24px;
+  }
+
+  .moment-domain-grid {
+    gap: 16px;
+  }
+
+  .domain-chip {
+    min-height: 48px;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 850px) {
+  .moment-root {
+    --section-gap-lg: 28px;
+    --section-gap-md: 22px;
+    --block-gap: 22px;
+    --micro-gap: 10px;
+    padding: 68px 20px 44px;
+  }
+
+  .moment-orb {
+    --orb-size: min(14vmin, 112px);
+  }
+
+  .moment-orb .orb-halo {
+    inset: -10%;
+    filter: blur(18px);
+    opacity: 0.74;
+  }
+
+  .moment-orb .orb-core {
+    box-shadow:
+      0 0 78px 10px rgba(143, 210, 255, 0.24) inset,
+      0 0 62px 5px rgba(143, 210, 255, 0.2);
+  }
+
+  .moment-section-primary {
+    margin-top: -8px;
+    padding: 24px;
+  }
+
+  .moment-section:not(.moment-section-primary) {
+    padding: 20px;
+  }
+
+  .moment-section-primary .moment-link-btn {
+    margin-top: 20px;
+  }
+
+  .moment-domain-grid {
+    gap: 12px;
+  }
+
+  .domain-chip {
+    min-height: 44px;
+  }
+
+  .moment-actions {
+    margin-bottom: 14px;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 768px) {
+  .moment-root {
+    --section-gap-lg: 20px;
+    --section-gap-md: 18px;
+    --block-gap: 20px;
+    --micro-gap: 8px;
+    padding: 62px 20px 36px;
+  }
+
+  .moment-orb {
+    --orb-size: min(12vmin, 96px);
+  }
+
+  .moment-orb .orb-halo {
+    inset: -8%;
+    filter: blur(14px);
+    opacity: 0.68;
+  }
+
+  .moment-orb .orb-core {
+    box-shadow:
+      0 0 62px 8px rgba(143, 210, 255, 0.2) inset,
+      0 0 48px 4px rgba(143, 210, 255, 0.18);
+  }
+
+  .moment-section-primary {
+    margin-top: -4px;
+    padding: 20px;
+  }
+
+  .moment-section:not(.moment-section-primary) {
+    padding: 16px;
+  }
+
+  .moment-section-primary .moment-link-btn {
+    margin-top: 15px;
+  }
+
+  .moment-domain-grid {
+    gap: 10px;
+  }
+
+  .domain-chip {
+    min-height: 40px;
+  }
+
+  .moment-actions {
+    margin-bottom: 8px;
+  }
 }
 
 .breath-overlay {
@@ -226,6 +592,55 @@ body {
     inset 0 0 30px rgba(143, 210, 255, 0.08);
   padding: 18px 16px;
   text-align: center;
+}
+
+.question-modal {
+  text-align: left;
+}
+
+.question-textarea {
+  width: 100%;
+  min-height: 120px;
+  margin-top: 10px;
+  border: 1px solid rgba(143, 210, 255, 0.32);
+  border-radius: 12px;
+  background: rgba(5, 12, 22, 0.75);
+  color: #eaf2ff;
+  padding: 10px 12px;
+  resize: vertical;
+  font: inherit;
+  line-height: 1.45;
+}
+
+.question-textarea::placeholder {
+  color: rgba(234, 242, 255, 0.42);
+}
+
+.question-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.question-btn {
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.question-btn.ghost {
+  border: 1px solid rgba(143, 210, 255, 0.32);
+  background: transparent;
+  color: #dbefff;
+}
+
+.question-btn.solid {
+  border: 1px solid rgba(143, 210, 255, 0.46);
+  background: rgba(143, 210, 255, 0.2);
+  color: #f0f8ff;
 }
 
 .breath-title {

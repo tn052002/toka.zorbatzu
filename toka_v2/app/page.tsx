@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { useI18n } from '@/lib/i18n';
+import BreathingOrb from '@/components/BreathingOrb';
 
 export default function HomePage() {
   const router = useRouter();
@@ -73,15 +74,7 @@ export default function HomePage() {
         </p>
       </div>
 
-      <button
-        type="button"
-        aria-label={t('enterAria')}
-        className="orb-button"
-        onClick={enter}
-      >
-        <span className="orb-halo" />
-        <span className="orb-core" />
-      </button>
+      <BreathingOrb onClick={enter} ariaLabel={t('enterAria')} />
 
       <p className="hint">{t('touchToEnter')}</p>
     </main>
