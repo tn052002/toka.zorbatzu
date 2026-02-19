@@ -110,6 +110,31 @@ body {
     radial-gradient(120vw 120vw at 50% 45%, #0d1119 0%, #090c13 44%, var(--bg) 100%);
 }
 
+.quote-loop {
+  position: absolute;
+  top: clamp(74px, 11vh, 132px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(86vw, 760px);
+  text-align: center;
+  padding: 0 16px;
+  z-index: 2;
+}
+
+.quote-line {
+  margin: 0;
+  color: rgba(236, 246, 255, 0.92);
+  font-size: clamp(11px, 1.05vw, 15px);
+  letter-spacing: 0.035em;
+  font-weight: 520;
+  line-height: 1.45;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 0 8px rgba(143, 210, 255, 0.18);
+  text-wrap: balance;
+  animation: quote-cycle 5.8s linear;
+}
+
 .orb-button {
   --size: min(58vmin, 420px);
   width: var(--size);
@@ -180,6 +205,66 @@ body {
   font-size: 12px;
 }
 
+.breath-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(2, 6, 12, 0.62);
+  backdrop-filter: blur(6px);
+}
+
+.breath-modal {
+  width: min(92vw, 420px);
+  border-radius: 18px;
+  border: 1px solid rgba(143, 210, 255, 0.38);
+  background: rgba(9, 18, 30, 0.9);
+  box-shadow:
+    0 0 36px rgba(86, 183, 255, 0.14),
+    inset 0 0 30px rgba(143, 210, 255, 0.08);
+  padding: 18px 16px;
+  text-align: center;
+}
+
+.breath-title {
+  margin: 0;
+  color: #f0f8ff;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.breath-body {
+  margin: 8px 0 0;
+  color: rgba(234, 242, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.breath-count {
+  margin: 14px 0 0;
+  color: #bde5ff;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 620;
+  letter-spacing: 0.03em;
+}
+
+.breath-skip {
+  margin-top: 14px;
+  border: 1px solid rgba(143, 210, 255, 0.42);
+  border-radius: 999px;
+  background: rgba(143, 210, 255, 0.12);
+  color: #eaf2ff;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
 @keyframes breathe-core {
   0%,
   100% {
@@ -199,5 +284,24 @@ body {
   50% {
     transform: scale(1.08);
     opacity: 1;
+  }
+}
+
+@keyframes quote-cycle {
+  0% {
+    opacity: 0.14;
+    transform: translateY(4px);
+  }
+  28% {
+    opacity: 0.96;
+    transform: translateY(0);
+  }
+  64% {
+    opacity: 0.94;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-4px);
   }
 }

@@ -10,6 +10,10 @@ type Dict = {
   touchToEnter: string;
   enterAria: string;
   momentEntry: string;
+  breathTitle: string;
+  breathBody: string;
+  breathSkip: string;
+  breathSeconds: string;
   langEn: string;
   langVi: string;
 };
@@ -21,6 +25,10 @@ const messages: Record<Locale, Dict> = {
     touchToEnter: 'touch to enter',
     enterAria: 'Enter TOKA',
     momentEntry: 'Moment Entry',
+    breathTitle: 'Pause and breathe',
+    breathBody: 'Take one slow breath before entering the moment.',
+    breathSkip: 'Skip',
+    breathSeconds: 's',
     langEn: 'EN',
     langVi: 'VI',
   },
@@ -30,6 +38,10 @@ const messages: Record<Locale, Dict> = {
     touchToEnter: 'chạm để vào',
     enterAria: 'Vào TOKA',
     momentEntry: 'Vào Khoảnh Khắc',
+    breathTitle: 'Dừng lại và thở',
+    breathBody: 'Hít một nhịp chậm trước khi vào khoảnh khắc.',
+    breathSkip: 'Bỏ qua',
+    breathSeconds: 'giây',
     langEn: 'EN',
     langVi: 'VI',
   },
@@ -79,4 +91,3 @@ export function useI18n() {
   }
   return value;
 }
-
