@@ -1,0 +1,203 @@
+:root {
+  color-scheme: dark;
+  --bg: #080a0f;
+  --halo: #8fd2ff;
+  --halo-mid: #56b7ff;
+  --halo-soft: rgba(143, 210, 255, 0.4);
+  --text: #eaf2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, rgba(6, 10, 16, 0.88) 0%, rgba(6, 10, 16, 0.45) 62%, rgba(6, 10, 16, 0) 100%);
+  backdrop-filter: blur(6px);
+}
+
+.app-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  text-align: center;
+  padding: 10px 14px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(234, 242, 255, 0.62);
+  background: linear-gradient(0deg, rgba(6, 10, 16, 0.92) 0%, rgba(6, 10, 16, 0.44) 64%, rgba(6, 10, 16, 0) 100%);
+  backdrop-filter: blur(6px);
+}
+
+.brand-block {
+  display: grid;
+  gap: 2px;
+}
+
+.brand-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.brand-tagline {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(234, 242, 255, 0.78);
+}
+
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid rgba(143, 210, 255, 0.32);
+  border-radius: 999px;
+  background: rgba(8, 12, 18, 0.68);
+  overflow: hidden;
+}
+
+.lang-btn {
+  border: 0;
+  background: transparent;
+  color: rgba(234, 242, 255, 0.7);
+  padding: 6px 10px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  background: rgba(143, 210, 255, 0.22);
+  color: #f3f9ff;
+}
+
+.home-root {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(46vw 46vw at 50% 50%, rgba(115, 196, 255, 0.22) 0%, rgba(57, 120, 181, 0.14) 34%, rgba(15, 38, 68, 0.08) 56%, rgba(0, 0, 0, 0) 72%),
+    radial-gradient(120vw 120vw at 50% 45%, #0d1119 0%, #090c13 44%, var(--bg) 100%);
+}
+
+.orb-button {
+  --size: min(58vmin, 420px);
+  width: var(--size);
+  height: var(--size);
+  border: 0;
+  background: transparent;
+  position: relative;
+  isolation: isolate;
+  border-radius: 9999px;
+  cursor: pointer;
+  touch-action: manipulation;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.orb-button:focus-visible {
+  outline: 2px solid rgba(157, 212, 255, 0.9);
+  outline-offset: 10px;
+}
+
+.orb-halo {
+  position: absolute;
+  inset: -16%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(243, 252, 255, 1) 0%,
+    rgba(214, 242, 255, 0.98) 18%,
+    rgba(143, 210, 255, 0.9) 36%,
+    rgba(86, 183, 255, 0.62) 52%,
+    rgba(143, 210, 255, 0.28) 62%,
+    rgba(143, 210, 255, 0.08) 72%,
+    rgba(0, 0, 0, 0) 82%
+  );
+  filter: blur(30px);
+  opacity: 1;
+  animation: breathe-halo 4.2s ease-in-out infinite;
+}
+
+.orb-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #000;
+  box-shadow:
+    0 0 140px 20px var(--halo-soft) inset,
+    0 0 120px 10px var(--halo-soft);
+  animation: breathe-core 5.8s ease-in-out infinite;
+  z-index: 1;
+}
+
+.hint {
+  position: absolute;
+  bottom: clamp(18px, 5vh, 54px);
+  margin: 0;
+  font-size: clamp(12px, 1.2vw, 18px);
+  letter-spacing: 0.06em;
+  color: rgba(214, 241, 255, 0.86);
+}
+
+.moment-root {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+@keyframes breathe-core {
+  0%,
+  100% {
+    transform: scale(0.985);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes breathe-halo {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
