@@ -111,6 +111,8 @@ export default function MomentPage() {
             </button>
           </section>
 
+          <div className="moment-divider" aria-hidden="true" />
+
           <section className="moment-section">
             <div className="moment-domain-head">
               <div className="moment-domain-title-wrap">
@@ -146,11 +148,11 @@ export default function MomentPage() {
           </section>
 
           <div className="moment-actions">
-            <button type="button" className="moment-back-link" onClick={handleBack}>
-              {t('momentBack')}
-            </button>
             <button type="button" className="moment-confirm-btn" onClick={handleConfirm}>
               {t('momentConfirm')}
+            </button>
+            <button type="button" className="moment-back-link" onClick={handleBack}>
+              {t('momentBack')}
             </button>
           </div>
         </div>
