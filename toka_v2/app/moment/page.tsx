@@ -18,6 +18,7 @@ export default function MomentPage() {
   const [showQuestionModal, setShowQuestionModal] = useState(false);
   const [draftQuestion, setDraftQuestion] = useState('');
   const [selectedDomain, setSelectedDomain] = useState('');
+  const [showDomains, setShowDomains] = useState(false);
   const [enteredAt] = useState(() => new Date());
 
   const enteredAtText = useMemo(() => {
@@ -112,10 +113,21 @@ export default function MomentPage() {
 
           <section className="moment-section">
             <div className="moment-domain-head">
-              <p className="moment-label">{t('momentDomainTitle')}</p>
+              <div className="moment-domain-title-wrap">
+                <p className="moment-label">{t('momentDomainTitle')}</p>
+                <button
+                  type="button"
+                  className={showDomains ? 'domain-toggle open' : 'domain-toggle'}
+                  aria-label={showDomains ? 'Hide options' : 'Show options'}
+                  aria-expanded={showDomains}
+                  onClick={() => setShowDomains((current) => !current)}
+                >
+                  <span className="domain-toggle-arrow">▸</span>
+                </button>
+              </div>
               <span className="moment-optional">{t('momentDomainOptional')}</span>
             </div>
-            <div className="moment-domain-grid">
+            <div className={showDomains ? 'moment-domain-grid' : 'moment-domain-grid hidden'}>
               {domains.map((item) => {
                 const active = selectedDomain === item.value;
                 const muted = Boolean(selectedDomain) && !active;
