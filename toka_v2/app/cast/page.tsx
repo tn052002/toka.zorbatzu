@@ -4,9 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import BreathingOrb from '@/components/BreathingOrb';
 import { useI18n } from '@/lib/i18n';
-
-const MOMENT_KEY = 'toka_v2:moment_draft';
-const CAST_KEY = 'toka_v2:cast_result';
+import { buildMomentReading, MOMENT_KEY, MOMENT_READING_KEY, type MomentDraft } from '@/lib/momentReading';
 
 type Mode = 'quick' | 'ritual';
 type Polarity = 'yin' | 'yang';
@@ -36,7 +34,7 @@ function createHexagram(): Line[] {
 export default function CastPlaceholderPage() {
   const { t } = useI18n();
   const router = useRouter();
-  const [payload, setPayload] = useState<{ question?: string; domain?: string | null } | null>(null);
+  const [payload, setPayload] = useState<MomentDraft | null>(null);
   const [mode, setMode] = useState<Mode>('quick');
   const [step, setStep] = useState(0);
   const [lines, setLines] = useState<Line[]>(() => createHexagram());
@@ -49,7 +47,12 @@ export default function CastPlaceholderPage() {
     try {
       const raw = window.localStorage.getItem(MOMENT_KEY);
       if (raw) {
-        setPayload(JSON.parse(raw));
+        const parsed = JSON.parse(raw) as Partial<MomentDraft>;
+        setPayload({
+          question: parsed.question ?? '',
+          questionTimestamp: parsed.questionTimestamp ?? new Date().toISOString(),
+          domain: parsed.domain ?? null,
+        });
       }
     } catch {
       setPayload(null);
@@ -134,15 +137,16 @@ export default function CastPlaceholderPage() {
     if (!isComplete) {
       return;
     }
+    const reading = buildMomentReading({
+      draft: payload,
+      mode,
+      castLines: lines,
+    });
     window.localStorage.setItem(
-      CAST_KEY,
-      JSON.stringify({
-        question: payload?.question ?? '',
-        domain: payload?.domain ?? null,
-        mode,
-        lines,
-      }),
+      MOMENT_READING_KEY,
+      JSON.stringify(reading),
     );
+    router.push('/reading');
   };
 
   const controlContent = useMemo(() => {

@@ -1,0 +1,2174 @@
+{
+  "version": "1.0",
+  "hexagrams": {
+    "1": {
+      "id": 1,
+      "laymantitle": "Pure Momentum",
+      "traditional": {
+        "name_en": "The Creative",
+        "pinyin": "Qián",
+        "han_viet": "Càn"
+      },
+      "core_image": "Sky above sky, nothing blocking the open air. Motion rolls forward without interruption.",
+      "structure": {
+        "core_structure": [
+          "All six lines are firm and active.",
+          "Movement begins from inside the pattern.",
+          "Nothing absorbs or softens the force."
+        ],
+        "structural_nature": [
+          "Motion keeps itself going by continuing forward.",
+          "Direction holds because nothing interrupts it.",
+          "Energy repeats its own push."
+        ],
+        "inherent_tension": "Pure expansion meets no yielding ground."
+      },
+      "keywords": [
+        "drive",
+        "initiative",
+        "force"
+      ],
+      "domains_hint": [
+        "leadership",
+        "career",
+        "venture"
+      ]
+    },
+    "2": {
+      "id": 2,
+      "laymantitle": "Receptive Ground",
+      "traditional": {
+        "name_en": "The Receptive",
+        "pinyin": "Kūn",
+        "han_viet": "Khôn"
+      },
+      "core_image": "Earth layered upon earth, wide and open. It carries weight without pushing back.",
+      "structure": {
+        "core_structure": [
+          "All six lines are yielding.",
+          "The pattern receives rather than initiates.",
+          "Form takes shape from what enters it."
+        ],
+        "structural_nature": [
+          "Response comes before action.",
+          "Support holds the structure together.",
+          "Strength builds through steady layering."
+        ],
+        "inherent_tension": "Receptivity spreads without a clear axis to guide it."
+      },
+      "keywords": [
+        "support",
+        "receiving",
+        "stability"
+      ],
+      "domains_hint": [
+        "partnership",
+        "family",
+        "organization"
+      ]
+    },
+    "3": {
+      "id": 3,
+      "laymantitle": "A Rough Start",
+      "traditional": {
+        "name_en": "Difficulty at the Beginning",
+        "pinyin": "Zhūn",
+        "han_viet": "Truân"
+      },
+      "core_image": "Thunder moves under water. Something alive pushes upward through mud.",
+      "structure": {
+        "core_structure": [
+          "New movement forms under pressure.",
+          "Paths are not yet open.",
+          "Energy gathers in tight spaces."
+        ],
+        "structural_nature": [
+          "Progress comes in uneven bursts.",
+          "Obstacles shape the first form of order.",
+          "Direction emerges through repeated attempts."
+        ],
+        "inherent_tension": "Emerging force presses against closed channels."
+      },
+      "keywords": [
+        "beginning",
+        "pressure",
+        "formation"
+      ],
+      "domains_hint": [
+        "startup",
+        "new role",
+        "transition"
+      ]
+    },
+    "4": {
+      "id": 4,
+      "laymantitle": "Learning the Hard Way",
+      "traditional": {
+        "name_en": "Youthful Folly",
+        "pinyin": "Méng",
+        "han_viet": "Mông"
+      },
+      "core_image": "A mountain blocks a flowing stream. Water moves, but the view stays still.",
+      "structure": {
+        "core_structure": [
+          "Stillness covers active movement.",
+          "Surface view is narrow.",
+          "Energy runs beneath limited understanding."
+        ],
+        "structural_nature": [
+          "Mistakes reveal the shape of the terrain.",
+          "Correction refines perception.",
+          "Clarity grows through contact with limits."
+        ],
+        "inherent_tension": "Movement builds beneath a surface that cannot yet read it."
+      },
+      "keywords": [
+        "learning",
+        "naivety",
+        "correction"
+      ],
+      "domains_hint": [
+        "study",
+        "mentorship",
+        "early stage"
+      ]
+    },
+    "5": {
+      "id": 5,
+      "laymantitle": "Waiting for the Right Time",
+      "traditional": {
+        "name_en": "Waiting",
+        "pinyin": "Xū",
+        "han_viet": "Nhu"
+      },
+      "core_image": "Heavy clouds gather above open sky. Rain holds before falling.",
+      "structure": {
+        "core_structure": [
+          "Potential collects without release.",
+          "Conditions are visible but incomplete.",
+          "Energy stays suspended."
+        ],
+        "structural_nature": [
+          "Delay allows strength to gather.",
+          "Timing shapes the next move.",
+          "Restraint prevents premature action."
+        ],
+        "inherent_tension": "Stored force presses against delay."
+      },
+      "keywords": [
+        "timing",
+        "patience",
+        "readiness"
+      ],
+      "domains_hint": [
+        "career",
+        "planning",
+        "investment"
+      ]
+    },
+    "6": {
+      "id": 6,
+      "laymantitle": "Head-On Dispute",
+      "traditional": {
+        "name_en": "Conflict",
+        "pinyin": "Sòng",
+        "han_viet": "Tụng"
+      },
+      "core_image": "Sky rises while water flows downward. Two currents move against each other.",
+      "structure": {
+        "core_structure": [
+          "Two directions occupy the same space.",
+          "Forces pull in opposite ways.",
+          "No shared center holds them together."
+        ],
+        "structural_nature": [
+          "Friction sharpens boundaries.",
+          "Positions harden under pressure.",
+          "Separation clarifies difference."
+        ],
+        "inherent_tension": "Opposing drives push through a single path."
+      },
+      "keywords": [
+        "conflict",
+        "friction",
+        "boundary"
+      ],
+      "domains_hint": [
+        "negotiation",
+        "legal",
+        "partnership"
+      ]
+    },
+    "7": {
+      "id": 7,
+      "laymantitle": "Coordinated Effort",
+      "traditional": {
+        "name_en": "The Army",
+        "pinyin": "Shī",
+        "han_viet": "Sư"
+      },
+      "core_image": "Water moves beneath the earth, guided through hidden channels.",
+      "structure": {
+        "core_structure": [
+          "Many parts move under one direction.",
+          "Roles divide clearly.",
+          "Strength depends on order."
+        ],
+        "structural_nature": [
+          "Discipline keeps motion aligned.",
+          "Hierarchy channels force.",
+          "Shared direction binds individuals."
+        ],
+        "inherent_tension": "Collective weight rests on a narrow command point."
+      },
+      "keywords": [
+        "discipline",
+        "order",
+        "team"
+      ],
+      "domains_hint": [
+        "organization",
+        "leadership",
+        "group"
+      ]
+    },
+    "8": {
+      "id": 8,
+      "laymantitle": "Finding Allies",
+      "traditional": {
+        "name_en": "Holding Together",
+        "pinyin": "Bǐ",
+        "han_viet": "Tỷ"
+      },
+      "core_image": "Water gathers on the ground, forming one pool from scattered drops.",
+      "structure": {
+        "core_structure": [
+          "Separate elements draw closer.",
+          "Closeness creates cohesion.",
+          "Belonging forms around a center."
+        ],
+        "structural_nature": [
+          "Attraction reduces distance.",
+          "Shared direction stabilizes the group.",
+          "Connection defines structure."
+        ],
+        "inherent_tension": "Union forms before differences fully settle."
+      },
+      "keywords": [
+        "alliance",
+        "unity",
+        "cohesion"
+      ],
+      "domains_hint": [
+        "community",
+        "partnership",
+        "network"
+      ]
+    },
+    "9": {
+      "id": 9,
+      "laymantitle": "Small Control",
+      "traditional": {
+        "name_en": "The Taming Power of the Small",
+        "pinyin": "Xiǎo Chù",
+        "han_viet": "Tiểu Súc"
+      },
+      "core_image": "Wind crosses the open sky, light yet persistent.",
+      "structure": {
+        "core_structure": [
+          "A smaller force meets a larger one.",
+          "Restraint works from the edges.",
+          "Containment slows expansion."
+        ],
+        "structural_nature": [
+          "Repeated light pressure changes direction.",
+          "Subtle limits refine movement.",
+          "Small control prevents excess."
+        ],
+        "inherent_tension": "Minor restraint holds back broader momentum."
+      },
+      "keywords": [
+        "restraint",
+        "influence",
+        "control"
+      ],
+      "domains_hint": [
+        "strategy",
+        "finance",
+        "self-regulation"
+      ]
+    },
+    "10": {
+      "id": 10,
+      "laymantitle": "Walking Carefully",
+      "traditional": {
+        "name_en": "Treading",
+        "pinyin": "Lǚ",
+        "han_viet": "Lữ"
+      },
+      "core_image": "Heaven stands above a lake. Firm steps cross a reflective surface.",
+      "structure": {
+        "core_structure": [
+          "Strong force moves over sensitive ground.",
+          "Clear boundaries separate levels.",
+          "Position determines stability."
+        ],
+        "structural_nature": [
+          "Measured steps prevent imbalance.",
+          "Awareness of place maintains order.",
+          "Careful motion preserves structure."
+        ],
+        "inherent_tension": "Firm force presses upon a delicate surface."
+      },
+      "keywords": [
+        "caution",
+        "boundary",
+        "conduct"
+      ],
+      "domains_hint": [
+        "risk",
+        "leadership",
+        "reputation"
+      ]
+    },
+    "11": {
+      "id": 11,
+      "laymantitle": "Smooth Flow",
+      "traditional": {
+        "name_en": "Peace",
+        "pinyin": "Tài",
+        "han_viet": "Thái"
+      },
+      "core_image": "Heaven moves beneath earth. What is light rises, what is heavy settles.",
+      "structure": {
+        "core_structure": [
+          "Upper and lower forces exchange places.",
+          "Movement flows between levels.",
+          "Opposites support rather than resist."
+        ],
+        "structural_nature": [
+          "Circulation keeps balance alive.",
+          "Exchange strengthens both sides.",
+          "Openness allows passage."
+        ],
+        "inherent_tension": "Harmony depends on continuous exchange."
+      },
+      "keywords": [
+        "flow",
+        "balance",
+        "exchange"
+      ],
+      "domains_hint": [
+        "organization",
+        "relationship",
+        "growth"
+      ]
+    },
+    "12": {
+      "id": 12,
+      "laymantitle": "Blocked Flow",
+      "traditional": {
+        "name_en": "Standstill",
+        "pinyin": "Pǐ",
+        "han_viet": "Bĩ"
+      },
+      "core_image": "Heaven stands above earth without meeting. What rises cannot connect with what settles.",
+      "structure": {
+        "core_structure": [
+          "Upper and lower forces separate.",
+          "No exchange bridges the gap.",
+          "Movement stalls between levels."
+        ],
+        "structural_nature": [
+          "Isolation hardens boundaries.",
+          "Circulation weakens.",
+          "Positions grow fixed."
+        ],
+        "inherent_tension": "Separation widens without a crossing point."
+      },
+      "keywords": [
+        "stagnation",
+        "division",
+        "blockage"
+      ],
+      "domains_hint": [
+        "career",
+        "team",
+        "communication"
+      ]
+    },
+    "13": {
+      "id": 13,
+      "laymantitle": "Shared Purpose",
+      "traditional": {
+        "name_en": "Fellowship",
+        "pinyin": "Tóng Rén",
+        "han_viet": "Đồng Nhân"
+      },
+      "core_image": "Fire burns beneath heaven. Light spreads outward in open air.",
+      "structure": {
+        "core_structure": [
+          "Clarity rises into open space.",
+          "People align around a visible signal.",
+          "Connection forms in the open."
+        ],
+        "structural_nature": [
+          "Shared focus draws individuals together.",
+          "Visibility strengthens bonds.",
+          "Common ground defines direction."
+        ],
+        "inherent_tension": "Unity relies on a single visible center."
+      },
+      "keywords": [
+        "unity",
+        "visibility",
+        "alignment"
+      ],
+      "domains_hint": [
+        "team",
+        "community",
+        "mission"
+      ]
+    },
+    "14": {
+      "id": 14,
+      "laymantitle": "Abundant Resources",
+      "traditional": {
+        "name_en": "Great Possession",
+        "pinyin": "Dà Yǒu",
+        "han_viet": "Đại Hữu"
+      },
+      "core_image": "Fire rises above heaven, bright and far-reaching.",
+      "structure": {
+        "core_structure": [
+          "Clarity stands in a high position.",
+          "Resources gather in one place.",
+          "Strength supports brightness."
+        ],
+        "structural_nature": [
+          "Visibility amplifies influence.",
+          "Holding power requires balance.",
+          "Central strength sustains growth."
+        ],
+        "inherent_tension": "Brightness draws weight toward a single holder."
+      },
+      "keywords": [
+        "resources",
+        "influence",
+        "capacity"
+      ],
+      "domains_hint": [
+        "finance",
+        "leadership",
+        "business"
+      ]
+    },
+    "15": {
+      "id": 15,
+      "laymantitle": "Keeping It Even",
+      "traditional": {
+        "name_en": "Modesty",
+        "pinyin": "Qiān",
+        "han_viet": "Khiêm"
+      },
+      "core_image": "A mountain rests beneath the earth, lowering its height.",
+      "structure": {
+        "core_structure": [
+          "Height moves downward.",
+          "Excess reduces itself.",
+          "Balance forms by leveling."
+        ],
+        "structural_nature": [
+          "Lowering stabilizes the whole.",
+          "Even ground supports movement.",
+          "Adjustment prevents imbalance."
+        ],
+        "inherent_tension": "Leveling reduces peaks that define identity."
+      },
+      "keywords": [
+        "leveling",
+        "balance",
+        "adjustment"
+      ],
+      "domains_hint": [
+        "leadership",
+        "reputation",
+        "growth"
+      ]
+    },
+    "16": {
+      "id": 16,
+      "laymantitle": "Rising Excitement",
+      "traditional": {
+        "name_en": "Enthusiasm",
+        "pinyin": "Yù",
+        "han_viet": "Dự"
+      },
+      "core_image": "Thunder sounds above the earth. Movement spreads across the ground.",
+      "structure": {
+        "core_structure": [
+          "Energy moves outward quickly.",
+          "Sound signals action.",
+          "Momentum builds across a wide field."
+        ],
+        "structural_nature": [
+          "Excitement synchronizes groups.",
+          "Rhythm coordinates movement.",
+          "Shared signal drives action."
+        ],
+        "inherent_tension": "Momentum spreads faster than direction settles."
+      },
+      "keywords": [
+        "momentum",
+        "signal",
+        "mobilization"
+      ],
+      "domains_hint": [
+        "launch",
+        "team",
+        "event"
+      ]
+    },
+    "17": {
+      "id": 17,
+      "laymantitle": "Following the Lead",
+      "traditional": {
+        "name_en": "Following",
+        "pinyin": "Suí",
+        "han_viet": "Tùy"
+      },
+      "core_image": "Lake rests beneath thunder. Movement answers sound.",
+      "structure": {
+        "core_structure": [
+          "One force responds to another.",
+          "Direction forms from external cue.",
+          "Alignment depends on response."
+        ],
+        "structural_nature": [
+          "Adaptation maintains harmony.",
+          "Movement mirrors a signal.",
+          "Responsiveness defines stability."
+        ],
+        "inherent_tension": "Direction depends on a changing source."
+      },
+      "keywords": [
+        "response",
+        "adaptation",
+        "alignment"
+      ],
+      "domains_hint": [
+        "career",
+        "relationship",
+        "organization"
+      ]
+    },
+    "18": {
+      "id": 18,
+      "laymantitle": "Fixing What’s Spoiled",
+      "traditional": {
+        "name_en": "Work on What Has Been Spoiled",
+        "pinyin": "Gǔ",
+        "han_viet": "Cổ"
+      },
+      "core_image": "Wind moves beneath a mountain. Decay hides inside stillness.",
+      "structure": {
+        "core_structure": [
+          "Damage sits within structure.",
+          "Stillness covers internal disruption.",
+          "Correction requires reopening."
+        ],
+        "structural_nature": [
+          "Inspection reveals weakness.",
+          "Repair strengthens foundation.",
+          "Renewal replaces decay."
+        ],
+        "inherent_tension": "Hidden decay weakens the base that supports the whole."
+      },
+      "keywords": [
+        "repair",
+        "correction",
+        "restoration"
+      ],
+      "domains_hint": [
+        "business",
+        "family",
+        "legacy"
+      ]
+    },
+    "19": {
+      "id": 19,
+      "laymantitle": "Approaching Opportunity",
+      "traditional": {
+        "name_en": "Approach",
+        "pinyin": "Lín",
+        "han_viet": "Lâm"
+      },
+      "core_image": "Earth rises beneath a lake. Something moves closer from below.",
+      "structure": {
+        "core_structure": [
+          "Lower force moves upward.",
+          "Distance shortens between levels.",
+          "Contact becomes imminent."
+        ],
+        "structural_nature": [
+          "Proximity changes balance.",
+          "Nearness increases influence.",
+          "Opportunity grows through approach."
+        ],
+        "inherent_tension": "Closeness increases pressure on both sides."
+      },
+      "keywords": [
+        "approach",
+        "proximity",
+        "growth"
+      ],
+      "domains_hint": [
+        "career",
+        "relationship",
+        "expansion"
+      ]
+    },
+    "20": {
+      "id": 20,
+      "laymantitle": "Stepping Back to See",
+      "traditional": {
+        "name_en": "Contemplation",
+        "pinyin": "Guān",
+        "han_viet": "Quán"
+      },
+      "core_image": "Wind moves above the earth. Perspective widens from height.",
+      "structure": {
+        "core_structure": [
+          "Observation stands above activity.",
+          "Movement is viewed from distance.",
+          "Clarity comes from elevation."
+        ],
+        "structural_nature": [
+          "Distance reveals pattern.",
+          "Still attention steadies judgment.",
+          "Perspective shapes response."
+        ],
+        "inherent_tension": "Distance slows engagement with what moves below."
+      },
+      "keywords": [
+        "perspective",
+        "observation",
+        "clarity"
+      ],
+      "domains_hint": [
+        "strategy",
+        "leadership",
+        "reflection"
+      ]
+    },
+    "21": {
+      "id": 21,
+      "laymantitle": "Breaking Through",
+      "traditional": {
+        "name_en": "Biting Through",
+        "pinyin": "Shì Hé",
+        "han_viet": "Phệ Hạp"
+      },
+      "core_image": "Thunder and lightning strike together. Something hard blocks the way; a cut opens passage.",
+      "structure": {
+        "core_structure": [
+          "An obstacle sits in the middle of movement.",
+          "Force gathers to remove blockage.",
+          "Progress depends on clearing resistance."
+        ],
+        "structural_nature": [
+          "A clean cut reopens flow.",
+          "Clarity comes through decisive contact.",
+          "Pressure concentrates on the obstruction."
+        ],
+        "inherent_tension": "Force hardens as it meets solid resistance."
+      },
+      "keywords": [
+        "obstacle",
+        "decision",
+        "removal"
+      ],
+      "domains_hint": [
+        "legal",
+        "career",
+        "conflict"
+      ]
+    },
+    "22": {
+      "id": 22,
+      "laymantitle": "Outer Appearance",
+      "traditional": {
+        "name_en": "Grace",
+        "pinyin": "Bì",
+        "han_viet": "Bí"
+      },
+      "core_image": "Fire burns at the foot of a mountain. Light decorates solid form.",
+      "structure": {
+        "core_structure": [
+          "Brightness rests upon firmness.",
+          "Surface becomes visible.",
+          "Form receives ornament."
+        ],
+        "structural_nature": [
+          "Appearance shapes perception.",
+          "Detail refines structure.",
+          "Presentation influences reception."
+        ],
+        "inherent_tension": "Surface shine draws attention away from the base."
+      },
+      "keywords": [
+        "appearance",
+        "presentation",
+        "style"
+      ],
+      "domains_hint": [
+        "branding",
+        "reputation",
+        "design"
+      ]
+    },
+    "23": {
+      "id": 23,
+      "laymantitle": "Stripping Away",
+      "traditional": {
+        "name_en": "Splitting Apart",
+        "pinyin": "Bō",
+        "han_viet": "Bác"
+      },
+      "core_image": "A mountain erodes from below. The base weakens and layers fall away.",
+      "structure": {
+        "core_structure": [
+          "Support erodes from beneath.",
+          "Upper layers lose footing.",
+          "Structure thins over time."
+        ],
+        "structural_nature": [
+          "Decay works gradually.",
+          "Loss reveals hidden weakness.",
+          "Reduction simplifies form."
+        ],
+        "inherent_tension": "Upper weight rests on a weakening base."
+      },
+      "keywords": [
+        "erosion",
+        "loss",
+        "reduction"
+      ],
+      "domains_hint": [
+        "business",
+        "relationship",
+        "transition"
+      ]
+    },
+    "24": {
+      "id": 24,
+      "laymantitle": "Turning Back",
+      "traditional": {
+        "name_en": "Return",
+        "pinyin": "Fù",
+        "han_viet": "Phục"
+      },
+      "core_image": "Thunder moves within the earth. A cycle begins again from below.",
+      "structure": {
+        "core_structure": [
+          "A single active line returns at the base.",
+          "Movement restarts from ground level.",
+          "Renewal grows from small beginnings."
+        ],
+        "structural_nature": [
+          "Cycles repeat naturally.",
+          "Return restores direction.",
+          "Fresh motion rises from quiet ground."
+        ],
+        "inherent_tension": "New movement emerges within old ground."
+      },
+      "keywords": [
+        "return",
+        "cycle",
+        "renewal"
+      ],
+      "domains_hint": [
+        "career",
+        "health",
+        "renewal"
+      ]
+    },
+    "25": {
+      "id": 25,
+      "laymantitle": "Acting Without Pretense",
+      "traditional": {
+        "name_en": "Innocence",
+        "pinyin": "Wú Wàng",
+        "han_viet": "Vô Vọng"
+      },
+      "core_image": "Thunder moves beneath heaven. Action arises without hidden motive.",
+      "structure": {
+        "core_structure": [
+          "Movement aligns with natural order.",
+          "Action arises directly.",
+          "No extra layer complicates intent."
+        ],
+        "structural_nature": [
+          "Simplicity preserves strength.",
+          "Directness keeps motion clean.",
+          "Clarity avoids distortion."
+        ],
+        "inherent_tension": "Direct action meets an unpredictable field."
+      },
+      "keywords": [
+        "integrity",
+        "directness",
+        "simplicity"
+      ],
+      "domains_hint": [
+        "decision",
+        "leadership",
+        "risk"
+      ]
+    },
+    "26": {
+      "id": 26,
+      "laymantitle": "Contained Strength",
+      "traditional": {
+        "name_en": "Great Taming",
+        "pinyin": "Dà Chù",
+        "han_viet": "Đại Súc"
+      },
+      "core_image": "A mountain holds heaven in place. Great force stays restrained.",
+      "structure": {
+        "core_structure": [
+          "Strong energy is stored.",
+          "Movement pauses under control.",
+          "Potential gathers behind restraint."
+        ],
+        "structural_nature": [
+          "Containment builds power.",
+          "Delay increases capacity.",
+          "Control stabilizes expansion."
+        ],
+        "inherent_tension": "Stored strength strains against its boundary."
+      },
+      "keywords": [
+        "restraint",
+        "capacity",
+        "discipline"
+      ],
+      "domains_hint": [
+        "career",
+        "finance",
+        "strategy"
+      ]
+    },
+    "27": {
+      "id": 27,
+      "laymantitle": "Feeding the Source",
+      "traditional": {
+        "name_en": "Nourishment",
+        "pinyin": "Yí",
+        "han_viet": "Di"
+      },
+      "core_image": "Thunder beneath a mountain. Something is fed to sustain growth.",
+      "structure": {
+        "core_structure": [
+          "Input determines output.",
+          "Growth depends on supply.",
+          "Support enters through a narrow opening."
+        ],
+        "structural_nature": [
+          "Quality of intake shapes strength.",
+          "Regular feeding sustains motion.",
+          "Dependence links source and result."
+        ],
+        "inherent_tension": "Sustained growth relies on a limited channel of supply."
+      },
+      "keywords": [
+        "nourishment",
+        "support",
+        "supply"
+      ],
+      "domains_hint": [
+        "health",
+        "finance",
+        "learning"
+      ]
+    },
+    "28": {
+      "id": 28,
+      "laymantitle": "Carrying Too Much",
+      "traditional": {
+        "name_en": "Great Excess",
+        "pinyin": "Dà Guò",
+        "han_viet": "Đại Quá"
+      },
+      "core_image": "A beam bends under heavy weight. The middle bears too much load.",
+      "structure": {
+        "core_structure": [
+          "Outer supports are weak.",
+          "Central line carries excess weight.",
+          "Structure leans under pressure."
+        ],
+        "structural_nature": [
+          "Imbalance stresses the core.",
+          "Excess amplifies strain.",
+          "Strain concentrates at the center."
+        ],
+        "inherent_tension": "Central support bears more weight than it can distribute."
+      },
+      "keywords": [
+        "excess",
+        "burden",
+        "strain"
+      ],
+      "domains_hint": [
+        "workload",
+        "finance",
+        "leadership"
+      ]
+    },
+    "29": {
+      "id": 29,
+      "laymantitle": "Facing Repeated Risk",
+      "traditional": {
+        "name_en": "The Abysmal",
+        "pinyin": "Kǎn",
+        "han_viet": "Khảm"
+      },
+      "core_image": "Water flows into water, forming deep ravines.",
+      "structure": {
+        "core_structure": [
+          "Danger repeats in layers.",
+          "Movement enters depth.",
+          "The path runs through narrow channels."
+        ],
+        "structural_nature": [
+          "Flow continues despite risk.",
+          "Depth tests stability.",
+          "Persistence navigates hazard."
+        ],
+        "inherent_tension": "Forward movement passes through recurring depth."
+      },
+      "keywords": [
+        "risk",
+        "depth",
+        "challenge"
+      ],
+      "domains_hint": [
+        "finance",
+        "career",
+        "decision"
+      ]
+    },
+    "30": {
+      "id": 30,
+      "laymantitle": "Clear Visibility",
+      "traditional": {
+        "name_en": "The Clinging, Fire",
+        "pinyin": "Lí",
+        "han_viet": "Ly"
+      },
+      "core_image": "Fire rests upon fire. Light attaches to what it illuminates.",
+      "structure": {
+        "core_structure": [
+          "Brightness depends on fuel.",
+          "Clarity attaches to form.",
+          "Light reveals and consumes."
+        ],
+        "structural_nature": [
+          "Visibility spreads through contact.",
+          "Heat intensifies through repetition.",
+          "Attention concentrates energy."
+        ],
+        "inherent_tension": "Brightness relies on what it burns."
+      },
+      "keywords": [
+        "clarity",
+        "visibility",
+        "intensity"
+      ],
+      "domains_hint": [
+        "branding",
+        "communication",
+        "leadership"
+      ]
+    },
+    "31": {
+      "id": 31,
+      "laymantitle": "Mutual Influence",
+      "traditional": {
+        "name_en": "Influence",
+        "pinyin": "Xián",
+        "han_viet": "Hàm"
+      },
+      "core_image": "A lake rests upon a mountain. Stillness meets gentle movement.",
+      "structure": {
+        "core_structure": [
+          "Two forces attract across difference.",
+          "Contact creates subtle response.",
+          "Influence moves through feeling."
+        ],
+        "structural_nature": [
+          "Gentle signals shift direction.",
+          "Resonance aligns movement.",
+          "Response deepens connection."
+        ],
+        "inherent_tension": "Attraction depends on sustained sensitivity."
+      },
+      "keywords": [
+        "influence",
+        "attraction",
+        "connection"
+      ],
+      "domains_hint": [
+        "relationship",
+        "partnership",
+        "negotiation"
+      ]
+    },
+    "32": {
+      "id": 32,
+      "laymantitle": "Long-Term Pattern",
+      "traditional": {
+        "name_en": "Duration",
+        "pinyin": "Héng",
+        "han_viet": "Hằng"
+      },
+      "core_image": "Thunder and wind move together, repeating across time.",
+      "structure": {
+        "core_structure": [
+          "Movement repeats in cycles.",
+          "Stability grows through consistency.",
+          "Pattern forms through repetition."
+        ],
+        "structural_nature": [
+          "Regular motion builds trust.",
+          "Continuity strengthens structure.",
+          "Rhythm maintains balance."
+        ],
+        "inherent_tension": "Repetition risks turning into rigidity."
+      },
+      "keywords": [
+        "consistency",
+        "duration",
+        "pattern"
+      ],
+      "domains_hint": [
+        "relationship",
+        "career",
+        "business"
+      ]
+    },
+    "33": {
+      "id": 33,
+      "laymantitle": "Pulling Back",
+      "traditional": {
+        "name_en": "Retreat",
+        "pinyin": "Dùn",
+        "han_viet": "Độn"
+      },
+      "core_image": "Heaven moves above a mountain. Strength steps away from rising pressure.",
+      "structure": {
+        "core_structure": [
+          "Strong force stands above growing pressure.",
+          "Distance increases between levels.",
+          "Withdrawal creates space."
+        ],
+        "structural_nature": [
+          "Stepping back preserves strength.",
+          "Separation prevents collision.",
+          "Distance reshapes position."
+        ],
+        "inherent_tension": "Strength holds while pressure continues to rise below."
+      },
+      "keywords": [
+        "retreat",
+        "distance",
+        "timing"
+      ],
+      "domains_hint": [
+        "career",
+        "conflict",
+        "strategy"
+      ]
+    },
+    "34": {
+      "id": 34,
+      "laymantitle": "Strong Push",
+      "traditional": {
+        "name_en": "Great Power",
+        "pinyin": "Dà Zhuàng",
+        "han_viet": "Đại Tráng"
+      },
+      "core_image": "Thunder rises beneath heaven. Force surges upward with weight behind it.",
+      "structure": {
+        "core_structure": [
+          "Energy gathers in the lower lines.",
+          "Momentum drives upward.",
+          "Strength seeks release."
+        ],
+        "structural_nature": [
+          "Force accelerates quickly.",
+          "Direct impact defines movement.",
+          "Pressure builds toward breakthrough."
+        ],
+        "inherent_tension": "Rising force pushes against its own limits."
+      },
+      "keywords": [
+        "power",
+        "momentum",
+        "force"
+      ],
+      "domains_hint": [
+        "leadership",
+        "competition",
+        "decision"
+      ]
+    },
+    "35": {
+      "id": 35,
+      "laymantitle": "Steady Progress",
+      "traditional": {
+        "name_en": "Progress",
+        "pinyin": "Jìn",
+        "han_viet": "Tấn"
+      },
+      "core_image": "The sun rises above the earth. Light advances across open ground.",
+      "structure": {
+        "core_structure": [
+          "Clarity moves upward.",
+          "Light spreads gradually.",
+          "Movement advances in stages."
+        ],
+        "structural_nature": [
+          "Visibility increases step by step.",
+          "Forward motion builds on stable ground.",
+          "Exposure expands reach."
+        ],
+        "inherent_tension": "Advancement depends on continued visibility."
+      },
+      "keywords": [
+        "progress",
+        "visibility",
+        "growth"
+      ],
+      "domains_hint": [
+        "career",
+        "recognition",
+        "expansion"
+      ]
+    },
+    "36": {
+      "id": 36,
+      "laymantitle": "Hidden Light",
+      "traditional": {
+        "name_en": "Darkening of the Light",
+        "pinyin": "Míng Yí",
+        "han_viet": "Minh Di"
+      },
+      "core_image": "The sun sinks beneath the earth. Brightness moves under cover.",
+      "structure": {
+        "core_structure": [
+          "Light descends below the surface.",
+          "Visibility decreases.",
+          "Strength hides to endure."
+        ],
+        "structural_nature": [
+          "Concealment preserves energy.",
+          "Inner clarity replaces outer display.",
+          "Protection stabilizes position."
+        ],
+        "inherent_tension": "Brightness remains while conditions obscure it."
+      },
+      "keywords": [
+        "concealment",
+        "endurance",
+        "protection"
+      ],
+      "domains_hint": [
+        "career",
+        "politics",
+        "survival"
+      ]
+    },
+    "37": {
+      "id": 37,
+      "laymantitle": "Inner Order",
+      "traditional": {
+        "name_en": "The Family",
+        "pinyin": "Jiā Rén",
+        "han_viet": "Gia Nhân"
+      },
+      "core_image": "Wind moves within a house. Roles shape daily rhythm.",
+      "structure": {
+        "core_structure": [
+          "Positions define responsibility.",
+          "Hierarchy forms inside boundaries.",
+          "Order begins at the center."
+        ],
+        "structural_nature": [
+          "Clear roles maintain balance.",
+          "Routine stabilizes connection.",
+          "Structure supports growth."
+        ],
+        "inherent_tension": "Stability depends on each role holding its place."
+      },
+      "keywords": [
+        "roles",
+        "order",
+        "structure"
+      ],
+      "domains_hint": [
+        "family",
+        "organization",
+        "leadership"
+      ]
+    },
+    "38": {
+      "id": 38,
+      "laymantitle": "Opposing Views",
+      "traditional": {
+        "name_en": "Opposition",
+        "pinyin": "Kuí",
+        "han_viet": "Khuê"
+      },
+      "core_image": "Fire rises while a lake settles. Two directions diverge.",
+      "structure": {
+        "core_structure": [
+          "Forces move apart.",
+          "Shared ground narrows.",
+          "Difference becomes visible."
+        ],
+        "structural_nature": [
+          "Contrast sharpens awareness.",
+          "Separation clarifies identity.",
+          "Distance defines position."
+        ],
+        "inherent_tension": "Diverging paths reduce common ground."
+      },
+      "keywords": [
+        "difference",
+        "contrast",
+        "separation"
+      ],
+      "domains_hint": [
+        "relationship",
+        "negotiation",
+        "team"
+      ]
+    },
+    "39": {
+      "id": 39,
+      "laymantitle": "Obstructed Path",
+      "traditional": {
+        "name_en": "Obstruction",
+        "pinyin": "Jiǎn",
+        "han_viet": "Kiển"
+      },
+      "core_image": "Water stands before a mountain. The way forward narrows.",
+      "structure": {
+        "core_structure": [
+          "Movement meets a solid barrier.",
+          "Forward direction becomes difficult.",
+          "Progress slows."
+        ],
+        "structural_nature": [
+          "Detours reshape the route.",
+          "Resistance tests persistence.",
+          "Constraint limits speed."
+        ],
+        "inherent_tension": "Forward drive presses against fixed ground."
+      },
+      "keywords": [
+        "obstacle",
+        "delay",
+        "constraint"
+      ],
+      "domains_hint": [
+        "career",
+        "travel",
+        "decision"
+      ]
+    },
+    "40": {
+      "id": 40,
+      "laymantitle": "Release of Pressure",
+      "traditional": {
+        "name_en": "Deliverance",
+        "pinyin": "Xiè",
+        "han_viet": "Giải"
+      },
+      "core_image": "Thunder and rain clear the sky. Tension breaks open.",
+      "structure": {
+        "core_structure": [
+          "Built pressure disperses.",
+          "Blocked movement opens.",
+          "Energy spreads outward."
+        ],
+        "structural_nature": [
+          "Release restores flow.",
+          "Clearing resets balance.",
+          "After strain comes ease."
+        ],
+        "inherent_tension": "Release follows accumulated strain."
+      },
+      "keywords": [
+        "release",
+        "relief",
+        "resolution"
+      ],
+      "domains_hint": [
+        "conflict",
+        "health",
+        "transition"
+      ]
+    },
+    "41": {
+      "id": 41,
+      "laymantitle": "Reducing Excess",
+      "traditional": {
+        "name_en": "Decrease",
+        "pinyin": "Sǔn",
+        "han_viet": "Tổn"
+      },
+      "core_image": "A lake lowers at the foot of a mountain. What is high gives to what is low.",
+      "structure": {
+        "core_structure": [
+          "Upper level gives to lower.",
+          "Volume decreases in one place.",
+          "Balance shifts downward."
+        ],
+        "structural_nature": [
+          "Reduction restores proportion.",
+          "Giving strengthens base.",
+          "Less creates steadiness."
+        ],
+        "inherent_tension": "Decrease alters the distribution of weight."
+      },
+      "keywords": [
+        "reduction",
+        "balance",
+        "exchange"
+      ],
+      "domains_hint": [
+        "finance",
+        "health",
+        "resource"
+      ]
+    },
+    "42": {
+      "id": 42,
+      "laymantitle": "Adding Strength",
+      "traditional": {
+        "name_en": "Increase",
+        "pinyin": "Yì",
+        "han_viet": "Ích"
+      },
+      "core_image": "Wind and thunder move together. Energy amplifies across the field.",
+      "structure": {
+        "core_structure": [
+          "Lower level receives support.",
+          "Energy builds from below.",
+          "Growth accelerates upward."
+        ],
+        "structural_nature": [
+          "Addition expands capacity.",
+          "Support strengthens structure.",
+          "Momentum increases reach."
+        ],
+        "inherent_tension": "Growth amplifies strain on the frame that holds it."
+      },
+      "keywords": [
+        "increase",
+        "growth",
+        "support"
+      ],
+      "domains_hint": [
+        "career",
+        "investment",
+        "development"
+      ]
+    },
+    "43": {
+      "id": 43,
+      "laymantitle": "Clear Declaration",
+      "traditional": {
+        "name_en": "Breakthrough",
+        "pinyin": "Guài",
+        "han_viet": "Quải"
+      },
+      "core_image": "A lake rises above heaven. Water presses against open sky.",
+      "structure": {
+        "core_structure": [
+          "A small firm line stands above many yielding ones.",
+          "Pressure builds toward expression.",
+          "Clarity confronts concealment."
+        ],
+        "structural_nature": [
+          "Exposure forces decision.",
+          "Tension drives disclosure.",
+          "Directness cuts through delay."
+        ],
+        "inherent_tension": "Built pressure seeks an open release point."
+      },
+      "keywords": [
+        "decision",
+        "exposure",
+        "clarity"
+      ],
+      "domains_hint": [
+        "career",
+        "conflict",
+        "leadership"
+      ]
+    },
+    "44": {
+      "id": 44,
+      "laymantitle": "Sudden Encounter",
+      "traditional": {
+        "name_en": "Coming to Meet",
+        "pinyin": "Gòu",
+        "han_viet": "Cấu"
+      },
+      "core_image": "Wind moves beneath heaven. A new force enters unexpectedly.",
+      "structure": {
+        "core_structure": [
+          "A single yielding line enters strong space.",
+          "Contact occurs suddenly.",
+          "Balance shifts quickly."
+        ],
+        "structural_nature": [
+          "Unexpected influence alters direction.",
+          "New presence changes the field.",
+          "Reaction reshapes position."
+        ],
+        "inherent_tension": "A small entry changes the balance of the whole."
+      },
+      "keywords": [
+        "encounter",
+        "surprise",
+        "shift"
+      ],
+      "domains_hint": [
+        "relationship",
+        "career",
+        "opportunity"
+      ]
+    },
+    "45": {
+      "id": 45,
+      "laymantitle": "Gathering Together",
+      "traditional": {
+        "name_en": "Gathering",
+        "pinyin": "Cuì",
+        "han_viet": "Tụy"
+      },
+      "core_image": "A lake rests upon the earth. Water collects in one place.",
+      "structure": {
+        "core_structure": [
+          "Many elements converge.",
+          "Center draws attention.",
+          "Focus intensifies."
+        ],
+        "structural_nature": [
+          "Concentration strengthens presence.",
+          "Shared focus builds unity.",
+          "Mass amplifies effect."
+        ],
+        "inherent_tension": "Concentration increases pressure at the center."
+      },
+      "keywords": [
+        "gathering",
+        "focus",
+        "unity"
+      ],
+      "domains_hint": [
+        "community",
+        "event",
+        "organization"
+      ]
+    },
+    "46": {
+      "id": 46,
+      "laymantitle": "Steady Climb",
+      "traditional": {
+        "name_en": "Pushing Upward",
+        "pinyin": "Shēng",
+        "han_viet": "Thăng"
+      },
+      "core_image": "Wind rises beneath the earth. Growth moves upward step by step.",
+      "structure": {
+        "core_structure": [
+          "Lower force ascends gradually.",
+          "Progress builds from the base.",
+          "Movement is patient and steady."
+        ],
+        "structural_nature": [
+          "Consistency strengthens ascent.",
+          "Small gains accumulate.",
+          "Grounded effort sustains climb."
+        ],
+        "inherent_tension": "Upward growth depends on steady ground below."
+      },
+      "keywords": [
+        "progress",
+        "ascent",
+        "effort"
+      ],
+      "domains_hint": [
+        "career",
+        "learning",
+        "development"
+      ]
+    },
+    "47": {
+      "id": 47,
+      "laymantitle": "Feeling Drained",
+      "traditional": {
+        "name_en": "Oppression",
+        "pinyin": "Kùn",
+        "han_viet": "Khốn"
+      },
+      "core_image": "Water dries within a lake. Movement feels restricted.",
+      "structure": {
+        "core_structure": [
+          "Resources diminish.",
+          "Space tightens.",
+          "Pressure surrounds the center."
+        ],
+        "structural_nature": [
+          "Constraint tests endurance.",
+          "Limits narrow options.",
+          "Persistence maintains form."
+        ],
+        "inherent_tension": "Shrinking space increases internal pressure."
+      },
+      "keywords": [
+        "constraint",
+        "pressure",
+        "fatigue"
+      ],
+      "domains_hint": [
+        "career",
+        "finance",
+        "health"
+      ]
+    },
+    "48": {
+      "id": 48,
+      "laymantitle": "Shared Resource",
+      "traditional": {
+        "name_en": "The Well",
+        "pinyin": "Jǐng",
+        "han_viet": "Tỉnh"
+      },
+      "core_image": "Water rests within a well. The source remains while people change.",
+      "structure": {
+        "core_structure": [
+          "A stable source sits at the center.",
+          "Access depends on structure.",
+          "Value remains constant."
+        ],
+        "structural_nature": [
+          "Maintenance preserves supply.",
+          "Shared use defines benefit.",
+          "Structure enables access."
+        ],
+        "inherent_tension": "The source endures while access varies."
+      },
+      "keywords": [
+        "resource",
+        "stability",
+        "access"
+      ],
+      "domains_hint": [
+        "community",
+        "finance",
+        "infrastructure"
+      ]
+    },
+    "49": {
+      "id": 49,
+      "laymantitle": "Turning the Tide",
+      "traditional": {
+        "name_en": "Revolution",
+        "pinyin": "Gé",
+        "han_viet": "Cách"
+      },
+      "core_image": "Fire burns within a lake. Heat transforms what it touches.",
+      "structure": {
+        "core_structure": [
+          "Inner heat builds under a calm surface.",
+          "Change gathers from within.",
+          "Old form loses stability."
+        ],
+        "structural_nature": [
+          "Pressure forces transformation.",
+          "Timing determines visible shift.",
+          "Break from the past resets direction."
+        ],
+        "inherent_tension": "Inner heat strains against existing form."
+      },
+      "keywords": [
+        "change",
+        "transformation",
+        "shift"
+      ],
+      "domains_hint": [
+        "career",
+        "politics",
+        "life transition"
+      ]
+    },
+    "50": {
+      "id": 50,
+      "laymantitle": "Stabilizing the Center",
+      "traditional": {
+        "name_en": "The Cauldron",
+        "pinyin": "Dǐng",
+        "han_viet": "Đỉnh"
+      },
+      "core_image": "Fire burns beneath wood. A vessel transforms raw into refined.",
+      "structure": {
+        "core_structure": [
+          "Heat supports a stable container.",
+          "Contents change within firm walls.",
+          "Transformation depends on balance."
+        ],
+        "structural_nature": [
+          "Structure enables refinement.",
+          "Containment focuses energy.",
+          "Central position holds value."
+        ],
+        "inherent_tension": "Transformation relies on the strength of the container."
+      },
+      "keywords": [
+        "refinement",
+        "structure",
+        "value"
+      ],
+      "domains_hint": [
+        "leadership",
+        "culture",
+        "organization"
+      ]
+    },
+    "51": {
+      "id": 51,
+      "laymantitle": "Sudden Shock",
+      "traditional": {
+        "name_en": "The Arousing",
+        "pinyin": "Zhèn",
+        "han_viet": "Chấn"
+      },
+      "core_image": "Thunder cracks across the sky. The ground trembles.",
+      "structure": {
+        "core_structure": [
+          "A sudden force disrupts stillness.",
+          "Movement begins abruptly.",
+          "Stability is shaken."
+        ],
+        "structural_nature": [
+          "Shock awakens attention.",
+          "Reaction spreads quickly.",
+          "Disruption resets awareness."
+        ],
+        "inherent_tension": "Sudden movement unsettles what stood firm."
+      },
+      "keywords": [
+        "shock",
+        "disruption",
+        "awakening"
+      ],
+      "domains_hint": [
+        "career",
+        "health",
+        "unexpected event"
+      ]
+    },
+    "52": {
+      "id": 52,
+      "laymantitle": "Standing Still",
+      "traditional": {
+        "name_en": "Keeping Still",
+        "pinyin": "Gèn",
+        "han_viet": "Cấn"
+      },
+      "core_image": "A mountain stands upon a mountain. Movement stops at the peak.",
+      "structure": {
+        "core_structure": [
+          "Stillness caps motion.",
+          "Upper and lower lines rest.",
+          "Action pauses completely."
+        ],
+        "structural_nature": [
+          "Rest restores balance.",
+          "Stopping prevents excess.",
+          "Silence contains energy."
+        ],
+        "inherent_tension": "Complete stillness halts natural flow."
+      },
+      "keywords": [
+        "pause",
+        "rest",
+        "stillness"
+      ],
+      "domains_hint": [
+        "decision",
+        "health",
+        "reflection"
+      ]
+    },
+    "53": {
+      "id": 53,
+      "laymantitle": "Gradual Growth",
+      "traditional": {
+        "name_en": "Development",
+        "pinyin": "Jiàn",
+        "han_viet": "Tiệm"
+      },
+      "core_image": "A tree grows upon a mountain. Roots deepen before branches spread.",
+      "structure": {
+        "core_structure": [
+          "Growth follows a natural sequence.",
+          "Foundation strengthens first.",
+          "Progress unfolds step by step."
+        ],
+        "structural_nature": [
+          "Patience stabilizes ascent.",
+          "Time builds resilience.",
+          "Steady rhythm shapes maturity."
+        ],
+        "inherent_tension": "Slow growth tests sustained commitment."
+      },
+      "keywords": [
+        "growth",
+        "patience",
+        "development"
+      ],
+      "domains_hint": [
+        "career",
+        "relationship",
+        "learning"
+      ]
+    },
+    "54": {
+      "id": 54,
+      "laymantitle": "Uneven Position",
+      "traditional": {
+        "name_en": "The Marrying Maiden",
+        "pinyin": "Guī Mèi",
+        "han_viet": "Quy Muội"
+      },
+      "core_image": "Thunder moves above a lake. Position shifts within hierarchy.",
+      "structure": {
+        "core_structure": [
+          "Lower line joins a higher one.",
+          "Role enters established order.",
+          "Balance depends on placement."
+        ],
+        "structural_nature": [
+          "Adjustment aligns expectation.",
+          "Structure defines status.",
+          "Position shapes influence."
+        ],
+        "inherent_tension": "Placement determines leverage within the whole."
+      },
+      "keywords": [
+        "position",
+        "hierarchy",
+        "adjustment"
+      ],
+      "domains_hint": [
+        "career",
+        "relationship",
+        "organization"
+      ]
+    },
+    "55": {
+      "id": 55,
+      "laymantitle": "Peak Activity",
+      "traditional": {
+        "name_en": "Abundance",
+        "pinyin": "Fēng",
+        "han_viet": "Phong"
+      },
+      "core_image": "Thunder and lightning fill the sky. Energy reaches full brightness.",
+      "structure": {
+        "core_structure": [
+          "Light and movement intensify.",
+          "Peak activity fills the field.",
+          "Visibility stands at maximum."
+        ],
+        "structural_nature": [
+          "Fullness amplifies impact.",
+          "High energy expands influence.",
+          "Intensity defines the moment."
+        ],
+        "inherent_tension": "Peak brightness casts deeper shadow around it."
+      },
+      "keywords": [
+        "abundance",
+        "intensity",
+        "visibility"
+      ],
+      "domains_hint": [
+        "career",
+        "event",
+        "leadership"
+      ]
+    },
+    "56": {
+      "id": 56,
+      "laymantitle": "Passing Through",
+      "traditional": {
+        "name_en": "The Wanderer",
+        "pinyin": "Lǚ",
+        "han_viet": "Lữ"
+      },
+      "core_image": "Fire rests on a mountain. Light does not stay long in one place.",
+      "structure": {
+        "core_structure": [
+          "Position is temporary.",
+          "Movement lacks deep roots.",
+          "Stability depends on adaptability."
+        ],
+        "structural_nature": [
+          "Flexibility maintains balance.",
+          "Light presence reduces friction.",
+          "Travel reshapes perspective."
+        ],
+        "inherent_tension": "Lack of roots limits lasting influence."
+      },
+      "keywords": [
+        "transition",
+        "mobility",
+        "adaptation"
+      ],
+      "domains_hint": [
+        "career",
+        "travel",
+        "life change"
+      ]
+    },
+    "57": {
+      "id": 57,
+      "laymantitle": "Steady Influence",
+      "traditional": {
+        "name_en": "The Gentle",
+        "pinyin": "Xùn",
+        "han_viet": "Tốn"
+      },
+      "core_image": "Wind moves through wind. Penetration happens gradually.",
+      "structure": {
+        "core_structure": [
+          "Influence repeats softly.",
+          "Movement enters through small openings.",
+          "Change spreads invisibly."
+        ],
+        "structural_nature": [
+          "Persistence deepens impact.",
+          "Subtle force reshapes structure.",
+          "Gentle motion accumulates effect."
+        ],
+        "inherent_tension": "Gradual influence depends on sustained access."
+      },
+      "keywords": [
+        "influence",
+        "subtlety",
+        "persistence"
+      ],
+      "domains_hint": [
+        "negotiation",
+        "culture",
+        "leadership"
+      ]
+    },
+    "58": {
+      "id": 58,
+      "laymantitle": "Open Exchange",
+      "traditional": {
+        "name_en": "The Joyous",
+        "pinyin": "Duì",
+        "han_viet": "Đoài"
+      },
+      "core_image": "A lake rests upon a lake. Openness reflects between equals.",
+      "structure": {
+        "core_structure": [
+          "Two yielding lines meet.",
+          "Exchange happens at the surface.",
+          "Shared openness creates ease."
+        ],
+        "structural_nature": [
+          "Communication builds rapport.",
+          "Joy spreads through contact.",
+          "Transparency strengthens trust."
+        ],
+        "inherent_tension": "Surface harmony may conceal deeper difference."
+      },
+      "keywords": [
+        "exchange",
+        "communication",
+        "joy"
+      ],
+      "domains_hint": [
+        "relationship",
+        "team",
+        "community"
+      ]
+    },
+    "59": {
+      "id": 59,
+      "laymantitle": "Breaking Apart Barriers",
+      "traditional": {
+        "name_en": "Dispersion",
+        "pinyin": "Huàn",
+        "han_viet": "Hoán"
+      },
+      "core_image": "Wind moves over water. Solid forms dissolve into flow.",
+      "structure": {
+        "core_structure": [
+          "Rigid forms loosen.",
+          "Boundaries soften.",
+          "Elements scatter outward."
+        ],
+        "structural_nature": [
+          "Dispersal clears blockage.",
+          "Flexibility restores movement.",
+          "Release reconnects parts."
+        ],
+        "inherent_tension": "Dispersal weakens concentrated strength."
+      },
+      "keywords": [
+        "dispersion",
+        "release",
+        "flexibility"
+      ],
+      "domains_hint": [
+        "organization",
+        "conflict",
+        "transition"
+      ]
+    },
+    "60": {
+      "id": 60,
+      "laymantitle": "Setting Limits",
+      "traditional": {
+        "name_en": "Limitation",
+        "pinyin": "Jié",
+        "han_viet": "Tiết"
+      },
+      "core_image": "Water contained within a lake. Boundaries define volume.",
+      "structure": {
+        "core_structure": [
+          "Flow stays within fixed lines.",
+          "Capacity has clear edges.",
+          "Measure defines extent."
+        ],
+        "structural_nature": [
+          "Limits preserve order.",
+          "Constraint shapes use.",
+          "Boundaries stabilize motion."
+        ],
+        "inherent_tension": "Restriction narrows natural expansion."
+      },
+      "keywords": [
+        "limit",
+        "boundary",
+        "measure"
+      ],
+      "domains_hint": [
+        "finance",
+        "health",
+        "planning"
+      ]
+    },
+    "61": {
+      "id": 61,
+      "laymantitle": "Inner Alignment",
+      "traditional": {
+        "name_en": "Inner Truth",
+        "pinyin": "Zhōng Fú",
+        "han_viet": "Trung Phu"
+      },
+      "core_image": "Wind moves above a lake. What is inside resonates outward.",
+      "structure": {
+        "core_structure": [
+          "Inner state shapes outer signal.",
+          "Transparency links inside and out.",
+          "Alignment reduces distortion."
+        ],
+        "structural_nature": [
+          "Sincerity stabilizes connection.",
+          "Consistency builds trust.",
+          "Inner balance guides exchange."
+        ],
+        "inherent_tension": "Outer signal depends on inner coherence."
+      },
+      "keywords": [
+        "alignment",
+        "trust",
+        "integrity"
+      ],
+      "domains_hint": [
+        "relationship",
+        "leadership",
+        "communication"
+      ]
+    },
+    "62": {
+      "id": 62,
+      "laymantitle": "Small Steps Matter",
+      "traditional": {
+        "name_en": "Small Exceeding",
+        "pinyin": "Xiǎo Guò",
+        "han_viet": "Tiểu Quá"
+      },
+      "core_image": "Thunder beneath a mountain. Small movement carries weight.",
+      "structure": {
+        "core_structure": [
+          "Minor lines hold emphasis.",
+          "Small actions shape outcome.",
+          "Lower positions carry weight."
+        ],
+        "structural_nature": [
+          "Attention to detail prevents imbalance.",
+          "Small corrections guide direction.",
+          "Precision stabilizes movement."
+        ],
+        "inherent_tension": "Small excess tips overall balance."
+      },
+      "keywords": [
+        "detail",
+        "precision",
+        "caution"
+      ],
+      "domains_hint": [
+        "project",
+        "finance",
+        "decision"
+      ]
+    },
+    "63": {
+      "id": 63,
+      "laymantitle": "Almost Settled",
+      "traditional": {
+        "name_en": "After Completion",
+        "pinyin": "Jì Jì",
+        "han_viet": "Ký Tế"
+      },
+      "core_image": "Water stands above fire. Order appears complete.",
+      "structure": {
+        "core_structure": [
+          "All elements sit in correct place.",
+          "Balance appears achieved.",
+          "Movement stabilizes."
+        ],
+        "structural_nature": [
+          "Completion requires maintenance.",
+          "Order depends on vigilance.",
+          "Small shifts alter balance."
+        ],
+        "inherent_tension": "Stable order contains the seed of reversal."
+      },
+      "keywords": [
+        "completion",
+        "balance",
+        "maintenance"
+      ],
+      "domains_hint": [
+        "project",
+        "relationship",
+        "organization"
+      ]
+    },
+    "64": {
+      "id": 64,
+      "laymantitle": "Not Yet Settled",
+      "traditional": {
+        "name_en": "Before Completion",
+        "pinyin": "Wèi Jì",
+        "han_viet": "Vị Tế"
+      },
+      "core_image": "Fire stands above water. Order is not yet fixed.",
+      "structure": {
+        "core_structure": [
+          "Elements remain out of position.",
+          "Transition is underway.",
+          "Completion lies ahead."
+        ],
+        "structural_nature": [
+          "Adjustment continues.",
+          "Movement seeks alignment.",
+          "Process precedes closure."
+        ],
+        "inherent_tension": "Unsettled order resists final balance."
+      },
+      "keywords": [
+        "transition",
+        "incompletion",
+        "process"
+      ],
+      "domains_hint": [
+        "project",
+        "career",
+        "life change"
+      ]
+    }
+  },
+  "line_position_overlay": {
+    "1": [
+      "A beginning position: the structure is still taking shape.",
+      "Small shifts register clearly because nothing has settled yet."
+    ],
+    "2": [
+      "A supporting position: the pattern stabilizes through placement and backing.",
+      "What holds the center matters more than what announces itself."
+    ],
+    "3": [
+      "A threshold position: pressure builds where momentum meets constraint.",
+      "Timing and sequence decide whether force becomes friction."
+    ],
+    "4": [
+      "An entering-visibility position: actions start meeting external response.",
+      "Responsibility increases as the pattern becomes more seen."
+    ],
+    "5": [
+      "A central position: influence concentrates and expectations gather here.",
+      "Small deviations carry wider impact because the node is load-bearing."
+    ],
+    "6": [
+      "An end position: the pattern nears completion, spillover, or reversal.",
+      "Release becomes part of the structure when extension reaches its limit."
+    ]
+  },
+  "fallback": {
+    "id": 0,
+    "laymantitle": "Unclear Pattern",
+    "traditional": {
+      "name_en": "name_en",
+      "pinyin": "pinyin",
+      "han_viet": "han_viet"
+    },
+    "core_image": "The shape is still indistinct, like mist that has not lifted from the water.",
+    "structure": {
+      "core_structure": [
+        "Signals point in more than one direction at once.",
+        "The situation holds insufficient definition to settle into one reading."
+      ],
+      "structural_nature": [
+        "Meaning stabilizes through continued contact with the facts.",
+        "Clarity grows as noise drops and repeated cues become consistent."
+      ],
+      "inherent_tension": "The mind keeps trying to force a clean story before the pattern has enough edges."
+    },
+    "keywords": [
+      "ambiguity",
+      "noise",
+      "forming"
+    ],
+    "domains_hint": [
+      "work",
+      "relationship",
+      "money"
+    ]
+  }
+}

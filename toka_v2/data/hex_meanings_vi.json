@@ -1,0 +1,2174 @@
+{
+  "version": "1.0",
+  "hexagrams": {
+    "1": {
+      "id": 1,
+      "laymantitle": "Đà Tăng Trưởng Thuần",
+      "traditional": {
+        "name_en": "The Creative",
+        "pinyin": "Qián",
+        "han_viet": "Càn"
+      },
+      "core_image": "Trời chồng lên trời, không vật gì cản lối. Chuyển động cuộn tới không bị ngắt quãng.",
+      "structure": {
+        "core_structure": [
+          "Sáu hào đều cứng và chủ động.",
+          "Chuyển động phát sinh từ nội lực.",
+          "Không có lớp nhu để cân bằng."
+        ],
+        "structural_nature": [
+          "Động năng tự duy trì bằng tiến lên.",
+          "Hướng đi giữ vững nhờ lực liên tục.",
+          "Quán tính lặp lại chính nó."
+        ],
+        "inherent_tension": "Mở rộng thuần dương thiếu nền tiếp nhận để đỡ lực."
+      },
+      "keywords": [
+        "động lực",
+        "khởi đầu",
+        "chủ động"
+      ],
+      "domains_hint": [
+        "sự nghiệp",
+        "lãnh đạo",
+        "khởi sự"
+      ]
+    },
+    "2": {
+      "id": 2,
+      "laymantitle": "Tiếp Nhận Toàn Phần",
+      "traditional": {
+        "name_en": "The Receptive",
+        "pinyin": "Kūn",
+        "han_viet": "Khôn"
+      },
+      "core_image": "Đất trên đất. Khí âm thuần bao dung và nâng đỡ.",
+      "structure": {
+        "core_structure": [
+          "Sáu hào đều nhu và tiếp nhận.",
+          "Lực đi xuống và bao chứa.",
+          "Không có hào cứng dẫn hướng."
+        ],
+        "structural_nature": [
+          "Dung nạp tạo nên ổn định.",
+          "Nâng đỡ thay vì thúc đẩy.",
+          "Sức mạnh nằm ở khả năng chứa đựng."
+        ],
+        "inherent_tension": "Bao dung rộng lớn làm mờ trục định hướng."
+      },
+      "keywords": [
+        "tiếp nhận",
+        "nền tảng",
+        "bao dung"
+      ],
+      "domains_hint": [
+        "gia đình",
+        "hỗ trợ",
+        "nền tảng"
+      ]
+    },
+    "3": {
+      "id": 3,
+      "laymantitle": "Khởi Sinh Gian Nan",
+      "traditional": {
+        "name_en": "Difficulty at the Beginning",
+        "pinyin": "Zhūn",
+        "han_viet": "Truân"
+      },
+      "core_image": "Nước trên sấm. Mầm sống đội đất trong hỗn độn.",
+      "structure": {
+        "core_structure": [
+          "Lực khởi sinh còn vướng trở.",
+          "Chuyển động tìm lối ra.",
+          "Trật tự chưa định hình."
+        ],
+        "structural_nature": [
+          "Tăng trưởng diễn ra trong ma sát.",
+          "Hình thế dần tách khỏi hỗn loạn.",
+          "Cấu trúc hình thành từng bước."
+        ],
+        "inherent_tension": "Sinh lực mạnh gặp môi trường chưa mở lối."
+      },
+      "keywords": [
+        "khởi đầu",
+        "gian nan",
+        "hình thành"
+      ],
+      "domains_hint": [
+        "khởi nghiệp",
+        "dự án",
+        "quan hệ mới"
+      ]
+    },
+    "4": {
+      "id": 4,
+      "laymantitle": "Non Trẻ Chưa Tỏ",
+      "traditional": {
+        "name_en": "Youthful Folly",
+        "pinyin": "Méng",
+        "han_viet": "Mông"
+      },
+      "core_image": "Núi chắn trước dòng nước. Nước chuyển động nhưng tầm nhìn vẫn đứng yên.",
+      "structure": {
+        "core_structure": [
+          "Tĩnh ở trên, động ở dưới.",
+          "Hiểu biết chưa theo kịp chuyển động.",
+          "Nhận thức còn mờ."
+        ],
+        "structural_nature": [
+          "Va chạm tạo nên học hỏi.",
+          "Giới hạn làm lộ điều chưa biết.",
+          "Khuôn khổ dần được dựng lên."
+        ],
+        "inherent_tension": "Chuyển động bên dưới vượt quá mức hiểu biết hiện có."
+      },
+      "keywords": [
+        "học hỏi",
+        "non trẻ",
+        "định hình"
+      ],
+      "domains_hint": [
+        "giáo dục",
+        "khởi đầu",
+        "định hướng"
+      ]
+    },
+    "5": {
+      "id": 5,
+      "laymantitle": "Chờ Đúng Lúc",
+      "traditional": {
+        "name_en": "Waiting",
+        "pinyin": "Xū",
+        "han_viet": "Nhu"
+      },
+      "core_image": "Nước trên trời. Mây tụ trước khi mưa.",
+      "structure": {
+        "core_structure": [
+          "Lực tích tụ nhưng chưa hạ xuống.",
+          "Hành động tạm ngưng.",
+          "Tiềm năng chờ thời."
+        ],
+        "structural_nature": [
+          "Kìm giữ làm dày năng lượng.",
+          "Thời điểm quyết định phát lộ.",
+          "Chuẩn bị diễn ra trong tĩnh."
+        ],
+        "inherent_tension": "Tích tụ kéo dài làm tăng áp lực bên trong."
+      },
+      "keywords": [
+        "chờ đợi",
+        "tích tụ",
+        "thời điểm"
+      ],
+      "domains_hint": [
+        "đầu tư",
+        "quyết định",
+        "chiến lược"
+      ]
+    },
+    "6": {
+      "id": 6,
+      "laymantitle": "Đối Lập Công Khai",
+      "traditional": {
+        "name_en": "Conflict",
+        "pinyin": "Sòng",
+        "han_viet": "Tụng"
+      },
+      "core_image": "Trời trên nước. Hai dòng lực đi ngược chiều.",
+      "structure": {
+        "core_structure": [
+          "Lực đi lên gặp lực đi xuống.",
+          "Hai hướng cùng tồn tại trong một trường.",
+          "Ma sát xuất hiện giữa các vị trí."
+        ],
+        "structural_nature": [
+          "Ranh giới làm rõ lập trường.",
+          "Phân định tạo nên trật tự.",
+          "Va chạm làm lộ cấu trúc."
+        ],
+        "inherent_tension": "Hai xu hướng trái chiều cùng ép trong một không gian."
+      },
+      "keywords": [
+        "xung đột",
+        "lập trường",
+        "ma sát"
+      ],
+      "domains_hint": [
+        "pháp lý",
+        "thương lượng",
+        "quan hệ"
+      ]
+    },
+    "7": {
+      "id": 7,
+      "laymantitle": "Tập Hợp Lực Lượng",
+      "traditional": {
+        "name_en": "The Army",
+        "pinyin": "Shī",
+        "han_viet": "Sư"
+      },
+      "core_image": "Đất trên nước. Lực tập trung quanh một trục.",
+      "structure": {
+        "core_structure": [
+          "Nhiều yếu tố quy tụ.",
+          "Một trung tâm điều hướng.",
+          "Vai trò được phân định."
+        ],
+        "structural_nature": [
+          "Kỷ luật giữ nhịp chuyển động.",
+          "Phối hợp tạo thành sức mạnh.",
+          "Trật tự điều phối lực phân tán."
+        ],
+        "inherent_tension": "Trọng lượng tập thể dồn lên điểm chỉ huy."
+      },
+      "keywords": [
+        "tổ chức",
+        "kỷ luật",
+        "huy động"
+      ],
+      "domains_hint": [
+        "đội nhóm",
+        "quản lý",
+        "chiến lược"
+      ]
+    },
+    "8": {
+      "id": 8,
+      "laymantitle": "Kết Nối Tự Nhiên",
+      "traditional": {
+        "name_en": "Holding Together",
+        "pinyin": "Bǐ",
+        "han_viet": "Tỷ"
+      },
+      "core_image": "Nước trên đất. Các dòng tụ lại một chỗ.",
+      "structure": {
+        "core_structure": [
+          "Yếu tố riêng lẻ tìm đến nhau.",
+          "Khoảng cách thu hẹp.",
+          "Trục chung hình thành."
+        ],
+        "structural_nature": [
+          "Liên kết tạo ổn định.",
+          "Sự gần gũi làm tăng bền vững.",
+          "Hướng chung giảm rời rạc."
+        ],
+        "inherent_tension": "Sự gắn kết hình thành trước khi khác biệt lộ rõ."
+      },
+      "keywords": [
+        "liên kết",
+        "gắn bó",
+        "hội tụ"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "cộng đồng",
+        "đối tác"
+      ]
+    },
+    "9": {
+      "id": 9,
+      "laymantitle": "Kìm Giữ Nhẹ",
+      "traditional": {
+        "name_en": "Small Taming",
+        "pinyin": "Xiǎo Chù",
+        "han_viet": "Tiểu Súc"
+      },
+      "core_image": "Gió trên trời. Lực nhỏ điều hướng lực lớn.",
+      "structure": {
+        "core_structure": [
+          "Ảnh hưởng nhỏ tác động lên trường rộng.",
+          "Lực mạnh chưa được giải phóng.",
+          "Kìm giữ ở mức tinh tế."
+        ],
+        "structural_nature": [
+          "Hạn chế nhỏ điều chỉnh hướng đi.",
+          "Áp lực nhẹ làm chậm đà.",
+          "Tiết chế giữ ổn định."
+        ],
+        "inherent_tension": "Lực nhỏ cố giữ thế mở rộng lớn."
+      },
+      "keywords": [
+        "tiết chế",
+        "điều hướng",
+        "kiểm soát"
+      ],
+      "domains_hint": [
+        "chiến lược",
+        "tài chính",
+        "điều hành"
+      ]
+    },
+    "10": {
+      "id": 10,
+      "laymantitle": "Bước Trên Lằn Ranh",
+      "traditional": {
+        "name_en": "Treading",
+        "pinyin": "Lǚ",
+        "han_viet": "Lý"
+      },
+      "core_image": "Trời trên đầm. Bước đi trên bề mặt nhạy cảm.",
+      "structure": {
+        "core_structure": [
+          "Lực mạnh đứng trên nền mềm.",
+          "Khoảng cách được duy trì rõ ràng.",
+          "Chuyển động diễn ra sát ranh giới."
+        ],
+        "structural_nature": [
+          "Ý thức vị trí giữ cân bằng.",
+          "Ranh giới định hình an toàn.",
+          "Thế đứng quyết định ổn định."
+        ],
+        "inherent_tension": "Sức mạnh đặt lên lớp nền dễ dao động."
+      },
+      "keywords": [
+        "vị trí",
+        "ranh giới",
+        "thận trọng"
+      ],
+      "domains_hint": [
+        "lãnh đạo",
+        "quan hệ",
+        "đàm phán"
+      ]
+    },
+    "11": {
+      "id": 11,
+      "laymantitle": "Thông Suốt",
+      "traditional": {
+        "name_en": "Peace",
+        "pinyin": "Tài",
+        "han_viet": "Thái"
+      },
+      "core_image": "Trời dưới đất. Âm dương giao hòa.",
+      "structure": {
+        "core_structure": [
+          "Lực trên và dưới giao nhau.",
+          "Dòng lưu thông thông suốt.",
+          "Vị trí cân bằng."
+        ],
+        "structural_nature": [
+          "Trao đổi tạo thịnh đạt.",
+          "Hài hòa sinh ổn định.",
+          "Dòng chảy duy trì trật tự."
+        ],
+        "inherent_tension": "Cân bằng phụ thuộc vào lưu thông liên tục."
+      },
+      "keywords": [
+        "hài hòa",
+        "thông suốt",
+        "cân bằng"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "tổ chức",
+        "hợp tác"
+      ]
+    },
+    "12": {
+      "id": 12,
+      "laymantitle": "Bế Tắc",
+      "traditional": {
+        "name_en": "Standstill",
+        "pinyin": "Pǐ",
+        "han_viet": "Bĩ"
+      },
+      "core_image": "Trời trên đất. Âm dương tách rời.",
+      "structure": {
+        "core_structure": [
+          "Lực trên và dưới không gặp nhau.",
+          "Dòng lưu thông ngưng lại.",
+          "Vị trí tách biệt."
+        ],
+        "structural_nature": [
+          "Ngăn cách làm suy giảm.",
+          "Trao đổi bị cắt đứt.",
+          "Hệ thống tự co lại."
+        ],
+        "inherent_tension": "Tách rời kéo dài làm cạn dòng tương tác."
+      },
+      "keywords": [
+        "ngưng trệ",
+        "chia tách",
+        "đóng kín"
+      ],
+      "domains_hint": [
+        "công việc",
+        "quan hệ",
+        "hệ thống"
+      ]
+    },
+    "13": {
+      "id": 13,
+      "laymantitle": "Đồng Tâm",
+      "traditional": {
+        "name_en": "Fellowship",
+        "pinyin": "Tóng Rén",
+        "han_viet": "Đồng Nhân"
+      },
+      "core_image": "Lửa dưới trời. Ánh sáng quy tụ nhiều người.",
+      "structure": {
+        "core_structure": [
+          "Lực cá nhân hướng về mục tiêu chung.",
+          "Không gian mở đón nhiều yếu tố.",
+          "Trục chung được xác lập."
+        ],
+        "structural_nature": [
+          "Chung hướng tạo liên kết.",
+          "Cởi mở mở rộng phạm vi.",
+          "Hợp lực tăng ảnh hưởng."
+        ],
+        "inherent_tension": "Sự đồng lòng phụ thuộc vào trục chung rõ ràng."
+      },
+      "keywords": [
+        "hợp tác",
+        "đồng thuận",
+        "cộng đồng"
+      ],
+      "domains_hint": [
+        "đội nhóm",
+        "xã hội",
+        "dự án"
+      ]
+    },
+    "14": {
+      "id": 14,
+      "laymantitle": "Nắm Giữ Lớn",
+      "traditional": {
+        "name_en": "Great Possession",
+        "pinyin": "Dà Yǒu",
+        "han_viet": "Đại Hữu"
+      },
+      "core_image": "Lửa trên trời. Ánh sáng bao trùm rộng.",
+      "structure": {
+        "core_structure": [
+          "Nguồn lực tập trung ở trung tâm.",
+          "Ảnh hưởng lan tỏa.",
+          "Vị thế cao rõ rệt."
+        ],
+        "structural_nature": [
+          "Quy mô lớn mở rộng tầm với.",
+          "Sở hữu tạo sức hút.",
+          "Trung tâm giữ giá trị."
+        ],
+        "inherent_tension": "Quy mô lớn đòi hỏi nền giữ vững."
+      },
+      "keywords": [
+        "nguồn lực",
+        "quy mô",
+        "ảnh hưởng"
+      ],
+      "domains_hint": [
+        "tài chính",
+        "lãnh đạo",
+        "mở rộng"
+      ]
+    },
+    "15": {
+      "id": 15,
+      "laymantitle": "Giữ Mức Vừa",
+      "traditional": {
+        "name_en": "Modesty",
+        "pinyin": "Qiān",
+        "han_viet": "Khiêm"
+      },
+      "core_image": "Núi trong đất. Cao được san bằng.",
+      "structure": {
+        "core_structure": [
+          "Phần cao hạ xuống.",
+          "Trọng lượng phân bố lại.",
+          "Chênh lệch giảm dần."
+        ],
+        "structural_nature": [
+          "San bằng tạo ổn định.",
+          "Giảm cực đoan giữ cân bằng.",
+          "Phân bổ lại làm nhẹ tải."
+        ],
+        "inherent_tension": "Cân bằng cần điều chỉnh liên tục."
+      },
+      "keywords": [
+        "điều chỉnh",
+        "cân bằng",
+        "ổn định"
+      ],
+      "domains_hint": [
+        "lãnh đạo",
+        "tài chính",
+        "quan hệ"
+      ]
+    },
+    "16": {
+      "id": 16,
+      "laymantitle": "Khởi Hứng",
+      "traditional": {
+        "name_en": "Enthusiasm",
+        "pinyin": "Yù",
+        "han_viet": "Dự"
+      },
+      "core_image": "Sấm trong đất. Năng lượng dâng lên từ bên dưới.",
+      "structure": {
+        "core_structure": [
+          "Lực tiềm ẩn bắt đầu chuyển động.",
+          "Nhịp điệu lan rộng.",
+          "Tập thể được kích hoạt."
+        ],
+        "structural_nature": [
+          "Hưng phấn tạo đà.",
+          "Chuyển động đồng loạt tăng tốc.",
+          "Cảm hứng lan truyền."
+        ],
+        "inherent_tension": "Đà hưng phấn có thể vượt quá nền chịu lực."
+      },
+      "keywords": [
+        "hưng phấn",
+        "động viên",
+        "khởi động"
+      ],
+      "domains_hint": [
+        "đội nhóm",
+        "sự kiện",
+        "khởi xướng"
+      ]
+    },
+    "17": {
+      "id": 17,
+      "laymantitle": "Thuận Theo",
+      "traditional": {
+        "name_en": "Following",
+        "pinyin": "Suí",
+        "han_viet": "Tùy"
+      },
+      "core_image": "Sấm dưới đầm. Chuyển động đi theo dòng.",
+      "structure": {
+        "core_structure": [
+          "Một lực dẫn, một lực theo.",
+          "Hướng đi được xác lập trước.",
+          "Sự thích ứng diễn ra."
+        ],
+        "structural_nature": [
+          "Thuận theo giảm ma sát.",
+          "Đi theo giữ nhịp ổn định.",
+          "Điều chỉnh theo dòng."
+        ],
+        "inherent_tension": "Phụ thuộc vào hướng dẫn sẵn có."
+      },
+      "keywords": [
+        "theo dòng",
+        "thích ứng",
+        "hợp nhịp"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "công việc",
+        "chiến lược"
+      ]
+    },
+    "18": {
+      "id": 18,
+      "laymantitle": "Sửa Điều Hỏng",
+      "traditional": {
+        "name_en": "Work on What Has Been Spoiled",
+        "pinyin": "Gǔ",
+        "han_viet": "Cổ"
+      },
+      "core_image": "Gió dưới núi. Điều cũ mục ruỗng cần xử lý.",
+      "structure": {
+        "core_structure": [
+          "Nền tảng bị tổn hại.",
+          "Sai lệch tích tụ.",
+          "Cấu trúc suy yếu."
+        ],
+        "structural_nature": [
+          "Can thiệp khôi phục trật tự.",
+          "Chỉnh sửa làm sạch hệ thống.",
+          "Sửa chữa củng cố nền."
+        ],
+        "inherent_tension": "Sai lệch cũ tiếp tục ảnh hưởng hiện tại."
+      },
+      "keywords": [
+        "khắc phục",
+        "sửa chữa",
+        "chỉnh đốn"
+      ],
+      "domains_hint": [
+        "tổ chức",
+        "gia đình",
+        "hệ thống"
+      ]
+    },
+    "19": {
+      "id": 19,
+      "laymantitle": "Tiến Gần",
+      "traditional": {
+        "name_en": "Approach",
+        "pinyin": "Lín",
+        "han_viet": "Lâm"
+      },
+      "core_image": "Đất trên đầm. Lực lớn tiến về phía trước.",
+      "structure": {
+        "core_structure": [
+          "Lực mạnh tiến sát.",
+          "Khoảng cách thu hẹp.",
+          "Ảnh hưởng tăng dần."
+        ],
+        "structural_nature": [
+          "Tiến gần mở rộng tầm tác động.",
+          "Tiếp cận làm thay đổi vị trí.",
+          "Gần kề làm tăng sức nặng."
+        ],
+        "inherent_tension": "Sức mạnh tiến sát làm thay đổi cân bằng."
+      },
+      "keywords": [
+        "tiếp cận",
+        "ảnh hưởng",
+        "mở rộng"
+      ],
+      "domains_hint": [
+        "lãnh đạo",
+        "đầu tư",
+        "quan hệ"
+      ]
+    },
+    "20": {
+      "id": 20,
+      "laymantitle": "Quan Sát Từ Cao",
+      "traditional": {
+        "name_en": "Contemplation",
+        "pinyin": "Guān",
+        "han_viet": "Quan"
+      },
+      "core_image": "Gió trên đất. Tầm nhìn bao quát.",
+      "structure": {
+        "core_structure": [
+          "Vị trí cao nhìn xuống.",
+          "Chuyển động chậm lại.",
+          "Khoảng cách tạo góc nhìn."
+        ],
+        "structural_nature": [
+          "Quan sát làm rõ hình thế.",
+          "Nhìn xa giúp định vị.",
+          "Tĩnh để hiểu động."
+        ],
+        "inherent_tension": "Khoảng cách làm giảm can dự trực tiếp."
+      },
+      "keywords": [
+        "quan sát",
+        "tầm nhìn",
+        "định vị"
+      ],
+      "domains_hint": [
+        "chiến lược",
+        "lãnh đạo",
+        "đánh giá"
+      ]
+    },
+    "21": {
+      "id": 21,
+      "laymantitle": "Phá Vật Cản",
+      "traditional": {
+        "name_en": "Biting Through",
+        "pinyin": "Shì Hé",
+        "han_viet": "Phệ Hạp"
+      },
+      "core_image": "Sấm và chớp cùng lúc. Vật cứng bị chẻ mở.",
+      "structure": {
+        "core_structure": [
+          "Vật cản nằm giữa dòng chuyển động.",
+          "Lực tập trung vào điểm nghẽn.",
+          "Tiến trình phụ thuộc vào phá mở."
+        ],
+        "structural_nature": [
+          "Cắt bỏ khôi phục dòng chảy.",
+          "Va chạm tạo rõ ràng.",
+          "Áp lực dồn vào chỗ cứng."
+        ],
+        "inherent_tension": "Lực cứng lại khi gặp kháng cự."
+      },
+      "keywords": [
+        "quyết đoán",
+        "loại bỏ",
+        "rõ ràng"
+      ],
+      "domains_hint": [
+        "pháp lý",
+        "công việc",
+        "xung đột"
+      ]
+    },
+    "22": {
+      "id": 22,
+      "laymantitle": "Bề Ngoài Nổi Bật",
+      "traditional": {
+        "name_en": "Grace",
+        "pinyin": "Bì",
+        "han_viet": "Bí"
+      },
+      "core_image": "Lửa dưới núi. Ánh sáng làm nổi bật hình khối.",
+      "structure": {
+        "core_structure": [
+          "Sáng đặt trên nền vững.",
+          "Bề mặt trở nên rõ ràng.",
+          "Hình thức được tô điểm."
+        ],
+        "structural_nature": [
+          "Diện mạo ảnh hưởng nhận thức.",
+          "Chi tiết làm tinh chỉnh tổng thể.",
+          "Trình bày thay đổi cảm nhận."
+        ],
+        "inherent_tension": "Ánh sáng bề mặt có thể che khuất nền tảng."
+      },
+      "keywords": [
+        "hình thức",
+        "thẩm mỹ",
+        "trình bày"
+      ],
+      "domains_hint": [
+        "thương hiệu",
+        "uy tín",
+        "thiết kế"
+      ]
+    },
+    "23": {
+      "id": 23,
+      "laymantitle": "Tước Bỏ Dần",
+      "traditional": {
+        "name_en": "Splitting Apart",
+        "pinyin": "Bō",
+        "han_viet": "Bác"
+      },
+      "core_image": "Núi bị xói từ dưới. Tầng trên rơi xuống.",
+      "structure": {
+        "core_structure": [
+          "Nền suy yếu dần.",
+          "Lớp trên mất điểm tựa.",
+          "Cấu trúc mỏng đi."
+        ],
+        "structural_nature": [
+          "Suy giảm diễn ra từng bước.",
+          "Mất mát lộ điểm yếu.",
+          "Giảm tải làm đơn giản hóa."
+        ],
+        "inherent_tension": "Trọng lượng phía trên đặt lên nền đang suy."
+      },
+      "keywords": [
+        "suy giảm",
+        "mất mát",
+        "xói mòn"
+      ],
+      "domains_hint": [
+        "kinh doanh",
+        "quan hệ",
+        "chuyển đổi"
+      ]
+    },
+    "24": {
+      "id": 24,
+      "laymantitle": "Quay Lại",
+      "traditional": {
+        "name_en": "Return",
+        "pinyin": "Fù",
+        "han_viet": "Phục"
+      },
+      "core_image": "Sấm trong đất. Chu kỳ bắt đầu lại.",
+      "structure": {
+        "core_structure": [
+          "Một hào dương trở lại ở đáy.",
+          "Chuyển động khởi lại từ nền.",
+          "Tái sinh từ nhỏ."
+        ],
+        "structural_nature": [
+          "Chu kỳ lặp lại tự nhiên.",
+          "Trở lại khôi phục hướng đi.",
+          "Lực mới nảy sinh."
+        ],
+        "inherent_tension": "Lực mới xuất hiện trong nền cũ."
+      },
+      "keywords": [
+        "chu kỳ",
+        "tái khởi",
+        "đổi hướng"
+      ],
+      "domains_hint": [
+        "sự nghiệp",
+        "sức khỏe",
+        "khởi động lại"
+      ]
+    },
+    "25": {
+      "id": 25,
+      "laymantitle": "Hành Động Trực Khởi",
+      "traditional": {
+        "name_en": "Innocence",
+        "pinyin": "Wú Wàng",
+        "han_viet": "Vô Vọng"
+      },
+      "core_image": "Sấm dưới trời. Hành động phát sinh tự nhiên.",
+      "structure": {
+        "core_structure": [
+          "Chuyển động đi thẳng từ nội lực.",
+          "Không lớp che phủ ý định.",
+          "Lực vận hành trực tiếp."
+        ],
+        "structural_nature": [
+          "Sự thẳng thắn giữ cấu trúc rõ.",
+          "Đơn giản tránh méo mó.",
+          "Lực đi theo trật tự tự nhiên."
+        ],
+        "inherent_tension": "Chuyển động trực diện gặp môi trường khó lường."
+      },
+      "keywords": [
+        "trực tiếp",
+        "đơn giản",
+        "tự nhiên"
+      ],
+      "domains_hint": [
+        "quyết định",
+        "lãnh đạo",
+        "hành động"
+      ]
+    },
+    "26": {
+      "id": 26,
+      "laymantitle": "Tích Lũy Lực Lớn",
+      "traditional": {
+        "name_en": "Great Taming",
+        "pinyin": "Dà Chù",
+        "han_viet": "Đại Súc"
+      },
+      "core_image": "Núi chặn trời. Lực mạnh được giữ lại.",
+      "structure": {
+        "core_structure": [
+          "Năng lượng lớn được tích trữ.",
+          "Chuyển động bị kìm lại.",
+          "Tiềm lực dồn phía sau ranh giới."
+        ],
+        "structural_nature": [
+          "Kìm giữ làm dày sức mạnh.",
+          "Trì hoãn tăng khả năng chịu lực.",
+          "Kiểm soát giữ thế ổn định."
+        ],
+        "inherent_tension": "Sức mạnh tích tụ tạo áp lực lên giới hạn."
+      },
+      "keywords": [
+        "tích lũy",
+        "kiềm chế",
+        "năng lực"
+      ],
+      "domains_hint": [
+        "chiến lược",
+        "tài chính",
+        "chuẩn bị"
+      ]
+    },
+    "27": {
+      "id": 27,
+      "laymantitle": "Nuôi Dưỡng",
+      "traditional": {
+        "name_en": "Nourishment",
+        "pinyin": "Yí",
+        "han_viet": "Di"
+      },
+      "core_image": "Sấm dưới núi. Nguồn nuôi nằm bên trong.",
+      "structure": {
+        "core_structure": [
+          "Đầu vào quyết định đầu ra.",
+          "Tăng trưởng phụ thuộc nguồn cung.",
+          "Kênh tiếp nhận có giới hạn."
+        ],
+        "structural_nature": [
+          "Chất lượng nuôi dưỡng định hình kết quả.",
+          "Duy trì đều đặn giữ nhịp phát triển.",
+          "Phụ thuộc nối nguồn với thành quả."
+        ],
+        "inherent_tension": "Tăng trưởng dựa vào một nguồn cấp hữu hạn."
+      },
+      "keywords": [
+        "nuôi dưỡng",
+        "nguồn lực",
+        "duy trì"
+      ],
+      "domains_hint": [
+        "sức khỏe",
+        "học tập",
+        "tài chính"
+      ]
+    },
+    "28": {
+      "id": 28,
+      "laymantitle": "Quá Tải",
+      "traditional": {
+        "name_en": "Great Excess",
+        "pinyin": "Dà Guò",
+        "han_viet": "Đại Quá"
+      },
+      "core_image": "Xà ngang cong dưới sức nặng.",
+      "structure": {
+        "core_structure": [
+          "Trung tâm gánh tải lớn.",
+          "Hỗ trợ bên ngoài yếu.",
+          "Cấu trúc nghiêng lệch."
+        ],
+        "structural_nature": [
+          "Lệch trọng tâm làm tăng căng thẳng.",
+          "Áp lực tập trung vào lõi.",
+          "Cần phân bổ lại tải trọng."
+        ],
+        "inherent_tension": "Trọng lượng vượt quá khả năng phân tán."
+      },
+      "keywords": [
+        "quá tải",
+        "áp lực",
+        "mất cân"
+      ],
+      "domains_hint": [
+        "công việc",
+        "tài chính",
+        "lãnh đạo"
+      ]
+    },
+    "29": {
+      "id": 29,
+      "laymantitle": "Hiểm Họa Lặp Lại",
+      "traditional": {
+        "name_en": "The Abysmal",
+        "pinyin": "Kǎn",
+        "han_viet": "Khảm"
+      },
+      "core_image": "Nước chồng nước. Hố sâu liên tiếp.",
+      "structure": {
+        "core_structure": [
+          "Nguy hiểm xuất hiện theo tầng.",
+          "Lối đi hẹp và sâu.",
+          "Chuyển động xuyên qua rủi ro."
+        ],
+        "structural_nature": [
+          "Kiên trì duy trì dòng chảy.",
+          "Độ sâu thử độ vững.",
+          "Rủi ro trở thành môi trường."
+        ],
+        "inherent_tension": "Tiến về phía trước đồng nghĩa đi qua vùng hiểm."
+      },
+      "keywords": [
+        "rủi ro",
+        "thử thách",
+        "bền bỉ"
+      ],
+      "domains_hint": [
+        "tài chính",
+        "quyết định",
+        "khủng hoảng"
+      ]
+    },
+    "30": {
+      "id": 30,
+      "laymantitle": "Hiển Lộ",
+      "traditional": {
+        "name_en": "Clinging, Fire",
+        "pinyin": "Lí",
+        "han_viet": "Ly"
+      },
+      "core_image": "Lửa trên lửa. Ánh sáng bám vào vật thể.",
+      "structure": {
+        "core_structure": [
+          "Ánh sáng phụ thuộc nhiên liệu.",
+          "Rõ ràng gắn với hình dạng.",
+          "Nhiệt và sáng cùng tăng."
+        ],
+        "structural_nature": [
+          "Hiển lộ làm tăng chú ý.",
+          "Tập trung làm dày năng lượng.",
+          "Chiếu sáng cũng tiêu hao."
+        ],
+        "inherent_tension": "Độ sáng phụ thuộc vào thứ nó tiêu thụ."
+      },
+      "keywords": [
+        "rõ ràng",
+        "hiển lộ",
+        "cường độ"
+      ],
+      "domains_hint": [
+        "truyền thông",
+        "lãnh đạo",
+        "thương hiệu"
+      ]
+    },
+    "31": {
+      "id": 31,
+      "laymantitle": "Cảm Ứng",
+      "traditional": {
+        "name_en": "Influence",
+        "pinyin": "Xián",
+        "han_viet": "Hàm"
+      },
+      "core_image": "Đầm trên núi. Lực mềm chạm lực cứng.",
+      "structure": {
+        "core_structure": [
+          "Hai yếu tố khác biệt tiếp xúc.",
+          "Phản hồi tinh tế xuất hiện.",
+          "Cảm nhận dẫn hướng."
+        ],
+        "structural_nature": [
+          "Tín hiệu nhẹ làm đổi chiều.",
+          "Cộng hưởng tạo liên kết.",
+          "Đáp ứng tăng độ gắn kết."
+        ],
+        "inherent_tension": "Sự hấp dẫn phụ thuộc độ nhạy duy trì."
+      },
+      "keywords": [
+        "cảm ứng",
+        "hấp dẫn",
+        "liên kết"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "đối tác",
+        "đàm phán"
+      ]
+    },
+    "32": {
+      "id": 32,
+      "laymantitle": "Bền Lâu",
+      "traditional": {
+        "name_en": "Duration",
+        "pinyin": "Héng",
+        "han_viet": "Hằng"
+      },
+      "core_image": "Sấm và gió lặp lại theo chu kỳ.",
+      "structure": {
+        "core_structure": [
+          "Chuyển động lặp lại.",
+          "Nhịp điệu ổn định.",
+          "Cấu trúc hình thành qua thời gian."
+        ],
+        "structural_nature": [
+          "Liên tục tạo tin cậy.",
+          "Nhịp đều giữ cân bằng.",
+          "Tính lặp củng cố nền."
+        ],
+        "inherent_tension": "Lặp lại kéo dài có thể thành cứng nhắc."
+      },
+      "keywords": [
+        "duy trì",
+        "chu kỳ",
+        "ổn định"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "kinh doanh",
+        "cam kết"
+      ]
+    },
+    "33": {
+      "id": 33,
+      "laymantitle": "Lui Bước",
+      "traditional": {
+        "name_en": "Retreat",
+        "pinyin": "Dùn",
+        "han_viet": "Độn"
+      },
+      "core_image": "Trời trên núi. Lực mạnh lùi khỏi áp lực.",
+      "structure": {
+        "core_structure": [
+          "Sức mạnh đứng cao hơn áp lực.",
+          "Khoảng cách tăng lên.",
+          "Tách khỏi va chạm."
+        ],
+        "structural_nature": [
+          "Lùi giữ nguyên lực.",
+          "Tách tránh tổn hao.",
+          "Khoảng cách tái định vị."
+        ],
+        "inherent_tension": "Áp lực bên dưới vẫn tiếp tục dâng."
+      },
+      "keywords": [
+        "lui",
+        "giữ lực",
+        "khoảng cách"
+      ],
+      "domains_hint": [
+        "chiến lược",
+        "xung đột",
+        "lãnh đạo"
+      ]
+    },
+    "34": {
+      "id": 34,
+      "laymantitle": "Sức Mạnh Dâng",
+      "traditional": {
+        "name_en": "Great Power",
+        "pinyin": "Dà Zhuàng",
+        "han_viet": "Đại Tráng"
+      },
+      "core_image": "Sấm dưới trời. Lực dâng mạnh.",
+      "structure": {
+        "core_structure": [
+          "Động năng tích ở dưới.",
+          "Lực đẩy hướng lên.",
+          "Áp lực tìm lối ra."
+        ],
+        "structural_nature": [
+          "Gia tốc tăng nhanh.",
+          "Tác động trực diện.",
+          "Đột phá từ lực tích."
+        ],
+        "inherent_tension": "Lực dâng chạm giới hạn của nó."
+      },
+      "keywords": [
+        "sức mạnh",
+        "động năng",
+        "đột phá"
+      ],
+      "domains_hint": [
+        "lãnh đạo",
+        "cạnh tranh",
+        "quyết định"
+      ]
+    },
+    "35": {
+      "id": 35,
+      "laymantitle": "Tiến Dần",
+      "traditional": {
+        "name_en": "Progress",
+        "pinyin": "Jìn",
+        "han_viet": "Tấn"
+      },
+      "core_image": "Mặt trời lên khỏi đất.",
+      "structure": {
+        "core_structure": [
+          "Ánh sáng tăng dần.",
+          "Bước tiến theo giai đoạn.",
+          "Nền vững làm bệ phóng."
+        ],
+        "structural_nature": [
+          "Hiển lộ tăng ảnh hưởng.",
+          "Tiến chậm nhưng chắc.",
+          "Mở rộng qua từng tầng."
+        ],
+        "inherent_tension": "Tiến triển phụ thuộc duy trì ánh sáng."
+      },
+      "keywords": [
+        "tiến bộ",
+        "hiển lộ",
+        "mở rộng"
+      ],
+      "domains_hint": [
+        "sự nghiệp",
+        "danh tiếng",
+        "phát triển"
+      ]
+    },
+    "36": {
+      "id": 36,
+      "laymantitle": "Ẩn Sáng",
+      "traditional": {
+        "name_en": "Darkening of the Light",
+        "pinyin": "Míng Yí",
+        "han_viet": "Minh Di"
+      },
+      "core_image": "Mặt trời chìm dưới đất.",
+      "structure": {
+        "core_structure": [
+          "Ánh sáng ẩn xuống dưới.",
+          "Hiển lộ giảm dần.",
+          "Lực bảo toàn bên trong."
+        ],
+        "structural_nature": [
+          "Ẩn để giữ sức.",
+          "Nội lực thay cho phô bày.",
+          "Che chắn duy trì vị trí."
+        ],
+        "inherent_tension": "Ánh sáng tồn tại nhưng bị điều kiện che phủ."
+      },
+      "keywords": [
+        "ẩn mình",
+        "bảo toàn",
+        "chịu đựng"
+      ],
+      "domains_hint": [
+        "chính trị",
+        "công việc",
+        "sinh tồn"
+      ]
+    },
+    "37": {
+      "id": 37,
+      "laymantitle": "Nội Trật Tự",
+      "traditional": {
+        "name_en": "The Family",
+        "pinyin": "Jiā Rén",
+        "han_viet": "Gia Nhân"
+      },
+      "core_image": "Gió trong nhà.",
+      "structure": {
+        "core_structure": [
+          "Vai trò phân định rõ.",
+          "Biên giới xác lập.",
+          "Trung tâm giữ nhịp."
+        ],
+        "structural_nature": [
+          "Thứ tự tạo ổn định.",
+          "Vai trò giữ cân bằng.",
+          "Nội quy định hình phát triển."
+        ],
+        "inherent_tension": "Ổn định phụ thuộc mỗi vị trí giữ đúng chỗ."
+      },
+      "keywords": [
+        "vai trò",
+        "trật tự",
+        "gia đình"
+      ],
+      "domains_hint": [
+        "gia đình",
+        "tổ chức",
+        "lãnh đạo"
+      ]
+    },
+    "38": {
+      "id": 38,
+      "laymantitle": "Khác Biệt",
+      "traditional": {
+        "name_en": "Opposition",
+        "pinyin": "Kuí",
+        "han_viet": "Khuê"
+      },
+      "core_image": "Lửa và đầm đi ngược chiều.",
+      "structure": {
+        "core_structure": [
+          "Hai hướng tách rời.",
+          "Điểm chung thu hẹp.",
+          "Khác biệt lộ rõ."
+        ],
+        "structural_nature": [
+          "Đối lập làm rõ bản sắc.",
+          "Khoảng cách định vị thế.",
+          "Phân tách tạo nhận diện."
+        ],
+        "inherent_tension": "Đường đi khác nhau làm giảm nền chung."
+      },
+      "keywords": [
+        "đối lập",
+        "khác biệt",
+        "tách rời"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "đàm phán",
+        "đội nhóm"
+      ]
+    },
+    "39": {
+      "id": 39,
+      "laymantitle": "Bị Cản",
+      "traditional": {
+        "name_en": "Obstruction",
+        "pinyin": "Jiǎn",
+        "han_viet": "Kiển"
+      },
+      "core_image": "Nước trước núi.",
+      "structure": {
+        "core_structure": [
+          "Lối đi gặp vật cản.",
+          "Tiến trình chậm lại.",
+          "Hướng thẳng bị chặn."
+        ],
+        "structural_nature": [
+          "Đi vòng tạo lối mới.",
+          "Kháng lực thử bền.",
+          "Giới hạn giảm tốc."
+        ],
+        "inherent_tension": "Động lực tiến lên ép vào nền cố định."
+      },
+      "keywords": [
+        "trở ngại",
+        "chậm lại",
+        "giới hạn"
+      ],
+      "domains_hint": [
+        "công việc",
+        "di chuyển",
+        "quyết định"
+      ]
+    },
+    "40": {
+      "id": 40,
+      "laymantitle": "Giải Tỏa",
+      "traditional": {
+        "name_en": "Deliverance",
+        "pinyin": "Xiè",
+        "han_viet": "Giải"
+      },
+      "core_image": "Sấm mưa làm quang trời.",
+      "structure": {
+        "core_structure": [
+          "Áp lực được giải phóng.",
+          "Dòng chảy mở lại.",
+          "Căng thẳng tan."
+        ],
+        "structural_nature": [
+          "Giải tỏa khôi phục cân bằng.",
+          "Mở thông tái lập lưu thông.",
+          "Sau căng là nhẹ."
+        ],
+        "inherent_tension": "Giải phóng phụ thuộc áp lực tích tụ trước đó."
+      },
+      "keywords": [
+        "giải phóng",
+        "tháo gỡ",
+        "phục hồi"
+      ],
+      "domains_hint": [
+        "xung đột",
+        "chuyển đổi",
+        "sức khỏe"
+      ]
+    },
+    "41": {
+      "id": 41,
+      "laymantitle": "Giảm Bớt",
+      "traditional": {
+        "name_en": "Decrease",
+        "pinyin": "Sǔn",
+        "han_viet": "Tổn"
+      },
+      "core_image": "Đầm hạ dưới núi.",
+      "structure": {
+        "core_structure": [
+          "Phần trên giảm xuống.",
+          "Trọng lượng phân lại.",
+          "Cân bằng thay đổi."
+        ],
+        "structural_nature": [
+          "Giảm tạo ổn định.",
+          "Cho đi củng cố nền.",
+          "Ít hơn làm nhẹ tải."
+        ],
+        "inherent_tension": "Giảm ở một nơi làm đổi phân bố toàn hệ."
+      },
+      "keywords": [
+        "giảm",
+        "phân bổ",
+        "điều chỉnh"
+      ],
+      "domains_hint": [
+        "tài chính",
+        "sức khỏe",
+        "nguồn lực"
+      ]
+    },
+    "42": {
+      "id": 42,
+      "laymantitle": "Gia Tăng",
+      "traditional": {
+        "name_en": "Increase",
+        "pinyin": "Yì",
+        "han_viet": "Ích"
+      },
+      "core_image": "Gió và sấm cùng chuyển.",
+      "structure": {
+        "core_structure": [
+          "Phần dưới nhận thêm lực.",
+          "Tăng trưởng từ nền.",
+          "Năng lượng dâng."
+        ],
+        "structural_nature": [
+          "Gia tăng mở rộng khả năng.",
+          "Hỗ trợ tăng đà.",
+          "Lực tích lan rộng."
+        ],
+        "inherent_tension": "Tăng trưởng làm tăng tải lên khung giữ."
+      },
+      "keywords": [
+        "tăng",
+        "mở rộng",
+        "hỗ trợ"
+      ],
+      "domains_hint": [
+        "đầu tư",
+        "phát triển",
+        "sự nghiệp"
+      ]
+    },
+    "43": {
+      "id": 43,
+      "laymantitle": "Tuyên Lộ",
+      "traditional": {
+        "name_en": "Breakthrough",
+        "pinyin": "Guài",
+        "han_viet": "Quải"
+      },
+      "core_image": "Đầm dâng lên trời.",
+      "structure": {
+        "core_structure": [
+          "Áp lực tích ở trên.",
+          "Điểm mở cần xuất hiện.",
+          "Rõ ràng đối mặt che giấu."
+        ],
+        "structural_nature": [
+          "Phơi bày tạo quyết định.",
+          "Căng thẳng thúc lộ diện.",
+          "Trực diện cắt trì hoãn."
+        ],
+        "inherent_tension": "Áp lực tìm điểm thoát rõ ràng."
+      },
+      "keywords": [
+        "công khai",
+        "quyết đoán",
+        "phơi bày"
+      ],
+      "domains_hint": [
+        "lãnh đạo",
+        "xung đột",
+        "quyết định"
+      ]
+    },
+    "44": {
+      "id": 44,
+      "laymantitle": "Gặp Bất Ngờ",
+      "traditional": {
+        "name_en": "Coming to Meet",
+        "pinyin": "Gòu",
+        "han_viet": "Cấu"
+      },
+      "core_image": "Gió dưới trời.",
+      "structure": {
+        "core_structure": [
+          "Yếu tố mới xuất hiện.",
+          "Cân bằng thay đổi nhanh.",
+          "Tiếp xúc đột ngột."
+        ],
+        "structural_nature": [
+          "Ảnh hưởng bất ngờ đổi hướng.",
+          "Hiện diện mới định lại trường.",
+          "Phản ứng tái cấu trúc."
+        ],
+        "inherent_tension": "Một yếu tố nhỏ đổi cân bằng chung."
+      },
+      "keywords": [
+        "bất ngờ",
+        "gặp gỡ",
+        "dịch chuyển"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "cơ hội",
+        "sự nghiệp"
+      ]
+    },
+    "45": {
+      "id": 45,
+      "laymantitle": "Tụ Hội",
+      "traditional": {
+        "name_en": "Gathering",
+        "pinyin": "Cuì",
+        "han_viet": "Tụy"
+      },
+      "core_image": "Đầm trên đất.",
+      "structure": {
+        "core_structure": [
+          "Nhiều yếu tố quy tụ.",
+          "Trung tâm hút lực.",
+          "Tập trung tăng."
+        ],
+        "structural_nature": [
+          "Tụ lại tăng sức nặng.",
+          "Chung hướng tăng hiệu ứng.",
+          "Khối lượng tạo ảnh hưởng."
+        ],
+        "inherent_tension": "Tập trung làm tăng áp lực tại trung tâm."
+      },
+      "keywords": [
+        "tụ hội",
+        "tập trung",
+        "cộng đồng"
+      ],
+      "domains_hint": [
+        "sự kiện",
+        "tổ chức",
+        "đội nhóm"
+      ]
+    },
+    "46": {
+      "id": 46,
+      "laymantitle": "Thăng Tiến",
+      "traditional": {
+        "name_en": "Pushing Upward",
+        "pinyin": "Shēng",
+        "han_viet": "Thăng"
+      },
+      "core_image": "Gió trong đất.",
+      "structure": {
+        "core_structure": [
+          "Lực từ nền đi lên.",
+          "Tiến từng bước.",
+          "Nền giữ ổn định."
+        ],
+        "structural_nature": [
+          "Kiên trì tạo thăng tiến.",
+          "Nhỏ tích thành lớn.",
+          "Nỗ lực bền làm bệ đỡ."
+        ],
+        "inherent_tension": "Tiến lên phụ thuộc nền giữ vững."
+      },
+      "keywords": [
+        "thăng",
+        "nỗ lực",
+        "kiên trì"
+      ],
+      "domains_hint": [
+        "sự nghiệp",
+        "học tập",
+        "phát triển"
+      ]
+    },
+    "47": {
+      "id": 47,
+      "laymantitle": "Bị Ép",
+      "traditional": {
+        "name_en": "Oppression",
+        "pinyin": "Kùn",
+        "han_viet": "Khốn"
+      },
+      "core_image": "Đầm cạn nước.",
+      "structure": {
+        "core_structure": [
+          "Nguồn lực thu hẹp.",
+          "Không gian siết lại.",
+          "Trung tâm chịu ép."
+        ],
+        "structural_nature": [
+          "Giới hạn thử sức bền.",
+          "Áp lực làm lộ nội lực.",
+          "Thiếu hụt định hình hành vi."
+        ],
+        "inherent_tension": "Không gian hẹp làm tăng áp lực bên trong."
+      },
+      "keywords": [
+        "bị ép",
+        "thiếu hụt",
+        "chịu đựng"
+      ],
+      "domains_hint": [
+        "tài chính",
+        "công việc",
+        "sức khỏe"
+      ]
+    },
+    "48": {
+      "id": 48,
+      "laymantitle": "Nguồn Chung",
+      "traditional": {
+        "name_en": "The Well",
+        "pinyin": "Jǐng",
+        "han_viet": "Tỉnh"
+      },
+      "core_image": "Giếng nước cố định.",
+      "structure": {
+        "core_structure": [
+          "Nguồn ở trung tâm.",
+          "Giá trị bền.",
+          "Tiếp cận phụ thuộc cấu trúc."
+        ],
+        "structural_nature": [
+          "Bảo trì giữ nguồn.",
+          "Chia sẻ tạo lợi ích.",
+          "Khuôn khổ cho phép khai thác."
+        ],
+        "inherent_tension": "Nguồn còn đó nhưng tiếp cận thay đổi."
+      },
+      "keywords": [
+        "nguồn",
+        "ổn định",
+        "tiếp cận"
+      ],
+      "domains_hint": [
+        "cộng đồng",
+        "hạ tầng",
+        "tài chính"
+      ]
+    },
+    "49": {
+      "id": 49,
+      "laymantitle": "Biến Đổi",
+      "traditional": {
+        "name_en": "Revolution",
+        "pinyin": "Gé",
+        "han_viet": "Cách"
+      },
+      "core_image": "Lửa trong đầm.",
+      "structure": {
+        "core_structure": [
+          "Nhiệt tích dưới bề mặt.",
+          "Hình cũ mất ổn định.",
+          "Thay đổi tích tụ."
+        ],
+        "structural_nature": [
+          "Áp lực thúc chuyển hóa.",
+          "Thời điểm làm lộ đổi thay.",
+          "Đứt đoạn tái lập hướng."
+        ],
+        "inherent_tension": "Nhiệt bên trong ép vào hình cũ."
+      },
+      "keywords": [
+        "đổi thay",
+        "chuyển hóa",
+        "bước ngoặt"
+      ],
+      "domains_hint": [
+        "sự nghiệp",
+        "chính trị",
+        "chuyển tiếp"
+      ]
+    },
+    "50": {
+      "id": 50,
+      "laymantitle": "Giữ Trung Tâm",
+      "traditional": {
+        "name_en": "The Cauldron",
+        "pinyin": "Dǐng",
+        "han_viet": "Đỉnh"
+      },
+      "core_image": "Lửa dưới đỉnh.",
+      "structure": {
+        "core_structure": [
+          "Nhiệt trong khuôn vững.",
+          "Biến đổi diễn ra trong chứa đựng.",
+          "Trung tâm giữ giá trị."
+        ],
+        "structural_nature": [
+          "Khuôn giữ cho tinh luyện.",
+          "Cân bằng cho phép chuyển hóa.",
+          "Trung vị ổn định cấu trúc."
+        ],
+        "inherent_tension": "Chuyển hóa phụ thuộc độ vững của khuôn."
+      },
+      "keywords": [
+        "tinh luyện",
+        "giá trị",
+        "cấu trúc"
+      ],
+      "domains_hint": [
+        "văn hóa",
+        "lãnh đạo",
+        "tổ chức"
+      ]
+    },
+    "51": {
+      "id": 51,
+      "laymantitle": "Chấn Động",
+      "traditional": {
+        "name_en": "The Arousing",
+        "pinyin": "Zhèn",
+        "han_viet": "Chấn"
+      },
+      "core_image": "Sấm nổ giữa trời.",
+      "structure": {
+        "core_structure": [
+          "Lực bất ngờ phá tĩnh.",
+          "Chuyển động khởi đột ngột.",
+          "Nền bị rung."
+        ],
+        "structural_nature": [
+          "Cú sốc đánh thức chú ý.",
+          "Phản ứng lan nhanh.",
+          "Gián đoạn tái sắp xếp trật tự."
+        ],
+        "inherent_tension": "Chấn động làm lung lay cấu trúc đang ổn định."
+      },
+      "keywords": [
+        "bất ngờ",
+        "thức tỉnh",
+        "gián đoạn"
+      ],
+      "domains_hint": [
+        "biến cố",
+        "công việc",
+        "đời sống"
+      ]
+    },
+    "52": {
+      "id": 52,
+      "laymantitle": "Dừng Lại",
+      "traditional": {
+        "name_en": "Keeping Still",
+        "pinyin": "Gèn",
+        "han_viet": "Cấn"
+      },
+      "core_image": "Núi chồng núi.",
+      "structure": {
+        "core_structure": [
+          "Chuyển động dừng ở đỉnh.",
+          "Trên dưới đều tĩnh.",
+          "Hành động ngưng."
+        ],
+        "structural_nature": [
+          "Tĩnh giữ năng lượng.",
+          "Dừng ngăn vượt quá.",
+          "Im lặng tạo biên."
+        ],
+        "inherent_tension": "Tĩnh tuyệt đối ngắt dòng vận động tự nhiên."
+      },
+      "keywords": [
+        "tĩnh",
+        "dừng",
+        "giữ lại"
+      ],
+      "domains_hint": [
+        "quyết định",
+        "suy xét",
+        "nghỉ ngơi"
+      ]
+    },
+    "53": {
+      "id": 53,
+      "laymantitle": "Tiến Chậm",
+      "traditional": {
+        "name_en": "Development",
+        "pinyin": "Jiàn",
+        "han_viet": "Tiệm"
+      },
+      "core_image": "Cây mọc trên núi.",
+      "structure": {
+        "core_structure": [
+          "Tăng trưởng theo thứ tự.",
+          "Rễ sâu trước khi vươn.",
+          "Tiến từng bước."
+        ],
+        "structural_nature": [
+          "Thời gian làm vững nền.",
+          "Nhịp chậm tạo bền.",
+          "Trình tự giữ ổn định."
+        ],
+        "inherent_tension": "Tăng trưởng chậm đòi hỏi duy trì dài hạn."
+      },
+      "keywords": [
+        "phát triển",
+        "trình tự",
+        "kiên trì"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "sự nghiệp",
+        "dự án"
+      ]
+    },
+    "54": {
+      "id": 54,
+      "laymantitle": "Vị Trí Lệch",
+      "traditional": {
+        "name_en": "The Marrying Maiden",
+        "pinyin": "Guī Mèi",
+        "han_viet": "Quy Muội"
+      },
+      "core_image": "Sấm trên đầm.",
+      "structure": {
+        "core_structure": [
+          "Vị trí mới vào trật tự sẵn có.",
+          "Cân bằng phụ thuộc chỗ đứng.",
+          "Vai trò chưa trung tâm."
+        ],
+        "structural_nature": [
+          "Thích nghi theo cấu trúc hiện hữu.",
+          "Định vị quyết định ảnh hưởng.",
+          "Trật tự sắp đặt vai trò."
+        ],
+        "inherent_tension": "Thế đứng lệch làm hạn chế quyền lực."
+      },
+      "keywords": [
+        "vị trí",
+        "vai trò",
+        "thích nghi"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "tổ chức",
+        "hôn nhân"
+      ]
+    },
+    "55": {
+      "id": 55,
+      "laymantitle": "Thịnh Đạt",
+      "traditional": {
+        "name_en": "Abundance",
+        "pinyin": "Fēng",
+        "han_viet": "Phong"
+      },
+      "core_image": "Sấm và chớp rực sáng.",
+      "structure": {
+        "core_structure": [
+          "Năng lượng đạt cực điểm.",
+          "Ánh sáng tràn đầy.",
+          "Hoạt động dày đặc."
+        ],
+        "structural_nature": [
+          "Cường độ mở rộng ảnh hưởng.",
+          "Đỉnh cao khuếch đại tác động.",
+          "Sáng mạnh tạo bóng sâu."
+        ],
+        "inherent_tension": "Cực thịnh làm tăng tương phản xung quanh."
+      },
+      "keywords": [
+        "cực thịnh",
+        "cường độ",
+        "đỉnh điểm"
+      ],
+      "domains_hint": [
+        "sự kiện",
+        "sự nghiệp",
+        "lãnh đạo"
+      ]
+    },
+    "56": {
+      "id": 56,
+      "laymantitle": "Lữ Hành",
+      "traditional": {
+        "name_en": "The Wanderer",
+        "pinyin": "Lǚ",
+        "han_viet": "Lữ"
+      },
+      "core_image": "Lửa trên núi.",
+      "structure": {
+        "core_structure": [
+          "Vị trí tạm thời.",
+          "Thiếu rễ sâu.",
+          "Di chuyển liên tục."
+        ],
+        "structural_nature": [
+          "Linh hoạt giảm ma sát.",
+          "Thích nghi giữ cân bằng.",
+          "Hiện diện nhẹ."
+        ],
+        "inherent_tension": "Không bám rễ làm giảm ảnh hưởng lâu dài."
+      },
+      "keywords": [
+        "di chuyển",
+        "tạm thời",
+        "thích nghi"
+      ],
+      "domains_hint": [
+        "du lịch",
+        "chuyển việc",
+        "thay đổi"
+      ]
+    },
+    "57": {
+      "id": 57,
+      "laymantitle": "Thấm Dần",
+      "traditional": {
+        "name_en": "The Gentle",
+        "pinyin": "Xùn",
+        "han_viet": "Tốn"
+      },
+      "core_image": "Gió lồng trong gió.",
+      "structure": {
+        "core_structure": [
+          "Ảnh hưởng lặp nhẹ.",
+          "Thấm qua khe hở.",
+          "Đổi thay không ồn ào."
+        ],
+        "structural_nature": [
+          "Bền bỉ làm sâu tác động.",
+          "Lực mềm định hình dần.",
+          "Tích lũy tạo đổi khác."
+        ],
+        "inherent_tension": "Ảnh hưởng chậm phụ thuộc tiếp cận liên tục."
+      },
+      "keywords": [
+        "thấm",
+        "ảnh hưởng",
+        "bền bỉ"
+      ],
+      "domains_hint": [
+        "văn hóa",
+        "đàm phán",
+        "lãnh đạo"
+      ]
+    },
+    "58": {
+      "id": 58,
+      "laymantitle": "Mở Lòng",
+      "traditional": {
+        "name_en": "The Joyous",
+        "pinyin": "Duì",
+        "han_viet": "Đoài"
+      },
+      "core_image": "Đầm trên đầm.",
+      "structure": {
+        "core_structure": [
+          "Hai lực nhu gặp nhau.",
+          "Trao đổi trên bề mặt.",
+          "Cởi mở tạo nhẹ."
+        ],
+        "structural_nature": [
+          "Giao tiếp tăng gắn kết.",
+          "Niềm vui lan qua tiếp xúc.",
+          "Minh bạch tạo tin."
+        ],
+        "inherent_tension": "Hòa khí bề mặt có thể che khác biệt sâu."
+      },
+      "keywords": [
+        "giao tiếp",
+        "niềm vui",
+        "cởi mở"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "đội nhóm",
+        "cộng đồng"
+      ]
+    },
+    "59": {
+      "id": 59,
+      "laymantitle": "Tan Rã",
+      "traditional": {
+        "name_en": "Dispersion",
+        "pinyin": "Huàn",
+        "han_viet": "Hoán"
+      },
+      "core_image": "Gió trên nước.",
+      "structure": {
+        "core_structure": [
+          "Kết khối bị nới lỏng.",
+          "Biên giới mềm lại.",
+          "Yếu tố tản ra."
+        ],
+        "structural_nature": [
+          "Phân tán làm thông thoáng.",
+          "Nới lỏng giảm tắc.",
+          "Giải tỏa nối lại dòng."
+        ],
+        "inherent_tension": "Phân tán làm giảm sức mạnh tập trung."
+      },
+      "keywords": [
+        "phân tán",
+        "nới lỏng",
+        "giải tỏa"
+      ],
+      "domains_hint": [
+        "tổ chức",
+        "xung đột",
+        "chuyển đổi"
+      ]
+    },
+    "60": {
+      "id": 60,
+      "laymantitle": "Giới Hạn",
+      "traditional": {
+        "name_en": "Limitation",
+        "pinyin": "Jié",
+        "han_viet": "Tiết"
+      },
+      "core_image": "Nước trong đầm.",
+      "structure": {
+        "core_structure": [
+          "Dòng ở trong biên.",
+          "Dung lượng có ranh.",
+          "Khuôn định mức."
+        ],
+        "structural_nature": [
+          "Giới hạn giữ trật tự.",
+          "Biên ngăn vượt quá.",
+          "Định mức ổn định."
+        ],
+        "inherent_tension": "Hạn chế thu hẹp đà mở rộng tự nhiên."
+      },
+      "keywords": [
+        "giới hạn",
+        "định mức",
+        "khuôn khổ"
+      ],
+      "domains_hint": [
+        "tài chính",
+        "kế hoạch",
+        "sức khỏe"
+      ]
+    },
+    "61": {
+      "id": 61,
+      "laymantitle": "Trung Thực Bên Trong",
+      "traditional": {
+        "name_en": "Inner Truth",
+        "pinyin": "Zhōng Fú",
+        "han_viet": "Trung Phu"
+      },
+      "core_image": "Gió trên đầm.",
+      "structure": {
+        "core_structure": [
+          "Bên trong định hình bên ngoài.",
+          "Tín hiệu phản chiếu nội tâm.",
+          "Trong và ngoài liên kết."
+        ],
+        "structural_nature": [
+          "Nhất quán tạo tin cậy.",
+          "Trung tâm dẫn giao tiếp.",
+          "Cân bằng nội giảm méo."
+        ],
+        "inherent_tension": "Tín hiệu ngoài phụ thuộc sự đồng nhất bên trong."
+      },
+      "keywords": [
+        "nhất quán",
+        "tin cậy",
+        "liên kết"
+      ],
+      "domains_hint": [
+        "quan hệ",
+        "lãnh đạo",
+        "giao tiếp"
+      ]
+    },
+    "62": {
+      "id": 62,
+      "laymantitle": "Việc Nhỏ",
+      "traditional": {
+        "name_en": "Small Exceeding",
+        "pinyin": "Xiǎo Guò",
+        "han_viet": "Tiểu Quá"
+      },
+      "core_image": "Sấm dưới núi.",
+      "structure": {
+        "core_structure": [
+          "Yếu tố nhỏ mang trọng lượng.",
+          "Chi tiết ảnh hưởng tổng thể.",
+          "Vị trí thấp giữ vai."
+        ],
+        "structural_nature": [
+          "Chỉnh nhỏ giữ cân bằng.",
+          "Tỉ mỉ ngăn lệch.",
+          "Nhỏ tích thành hướng."
+        ],
+        "inherent_tension": "Sai lệch nhỏ có thể nghiêng toàn hệ."
+      },
+      "keywords": [
+        "chi tiết",
+        "tỉ mỉ",
+        "nhỏ"
+      ],
+      "domains_hint": [
+        "dự án",
+        "tài chính",
+        "quyết định"
+      ]
+    },
+    "63": {
+      "id": 63,
+      "laymantitle": "Đã Hoàn",
+      "traditional": {
+        "name_en": "After Completion",
+        "pinyin": "Jì Jì",
+        "han_viet": "Ký Tế"
+      },
+      "core_image": "Nước trên lửa.",
+      "structure": {
+        "core_structure": [
+          "Mọi yếu tố vào vị trí.",
+          "Trật tự hoàn chỉnh.",
+          "Cân bằng đạt."
+        ],
+        "structural_nature": [
+          "Duy trì giữ trạng thái.",
+          "Cảnh giác giữ ổn định.",
+          "Biến nhỏ làm lệch."
+        ],
+        "inherent_tension": "Ổn định chứa mầm đảo chiều."
+      },
+      "keywords": [
+        "hoàn tất",
+        "duy trì",
+        "cân bằng"
+      ],
+      "domains_hint": [
+        "dự án",
+        "quan hệ",
+        "tổ chức"
+      ]
+    },
+    "64": {
+      "id": 64,
+      "laymantitle": "Chưa Hoàn",
+      "traditional": {
+        "name_en": "Before Completion",
+        "pinyin": "Wèi Jì",
+        "han_viet": "Vị Tế"
+      },
+      "core_image": "Lửa trên nước.",
+      "structure": {
+        "core_structure": [
+          "Yếu tố chưa vào vị trí.",
+          "Chuyển tiếp đang diễn ra.",
+          "Kết thúc chưa định."
+        ],
+        "structural_nature": [
+          "Điều chỉnh tiếp tục.",
+          "Quá trình trước khi khép.",
+          "Cân bằng chưa đạt."
+        ],
+        "inherent_tension": "Trật tự chưa định kháng lại ổn định cuối."
+      },
+      "keywords": [
+        "chuyển tiếp",
+        "chưa xong",
+        "quá trình"
+      ],
+      "domains_hint": [
+        "dự án",
+        "sự nghiệp",
+        "chuyển đổi"
+      ]
+    }
+  },
+  "line_position_overlay": {
+    "1": [
+      "Giai đoạn rất sớm; nền tảng có thể chưa ổn định hoàn toàn.",
+      "Tín hiệu nhỏ có thể quan trọng hơn chuyển động lớn."
+    ],
+    "2": [
+      "Động lực hỗ trợ hoặc vị trí tương quan có thể đang hình thành.",
+      "Sự đồng bộ với người khác có thể ảnh hưởng hướng đi."
+    ],
+    "3": [
+      "Ma sát hoặc áp lực quá tải có thể xuất hiện.",
+      "Thời điểm có thể quan trọng hơn lực đẩy."
+    ],
+    "4": [
+      "Khả năng bước vào vùng trách nhiệm hoặc hiển lộ có thể đang tăng.",
+      "Phản hồi bên ngoài có thể bắt đầu ảnh hưởng kết quả."
+    ],
+    "5": [
+      "Kỳ vọng hoặc trọng tâm trách nhiệm có thể đang tăng.",
+      "Ảnh hưởng có thể lớn hơn bình thường."
+    ],
+    "6": [
+      "Năng lượng hoàn tất hoặc vượt ngưỡng có thể đang gần.",
+      "Buông hoặc chuyển pha có thể là một phần của mẫu hình."
+    ]
+  },
+  "fallback": {
+    "id": 0,
+    "laymantitle": "Hình Thế Chưa Rõ",
+    "traditional": {
+      "name_en": "name_en",
+      "pinyin": "pinyin",
+      "han_viet": "han_viet"
+    },
+    "core_image": "Hình thế còn mờ, như mặt nước phủ sương khi trời chưa sáng.",
+    "structure": {
+      "core_structure": [
+        "Nhiều tín hiệu xuất hiện nhưng chưa hội tụ thành một trục rõ ràng.",
+        "Dữ kiện còn rời rạc, chưa tạo thành cấu trúc ổn định."
+      ],
+      "structural_nature": [
+        "Ý nghĩa dần ổn định khi nhiễu giảm và điểm lặp trở nên rõ.",
+        "Cấu trúc chỉ hiện hình khi đủ độ lặp và đủ độ tương phản."
+      ],
+      "inherent_tension": "Nỗ lực ép một kết luận sớm làm méo hình thế vốn chưa đủ nét."
+    },
+    "keywords": [
+      "mơ hồ",
+      "nhiễu",
+      "đang hình thành"
+    ],
+    "domains_hint": [
+      "công việc",
+      "mối quan hệ",
+      "tài chính"
+    ]
+  }
+}

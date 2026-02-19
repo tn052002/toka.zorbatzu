@@ -4,9 +4,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useI18n } from '@/lib/i18n';
 import BreathingOrb from '@/components/BreathingOrb';
+import { MOMENT_KEY } from '@/lib/momentReading';
 
 const BREATH_PAUSE_SECONDS = 5;
-const MOMENT_KEY = 'toka_v2:moment_draft';
 
 export default function MomentPage() {
   const { t, lang } = useI18n();
@@ -75,6 +75,7 @@ export default function MomentPage() {
   const handleConfirm = () => {
     const payload = {
       question: question.trim(),
+      questionTimestamp: new Date().toISOString(),
       domain: selectedDomain || null,
     };
     window.localStorage.setItem(MOMENT_KEY, JSON.stringify(payload));

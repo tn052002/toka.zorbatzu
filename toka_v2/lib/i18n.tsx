@@ -48,6 +48,20 @@ type Dict = {
   castNoQuestion: string;
   castModeAria: string;
   castOrbAria: string;
+  readingTitle: string;
+  readingNoData: string;
+  readingQuestion: string;
+  readingQuestionTimestamp: string;
+  readingDomain: string;
+  readingMode: string;
+  readingCastedAt: string;
+  readingLineValues: string;
+  readingMainHexId: string;
+  readingMovingLines: string;
+  readingRelatingHexId: string;
+  readingBackToCast: string;
+  readingBackHome: string;
+  readingNone: string;
   langEn: string;
   langVi: string;
 };
@@ -97,6 +111,20 @@ const messages: Record<Locale, Dict> = {
     castNoQuestion: 'No question found.',
     castModeAria: 'Casting mode',
     castOrbAria: 'Cast lines',
+    readingTitle: 'View Reading',
+    readingNoData: 'No reading found yet.',
+    readingQuestion: 'Question',
+    readingQuestionTimestamp: 'Question time',
+    readingDomain: 'Domain',
+    readingMode: 'Mode',
+    readingCastedAt: 'Casted at',
+    readingLineValues: 'Line values',
+    readingMainHexId: 'Main hex id',
+    readingMovingLines: 'Moving line positions',
+    readingRelatingHexId: 'Relating hex id',
+    readingBackToCast: 'Back to cast',
+    readingBackHome: 'Home',
+    readingNone: 'none',
     langEn: 'EN',
     langVi: 'VI',
   },
@@ -144,6 +172,20 @@ const messages: Record<Locale, Dict> = {
     castNoQuestion: 'Không có câu hỏi.',
     castModeAria: 'Chế độ gieo',
     castOrbAria: 'Gieo hào',
+    readingTitle: 'Xem Bản Đọc',
+    readingNoData: 'Chưa có dữ liệu gieo quẻ.',
+    readingQuestion: 'Câu hỏi',
+    readingQuestionTimestamp: 'Thời điểm hỏi',
+    readingDomain: 'Lĩnh vực',
+    readingMode: 'Chế độ',
+    readingCastedAt: 'Thời điểm gieo',
+    readingLineValues: 'Giá trị các hào',
+    readingMainHexId: 'ID quẻ chính',
+    readingMovingLines: 'Vị trí hào biến',
+    readingRelatingHexId: 'ID quẻ hỗ',
+    readingBackToCast: 'Quay lại gieo',
+    readingBackHome: 'Trang chủ',
+    readingNone: 'không có',
     langEn: 'EN',
     langVi: 'VI',
   },
