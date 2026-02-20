@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-const CACHE_NAME = 'toka-v3-v1';
+const CACHE_NAME = 'toka-v3-v3';
 const APP_SHELL = ['/', '/cast', '/mirror', '/offline', '/manifest.webmanifest', '/icons/icon-192.svg', '/icons/icon-512.svg'];
 
 self.addEventListener('install', (event) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ButtonPrimary from '@/components/ButtonPrimary';
 import Container from '@/components/Container';
@@ -59,6 +59,21 @@ type TrigramVi = {
   keywords: string[];
 };
 
+function asArray<T>(value: unknown): T[] {
+  if (Array.isArray(value)) {
+    return value as T[];
+  }
+  if (
+    value &&
+    typeof value === 'object' &&
+    'default' in value &&
+    Array.isArray((value as { default?: unknown }).default)
+  ) {
+    return (value as { default: T[] }).default;
+  }
+  return [];
+}
+
 export default function CastPage() {
   const router = useRouter();
   const { m, lang } = useI18n();
@@ -107,6 +122,13 @@ export default function CastPage() {
     };
   }, []);
 
+  const localizedHexagrams = asArray<HexagramVi | HexagramEn>(lang === 'vi' ? hexagramsVi : hexagramsEn);
+  const localizedTrigrams = asArray<TrigramVi | TrigramEn>(lang === 'vi' ? trigramsVi : trigramsEn);
+  const trigramMappings = asArray<HexagramTrigramMap>(hexagramTrigrams);
+  const hexById = new Map(localizedHexagrams.map((hex) => [hex.id, hex]));
+  const trigramById = new Map(localizedTrigrams.map((trigram) => [trigram.id, trigram]));
+  const hexTrigramById = new Map(trigramMappings.map((item) => [item.id, item]));
+
   if (!session) {
     return null;
   }
@@ -121,33 +143,19 @@ export default function CastPage() {
   const elementTitle = lang === 'vi' ? 'Ngũ hành' : 'Element';
   const keywordsTitle = lang === 'vi' ? 'Từ khóa' : 'Keywords';
 
-  const {
-    getHexagramById,
-    getTrigramByHexId,
-  } = useMemo(() => {
-    const localizedHexagrams = (lang === 'vi' ? hexagramsVi : hexagramsEn) as Array<HexagramVi | HexagramEn>;
-    const localizedTrigrams = (lang === 'vi' ? trigramsVi : trigramsEn) as Array<TrigramVi | TrigramEn>;
-    const hexById = new Map(localizedHexagrams.map((hex) => [hex.id, hex]));
-    const trigramById = new Map(localizedTrigrams.map((trigram) => [trigram.id, trigram]));
-    const hexTrigramById = new Map((hexagramTrigrams as HexagramTrigramMap[]).map((item) => [item.id, item]));
-
-    return {
-      getHexagramById: (hexId: number) => hexById.get(hexId),
-      getTrigramByHexId: (hexId: number) => {
-        const pairing = hexTrigramById.get(hexId);
-        if (!pairing) {
-          return null;
-        }
-        return {
-          lower: trigramById.get(pairing.lower),
-          upper: trigramById.get(pairing.upper),
-        };
-      },
-    };
-  }, [lang]);
-
   const primaryHexId = session.cast?.primaryHexagramId;
   const resultingHexId = session.cast?.resultingHexagramId;
+  const getHexagramById = (hexId: number) => hexById.get(hexId);
+  const getTrigramByHexId = (hexId: number) => {
+    const pairing = hexTrigramById.get(hexId);
+    if (!pairing) {
+      return null;
+    }
+    return {
+      lower: trigramById.get(pairing.lower),
+      upper: trigramById.get(pairing.upper),
+    };
+  };
   const primaryHex = isFullyRevealed && primaryHexId ? getHexagramById(primaryHexId) : null;
   const resultingHex = isFullyRevealed && resultingHexId ? getHexagramById(resultingHexId) : null;
   const primaryTrigrams = isFullyRevealed && primaryHexId ? getTrigramByHexId(primaryHexId) : null;

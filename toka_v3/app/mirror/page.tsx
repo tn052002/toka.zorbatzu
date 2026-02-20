@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ButtonPrimary from '@/components/ButtonPrimary';
 import Container from '@/components/Container';
@@ -30,17 +30,7 @@ export default function MirrorPage() {
     return null;
   }
 
-  const blocks = useMemo(
-    () => [
-      m.mirror.framing,
-      m.mirror.power,
-      m.mirror.risk,
-      m.mirror.timing,
-      m.mirror.bias,
-      m.mirror.counterfactual,
-    ],
-    [m],
-  );
+  const blocks = [m.mirror.framing, m.mirror.power, m.mirror.risk, m.mirror.timing, m.mirror.bias, m.mirror.counterfactual];
 
   const clearAndReturn = () => {
     resetSession();
