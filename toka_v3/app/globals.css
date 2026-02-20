@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f4f1ea;
+  --text: #1c1c1c;
+  --accent: #3e4a5a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+textarea,
+input,
+button {
+  font: inherit;
+}
+
+textarea,
+input[type='text'] {
+  width: 100%;
+  border: 1px solid rgb(28 28 28 / 0.2);
+  border-radius: 0.375rem;
+  background: rgb(255 255 255 / 0.65);
+  color: var(--text);
+  padding: 0.65rem 0.75rem;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+textarea:focus,
+input:focus,
+button:focus-visible {
+  outline: 2px solid rgb(62 74 90 / 0.35);
+  outline-offset: 2px;
+}
+
+.toka-page {
+  min-height: 100dvh;
+  padding: 1rem 0 1.5rem;
+}
+
+.fade-in {
+  animation: toka-fade 180ms ease;
+}
+
+@keyframes toka-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
