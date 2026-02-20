@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ButtonPrimary from '@/components/ButtonPrimary';
 import Container from '@/components/Container';
@@ -16,6 +16,9 @@ export default function CastPage() {
   const router = useRouter();
   const { m } = useI18n();
   const [session, setSession] = useState<TokaSession | null>(null);
+  const [revealedCount, setRevealedCount] = useState(0);
+  const [isRevealing, setIsRevealing] = useState(false);
+  const revealTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const loaded = loadSession();
@@ -25,9 +28,59 @@ export default function CastPage() {
     }
   }, [router]);
 
+  useEffect(() => {
+    if (!session?.cast) {
+      setRevealedCount(0);
+      setIsRevealing(false);
+      return;
+    }
+    setRevealedCount(0);
+    setIsRevealing(false);
+  }, [session?.cast]);
+
+  useEffect(() => {
+    return () => {
+      if (revealTimer.current !== null) {
+        window.clearInterval(revealTimer.current);
+      }
+    };
+  }, []);
+
   if (!session) {
     return null;
   }
+
+  const isFullyRevealed = revealedCount >= 6;
+  const hasCast = Boolean(session.cast);
+  const visibleValues = session.cast?.lineValues.slice(0, revealedCount) ?? [];
+  const lineValueText = `[${Array.from({ length: 6 }, (_, index) => visibleValues[index] ?? '_').join(', ')}]`;
+  const visibleChanging = session.cast?.changingLines.filter((line) => line <= revealedCount) ?? [];
+
+  const revealPattern = () => {
+    if (!session.cast || isRevealing || isFullyRevealed) {
+      return;
+    }
+    setIsRevealing(true);
+    revealTimer.current = window.setInterval(() => {
+      setRevealedCount((current) => {
+        if (current >= 6) {
+          if (revealTimer.current !== null) {
+            window.clearInterval(revealTimer.current);
+          }
+          setIsRevealing(false);
+          return current;
+        }
+        const next = current + 1;
+        if (next >= 6) {
+          if (revealTimer.current !== null) {
+            window.clearInterval(revealTimer.current);
+          }
+          setIsRevealing(false);
+        }
+        return next;
+      });
+    }, 320);
+  };
 
   return (
     <main className="toka-page fade-in">
@@ -46,25 +99,36 @@ export default function CastPage() {
             <div className="mt-3 h-24 rounded-md border border-text/20 bg-white/50 p-4">
               <div className="h-full w-full rounded-sm border border-text/15 bg-white/60 opacity-90 transition-opacity duration-calm" />
             </div>
+            <div className="mt-3 flex items-center justify-between">
+              <p className="text-xs text-text/70">{revealedCount}/6</p>
+              <button
+                type="button"
+                className="rounded-md border border-text/20 bg-white/70 px-3 py-1.5 text-xs text-text transition-colors duration-calm hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
+                onClick={revealPattern}
+                disabled={!hasCast || isRevealing || isFullyRevealed}
+              >
+                {m.cast.revealPattern}
+              </button>
+            </div>
           </SectionCard>
 
           <SectionCard>
             <div className="space-y-2 text-sm">
               <p>
                 <span className="font-medium">{m.cast.primaryHexagram}:</span>{' '}
-                {session.cast?.primaryHexagramId ?? m.cast.unknown}
+                {isFullyRevealed ? session.cast?.primaryHexagramId ?? m.cast.unknown : m.cast.unknown}
               </p>
               <p>
                 <span className="font-medium">{m.cast.changingLines}:</span>{' '}
-                {session.cast?.changingLines?.length ? session.cast.changingLines.join(', ') : m.cast.unknown}
+                {visibleChanging.length ? visibleChanging.join(', ') : m.cast.unknown}
               </p>
               <p>
                 <span className="font-medium">{m.cast.resultingHexagram}:</span>{' '}
-                {session.cast?.resultingHexagramId ?? m.cast.unknown}
+                {isFullyRevealed ? session.cast?.resultingHexagramId ?? m.cast.unknown : m.cast.unknown}
               </p>
               <p>
                 <span className="font-medium">{m.cast.lineValues}:</span>{' '}
-                [7, 8, 9, 7, 8, 6]
+                {lineValueText}
               </p>
             </div>
           </SectionCard>
@@ -91,6 +155,7 @@ export default function CastPage() {
               }
               router.push('/mirror');
             }}
+            disabled={!isFullyRevealed}
           >
             {m.cast.mirrorCta}
           </ButtonPrimary>

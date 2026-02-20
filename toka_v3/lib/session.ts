@@ -1,6 +1,7 @@
 'use client';
 
 import type { EmotionKey } from '@/lib/storage';
+import type { LineValue } from '@/lib/toka/iching';
 
 export type SessionState = 'input' | 'casted' | 'mirrored';
 
@@ -14,6 +15,7 @@ export type TokaInput = {
 };
 
 export type TokaCast = {
+  lineValues: LineValue[];
   primaryHexagramId: number;
   changingLines: number[];
   resultingHexagramId: number;
@@ -55,6 +57,24 @@ export function loadSession(): TokaSession {
     }
     const parsed = JSON.parse(raw) as Partial<TokaSession>;
     const base = createEmptySession();
+    const normalizedValues =
+      parsed.cast && Array.isArray(parsed.cast.lineValues)
+        ? parsed.cast.lineValues.filter((value): value is LineValue => value === 6 || value === 7 || value === 8 || value === 9)
+        : [];
+    const cast =
+      parsed.cast &&
+      normalizedValues.length === 6 &&
+      typeof parsed.cast.primaryHexagramId === 'number' &&
+      Array.isArray(parsed.cast.changingLines) &&
+      typeof parsed.cast.resultingHexagramId === 'number'
+        ? {
+            lineValues: normalizedValues,
+            primaryHexagramId: parsed.cast.primaryHexagramId,
+            changingLines: parsed.cast.changingLines.filter((line): line is number => Number.isInteger(line)),
+            resultingHexagramId: parsed.cast.resultingHexagramId,
+          }
+        : null;
+
     return {
       ...base,
       ...parsed,
@@ -62,7 +82,7 @@ export function loadSession(): TokaSession {
         ...base.input,
         ...(parsed.input ?? {}),
       },
-      cast: parsed.cast ?? null,
+      cast,
       updatedAt: parsed.updatedAt ?? base.updatedAt,
       createdAt: parsed.createdAt ?? base.createdAt,
     };
