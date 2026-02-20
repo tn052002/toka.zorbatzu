@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ButtonPrimary from '@/components/ButtonPrimary';
 import Container from '@/components/Container';
@@ -9,12 +9,59 @@ import DevNav from '@/components/DevNav';
 import Divider from '@/components/Divider';
 import SectionCard from '@/components/SectionCard';
 import { useI18n } from '@/lib/i18n';
-import { loadSession, type TokaSession } from '@/lib/session';
+import hexagramTrigrams from '@/lib/data/hexagram_trigrams.json';
+import hexagramsEn from '@/lib/data/hexagrams_en.json';
+import hexagramsVi from '@/lib/data/hexagrams_vi.json';
+import trigramsEn from '@/lib/data/trigrams_en.json';
+import trigramsVi from '@/lib/data/trigrams_vi.json';
+import { loadSession, saveSession, type TokaSession } from '@/lib/session';
 import { castPattern, generateMirror } from '@/lib/toka/machine';
+
+type HexagramTrigramMap = {
+  id: number;
+  lower: string;
+  upper: string;
+};
+
+type HexagramEn = {
+  id: number;
+  hanzi: string;
+  pinyin: string;
+  name_en: string;
+  archetype: string;
+  keywords: string[];
+};
+
+type HexagramVi = {
+  id: number;
+  hanzi: string;
+  pinyin: string;
+  name_vi: string;
+  archetype: string;
+  keywords: string[];
+};
+
+type TrigramEn = {
+  id: string;
+  hanzi: string;
+  pinyin: string;
+  name_en: string;
+  element: string;
+  keywords: string[];
+};
+
+type TrigramVi = {
+  id: string;
+  hanzi: string;
+  pinyin: string;
+  name_vi: string;
+  element: string;
+  keywords: string[];
+};
 
 export default function CastPage() {
   const router = useRouter();
-  const { m } = useI18n();
+  const { m, lang } = useI18n();
   const [session, setSession] = useState<TokaSession | null>(null);
   const [revealedCount, setRevealedCount] = useState(0);
   const [isRevealing, setIsRevealing] = useState(false);
@@ -22,10 +69,24 @@ export default function CastPage() {
 
   useEffect(() => {
     const loaded = loadSession();
-    setSession(loaded);
     if (!loaded.input.decision.trim()) {
       router.replace('/');
+      return;
     }
+    // Guard against stale cast data in storage. Cast should only be created
+    // when user taps "Reveal Pattern" on this page.
+    if (loaded.state !== 'casted' && loaded.cast) {
+      const sanitized: TokaSession = {
+        ...loaded,
+        state: 'input',
+        cast: null,
+        updatedAt: new Date().toISOString(),
+      };
+      saveSession(sanitized);
+      setSession(sanitized);
+      return;
+    }
+    setSession(loaded);
   }, [router]);
 
   useEffect(() => {
@@ -54,6 +115,43 @@ export default function CastPage() {
   const visibleValues = session.cast?.lineValues.slice(0, revealedCount) ?? [];
   const lineValueText = `[${Array.from({ length: 6 }, (_, index) => visibleValues[index] ?? '_').join(', ')}]`;
   const visibleChanging = session.cast?.changingLines.filter((line) => line <= revealedCount) ?? [];
+  const trigramTitle = lang === 'vi' ? 'Quái' : 'Trigrams';
+  const lowerTitle = lang === 'vi' ? 'Hạ quái' : 'Lower';
+  const upperTitle = lang === 'vi' ? 'Thượng quái' : 'Upper';
+  const elementTitle = lang === 'vi' ? 'Ngũ hành' : 'Element';
+  const keywordsTitle = lang === 'vi' ? 'Từ khóa' : 'Keywords';
+
+  const {
+    getHexagramById,
+    getTrigramByHexId,
+  } = useMemo(() => {
+    const localizedHexagrams = (lang === 'vi' ? hexagramsVi : hexagramsEn) as Array<HexagramVi | HexagramEn>;
+    const localizedTrigrams = (lang === 'vi' ? trigramsVi : trigramsEn) as Array<TrigramVi | TrigramEn>;
+    const hexById = new Map(localizedHexagrams.map((hex) => [hex.id, hex]));
+    const trigramById = new Map(localizedTrigrams.map((trigram) => [trigram.id, trigram]));
+    const hexTrigramById = new Map((hexagramTrigrams as HexagramTrigramMap[]).map((item) => [item.id, item]));
+
+    return {
+      getHexagramById: (hexId: number) => hexById.get(hexId),
+      getTrigramByHexId: (hexId: number) => {
+        const pairing = hexTrigramById.get(hexId);
+        if (!pairing) {
+          return null;
+        }
+        return {
+          lower: trigramById.get(pairing.lower),
+          upper: trigramById.get(pairing.upper),
+        };
+      },
+    };
+  }, [lang]);
+
+  const primaryHexId = session.cast?.primaryHexagramId;
+  const resultingHexId = session.cast?.resultingHexagramId;
+  const primaryHex = isFullyRevealed && primaryHexId ? getHexagramById(primaryHexId) : null;
+  const resultingHex = isFullyRevealed && resultingHexId ? getHexagramById(resultingHexId) : null;
+  const primaryTrigrams = isFullyRevealed && primaryHexId ? getTrigramByHexId(primaryHexId) : null;
+  const resultingTrigrams = isFullyRevealed && resultingHexId ? getTrigramByHexId(resultingHexId) : null;
 
   const startReveal = () => {
     if (isRevealing || isFullyRevealed) {
@@ -151,6 +249,100 @@ export default function CastPage() {
               </p>
             </div>
           </SectionCard>
+
+          {primaryHex ? (
+            <SectionCard title={m.cast.primaryHexagram}>
+              <div className="space-y-2 text-sm">
+                <p>
+                  <span className="font-medium">ID:</span> {primaryHex.id}
+                </p>
+                <p>
+                  <span className="font-medium">Hanzi:</span> {primaryHex.hanzi}
+                </p>
+                <p>
+                  <span className="font-medium">Pinyin:</span> {primaryHex.pinyin}
+                </p>
+                <p>
+                  <span className="font-medium">{lang === 'vi' ? 'Tên' : 'Name'}:</span>{' '}
+                  {'name_vi' in primaryHex ? primaryHex.name_vi : primaryHex.name_en}
+                </p>
+                <p>
+                  <span className="font-medium">{lang === 'vi' ? 'Mẫu hình' : 'Archetype'}:</span> {primaryHex.archetype}
+                </p>
+                <p>
+                  <span className="font-medium">{keywordsTitle}:</span> {primaryHex.keywords.join(', ')}
+                </p>
+                {primaryTrigrams?.lower && primaryTrigrams?.upper ? (
+                  <div className="space-y-2 rounded-md border border-text/15 bg-white/35 p-3">
+                    <p className="text-xs uppercase tracking-wide text-text/60">{trigramTitle}</p>
+                    <p>
+                      <span className="font-medium">{lowerTitle}:</span>{' '}
+                      {'name_vi' in primaryTrigrams.lower ? primaryTrigrams.lower.name_vi : primaryTrigrams.lower.name_en}
+                      {' · '}
+                      {elementTitle}: {primaryTrigrams.lower.element}
+                      {' · '}
+                      {keywordsTitle}: {primaryTrigrams.lower.keywords.join(', ')}
+                    </p>
+                    <p>
+                      <span className="font-medium">{upperTitle}:</span>{' '}
+                      {'name_vi' in primaryTrigrams.upper ? primaryTrigrams.upper.name_vi : primaryTrigrams.upper.name_en}
+                      {' · '}
+                      {elementTitle}: {primaryTrigrams.upper.element}
+                      {' · '}
+                      {keywordsTitle}: {primaryTrigrams.upper.keywords.join(', ')}
+                    </p>
+                  </div>
+                ) : null}
+              </div>
+            </SectionCard>
+          ) : null}
+
+          {resultingHex ? (
+            <SectionCard title={m.cast.resultingHexagram}>
+              <div className="space-y-2 text-sm">
+                <p>
+                  <span className="font-medium">ID:</span> {resultingHex.id}
+                </p>
+                <p>
+                  <span className="font-medium">Hanzi:</span> {resultingHex.hanzi}
+                </p>
+                <p>
+                  <span className="font-medium">Pinyin:</span> {resultingHex.pinyin}
+                </p>
+                <p>
+                  <span className="font-medium">{lang === 'vi' ? 'Tên' : 'Name'}:</span>{' '}
+                  {'name_vi' in resultingHex ? resultingHex.name_vi : resultingHex.name_en}
+                </p>
+                <p>
+                  <span className="font-medium">{lang === 'vi' ? 'Mẫu hình' : 'Archetype'}:</span> {resultingHex.archetype}
+                </p>
+                <p>
+                  <span className="font-medium">{keywordsTitle}:</span> {resultingHex.keywords.join(', ')}
+                </p>
+                {resultingTrigrams?.lower && resultingTrigrams?.upper ? (
+                  <div className="space-y-2 rounded-md border border-text/15 bg-white/35 p-3">
+                    <p className="text-xs uppercase tracking-wide text-text/60">{trigramTitle}</p>
+                    <p>
+                      <span className="font-medium">{lowerTitle}:</span>{' '}
+                      {'name_vi' in resultingTrigrams.lower ? resultingTrigrams.lower.name_vi : resultingTrigrams.lower.name_en}
+                      {' · '}
+                      {elementTitle}: {resultingTrigrams.lower.element}
+                      {' · '}
+                      {keywordsTitle}: {resultingTrigrams.lower.keywords.join(', ')}
+                    </p>
+                    <p>
+                      <span className="font-medium">{upperTitle}:</span>{' '}
+                      {'name_vi' in resultingTrigrams.upper ? resultingTrigrams.upper.name_vi : resultingTrigrams.upper.name_en}
+                      {' · '}
+                      {elementTitle}: {resultingTrigrams.upper.element}
+                      {' · '}
+                      {keywordsTitle}: {resultingTrigrams.upper.keywords.join(', ')}
+                    </p>
+                  </div>
+                ) : null}
+              </div>
+            </SectionCard>
+          ) : null}
 
           <SectionCard title={m.cast.summaryTitle}>
             <p className="text-sm text-text/80">{session.input.decision || m.cast.summaryFallback}</p>

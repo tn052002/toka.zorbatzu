@@ -12,7 +12,7 @@ import LocaleToggle from '@/components/LocaleToggle';
 import SectionCard from '@/components/SectionCard';
 import { useI18n } from '@/lib/i18n';
 import type { EmotionKey } from '@/lib/storage';
-import { loadSession, type TokaInput, type TokaSession } from '@/lib/session';
+import { type TokaInput, type TokaSession } from '@/lib/session';
 import { submitInput } from '@/lib/toka/machine';
 
 const EMOTION_KEYS: EmotionKey[] = ['calm', 'anxious', 'curious', 'determined', 'fearful', 'conflicted'];
@@ -33,8 +33,19 @@ export default function DecisionGatePage() {
   const [showEmotion, setShowEmotion] = useState(false);
 
   useEffect(() => {
-    const session = loadSession();
-    setDraft(session.input);
+    window.sessionStorage.clear();
+    window.localStorage.clear();
+    setDraft({
+      decision: '',
+      stakesBest: '',
+      stakesWorst: '',
+      variables: '',
+      emotions: [],
+      intensity: 3,
+    });
+    setShowStakes(false);
+    setShowVariables(false);
+    setShowEmotion(false);
   }, []);
 
   const emotionLabels = useMemo(
