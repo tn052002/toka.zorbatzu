@@ -13,7 +13,7 @@ import SectionCard from '@/components/SectionCard';
 import { useI18n } from '@/lib/i18n';
 import type { EmotionKey } from '@/lib/storage';
 import { loadSession, type TokaInput, type TokaSession } from '@/lib/session';
-import { castPattern, submitInput } from '@/lib/toka/machine';
+import { submitInput } from '@/lib/toka/machine';
 
 const EMOTION_KEYS: EmotionKey[] = ['calm', 'anxious', 'curious', 'determined', 'fearful', 'conflicted'];
 
@@ -67,10 +67,6 @@ export default function DecisionGatePage() {
   const goCast = () => {
     const submitted = submitInput(draft);
     if (!submitted.ok) {
-      return;
-    }
-    const casted = castPattern();
-    if (!casted.ok) {
       return;
     }
     router.push('/cast');

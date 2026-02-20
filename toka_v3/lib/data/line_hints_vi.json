@@ -1,0 +1,56 @@
+[
+  {
+    "line": 1,
+    "name_vi": "Khởi điểm",
+    "core": "Nước đi đầu tiên tạo đà — hành động nhỏ, kiểm chứng thực tế.",
+    "power": "Có thể bạn đang có ít đòn bẩy hơn bạn nghĩ; tránh tuyên bố lớn.",
+    "risk": "Nhiều ẩn số; giữ hành động có thể đảo chiều.",
+    "timing": "Còn sớm để cam kết; hãy thu thập tín hiệu.",
+    "bias": "Tính mới/lấp gấp có thể đang dẫn dắt bạn."
+  },
+  {
+    "line": 2,
+    "name_vi": "Định vị",
+    "core": "Xây chỗ đứng — hệ hỗ trợ, đồng minh và ràng buộc.",
+    "power": "Xác định ai thực sự nắm phê duyệt/nguồn lực.",
+    "risk": "Rủi ro ổn định giảm khi bạn chuẩn hóa vai trò/điều khoản.",
+    "timing": "Phù hợp cho chuẩn bị và căn chỉnh âm thầm.",
+    "bias": "Mong muốn ‘chứng minh bản thân’ có thể làm lệch lựa chọn."
+  },
+  {
+    "line": 3,
+    "name_vi": "Điểm ma sát",
+    "core": "Chạm vào lực cản — quá đà sẽ gây tổn hại không cần thiết.",
+    "power": "Dễ xảy ra tranh chấp quyền lực; đừng đánh trên sân của họ.",
+    "risk": "Rủi ro leo thang; giảm bề mặt xung đột.",
+    "timing": "Tạm dừng trước bước lớn; thương lượng lại cách tiếp cận.",
+    "bias": "Áp lực sĩ diện/giữ thể diện xuất hiện ở đây."
+  },
+  {
+    "line": 4,
+    "name_vi": "Chuyển ngưỡng",
+    "core": "Băng qua ngưỡng — chuyển từ chuẩn bị nội bộ sang thực thi bên ngoài.",
+    "power": "Ảnh hưởng tăng nhờ uy tín, không phải ép buộc.",
+    "risk": "Rủi ro hiểu sai; làm rõ ý định và ranh giới.",
+    "timing": "Đi tiếp nếu điều kiện đã xác minh; nếu chưa, tinh chỉnh kế hoạch.",
+    "bias": "Thiên kiến xác nhận: chỉ nhìn thấy bằng chứng ủng hộ."
+  },
+  {
+    "line": 5,
+    "name_vi": "Trung tâm chỉ huy",
+    "core": "Đòn bẩy tối ưu — dẫn dắt bằng công bằng, rõ ràng và tiết chế.",
+    "power": "Bạn có thể đặt điều khoản; dùng chính danh, không áp chế.",
+    "risk": "Rủi ro nằm ở quản trị/giám sát; giữ vòng phản hồi.",
+    "timing": "Thời điểm tốt nhất cho nước đi quyết định đã chuẩn bị kỹ.",
+    "bias": "Quá tự tin (đà thành công) có thể tạo điểm mù."
+  },
+  {
+    "line": 6,
+    "name_vi": "Quá mức / Thoát",
+    "core": "Đỉnh của cung động — hoặc hoàn tất hoặc quá đà; biết lúc dừng.",
+    "power": "Nếu ép thêm lúc này, bạn có thể kích hoạt phản ứng ngược hoặc mất niềm tin.",
+    "risk": "Mặt trái tăng mạnh khi cứng nhắc; chuẩn bị lối thoát/chuyển giao.",
+    "timing": "Thu hoạch và kết thúc; tránh ‘ráng thêm một nhịp’.",
+    "bias": "Bám chấp vào kết quả/vị thế khiến bạn mắc kẹt."
+  }
+]

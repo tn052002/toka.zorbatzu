@@ -1,0 +1,10 @@
+[
+  {"id":"QIAN","symbol":"☰","hanzi":"乾","pinyin":"Qián","name_en":"Heaven","element":"metal","keywords":["initiative","leadership","strength","sky","drive"]},
+  {"id":"DUI","symbol":"☱","hanzi":"兌","pinyin":"Duì","name_en":"Lake","element":"metal","keywords":["joy","exchange","persuasion","openness","social"]},
+  {"id":"LI","symbol":"☲","hanzi":"離","pinyin":"Lí","name_en":"Fire","element":"fire","keywords":["clarity","visibility","insight","attachment","illumination"]},
+  {"id":"ZHEN","symbol":"☳","hanzi":"震","pinyin":"Zhèn","name_en":"Thunder","element":"wood","keywords":["shock","movement","activation","initiative","arousal"]},
+  {"id":"XUN","symbol":"☴","hanzi":"巽","pinyin":"Xùn","name_en":"Wind","element":"wood","keywords":["gentle","penetration","influence","process","consistency"]},
+  {"id":"KAN","symbol":"☵","hanzi":"坎","pinyin":"Kǎn","name_en":"Water","element":"water","keywords":["risk","depth","danger","flow","discipline"]},
+  {"id":"GEN","symbol":"☶","hanzi":"艮","pinyin":"Gèn","name_en":"Mountain","element":"earth","keywords":["stillness","boundary","stability","stop","contain"]},
+  {"id":"KUN","symbol":"☷","hanzi":"坤","pinyin":"Kūn","name_en":"Earth","element":"earth","keywords":["receptive","support","nurture","ground","yield"]}
+]

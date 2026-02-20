@@ -10,7 +10,7 @@ import Divider from '@/components/Divider';
 import SectionCard from '@/components/SectionCard';
 import { useI18n } from '@/lib/i18n';
 import { loadSession, type TokaSession } from '@/lib/session';
-import { generateMirror } from '@/lib/toka/machine';
+import { castPattern, generateMirror } from '@/lib/toka/machine';
 
 export default function CastPage() {
   const router = useRouter();
@@ -51,16 +51,18 @@ export default function CastPage() {
   }
 
   const isFullyRevealed = revealedCount >= 6;
-  const hasCast = Boolean(session.cast);
   const visibleValues = session.cast?.lineValues.slice(0, revealedCount) ?? [];
   const lineValueText = `[${Array.from({ length: 6 }, (_, index) => visibleValues[index] ?? '_').join(', ')}]`;
   const visibleChanging = session.cast?.changingLines.filter((line) => line <= revealedCount) ?? [];
 
-  const revealPattern = () => {
-    if (!session.cast || isRevealing || isFullyRevealed) {
+  const startReveal = () => {
+    if (isRevealing || isFullyRevealed) {
       return;
     }
     setIsRevealing(true);
+    if (revealTimer.current !== null) {
+      window.clearInterval(revealTimer.current);
+    }
     revealTimer.current = window.setInterval(() => {
       setRevealedCount((current) => {
         if (current >= 6) {
@@ -80,6 +82,23 @@ export default function CastPage() {
         return next;
       });
     }, 320);
+  };
+
+  const revealPattern = () => {
+    if (isRevealing || isFullyRevealed) {
+      return;
+    }
+    if (!session.cast) {
+      const result = castPattern();
+      if (!result.ok || !result.session.cast) {
+        return;
+      }
+      setSession(result.session);
+      setRevealedCount(0);
+      startReveal();
+      return;
+    }
+    startReveal();
   };
 
   return (
@@ -105,7 +124,7 @@ export default function CastPage() {
                 type="button"
                 className="rounded-md border border-text/20 bg-white/70 px-3 py-1.5 text-xs text-text transition-colors duration-calm hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
                 onClick={revealPattern}
-                disabled={!hasCast || isRevealing || isFullyRevealed}
+                disabled={isRevealing || isFullyRevealed}
               >
                 {m.cast.revealPattern}
               </button>

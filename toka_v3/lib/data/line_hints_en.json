@@ -1,0 +1,56 @@
+[
+  {
+    "line":1,
+    "name_en":"Inception",
+    "core":"The first move sets momentum—act small, test reality.",
+    "power":"You likely have less leverage than you think; avoid declarations.",
+    "risk":"High unknowns; keep actions reversible.",
+    "timing":"Too early for commitment; gather signal.",
+    "bias":"Novelty/urgency may be driving you."
+  },
+  {
+    "line":2,
+    "name_en":"Positioning",
+    "core":"Build footing—support systems, allies, and constraints.",
+    "power":"Find the true holder of approval/resources.",
+    "risk":"Stability risk decreases if you formalize roles/terms.",
+    "timing":"Good for preparation and quiet alignment.",
+    "bias":"Desire to ‘prove yourself’ can distort choices."
+  },
+  {
+    "line":3,
+    "name_en":"Friction Point",
+    "core":"Contact with resistance—overreach creates avoidable damage.",
+    "power":"Power struggle likely; don’t fight on their terrain.",
+    "risk":"Escalation risk; reduce surface area of conflict.",
+    "timing":"Pause before the big step; renegotiate approach.",
+    "bias":"Ego/face-saving pressure shows up here."
+  },
+  {
+    "line":4,
+    "name_en":"Transition",
+    "core":"Crossing a threshold—shift from internal prep to external execution.",
+    "power":"Influence grows through credibility, not force.",
+    "risk":"Miscommunication risk; clarify intent and boundaries.",
+    "timing":"Move if conditions are verified; otherwise refine plan.",
+    "bias":"Confirmation bias: seeing only supporting evidence."
+  },
+  {
+    "line":5,
+    "name_en":"Center of Command",
+    "core":"Optimal leverage—lead with fairness, clarity, and restraint.",
+    "power":"You can set terms; use legitimacy, not domination.",
+    "risk":"Risk is in governance/oversight; keep feedback loops.",
+    "timing":"Best time for the decisive, well-prepared move.",
+    "bias":"Overconfidence (success momentum) can blind spots."
+  },
+  {
+    "line":6,
+    "name_en":"Excess / Exit",
+    "core":"Top of the arc—either completion or overextension; know when to stop.",
+    "power":"If you push now, you may trigger backlash or loss of trust.",
+    "risk":"Downside spikes from rigidity; plan an exit/hand-off.",
+    "timing":"Harvest and conclude; avoid ‘one more push’.",
+    "bias":"Attachment to outcome/status keeps you trapped."
+  }
+]

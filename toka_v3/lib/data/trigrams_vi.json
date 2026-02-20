@@ -1,0 +1,10 @@
+[
+  {"id":"QIAN","symbol":"☰","hanzi":"乾","pinyin":"Qián","name_vi":"Trời","element":"kim","keywords":["khởi xướng","lãnh đạo","sức mạnh","bầu trời","động lực"]},
+  {"id":"DUI","symbol":"☱","hanzi":"兌","pinyin":"Duì","name_vi":"Đầm","element":"kim","keywords":["niềm vui","trao đổi","thuyết phục","cởi mở","xã hội"]},
+  {"id":"LI","symbol":"☲","hanzi":"離","pinyin":"Lí","name_vi":"Lửa","element":"hỏa","keywords":["rõ ràng","hiển lộ","thấu suốt","gắn kết","soi sáng"]},
+  {"id":"ZHEN","symbol":"☳","hanzi":"震","pinyin":"Zhèn","name_vi":"Sấm","element":"mộc","keywords":["chấn động","chuyển động","kích hoạt","khởi xướng","thức tỉnh"]},
+  {"id":"XUN","symbol":"☴","hanzi":"巽","pinyin":"Xùn","name_vi":"Gió","element":"mộc","keywords":["mềm","thẩm thấu","ảnh hưởng","tiến trình","nhất quán"]},
+  {"id":"KAN","symbol":"☵","hanzi":"坎","pinyin":"Kǎn","name_vi":"Nước","element":"thủy","keywords":["rủi ro","chiều sâu","nguy hiểm","dòng chảy","kỷ luật"]},
+  {"id":"GEN","symbol":"☶","hanzi":"艮","pinyin":"Gèn","name_vi":"Núi","element":"thổ","keywords":["tĩnh lại","ranh giới","ổn định","dừng lại","kiềm giữ"]},
+  {"id":"KUN","symbol":"☷","hanzi":"坤","pinyin":"Kūn","name_vi":"Đất","element":"thổ","keywords":["tiếp nhận","nâng đỡ","nuôi dưỡng","nền tảng","nhu thuận"]}
+]
